@@ -1,0 +1,26 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: SAT_Table
+- file: NQueen
+- file: image_seg_01
+- file: image_seg_02_k-means
+- file: image_seg_03_k-means_centers
+- file: image_seg_04_coords
+- file: BF-clustering
+- file: high_dim_and_CD
+- file: high_dim_and_KNN
+- file: image-clustering_HC
+- file: image_clustering
+- file: kmeans-clustering-iris
+- file: LVQ
+- file: Bias-Variance-Tradefoff
+- file: Silhouette-clustering
+- file: PCA_01
+- file: PCA_02
+- file: plot_pca_vs_lda
+- file: SVD_01
+- file: SVD_image_compression

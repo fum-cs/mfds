@@ -1,0 +1,3 @@
+notebooks/_build
+notebooks/_build/*/
+__pycache__
