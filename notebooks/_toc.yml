@@ -6,10 +6,9 @@ root: intro
 chapters:
 - file: SAT_Table
 - file: NQueen
-- file: image_seg_01
-- file: image_seg_02_k-means
-- file: image_seg_03_k-means_centers
-- file: image_seg_04_coords
+- file: image_01_intro
+- file: image_02_seg_k-means
+- file: image_03_seg_coords
 - file: BF-clustering
 - file: k-means-clustering
 - file: high_dim_and_CD
