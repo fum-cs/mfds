@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,56 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'SVD_image_compression';</script>
     <link rel="icon" href="_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="SVD_01.html" />
+    <link rel="prev" title="Comparison of LDA and PCA" href="plot_pca_vs_lda.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -73,23 +71,27 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,13 +113,8 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
     </header>
   
 
@@ -141,8 +138,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="intro.html">
   
@@ -164,7 +159,7 @@
 
  <script>
  document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -184,29 +179,23 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="SAT_Table.html">SAT-Table</a></li>
 <li class="toctree-l1"><a class="reference internal" href="NQueen.html">N-Queen Problem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_seg_01.html">Image Segmentaion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_seg_02_k-means.html">Image Segmentaion with k-means</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="image_seg_03_k-means_centers.html">Image Segmentaion using kmeans, using image centers</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="image_seg_04_coords.html">Color Image segmentation by clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_01_intro.html">Images as high dimensional data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_02_seg_k-means.html">Image Segmentaion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_03_seg_coords.html">Add coordinates as spatial features to clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BF-clustering.html">Brute force search clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k-means-clustering.html">k-means Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="high_dim_and_CD.html">High Dimensional Data &amp; the curse of dimensionality</a></li>
 <li class="toctree-l1"><a class="reference internal" href="high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image-clustering_HC.html">Image segmentation by hierarchical clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image_clustering.html">Images Clustering</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="kmeans-clustering-iris.html">IRIS Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LVQ.html">Vector Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PCA_01.html">Step 9: X_projected = A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PCA_01.html">PCA - Part 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PCA_02.html">PCA - Part 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_pca_vs_lda.html">Comparison of LDA and PCA 2D projection of Iris dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SVD for Image Compression</a></li>
-
-
 </ul>
 
     </div>
@@ -222,7 +211,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -231,14 +220,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -263,14 +252,14 @@
       
       <li><a href="https://colab.research.google.com/github/fum-cs/mfds/blob/main/notebooks/SVD_image_compression.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+   title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Colab logo" src="_static/images/logo_colab.png">
+    <img src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -394,10 +383,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -405,14 +394,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -433,23 +422,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SVD for Image Compression</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-installation-of-jupyter">A note on installation of jupyter</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#montecarlo-calculation-of-pi">Montecarlo calculation of <span class="math notranslate nohighlight">\(\pi\)</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-and-image-compression">SVD and Image compression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skimage-image-processing-library">skimage image processing library</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-in-python">svd in python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compress-gray-scale-images">Compress gray scale images</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-color-images">Load color images</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compress-color-images">Compress color images</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape-method-to-compress-a-color-image">Reshape method to compress a color image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-installation-of-jupyter">A note on installation of jupyter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#montecarlo-calculation-of-pi">Montecarlo calculation of <span class="math notranslate nohighlight">\(\pi\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-and-image-compression">SVD and Image compression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skimage-image-processing-library">skimage image processing library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-in-python">svd in python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compress-gray-scale-images">Compress gray scale images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-color-images">Load color images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compress-color-images">Compress color images</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape-method-to-compress-a-color-image">Reshape method to compress a color image</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-method-to-compress-color-images">Layers method to compress color images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-method-to-compress-color-images">Layers method to compress color images</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -461,8 +448,8 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="" src="_images/banner.png" /></p>
-<script src="require.js"></script><section id="svd-for-image-compression">
-<h1>SVD for Image Compression<a class="headerlink" href="#svd-for-image-compression" title="Link to this heading">#</a></h1>
+<script src="require.js"></script><section class="tex2jax_ignore mathjax_ignore" id="svd-for-image-compression">
+<h1>SVD for Image Compression<a class="headerlink" href="#svd-for-image-compression" title="Permalink to this heading">#</a></h1>
 <p><strong>Mahmood Amintoosi, Fall 2024</strong></p>
 <p>Computer Science Dept, Ferdowsi University of Mashhad</p>
 <p><a class="reference external" href="http://jupyter.org/">Jupyter</a> is an interactive browser based notebook environment where we can combine text, code execution and visualization. It supports multiple programming languages through it’s language specific kernel plugins. However, it is widely used with Python in scientific computing and data science communities. The availability of large number of high quality open source libraries useful for many tasks in scientific computing,numerical linear algebra, machine learning and visualization ensures that Python is being widely used in these fields. Jupyter notebooks are an excellent environment for learning and teaching because of the interactivity.</p>
@@ -471,14 +458,13 @@ document.write(`
 <li><p>Montecarlo calculation of <span class="math notranslate nohighlight">\(\pi\)</span></p></li>
 <li><p>Image Compression using Singular value decomposition</p></li>
 </ul>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-note-on-installation-of-jupyter">
-<h1>A note on installation of jupyter<a class="headerlink" href="#a-note-on-installation-of-jupyter" title="Link to this heading">#</a></h1>
+<section id="a-note-on-installation-of-jupyter">
+<h2>A note on installation of jupyter<a class="headerlink" href="#a-note-on-installation-of-jupyter" title="Permalink to this heading">#</a></h2>
 <p>Installation of jupyter and other important packages individually is cumbersome. Thanks to <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a> we have Anaconda python distribution in which almost all of the useful packages are bundled. Install anaconda.</p>
 <p>But it is even better not setting up any python environment at all on your computer. Instead, you can use free online python environments- <a class="reference external" href="https://colab.research.google.com/">colab notebooks</a> from google or <a class="reference external" href="https://studiolab.sagemaker.aws/">sagemaker studio lab notebook</a> from aws. Watch <a class="reference external" href="https://www.youtube.com/watch?v=SP-WBt2b54o">this video</a> from the twitter user <a class="reference external" href="https://twitter.com/1littlecoder">1littlecoder</a> on getting started with sagemaker studio lab.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="montecarlo-calculation-of-pi">
-<h1>Montecarlo calculation of <span class="math notranslate nohighlight">\(\pi\)</span><a class="headerlink" href="#montecarlo-calculation-of-pi" title="Link to this heading">#</a></h1>
+<section id="montecarlo-calculation-of-pi">
+<h2>Montecarlo calculation of <span class="math notranslate nohighlight">\(\pi\)</span><a class="headerlink" href="#montecarlo-calculation-of-pi" title="Permalink to this heading">#</a></h2>
 <p>I had earlier written about calculating the mathematical constant <span class="math notranslate nohighlight">\(\pi\)</span> using <a class="reference external" href="https://medium.com/&#64;rameshputalapattu/life-of-pi-a-gophers-tale-2e6922b80792">montecarlo method</a>. It involves generating random points on a unit square and counting the number of points inside the unit quarter circle. We will write a function <code class="docutils literal notranslate"><span class="pre">mc_pi</span></code> to calculate <span class="math notranslate nohighlight">\(\pi\)</span>. In that function, we will also visualize the process of montecarlo simulation using matplotlib library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -532,7 +518,7 @@ document.write(`
 <script type="application/vnd.jupyter.widget-view+json">{"model_id": "d630b7703238497ea99865b5167af3b4", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <section id="svd-and-image-compression">
-<h2>SVD and Image compression<a class="headerlink" href="#svd-and-image-compression" title="Link to this heading">#</a></h2>
+<h3>SVD and Image compression<a class="headerlink" href="#svd-and-image-compression" title="Permalink to this heading">#</a></h3>
 <p>Now we will explore how to apply Singular Value Decomposition of a matrix to the problem of image compression. SVD decomposes a rectangular matrix <span class="math notranslate nohighlight">\(M\)</span> to a three parts.
 <span class="math notranslate nohighlight">\(M=U\Sigma V^T\)</span>  -</p>
 <ul class="simple">
@@ -547,7 +533,7 @@ A matrix of rank r will have r terms of these.</p>
 <p>Image compression using SVD involves taking advantage of the fact that very few of the singular values are large. Although images from the real world are of full rank, they have low effective rank which means that only few of the singular values of the SVD of images will be large.</p>
 </section>
 <section id="skimage-image-processing-library">
-<h2>skimage image processing library<a class="headerlink" href="#skimage-image-processing-library" title="Link to this heading">#</a></h2>
+<h3>skimage image processing library<a class="headerlink" href="#skimage-image-processing-library" title="Permalink to this heading">#</a></h3>
 <p>We will use skimage image processing library (from sci-kit family of packages) for working with images in python. skimage has a module called data which makes available a set of images for exploration.  We will load some images and convert them into a gray scale format. These images are stored in a python dict object gray_images.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -576,7 +562,7 @@ A matrix of rank r will have r terms of these.</p>
 </div>
 </section>
 <section id="svd-in-python">
-<h2>svd in python<a class="headerlink" href="#svd-in-python" title="Link to this heading">#</a></h2>
+<h3>svd in python<a class="headerlink" href="#svd-in-python" title="Permalink to this heading">#</a></h3>
 <p>We will use <code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code> library’s <code class="docutils literal notranslate"><span class="pre">svd</span></code> function to compute svd of a matrix in python. The svd function returns U,s,V .</p>
 <ul class="simple">
 <li><p>U has left singular vectors in the columns</p></li>
@@ -614,7 +600,7 @@ A matrix of rank r will have r terms of these.</p>
 </div>
 </section>
 <section id="compress-gray-scale-images">
-<h2>Compress gray scale images<a class="headerlink" href="#compress-gray-scale-images" title="Link to this heading">#</a></h2>
+<h3>Compress gray scale images<a class="headerlink" href="#compress-gray-scale-images" title="Permalink to this heading">#</a></h3>
 <p>The function <code class="docutils literal notranslate"><span class="pre">compress_show_gray_images</span></code> below takes in the image name (img_name) and number of singular values/vectors(k) to be used in the compressed reconstruction. It also plots the singular values and the image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -694,7 +680,7 @@ A matrix of rank r will have r terms of these.</p>
 </div>
 </section>
 <section id="load-color-images">
-<h2>Load color images<a class="headerlink" href="#load-color-images" title="Link to this heading">#</a></h2>
+<h3>Load color images<a class="headerlink" href="#load-color-images" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_images</span> <span class="o">=</span> <span class="p">{</span>
@@ -708,14 +694,14 @@ A matrix of rank r will have r terms of these.</p>
 </div>
 </section>
 <section id="compress-color-images">
-<h2>Compress color images<a class="headerlink" href="#compress-color-images" title="Link to this heading">#</a></h2>
+<h3>Compress color images<a class="headerlink" href="#compress-color-images" title="Permalink to this heading">#</a></h3>
 <p>Color images are represented in python as 3 dimensional numpy arrays - the third dimension to represent the color values (red,green blue). However, svd method is applicable to two dimensional matrices. So we have to find a way to convert the 3 dimensional array to 2 dimensional arrays, apply svd and reconstruct it back as a 3 dimensional array . There are two ways to do it. We will show both these methods below .</p>
 <ul class="simple">
 <li><p>reshape method</p></li>
 <li><p>Layer method</p></li>
 </ul>
 <section id="reshape-method-to-compress-a-color-image">
-<h3>Reshape method to compress a color image<a class="headerlink" href="#reshape-method-to-compress-a-color-image" title="Link to this heading">#</a></h3>
+<h4>Reshape method to compress a color image<a class="headerlink" href="#reshape-method-to-compress-a-color-image" title="Permalink to this heading">#</a></h4>
 <p>This method involves flattening the third dimension of the image array into the second dimension using numpy’s reshape method .</p>
 <p><code class="docutils literal notranslate"> <span class="pre">image_reshaped</span> <span class="pre">=</span> <span class="pre">image.reshape((original_shape[0],original_shape[1]*3))</span></code></p>
 <p>The svd decomposition is applied on the resulting reshaped array and reconstructed with the desired number of singular values/vectors. The image array is reshaped back to the three dimensions by another call to reshape method.</p>
@@ -779,7 +765,7 @@ A matrix of rank r will have r terms of these.</p>
 </section>
 </section>
 <section id="layers-method-to-compress-color-images">
-<h2>Layers method to compress color images<a class="headerlink" href="#layers-method-to-compress-color-images" title="Link to this heading">#</a></h2>
+<h3>Layers method to compress color images<a class="headerlink" href="#layers-method-to-compress-color-images" title="Permalink to this heading">#</a></h3>
 <p>In the function <code class="docutils literal notranslate"><span class="pre">compress_show_color_images_layer</span></code>, we treat a color image as a stack of 3 seperate two dimensional images  (Red,blue and green layers) . We apply the truncated svd reconstruction on each two dimensional layer seperately.</p>
 <p><code class="docutils literal notranslate"><span class="pre">image_reconst_layers</span> <span class="pre">=</span> <span class="pre">[compress_svd(image[:,:,i],k)[0]</span> <span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(3)]</span></code></p>
 <p>And we put back the reconstructed layers together.</p>
@@ -852,6 +838,7 @@ A matrix of rank r will have r terms of these.</p>
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -880,16 +867,16 @@ A matrix of rank r will have r terms of these.</p>
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="SVD_01.html"
+       href="plot_pca_vs_lda.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Comparison of LDA and PCA</p>
       </div>
     </a>
 </div>
@@ -908,23 +895,21 @@ A matrix of rank r will have r terms of these.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SVD for Image Compression</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-installation-of-jupyter">A note on installation of jupyter</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#montecarlo-calculation-of-pi">Montecarlo calculation of <span class="math notranslate nohighlight">\(\pi\)</span></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-and-image-compression">SVD and Image compression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skimage-image-processing-library">skimage image processing library</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-in-python">svd in python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compress-gray-scale-images">Compress gray scale images</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-color-images">Load color images</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compress-color-images">Compress color images</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape-method-to-compress-a-color-image">Reshape method to compress a color image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-installation-of-jupyter">A note on installation of jupyter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#montecarlo-calculation-of-pi">Montecarlo calculation of <span class="math notranslate nohighlight">\(\pi\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-and-image-compression">SVD and Image compression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skimage-image-processing-library">skimage image processing library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-in-python">svd in python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compress-gray-scale-images">Compress gray scale images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-color-images">Load color images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compress-color-images">Compress color images</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape-method-to-compress-a-color-image">Reshape method to compress a color image</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-method-to-compress-color-images">Layers method to compress color images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-method-to-compress-color-images">Layers method to compress color images</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
@@ -972,8 +957,8 @@ By Mahmood Amintoosi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
