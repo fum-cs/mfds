@@ -12,6 +12,7 @@ chapters:
 - file: BF-clustering
 - file: k-means-clustering
 - file: high_dim_and_CD
+- file: high_dim_and_k-means
 - file: high_dim_and_KNN
 - file: image-clustering_HC
 - file: image_clustering
