@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>kNN in high dimensional spaces &#8212; MFDS</title>
+    <title>k-means in high dimensional spaces &#8212; MFDS</title>
   
   
   
@@ -57,12 +57,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'high_dim_and_KNN';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'high_dim_and_k-means';</script>
     <link rel="icon" href="_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Image segmentation by hierarchical clustering" href="image-clustering_HC.html" />
-    <link rel="prev" title="k-means in high dimensional spaces" href="high_dim_and_k-means.html" />
+    <link rel="next" title="kNN in high dimensional spaces" href="high_dim_and_KNN.html" />
+    <link rel="prev" title="High Dimensional Data &amp; the curse of dimensionality" href="high_dim_and_CD.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,8 +189,8 @@
 <li class="toctree-l1"><a class="reference internal" href="BF-clustering.html">Brute force search clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="k-means-clustering.html">k-means Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="high_dim_and_CD.html">High Dimensional Data &amp; the curse of dimensionality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="high_dim_and_k-means.html">k-means in high dimensional spaces</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">kNN in high dimensional spaces</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">k-means in high dimensional spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image-clustering_HC.html">Image segmentation by hierarchical clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image_clustering.html">Images Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kmeans-clustering-iris.html">IRIS Clustering</a></li>
@@ -255,7 +255,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/fum-cs/mfds/blob/main/notebooks/high_dim_and_KNN.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/fum-cs/mfds/blob/main/notebooks/high_dim_and_k-means.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -303,7 +303,7 @@
       
       
       
-      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Fhigh_dim_and_KNN.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Fhigh_dim_and_k-means.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -333,7 +333,7 @@
       
       
       
-      <li><a href="_sources/high_dim_and_KNN.ipynb" target="_blank"
+      <li><a href="_sources/high_dim_and_k-means.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -415,7 +415,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>kNN in high dimensional spaces</h1>
+    <h1>k-means in high dimensional spaces</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -430,84 +430,91 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="" src="_images/banner.png" /></p>
-<script src="require.js"></script><section class="tex2jax_ignore mathjax_ignore" id="knn-in-high-dimensional-spaces">
-<h1>kNN in high dimensional spaces<a class="headerlink" href="#knn-in-high-dimensional-spaces" title="Link to this heading">#</a></h1>
+<script src="require.js"></script><section class="tex2jax_ignore mathjax_ignore" id="k-means-in-high-dimensional-spaces">
+<h1>k-means in high dimensional spaces<a class="headerlink" href="#k-means-in-high-dimensional-spaces" title="Link to this heading">#</a></h1>
 <p><strong>Mahmood Amintoosi, Fall 2024</strong></p>
 <p>Computer Science Dept, Ferdowsi University of Mashhad</p>
-<p>pth, python 3.7.16, numpy 1.21.5</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>  
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>  
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">adjusted_rand_score</span>  
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">n_classes</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>  
+<span class="n">n_classes</span> <span class="o">=</span> <span class="mi">2</span>  
 
-<span class="c1"># Define an empty list to store the accuracy scores</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">n_dimensions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>  <span class="c1"># , 200]#, 1000]</span>
+<span class="c1"># Define an empty list to store the scores  </span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>  
+<span class="n">n_dimensions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>  <span class="c1"># List of dimensions to evaluate  </span>
 
-<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">n_dimensions</span><span class="p">:</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span>
-        <span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span>
-        <span class="n">n_features</span><span class="o">=</span><span class="n">d</span><span class="p">,</span>
-        <span class="n">n_classes</span> <span class="o">=</span> <span class="n">n_classes</span>
-        <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="p">)</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">n_dimensions</span><span class="p">:</span>  
+    <span class="c1"># Generate synthetic Gaussian data  </span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span>  
+        <span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span>  
+        <span class="n">n_features</span><span class="o">=</span><span class="n">d</span><span class="p">,</span>  
+        <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>  
+        <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  
+        <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  
+        <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  
+    <span class="p">)</span>  
 
-    <span class="c1"># Split the data into train and test sets</span>
-    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-        <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
-    <span class="p">)</span>
+    <span class="c1"># Fit KMeans  </span>
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>  
+    <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  
 
-    <span class="c1"># Train a k-nearest neighbor classifier with k=5</span>
-    <span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="c1"># Predict the cluster labels  </span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>  
 
-    <span class="c1"># Predict the test labels</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="c1"># Compute the clustering score using Adjusted Rand Index  </span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>  
+    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>  
 
-    <span class="c1"># Compute the accuracy score</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="c1"># Plot init seeds along side sample data</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#4EACC5&quot;</span><span class="p">,</span> <span class="s2">&quot;#FF9C34&quot;</span><span class="p">,</span> <span class="s2">&quot;#4E9A06&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  
+        <span class="c1"># Plot initial seeds alongside sample data for the 2D case  </span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#4EACC5&quot;</span><span class="p">,</span> <span class="s2">&quot;#FF9C34&quot;</span><span class="p">]</span>  
 
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span><span class="p">):</span>
-            <span class="n">cluster_data</span> <span class="o">=</span> <span class="n">y</span> <span class="o">==</span> <span class="n">k</span>
-            <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">cluster_data</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">cluster_data</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span><span class="p">):</span>  
+            <span class="n">cluster_data</span> <span class="o">=</span> <span class="n">y</span> <span class="o">==</span> <span class="n">k</span>  
+            <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">cluster_data</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">cluster_data</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  
+        
+        <span class="c1"># Plot cluster centroids  </span>
+        <span class="n">centroids</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>  
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centroids</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centroids</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Centroids&#39;</span><span class="p">)</span>  
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;KMeans Clustering (2D) with True Labels&quot;</span><span class="p">)</span>  
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature 1&quot;</span><span class="p">)</span>  
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Feature 2&quot;</span><span class="p">)</span>  
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
 
-<span class="c1"># Plot the accuracy scores versus the number of features</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_dimensions</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of features&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy score&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Curse of dimensionality in k-nearest neighbor classification&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">n_dimensions</span><span class="p">)</span>
-<span class="c1"># plt.xscale(&quot;log&quot;)</span>
+<span class="c1"># Plot the clustering scores versus the number of features  </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_dimensions</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of features&quot;</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Adjusted Rand Index&quot;</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Clustering Performance of KMeans with Increasing Feature Dimensions&quot;</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">n_dimensions</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1d57e2712b2e582238e6c10600ed20ab8585d189d9847a5956d96947f2f8390c.png" src="_images/1d57e2712b2e582238e6c10600ed20ab8585d189d9847a5956d96947f2f8390c.png" />
-<img alt="_images/4392e6858d36d99b4a558ea816ba854da7eaba3ad48ec06d699796eb08390a14.png" src="_images/4392e6858d36d99b4a558ea816ba854da7eaba3ad48ec06d699796eb08390a14.png" />
+<img alt="_images/55e92768192b6cd6b2fcdbffacd37e8eacaa5b0fceea605d9de0a2e89a25f634.png" src="_images/55e92768192b6cd6b2fcdbffacd37e8eacaa5b0fceea605d9de0a2e89a25f634.png" />
+<img alt="_images/7017eb5cbabeb6e2cc0fccf08976f2a9fe06a989304f161535fdf6ce2ae3e3c4.png" src="_images/7017eb5cbabeb6e2cc0fccf08976f2a9fe06a989304f161535fdf6ce2ae3e3c4.png" />
 </div>
 </div>
 </section>
@@ -543,20 +550,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="high_dim_and_k-means.html"
+       href="high_dim_and_CD.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">k-means in high dimensional spaces</p>
+        <p class="prev-next-title">High Dimensional Data &amp; the curse of dimensionality</p>
       </div>
     </a>
     <a class="right-next"
-       href="image-clustering_HC.html"
+       href="high_dim_and_KNN.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Image segmentation by hierarchical clustering</p>
+        <p class="prev-next-title">kNN in high dimensional spaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
