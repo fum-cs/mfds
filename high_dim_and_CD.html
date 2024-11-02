@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -16,47 +16,48 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'high_dim_and_CD';</script>
@@ -67,6 +68,7 @@
     <link rel="prev" title="k-means Clustering" href="k-means-clustering.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -82,19 +84,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -102,7 +93,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -110,8 +100,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -127,7 +117,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -157,21 +148,17 @@
     
     
     <img src="_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
-    <script>document.write(`<img src="_static/fum-cs-logo.png" class="logo__image only-dark" alt="MFDS - Home"/>`);</script>
+    <img src="_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -388,24 +375,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -444,7 +423,7 @@ document.write(`
                   
   <p><img alt="" src="_images/banner.png" /></p>
 <script src="require.js"></script><section class="tex2jax_ignore mathjax_ignore" id="high-dimensional-data-the-curse-of-dimensionality">
-<h1>High Dimensional Data &amp; the curse of dimensionality<a class="headerlink" href="#high-dimensional-data-the-curse-of-dimensionality" title="Link to this heading">#</a></h1>
+<h1>High Dimensional Data &amp; the curse of dimensionality<a class="headerlink" href="#high-dimensional-data-the-curse-of-dimensionality" title="Permalink to this heading">#</a></h1>
 <p><strong>Mahmood Amintoosi, Fall 2024</strong></p>
 <p>Computer Science Dept, Ferdowsi University of Mashhad</p>
 <p>در فضاهای با ابعاد بالا:</p>
@@ -476,14 +455,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\m.amintoosi\AppData\Roaming\Python\Python310\site-packages\seaborn\axisgrid.py:118: UserWarning: The figure layout has changed to tight
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\m.amintoosi\AppData\Roaming\Python\Python310\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+C:\Users\m.amintoosi\AppData\Roaming\Python\Python310\site-packages\seaborn\axisgrid.py:118: UserWarning: The figure layout has changed to tight
   self._figure.tight_layout(*args, **kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1ee46400a30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1e251916ce0&gt;
 </pre></div>
 </div>
-<img alt="_images/036db7ba507aec893eca026a37009afb8a5aa467fc6e3f822f28b405d67670cd.png" src="_images/036db7ba507aec893eca026a37009afb8a5aa467fc6e3f822f28b405d67670cd.png" />
+<img alt="_images/2d9cda4271ab48f81ccdae78374f7a1c19935f24535fbedbffb70cf5bc474dee.png" src="_images/2d9cda4271ab48f81ccdae78374f7a1c19935f24535fbedbffb70cf5bc474dee.png" />
 </div>
 </div>
 <p>میانگین ایکس صفر هست اما میانگین قدرمطلق ایکس‌ها که اندازه فاصله آنها تا مبدا هست، صفر نیست.</p>
@@ -496,7 +477,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7969186008095795 1.002204775657637
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7963389532877564 0.999001957122858
 </pre></div>
 </div>
 </div>
@@ -516,7 +497,7 @@ of <span class="math notranslate nohighlight">\(\sqrt{d}\)</span> from the cente
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.305545191683646 1.4142135623730951
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3573055706605999 1.4142135623730951
 </pre></div>
 </div>
 </div>
@@ -530,7 +511,7 @@ of <span class="math notranslate nohighlight">\(\sqrt{d}\)</span> from the cente
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.118285351492773 14.142135623730951
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.13576670923273 14.142135623730951
 </pre></div>
 </div>
 </div>
@@ -552,10 +533,12 @@ of <span class="math notranslate nohighlight">\(\sqrt{d}\)</span> from the cente
 \[f(x_i) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}x_i^2}\]</div>
 <div class="math notranslate nohighlight">
 \[y=\frac{x}{||x||}\]</div>
-<p>وای یک بردار تصادفی یکه با توزیع یکنواخت روی کره واحد است</p>
+<div dir="rtl">
+y یک بردار تصادفی یکه با توزیع یکنواخت روی کره واحد است
 <p>مطابق روابط ۱.۱۹ و ۱.۲۰ از
 <a class="reference external" href="https://fumdrive.um.ac.ir/index.php/s/9W96bM8Q3QaJpAM">کتاب زکی</a>
 تابع چگالی ایکس به صورت زیر است:</p>
+</div>
 <p>Joint probability function  of <span class="math notranslate nohighlight">\(x\)</span> is given as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -567,9 +550,10 @@ f(x)&amp;=\prod_{i=1}^d f(x_i)\\
 &amp;= \frac{1}{(2\pi)^{d/2}} e^{-\frac{||x||^2}{2}}
 \end{aligned}
 \end{split}\]</div>
-<p>یعنی چگالی ففط به اندازه بردار بستگی دارد. پس همه نقاط روی کره‌ی به شعاع مشخص چگالی یکسانی دارند.</p>
+<div dir="rtl">
+یعنی چگالی فقط به اندازه بردار بستگی دارد. پس همه نقاط روی کره‌ی به شعاع مشخص چگالی یکسانی دارند.
 <p>دوباره تکه برنامه قبلی رو می‌نویسیم</p>
-<div class="cell docutils container">
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">norm_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -580,7 +564,7 @@ f(x)&amp;=\prod_{i=1}^d f(x_i)\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2914734246543547 1.4142135623730951
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.333765378402273 1.4142135623730951
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((100, 2), (100, 1))
@@ -600,13 +584,13 @@ f(x)&amp;=\prod_{i=1}^d f(x_i)\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a38e4362c64a4bd4996ee3cc0ff9ed637662ff62fb5db8bd6803418a7a9b600f.png" src="_images/a38e4362c64a4bd4996ee3cc0ff9ed637662ff62fb5db8bd6803418a7a9b600f.png" />
+<img alt="_images/1381ed2265afb8bc04c242b9c50dbe6d559e8b22b34e0589d0f61103aca82a7c.png" src="_images/1381ed2265afb8bc04c242b9c50dbe6d559e8b22b34e0589d0f61103aca82a7c.png" />
 </div>
 </div>
 <p>با داشتن اعداد تصادفی با توزیع یکنواخت
 می‌توان اعداد تصادفی با هر توزیعی تولید کرد</p>
 <section id="cumulative-distribution-function">
-<h2>Cumulative Distribution Function<a class="headerlink" href="#cumulative-distribution-function" title="Link to this heading">#</a></h2>
+<h2>Cumulative Distribution Function<a class="headerlink" href="#cumulative-distribution-function" title="Permalink to this heading">#</a></h2>
 <p>For random variable <span class="math notranslate nohighlight">\(X\)</span>, its cumulative distribution function (CDF) <span class="math notranslate nohighlight">\(F:\mathbb{R} \to [0,1]\)</span>,
 gives the probability of observing a value at most
 some given value <span class="math notranslate nohighlight">\(x\)</span>: (eq. 1.17 of Zaki)</p>
@@ -640,15 +624,34 @@ P(F^{-1}(a) \leq x) = P(a \leq F(x))
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">NormalDist</span> <span class="c1"># Needs Python &gt;= 3.8</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">NormalDist</span><span class="p">()</span><span class="o">.</span><span class="n">inv_cdf</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\m.amintoosi\AppData\Roaming\Python\Python310\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+C:\Users\m.amintoosi\AppData\Roaming\Python\Python310\site-packages\seaborn\axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1e2519153c0&gt;
+</pre></div>
+</div>
+<img alt="_images/eb692347bc0103ab9dcaf1e3405cb07d3e2d57631b34ab659459ef6fb62da416.png" src="_images/eb692347bc0103ab9dcaf1e3405cb07d3e2d57631b34ab659459ef6fb62da416.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">NormalDist</span><span class="p">()</span><span class="o">.</span><span class="n">inv_cdf</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.042547870398096606 1.0238737019303181
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.0013618378781789012 0.9982451176139835
 </pre></div>
 </div>
 </div>
@@ -660,19 +663,21 @@ P(F^{-1}(a) \leq x) = P(a \leq F(x))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\m.amintoosi\AppData\Roaming\Python\Python310\site-packages\seaborn\axisgrid.py:118: UserWarning: The figure layout has changed to tight
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\m.amintoosi\AppData\Roaming\Python\Python310\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+C:\Users\m.amintoosi\AppData\Roaming\Python\Python310\site-packages\seaborn\axisgrid.py:118: UserWarning: The figure layout has changed to tight
   self._figure.tight_layout(*args, **kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1ee4641b5b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1e251b7f940&gt;
 </pre></div>
 </div>
-<img alt="_images/f284e2f79d52289b2eef417fbd46704fc1054aac9b849fea4bdf20881eded9c1.png" src="_images/f284e2f79d52289b2eef417fbd46704fc1054aac9b849fea4bdf20881eded9c1.png" />
+<img alt="_images/d5fbb5c2ba3fb02814bccc043cc43f4a25f8a9a5078c756a05e21b36a53e84bb.png" src="_images/d5fbb5c2ba3fb02814bccc043cc43f4a25f8a9a5078c756a05e21b36a53e84bb.png" />
 </div>
 </div>
 </section>
 <section id="id1">
-<h2>تولید نقاط تصادفی با توزیع یکنواخت در داخل گوی واحد<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>تولید نقاط تصادفی با توزیع یکنواخت در داخل گوی واحد<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>یک سری نقاط تصادفی که هر مؤلفه‌ی هر نقطه از توزیع گوسی آمده است تولید می‌کنیم، سپس مشابه برنامه بالا هر نقطه را بر اندازه‌اش تقسیم می‌کنیم.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -686,7 +691,7 @@ P(F^{-1}(a) \leq x) = P(a \leq F(x))
 <div dir="rtl">
 قبلاً مشاهده کردیم که  y 
 ها از نگاشت x
- ها بر روی دایره واحد به دست می‌آیند. اگر y  ها را با یک مقدار ثابت کمتر از یک  ضرب کنیم، آن‌ها در داخل دایره واحد جابجا می‌شوند:
+ ها بر روی دایره واحد به دست می‌آیند. اگر y  ها را در یک مقدار ثابت کمتر از یک  ضرب کنیم، آن‌ها در داخل دایره واحد جابجا می‌شوند:
 </div>
 <div class="math notranslate nohighlight">
 \[x = (x_1,x_2,\dots,x_d)\]</div>
@@ -709,11 +714,11 @@ P(F^{-1}(a) \leq x) = P(a \leq F(x))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/04094be5c3d0b7be124e8867af14d3223bcd1ce02f29e451f9338f77f3a570e1.png" src="_images/04094be5c3d0b7be124e8867af14d3223bcd1ce02f29e451f9338f77f3a570e1.png" />
+<img alt="_images/91e5bb75b4892f3da650ebcfcbbfffd3525c589bb06e4517fbe3429b4b9d84f0.png" src="_images/91e5bb75b4892f3da650ebcfcbbfffd3525c589bb06e4517fbe3429b4b9d84f0.png" />
 </div>
 </div>
 <p>قبل از ادامه، یادآوری چند تعریف از کتاب زکی:</p>
-<p>ابتدا ابرکره، رابطه ۶.۱ کتاب زکی</p>
+<p>ابتدا ابرگوی و ابرکره، رابطه ۶.۱ کتاب زکی</p>
 <p>The data hyperspace can be represented as a <span class="math notranslate nohighlight">\(d\)</span>-dimensional <em>hyperball</em> centered at <span class="math notranslate nohighlight">\(0\)</span> with radius <span class="math notranslate nohighlight">\(r\)</span>, defined as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -795,7 +800,7 @@ r به توان d برابر حجم گوی واحد هست یعنی:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3cd20605978e8b1ab7896e21d99405de2f47339ae218c224bf9b3dd76a59fed7.png" src="_images/3cd20605978e8b1ab7896e21d99405de2f47339ae218c224bf9b3dd76a59fed7.png" />
+<img alt="_images/f4e7aa93f56a03a95c7cacae3b2ca094f01f68652d64bd6b925f5f572af2b04b.png" src="_images/f4e7aa93f56a03a95c7cacae3b2ca094f01f68652d64bd6b925f5f572af2b04b.png" />
 </div>
 </div>
 <p>We did it :)</p>
@@ -823,12 +828,12 @@ r به توان d برابر حجم گوی واحد هست یعنی:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.002264627827334787
-0.08411959110406537
-0.08391537749349633
-0.02116892861219605
-0.056536238749954046
--0.027862576256079068
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.03266827994478738
+-0.06715105526363858
+-0.01307570018736591
+0.09975298665446185
+-0.023308848425242605
+0.04607856574295245
 </pre></div>
 </div>
 </div>
@@ -897,7 +902,8 @@ r به توان d برابر حجم گوی واحد هست یعنی:</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -956,8 +962,8 @@ By Mahmood Amintoosi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
