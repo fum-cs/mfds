@@ -14,8 +14,8 @@ chapters:
 - file: high_dim_and_CD
 - file: high_dim_and_k-means
 - file: high_dim_and_KNN
-- file: image-clustering_HC
 - file: image_clustering
+- file: image-clustering_HC
 - file: kmeans-clustering-iris
 - file: LVQ
 - file: Bias-Variance-Tradeoff
