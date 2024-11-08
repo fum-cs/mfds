@@ -17,6 +17,7 @@ execute:
     - markdown
     - notebooks
     - markdown-notebooks
+    - temp/*
 
 
 # Define the name of the latex output file for PDF builds
