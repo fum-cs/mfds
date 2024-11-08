@@ -1,0 +1,1781 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction &#8212; MFDS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'linear-algebra/2.8 Singular Value Decomposition';</script>
+    <link rel="icon" href="../_static/fum-logo.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction" href="2.9%20The%20Moore-Penrose%20Pseudoinverse.html" />
+    <link rel="prev" title="Introduction" href="2.7%20Eigendecomposition.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
+    <img src="../_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Mathematical Foundations of Data Science Course website
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Dimensional Spaces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../high-dimensional-spaces/high-dim-intro.html">Chapter on High Dimensional Spaces</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/SAT_Table.html">SAT-Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/NQueen.html">N-Queen Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_01_intro.html">Images as high dimensional data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_02_seg_k-means.html">Image Segmentaion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_03_seg_coords.html">Add coordinates as spatial features to clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/BF-clustering.html">Brute force search clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/k-means-clustering.html">k-means Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_CD.html">High Dimensional Data &amp; the curse of dimensionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_k-means.html">k-means in high dimensional spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_clustering.html">Clustering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/kmeans-clustering-iris.html">IRIS Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/LVQ.html">Vector Quantization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_01.html">PCA - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_02.html">PCA - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/SVD_image_compression.html">SVD for Image Compression</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Cahpter on Linear Algebra</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.5%20Norms.html">2.5 Norms</a></li>
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/fum-cs/mfds/blob/main/notebooks/linear-algebra/2.8 Singular Value Decomposition.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fum-cs/mfds" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Flinear-algebra/2.8 Singular Value Decomposition.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/linear-algebra/2.8 Singular Value Decomposition.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition">2.8 Singular Value Decomposition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition">Intuition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#every-matrix-can-be-seen-as-a-linear-transformation">Every matrix can be seen as a linear transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-rotation-matrix">Example 4. rotation matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-three-transformations">The three transformations</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-values-interpretation">Singular values interpretation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-and-eigendecomposition">SVD and eigendecomposition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-left-singular-values">The left-singular values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-right-singular-values">The right-singular values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6">Example 6.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nonzero-singular-values">The nonzero singular values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7">Example 7.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-apply-the-svd-on-images">BONUS: Apply the SVD on images</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-a-circle-with-matplotlib">Drawing a circle with Matplotlib</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-matrix">Rotation matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-vectors">Basis vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformation">Linear transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd">SVD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-processing">Image processing</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/lsp/.virtualenvs/kaggle/lib/python2.7/site-packages/matplotlib/font_manager.py:273: UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
+  warnings.warn(&#39;Matplotlib is building the font cache using fc-list. This may take a moment.&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot style</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="o">%</span><span class="k">pylab</span> inline
+<span class="n">pylab</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Avoid inaccurate floating values (for inverse matrices in dot product for instance)</span>
+<span class="c1"># See https://stackoverflow.com/questions/24537791/numpy-matrix-inversion-rounding-errors</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%javascript</span>
+<span class="nx">IPython</span><span class="p">.</span><span class="nx">OutputArea</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">_should_scroll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">lines</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">IPython.OutputArea.prototype._should_scroll = function(lines) {
+    return false;
+}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotVectors</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot set of vectors.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vecs : array-like</span>
+<span class="sd">        Coordinates of the vectors to plot. Each vectors is in an array. For</span>
+<span class="sd">        instance: [[1, 3], [2, 2]] can be used to plot 2 vectors.</span>
+<span class="sd">    cols : array-like</span>
+<span class="sd">        Colors of the vectors. For instance: [&#39;red&#39;, &#39;blue&#39;] will display the</span>
+<span class="sd">        first vector in red and the second in blue.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Opacity of vectors</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    fig : instance of matplotlib.figure.Figure</span>
+<span class="sd">        The figure of the vectors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vecs</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+            <span class="n">alpha_i</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alpha_i</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">vecs</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                   <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                   <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+                   <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span>
+                   <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="n">alpha_i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[
+\newcommand\bs[1]{\boldsymbol{#1}}
+\]</div>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>The last chapter was a lot of fun! This one will be a bit less heavy. We will see another way to decompose matrices: the Singular Value Decomposition or SVD. Since the beginning of this series, I emphasized the fact that you can see matrices as linear transformation in space. With the SVD, you decompose a matrix in three other matrices. You can see these new matrices as <em>sub-transformations</em> of the space. Instead of doing the transformation in one movement, we decompose it in three movements. As a bonus, we will apply the SVD to image processing. We will see the effect of SVD on an image of Lucy the goose (it is just a goose named Lucy…) so keep on reading!</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="singular-value-decomposition">
+<h1>2.8 Singular Value Decomposition<a class="headerlink" href="#singular-value-decomposition" title="Link to this heading">#</a></h1>
+<img src="images/unit-circle-transformation1.png" width="400" alt="Plot of the unit circle and its transformation" title="Transformation of the unit circle">
+<em>The unit circle and its transformation by a matrix.</em>
+<p>We saw in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.7-Eigendecomposition/">2.7</a> that the eigendecomposition can be done only for square matrices. The way to go to decompose other types of matrices that can’t be decomposed with eigendecomposition is to use <strong>Singular Value Decomposition</strong> (SVD).</p>
+<p>We will decompose <span class="math notranslate nohighlight">\(\bs{A}\)</span> into 3 matrices (instead of two with eigendecomposition):</p>
+<img src="images/singular-value-decomposition.png" width="300" alt="Illustration of the singular value decomposition" title="The singular value decomposition">
+<em>The singular value decomposition</em>
+<p>The matrices <span class="math notranslate nohighlight">\(\bs{U}\)</span>, <span class="math notranslate nohighlight">\(\bs{D}\)</span>, and <span class="math notranslate nohighlight">\(\bs{V}\)</span> have the following properties:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\bs{U}\)</span> and <span class="math notranslate nohighlight">\(\bs{V}\)</span> are orthogonal matrices (<span class="math notranslate nohighlight">\(\bs{U}^\text{T}=\bs{U}^{-1}\)</span> and <span class="math notranslate nohighlight">\(\bs{V}^\text{T}=\bs{V}^{-1}\)</span>; see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a> for more details about orthogonal matrices)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bs{D}\)</span> is a diagonal matrix (all 0 except the diagonal ; see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a>). However <span class="math notranslate nohighlight">\(\bs{D}\)</span> is not necessarily square.</p></li>
+</ul>
+<p>The columns of <span class="math notranslate nohighlight">\(\bs{U}\)</span> are called the left-singular vectors of <span class="math notranslate nohighlight">\(\bs{A}\)</span> while the columns of <span class="math notranslate nohighlight">\(\bs{V}\)</span> are the right-singular vectors of <span class="math notranslate nohighlight">\(\bs{A}\)</span>. The values along the diagonal of <span class="math notranslate nohighlight">\(\bs{D}\)</span> are the singular values of <span class="math notranslate nohighlight">\(\bs{A}\)</span>.</p>
+<p>Here are the dimensions of the factorization:</p>
+<img src="images/singular-value-decomposition-understanding-dimensions.png" width="300" alt="Dimensions of the singular value decomposition (SVD)" title="The dimensions of the singular value decomposition (SVD)">
+<em>The dimensions of the singular value decomposition</em>
+<p>The diagonal matrix of singular values is not square but have the shape of <span class="math notranslate nohighlight">\(\bs{A}\)</span>. Look at the example provided in the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.svd.html">Numpy doc</a> to see that they create a matrix of zeros with the same shape as <span class="math notranslate nohighlight">\(\bs{A}\)</span> and fill it with the singular values:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">smat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+<span class="n">smat</span><span class="p">[:</span><span class="mi">6</span><span class="p">,</span> <span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="intuition">
+<h1>Intuition<a class="headerlink" href="#intuition" title="Link to this heading">#</a></h1>
+<p>I think that the intuition behind the singular value decomposition needs some explanations about the idea of matrix transformation. For that reason, here are several examples showing how the space can be transformed by 2D square matrices. Hopefully, this will lead to a better understanding of this statement: <span class="math notranslate nohighlight">\(\bs{A}\)</span> is a matrix that can be seen as a linear transformation. This transformation can be decomposed in three sub-transformations: 1. rotation, 2. re-scaling, 3. rotation. These three steps correspond to the three matrices <span class="math notranslate nohighlight">\(\bs{U}\)</span>, <span class="math notranslate nohighlight">\(\bs{D}\)</span>, and <span class="math notranslate nohighlight">\(\bs{V}\)</span>.</p>
+<span class='pquote'>
+    $\bs{A}$ is a matrix that can be seen as a linear transformation. This transformation can be decomposed in three sub-transformations: 1. rotation, 2. re-scaling, 3. rotation. These three steps correspond to the three matrices $\bs{U}$, $\bs{D}$, and $\bs{V}$.
+</span>
+<p>You can look at <a class="reference external" href="https://en.wikipedia.org/wiki/Singular-value_decomposition">this animation</a> from the Wikipedia article on the SVD. If you scroll down the page you will see each step.</p>
+<section id="every-matrix-can-be-seen-as-a-linear-transformation">
+<h2>Every matrix can be seen as a linear transformation<a class="headerlink" href="#every-matrix-can-be-seen-as-a-linear-transformation" title="Link to this heading">#</a></h2>
+<p>You can see a matrix as a specific linear transformation. When you <em>apply</em> this matrix to a vector or to another matrix you will apply this linear transformation to it.</p>
+</section>
+<section id="example-1">
+<h2>Example 1.<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h2>
+<p>We will modify the vector:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\bs{v}=\begin{bmatrix}
+    x\\\\
+    y
+\end{bmatrix}
+\end{split}\]</div>
+<p>by applying the matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    2 &amp; 0\\\\
+    0 &amp; 2
+\end{bmatrix}
+\end{split}\]</div>
+<p>We will have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    x'\\\\
+    y'
+\end{bmatrix}=\begin{bmatrix}
+    2 &amp; 0\\\\
+    0 &amp; 2
+\end{bmatrix}
+\begin{bmatrix}
+    x\\\\
+    y
+\end{bmatrix}=
+\begin{bmatrix}
+    2x + 0y\\\\
+    0x + 2y
+\end{bmatrix}=
+\begin{bmatrix}
+    2x\\\\
+    2y
+\end{bmatrix}
+\end{split}\]</div>
+<p>We see that applying the matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    2 &amp; 0\\\\
+    0 &amp; 2
+\end{bmatrix}
+\end{split}\]</div>
+<p>just doubled each coordinate of our vector. Here are the graphical representation of <span class="math notranslate nohighlight">\(\bs{v}\)</span> and its transformation <span class="math notranslate nohighlight">\(\bs{w}\)</span>:</p>
+<img src="images/transformation-vector-by-matrix.png" width="400" alt="Plot of a vector and its transformation" title="The matrix increased both coordinates of the vector">
+<em>Applying the matrix on the vector multiplied each coordinate by two</em>
+<p>You can look at other examples of simple transformations on vectors and unit circle in <a class="reference external" href="https://www.youtube.com/watch?v=kJIUbtSowRg">this video</a>.</p>
+</section>
+<section id="example-2">
+<h2>Example 2.<a class="headerlink" href="#example-2" title="Link to this heading">#</a></h2>
+<p>To represent the linear transformation associated with matrices we can also draw the unit circle and see how a matrix can transform it (see the BONUS in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.7-Eigendecomposition/">2.7</a>). The unit circle represents the coordinates of every unit vectors (vector of length 1, see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a>).</p>
+<img src="images/unit-circle.png" width="200" alt="Representation of the unit circle" title="The unit circle">
+<em>The unit circle</em>
+<p>It is then possible to apply a matrix to all these unit vectors to see the kind of deformation it will produce.</p>
+<p>Again, let’s apply the matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    2 &amp; 0\\\\
+    0 &amp; 2
+\end{bmatrix}
+\end{split}\]</div>
+<p>to the unit circle:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    x'\\\\
+    y'
+\end{bmatrix}=
+\begin{bmatrix}
+    2 &amp; 0\\\\
+    0 &amp; 2
+\end{bmatrix}
+\begin{bmatrix}
+    x\\\\
+    y
+\end{bmatrix}=
+\begin{bmatrix}
+    2x\\\\
+    2y
+\end{bmatrix}
+\end{split}\]</div>
+<img src="images/unit-circle-transformation.png" width="400" alt="Representation of the unit circle and its transformation" title="The unit circle and its transformation">
+<em>Another representation of the effect of the matrix: each coordinate of the unit circle was multiplied by two</em>
+<p>We can see that the matrix doubled the size of the circle. But in some transformations, the change applied to the <span class="math notranslate nohighlight">\(x\)</span> coordinate is different from the change applied to the <span class="math notranslate nohighlight">\(y\)</span> coordinate. Let’s see what it means graphically.</p>
+</section>
+<section id="example-3">
+<h2>Example 3.<a class="headerlink" href="#example-3" title="Link to this heading">#</a></h2>
+<p>We will apply the matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    3 &amp; 0\\\\
+    0 &amp; 2
+\end{bmatrix}
+\end{split}\]</div>
+<p>to the unit circle:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    x'\\\\
+    y'
+\end{bmatrix}=
+\begin{bmatrix}
+    3 &amp; 0\\\\
+    0 &amp; 2
+\end{bmatrix}\cdot
+\begin{bmatrix}
+    x\\\\
+    y
+\end{bmatrix}=
+\begin{bmatrix}
+    3x\\\\
+    2y
+\end{bmatrix}
+\end{split}\]</div>
+<p>This gives the following new circle:</p>
+<img src="images/unit-circle-transformation1.png" width="400" alt="Representation of the unit circle and its transformation" title="The unit circle and its transformation">
+<em>This time the matrix didn't rescale each coordinate with the same weight</em>
+<p>We can check that with the equations associated with this matrix transformation. Let’s say that the coordinates of the new circle (after transformation) are <span class="math notranslate nohighlight">\(x'\)</span> and <span class="math notranslate nohighlight">\(y'\)</span>. The relation between the old coordinates (<span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>) and the new coordinates (<span class="math notranslate nohighlight">\(x'\)</span>, <span class="math notranslate nohighlight">\(y'\)</span>) is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    x'\\\\
+    y'
+\end{bmatrix}=
+\begin{bmatrix}
+    3x\\\\
+    2y
+\end{bmatrix}
+\Leftrightarrow
+\begin{cases}
+x=\frac{x'}{3}\\\\
+y=\frac{y'}{2}
+\end{cases}
+\end{split}\]</div>
+<p>We also know that the equation of the unit circle is <span class="math notranslate nohighlight">\(x^2+y^2=1\)</span> (the norm of the unit vectors is 1, see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.5-Norms/">2.5</a>). By replacement we end up with:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\left(\frac{x'}{3}\right)^2 + \left(\frac{y'}{2}\right)^2 = 1\\\\
+\left(\frac{y'}{2}\right)^2 = 1 - \left(\frac{x'}{3}\right)^2\\\\
+\frac{y'}{2} = \sqrt{1 - \left(\frac{x'}{3}\right)^2}\\\\
+y' = 2\sqrt{1 - \left(\frac{x'}{3}\right)^2}
+\end{align*}
+\end{split}\]</div>
+<p>We can check that this equation corresponds to our transformed circle. Let’s start by drawing the old circle. Its equation is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+x^2+y^2=1\\\\
+y^2=1-x^2\\\\
+y=\sqrt{1-x^2}
+\end{align*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()</span><span class="o">.</span><span class="n">as_hex</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()</span><span class="o">.</span><span class="n">as_hex</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/87878f1210b2972aafd1dec814435a9718e0c591e6b7f573ad095c7fbf4b68e4.png" src="../_images/87878f1210b2972aafd1dec814435a9718e0c591e6b7f573ad095c7fbf4b68e4.png" />
+</div>
+</div>
+<p>So far so good!</p>
+<p><em>Coding tip</em>: You can see the trick to plot a circle here: you create the <span class="math notranslate nohighlight">\(x\)</span> variable, then <span class="math notranslate nohighlight">\(y\)</span> is defined from <span class="math notranslate nohighlight">\(x\)</span>. This means that for each <span class="math notranslate nohighlight">\(x\)</span>, the corresponding <span class="math notranslate nohighlight">\(y\)</span> value is calculated (and thus <span class="math notranslate nohighlight">\(y\)</span> has the same shape as <span class="math notranslate nohighlight">\(x\)</span>). Since the result of the square root can be negative or positive (for instance, 4 can be the result of <span class="math notranslate nohighlight">\(2^2\)</span> but also of <span class="math notranslate nohighlight">\((-2)^2\)</span>) we need to plot both solutions (<span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(-y\)</span> in <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>). Note also that a lot of values are needed if we want the connection between the two demi-spheres. See also some discussion <a class="reference external" href="https://stackoverflow.com/questions/32092899/plot-equation-showing-a-circle">here</a>.</p>
+<p>Now let’s add the circle obtained after matrix transformation. We saw that it is defined with</p>
+<div class="math notranslate nohighlight">
+\[
+y = 2\sqrt{1 - \left(\frac{x}{3}\right)^2}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">((</span><span class="n">x1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()</span><span class="o">.</span><span class="n">as_hex</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()</span><span class="o">.</span><span class="n">as_hex</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()</span><span class="o">.</span><span class="n">as_hex</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="o">-</span><span class="n">y1</span><span class="p">,</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()</span><span class="o">.</span><span class="n">as_hex</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6875e462831ac97649c7b36c7450cf3f0dfc43d364ae4624a9ba55e52014cb1f.png" src="../_images/6875e462831ac97649c7b36c7450cf3f0dfc43d364ae4624a9ba55e52014cb1f.png" />
+</div>
+</div>
+<p>This shows that our transformation was correct.</p>
+<p>Note that these examples used <strong>diagonal matrices</strong> (all zeros except the diagonal). The general rule is that the transformation associated with diagonal matrices imply only a rescaling of each coordinate <strong>without rotation</strong>. This is a first element to understand the SVD. Look again at the decomposition</p>
+<img src="images/singular-value-decomposition.png" width="300">
+<span class='pquote'>
+    The transformation associated with diagonal matrices imply only a rescaling of each coordinate **without rotation**
+</span>
+<p>We saw that the matrix <span class="math notranslate nohighlight">\(\bs{D}\)</span> is a diagonal matrix. And we saw also that it corresponds to a rescaling without rotation.</p>
+</section>
+<section id="example-4-rotation-matrix">
+<h2>Example 4. rotation matrix<a class="headerlink" href="#example-4-rotation-matrix" title="Link to this heading">#</a></h2>
+<p>Matrices that are not diagonal can produce a rotation (see more details <a class="reference external" href="https://en.wikipedia.org/wiki/Rotation_matrix">here</a>). Since it is easier to think about angles when we talk about rotation, we will use a matrix of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R=
+\begin{bmatrix}
+    cos(\theta) &amp; -sin(\theta)\\\\
+    sin(\theta) &amp; cos(\theta)
+\end{bmatrix}
+\end{split}\]</div>
+<p>This matrix will rotate our vectors or matrices counterclockwise through an angle <span class="math notranslate nohighlight">\(\theta\)</span>. Our new coordinates will be</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    x'\\\\
+    y'
+\end{bmatrix}=
+\begin{bmatrix}
+    cos(\theta) &amp; -sin(\theta)\\\\
+    sin(\theta) &amp; cos(\theta)
+\end{bmatrix}
+\begin{bmatrix}
+    x\\\\
+    y
+\end{bmatrix}=
+\begin{bmatrix}
+    xcos(\theta) - ysin(\theta)\\\\
+    xsin(\theta) + ycos(\theta)
+\end{bmatrix}
+\end{split}\]</div>
+<p>Let’s rotate some vectors through an angle of <span class="math notranslate nohighlight">\(\theta = 45^\circ\)</span>.</p>
+<p>Let’s start with the vector <span class="math notranslate nohighlight">\(\bs{u}\)</span> of coordinates <span class="math notranslate nohighlight">\(x=0\)</span> and <span class="math notranslate nohighlight">\(y=1\)</span> and the vector <span class="math notranslate nohighlight">\(\bs{v}\)</span> of coordinates <span class="math notranslate nohighlight">\(x=1\)</span> and <span class="math notranslate nohighlight">\(y=0\)</span>. The vectors <span class="math notranslate nohighlight">\(\bs{u'}\)</span> <span class="math notranslate nohighlight">\(\bs{v'}\)</span> are the rotated vectors.</p>
+<img src="images/unit-vectors-rotation.png" width="200" alt="Rotation of the unit vectors through matrix operation" title="Rotation of the unit vectors">
+<em>Counter clockwise rotation of the unit vectors with $\theta = 45^\circ$</em>
+<p>First, let’s plot <span class="math notranslate nohighlight">\(\bs{u}\)</span> and <span class="math notranslate nohighlight">\(\bs{v}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orange</span> <span class="o">=</span> <span class="s1">&#39;#FF9A13&#39;</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="s1">&#39;#1190FF&#39;</span>
+    
+<span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plotVectors</span><span class="p">([</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">],</span> <span class="n">cols</span><span class="o">=</span><span class="p">[</span><span class="n">blue</span><span class="p">,</span> <span class="n">blue</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{u}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{v}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f880d1061f09e6564908a7403ca099b4d62ab181a3d25ba52463c90e105b9722.png" src="../_images/f880d1061f09e6564908a7403ca099b4d62ab181a3d25ba52463c90e105b9722.png" />
+</div>
+</div>
+<p>They are the <a href="https://en.wikipedia.org/wiki/Basis_(linear_algebra)">basis vectors</a> of our space. We will calculate the transformation of these vectors:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+u_x = 0\cdot cos(45) - 1\cdot sin(45)\\\\
+u_y = 0\cdot sin(45) + 1\cdot cos(45)
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+u_x = -sin(45)\\\\
+u_y = cos(45)
+\end{cases}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+v_x = 1\cdot cos(45) - 0\cdot sin(45)\\\\
+v_y = 1\cdot sin(45) + 0\cdot cos(45)
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+v_x = cos(45)\\\\
+v_y = sin(45)
+\end{cases}
+\end{split}\]</div>
+<p>We will now plot these new vectors to check that they are well our basis vectors rotated through an angle of <span class="math notranslate nohighlight">\(45^\circ\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u1</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))]</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))]</span>
+
+<span class="n">plotVectors</span><span class="p">([</span><span class="n">u1</span><span class="p">,</span> <span class="n">v1</span><span class="p">],</span> <span class="n">cols</span><span class="o">=</span><span class="p">[</span><span class="n">orange</span><span class="p">,</span> <span class="n">orange</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\vec{u&#39;}$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">orange</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\vec{v&#39;}$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">orange</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d391cb8c4b2438b9bcf61e0be55908195d55dc5d6de5d8e14b448fd446b1b59a.png" src="../_images/d391cb8c4b2438b9bcf61e0be55908195d55dc5d6de5d8e14b448fd446b1b59a.png" />
+</div>
+</div>
+<p><em>Coding tip:</em> the numpy functions <code class="docutils literal notranslate"><span class="pre">sin</span></code> and <code class="docutils literal notranslate"><span class="pre">cos</span></code> take input in radians. We can convert our angle from degrees to radians with the function <code class="docutils literal notranslate"><span class="pre">np.radians()</span></code>.</p>
+<p>We can also transform a circle. We will take a rescaled circle (the one from the example 3.) to be able to see the effect of the rotation.</p>
+<img src="images/rescaled-circle-rotated.png" width="300" alt="A rescaled circle (not the same hight and width) rotated" title="Rescaled circle rotated">
+<em>The effect of a rotation matrix on a rescaled circle</em><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">((</span><span class="n">x</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))</span> <span class="o">-</span> <span class="n">y</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))</span>
+
+<span class="n">x1_neg</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))</span> <span class="o">-</span> <span class="o">-</span><span class="n">y</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))</span>
+<span class="n">y1_neg</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))</span> <span class="o">+</span> <span class="o">-</span><span class="n">y</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))</span>
+
+<span class="n">u1</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">)),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))]</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">)),</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">))]</span>
+
+<span class="n">plotVectors</span><span class="p">([</span><span class="n">u1</span><span class="p">,</span> <span class="n">v1</span><span class="p">],</span> <span class="n">cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#FF9A13&#39;</span><span class="p">,</span> <span class="s1">&#39;#FF9A13&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;#1190FF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;#1190FF&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s1">&#39;#FF9A13&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1_neg</span><span class="p">,</span> <span class="n">y1_neg</span><span class="p">,</span> <span class="s1">&#39;#FF9A13&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/88e865aed27d03d88efb1e6384282731a95964b98443ebb4c2653f27b670ef3a.png" src="../_images/88e865aed27d03d88efb1e6384282731a95964b98443ebb4c2653f27b670ef3a.png" />
+</div>
+</div>
+<p>We can see that the circle has been rotated by an angle of <span class="math notranslate nohighlight">\(45^\circ\)</span>. We have chosen the length of the vectors from the rescaling weight from example 3 (factor 3 and 2) to match the circle.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>I hope that you got how vectors and matrices can be transformed by rotating or scaling matrices. The SVD can be seen as the decomposition of one complex transformation in 3 simpler transformations (a rotation, a scaling and another rotation).</p>
+<p>Note that we took only square matrices. The SVD can be done even with non square matrices but it is harder to represent transformation associated with non square matrices. For instance, a 3 by 2 matrix will map a 2D space to a 3D space.</p>
+<img src="images/non-square-matrix-change-dimensions.png" width="250" alt="A non square matrix change the number of dimensions of the input" title="Example of a change of dimensions">
+<em>A non square matrix change the number of dimensions of the input</em></section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-three-transformations">
+<h1>The three transformations<a class="headerlink" href="#the-three-transformations" title="Link to this heading">#</a></h1>
+<p>Now that the link between matrices and linear transformation is clearer we can check that a transformation associated with a matrix can be decomposed with the help of the SVD.</p>
+<p>But first let’s create a function that takes a 2D matrix as an input and draw the unit circle transformation when we apply this matrix to it. It will be useful to visualize the transformations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">matrixToPlot</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">vectorsCol</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#FF9A13&#39;</span><span class="p">,</span> <span class="s1">&#39;#1190FF&#39;</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Modify the unit circle and basis vector by applying a matrix.</span>
+<span class="sd">    Visualize the effect of the matrix in 2D.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    matrix : array-like</span>
+<span class="sd">        2D matrix to apply to the unit circle.</span>
+<span class="sd">    vectorsCol : HEX color code</span>
+<span class="sd">        Color of the basis vectors</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    fig : instance of matplotlib.figure.Figure</span>
+<span class="sd">        The figure containing modified unit circle and basis vectors.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Unit circle</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    
+    <span class="c1"># Modified unit circle (separate negative and positive parts)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span>
+    <span class="n">x1_neg</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span>
+    <span class="n">y1_neg</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span>
+    
+    <span class="c1"># Vectors</span>
+    <span class="n">u1</span> <span class="o">=</span> <span class="p">[</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">v1</span> <span class="o">=</span> <span class="p">[</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+    
+    <span class="n">plotVectors</span><span class="p">([</span><span class="n">u1</span><span class="p">,</span> <span class="n">v1</span><span class="p">],</span> <span class="n">cols</span><span class="o">=</span><span class="p">[</span><span class="n">vectorsCol</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vectorsCol</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1_neg</span><span class="p">,</span> <span class="n">y1_neg</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use it to check that the three transformations given by the SVD are equivalent to the transformation done with the original matrix. We will also draw each step of the SVD to see the independant effect of the first rotation, the scaling and the second rotation.</p>
+<p>We will use the matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\bs{A}=\begin{bmatrix}
+    3 &amp; 7\\\\
+    5 &amp; 2
+\end{bmatrix}
+\end{split}\]</div>
+<p>and plot the unit circle and its transformation by <span class="math notranslate nohighlight">\(\bs{A}\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+
+<span class="nb">print</span> <span class="s1">&#39;Unit circle:&#39;</span>
+<span class="n">matrixToPlot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span> <span class="s1">&#39;Unit circle transformed by A:&#39;</span>
+<span class="n">matrixToPlot</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unit circle:
+</pre></div>
+</div>
+<img alt="../_images/a250d3fa4aa29721067ffff9ce32d3db4da982922137deb5f0e4792198a53809.png" src="../_images/a250d3fa4aa29721067ffff9ce32d3db4da982922137deb5f0e4792198a53809.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unit circle transformed by A:
+</pre></div>
+</div>
+<img alt="../_images/c6bf2fe8694f015a5864e87734e7e24b0f1b1cd6d7e9ba4f4d541045fd4c93ca.png" src="../_images/c6bf2fe8694f015a5864e87734e7e24b0f1b1cd6d7e9ba4f4d541045fd4c93ca.png" />
+</div>
+</div>
+<p>This is what we get when we apply the matrix <span class="math notranslate nohighlight">\(\bs{A}\)</span> to the unit circle and the basis vectors. We can see that the two base vectors are not necessarily rotated the same way. This is related to the sign of the determinant of the matrix (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.11-The-determinant/">2.11</a>).</p>
+<p>Let’s now compute the SVD of <span class="math notranslate nohighlight">\(\bs{A}\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">U</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.85065081, -0.52573111],
+       [-0.52573111,  0.85065081]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 8.71337969,  3.32821489])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.59455781, -0.80405286],
+       [ 0.80405286, -0.59455781]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now look at the sub-transformations by looking at the effect of the matrices <span class="math notranslate nohighlight">\(\bs{U}\)</span>, <span class="math notranslate nohighlight">\(\bs{D}\)</span> and <span class="math notranslate nohighlight">\(\bs{V}\)</span> in the reverse order. Note that it returns the right singular vector <strong>already transposed</strong> (see the <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.linalg.svd.html">doc</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unit circle</span>
+<span class="nb">print</span> <span class="s1">&#39;Unit circle:&#39;</span>
+<span class="n">matrixToPlot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span> <span class="s1">&#39;First rotation:&#39;</span>
+<span class="n">matrixToPlot</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span> <span class="s1">&#39;Scaling:&#39;</span>
+<span class="n">matrixToPlot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span> <span class="s1">&#39;Second rotation:&#39;</span>
+<span class="n">matrixToPlot</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">D</span><span class="p">))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unit circle:
+</pre></div>
+</div>
+<img alt="../_images/a250d3fa4aa29721067ffff9ce32d3db4da982922137deb5f0e4792198a53809.png" src="../_images/a250d3fa4aa29721067ffff9ce32d3db4da982922137deb5f0e4792198a53809.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First rotation:
+</pre></div>
+</div>
+<img alt="../_images/dcefe38efdec4911c5451dfc2927bd564d0ee8bd8218b8def81b1821d5992ff6.png" src="../_images/dcefe38efdec4911c5451dfc2927bd564d0ee8bd8218b8def81b1821d5992ff6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Scaling:
+</pre></div>
+</div>
+<img alt="../_images/aba6e9e768c830cd9f767567e7f881aeb11ba6d4e68aa520b7d6d007daef5191.png" src="../_images/aba6e9e768c830cd9f767567e7f881aeb11ba6d4e68aa520b7d6d007daef5191.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Second rotation:
+</pre></div>
+</div>
+<img alt="../_images/c6bf2fe8694f015a5864e87734e7e24b0f1b1cd6d7e9ba4f4d541045fd4c93ca.png" src="../_images/c6bf2fe8694f015a5864e87734e7e24b0f1b1cd6d7e9ba4f4d541045fd4c93ca.png" />
+</div>
+</div>
+<p>Just to be sure, you can compare this last step with the transformation by <span class="math notranslate nohighlight">\(\bs{A}\)</span>. Fortunately, you will see that the result is the same:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrixToPlot</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c6bf2fe8694f015a5864e87734e7e24b0f1b1cd6d7e9ba4f4d541045fd4c93ca.png" src="../_images/c6bf2fe8694f015a5864e87734e7e24b0f1b1cd6d7e9ba4f4d541045fd4c93ca.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="singular-values-interpretation">
+<h1>Singular values interpretation<a class="headerlink" href="#singular-values-interpretation" title="Link to this heading">#</a></h1>
+<p>The singular values are ordered by descending order. They correspond to a new set of features (that are a linear combination of the original features) with the first feature explaining most of the variance. For instance from the last example we can visualize these new features. The major axis of the elipse will be the first left singular vector (<span class="math notranslate nohighlight">\(u_1\)</span>) and its norm will be the first singular value (<span class="math notranslate nohighlight">\(\sigma_1\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u1</span> <span class="o">=</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">plotVectors</span><span class="p">([</span><span class="n">u1</span><span class="p">,</span> <span class="n">v1</span><span class="p">],</span> <span class="n">cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">])</span>
+
+<span class="n">matrixToPlot</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\sigma_1u_1$&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\sigma_2u_2$&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/165ef264154804eb8032f0ca2865d5d0863129458e6d3c56db968e712171af0e.png" src="../_images/165ef264154804eb8032f0ca2865d5d0863129458e6d3c56db968e712171af0e.png" />
+</div>
+</div>
+<p>They are the major (<span class="math notranslate nohighlight">\(\sigma_1u_1\)</span>) and minor (<span class="math notranslate nohighlight">\(\sigma_2u_2\)</span>) axes of the elipse. We can see that the feature corresponding to this major axis is associated with more variance (the range of value on this axis is bigger than the other). See <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.12-Example-Principal-Components-Analysis/">2.12</a> for more details about the variance explained.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="svd-and-eigendecomposition">
+<h1>SVD and eigendecomposition<a class="headerlink" href="#svd-and-eigendecomposition" title="Link to this heading">#</a></h1>
+<p>Now that we understand the kind of decomposition done with the SVD, we want to know how the sub-transformations are found.</p>
+<p>The matrices <span class="math notranslate nohighlight">\(\bs{U}\)</span>, <span class="math notranslate nohighlight">\(\bs{D}\)</span> and <span class="math notranslate nohighlight">\(\bs{V}\)</span> can be found by transforming <span class="math notranslate nohighlight">\(\bs{A}\)</span> in a square matrix and by computing the eigenvectors of this square matrix. The square matrix can be obtain by multiplying the matrix <span class="math notranslate nohighlight">\(\bs{A}\)</span> by its transpose in one way or the other:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\bs{U}\)</span> corresponds to the eigenvectors of <span class="math notranslate nohighlight">\(\bs{AA}^\text{T}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\bs{V}\)</span> corresponds to the eigenvectors of <span class="math notranslate nohighlight">\(\bs{A^\text{T}A}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\bs{D}\)</span> corresponds to the eigenvalues <span class="math notranslate nohighlight">\(\bs{AA}^\text{T}\)</span> or <span class="math notranslate nohighlight">\(\bs{A^\text{T}A}\)</span> which are the same.</p></li>
+</ul>
+<p>Let’s take an example of a non square matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\bs{A}=\begin{bmatrix}
+    7 &amp; 2\\\\
+    3 &amp; 4\\\\
+    5 &amp; 3
+\end{bmatrix}
+\end{split}\]</div>
+<p>The singular value decomposition can be done with the <code class="docutils literal notranslate"><span class="pre">linalg.svd()</span></code> function from Numpy (note that <code class="docutils literal notranslate"><span class="pre">np.linalg.eig(A)</span></code> works only on square matrices and will give an error for <code class="docutils literal notranslate"><span class="pre">A</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">U</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.69366543,  0.59343205, -0.40824829],
+       [-0.4427092 , -0.79833696, -0.40824829],
+       [-0.56818732, -0.10245245,  0.81649658]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 10.25142677,   2.62835484])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.88033817, -0.47434662],
+       [ 0.47434662, -0.88033817]])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="the-left-singular-values">
+<h2>The left-singular values<a class="headerlink" href="#the-left-singular-values" title="Link to this heading">#</a></h2>
+<p>The left-singular values of <span class="math notranslate nohighlight">\(\bs{A}\)</span> correspond to the eigenvectors of <span class="math notranslate nohighlight">\(\bs{AA}^\text{T}\)</span>.</p>
+<section id="example-5">
+<h3>Example 5.<a class="headerlink" href="#example-5" title="Link to this heading">#</a></h3>
+<p>Note that the sign difference comes from the fact that eigenvectors are not unique. The <code class="docutils literal notranslate"><span class="pre">linalg</span></code> functions from Numpy return the normalized eigenvectors. Scaling by <code class="docutils literal notranslate"><span class="pre">-1</span></code> doesn’t change their direction or the fact that they are unit vectors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Left singular vectors of A:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.69366543,  0.59343205, -0.40824829],
+       [-0.4427092 , -0.79833696, -0.40824829],
+       [-0.56818732, -0.10245245,  0.81649658]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eigenvectors of AA_transpose:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.69366543, -0.59343205, -0.40824829],
+       [-0.4427092 ,  0.79833696, -0.40824829],
+       [-0.56818732,  0.10245245,  0.81649658]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="the-right-singular-values">
+<h2>The right-singular values<a class="headerlink" href="#the-right-singular-values" title="Link to this heading">#</a></h2>
+<p>The right-singular values of <span class="math notranslate nohighlight">\(\bs{A}\)</span> correspond to the eigenvectors of <span class="math notranslate nohighlight">\(\bs{A}^\text{T}\bs{A}\)</span>.</p>
+<section id="example-6">
+<h3>Example 6.<a class="headerlink" href="#example-6" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Right singular vectors of A:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.88033817, -0.47434662],
+       [ 0.47434662, -0.88033817]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eigenvectors of A_transposeA:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.88033817, -0.47434662],
+       [ 0.47434662,  0.88033817]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="the-nonzero-singular-values">
+<h2>The nonzero singular values<a class="headerlink" href="#the-nonzero-singular-values" title="Link to this heading">#</a></h2>
+<p>The nonzero singular values of <span class="math notranslate nohighlight">\(\bs{A}\)</span> are the square roots of the eigenvalues of <span class="math notranslate nohighlight">\(\bs{A}^\text{T}\bs{A}\)</span> and <span class="math notranslate nohighlight">\(\bs{AA}^\text{T}\)</span>.</p>
+<section id="example-7">
+<h3>Example 7.<a class="headerlink" href="#example-7" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">D</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 10.25142677,   2.62835484])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eigenvalues of A_transposeA:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 105.09175083,    6.90824917])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eigenvalues of AA_transpose:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 105.09175083,    6.90824917,   -0.        ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Square root of the eigenvalues:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 10.25142677,   2.62835484])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bonus-apply-the-svd-on-images">
+<h1>BONUS: Apply the SVD on images<a class="headerlink" href="#bonus-apply-the-svd-on-images" title="Link to this heading">#</a></h1>
+<p>In this example, we will use the SVD to extract the more important features from the image. It is nice to see the effect of the SVD on something very visual. The code is inspired/taken from <a class="reference external" href="https://www.frankcleary.com/svdimage/">this blog post</a>.</p>
+<p>Let’s start by loading an image in python and convert it to a Numpy array. We will convert it to grayscale to have one dimension per pixel. The shape of the matrix corresponds to the dimension of the image filled with intensity values: 1 cell per pixel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;classic&#39;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;test_svd.jpg&#39;</span><span class="p">)</span>
+<span class="c1"># convert image to grayscale</span>
+<span class="n">imggray</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;LA&#39;</span><span class="p">)</span>
+<span class="c1"># convert to numpy array</span>
+<span class="n">imgmat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">imggray</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="mi">0</span><span class="p">)),</span> <span class="nb">float</span><span class="p">)</span>
+<span class="c1"># Reshape according to orginal image dimensions</span>
+<span class="n">imgmat</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">imggray</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">imggray</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">imgmat</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/124dc6adcba318ed55af007f5bb8fc885010ded217bc4c6c5e76dd6f0706c6b4.png" src="../_images/124dc6adcba318ed55af007f5bb8fc885010ded217bc4c6c5e76dd6f0706c6b4.png" />
+</div>
+</div>
+<p>We will see how to test the effect of SVD on <strong>Lucy the goose</strong>! Let’s start to extract the left singular vectors, the singular values and the right singular vectors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">imgmat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check the shapes of our matrices:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imgmat</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(669, 1000)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(669, 669)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(669,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 1000)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember that <span class="math notranslate nohighlight">\(\bs{D}\)</span> are the singular values that need to be put into a diagonal matrix. Also, <span class="math notranslate nohighlight">\(\bs{V}\)</span> doesn’t need to be transposed (see above).</p>
+<p>The singular vectors and singular values are ordered with the first ones corresponding to the more variance explained. For this reason, using just the first few singular vectors and singular values will provide the reconstruction of the principal elements of the image.</p>
+<p>We can reconstruct an image from a certain number of singular values. For instance for 2 singular values we will have:</p>
+<img src="images/dimensions-reconstruction-image-singular-value-decomposition.png" width="400" alt="The dimensions of singular value decomposition to reconstruct image from few components" title="Image reconstruction dimensions">
+<em>We can reconstruct the image from few components</em>
+<p>In this example, we have reconstructed the 669px by 1000px image from two singular values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reconstimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">D</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">reconstimg</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a8e5f5e7217d32400d2a83555928f42585e609e193d41ca480081fb5646a6373.png" src="../_images/a8e5f5e7217d32400d2a83555928f42585e609e193d41ca480081fb5646a6373.png" />
+</div>
+</div>
+<p>It is hard to see Lucy with only two singular values and singular vectors. But we already see something!</p>
+<p>We will now draw the reconstruction using different number of singular values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">]:</span>
+    <span class="n">reconstimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">D</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">reconstimg</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;n = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9b135ddec18a7d12bdd47633d1aa29831f503ef8ca679aaebbf2a6109baa9bfc.png" src="../_images/9b135ddec18a7d12bdd47633d1aa29831f503ef8ca679aaebbf2a6109baa9bfc.png" />
+<img alt="../_images/e824c857dd98c076e5a11776075b95196a0bbf740542b00673fda221a9629672.png" src="../_images/e824c857dd98c076e5a11776075b95196a0bbf740542b00673fda221a9629672.png" />
+<img alt="../_images/83c6219d1aaefd6dc1952135fcaff468959d3e7500f248713f260f1ddb4c805d.png" src="../_images/83c6219d1aaefd6dc1952135fcaff468959d3e7500f248713f260f1ddb4c805d.png" />
+<img alt="../_images/44cad11692b211c42f77b846371c532b77a4bbf9bc8120327416998c9908cfe0.png" src="../_images/44cad11692b211c42f77b846371c532b77a4bbf9bc8120327416998c9908cfe0.png" />
+<img alt="../_images/e903b8c7ed1633cb108cf1ca876f818630c9bbc367d1efa81aa7e5a6383e484b.png" src="../_images/e903b8c7ed1633cb108cf1ca876f818630c9bbc367d1efa81aa7e5a6383e484b.png" />
+<img alt="../_images/11538bf878afb337b0ef7dcb247ccc45d72258e0036b54912ad9c95354e48e8f.png" src="../_images/11538bf878afb337b0ef7dcb247ccc45d72258e0036b54912ad9c95354e48e8f.png" />
+</div>
+</div>
+<p>Whaou! Even with 50 components, the quality of the image is not bad!</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
+<p>I like this chapter on the SVD because it uses what we have learned so far in a concrete application. The next chapter on the pseudo-inverse is quite cool as well so keep on reading! We will see how to find a near-solution of a system of equation that minimizes the error and at the end we will see an example that uses the pseudo-inverse to find the best fit line of a set of data points.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<section id="drawing-a-circle-with-matplotlib">
+<h2>Drawing a circle with Matplotlib<a class="headerlink" href="#drawing-a-circle-with-matplotlib" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/32092899/plot-equation-showing-a-circle">https://stackoverflow.com/questions/32092899/plot-equation-showing-a-circle</a></p></li>
+</ul>
+</section>
+<section id="rotation-matrix">
+<h2>Rotation matrix<a class="headerlink" href="#rotation-matrix" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Rotation_matrix">https://en.wikipedia.org/wiki/Rotation_matrix</a>)</p></li>
+</ul>
+</section>
+<section id="basis-vectors">
+<h2>Basis vectors<a class="headerlink" href="#basis-vectors" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Basis_(linear_algebra)">https://en.wikipedia.org/wiki/Basis_(linear_algebra)</a></p></li>
+</ul>
+</section>
+<section id="linear-transformation">
+<h2>Linear transformation<a class="headerlink" href="#linear-transformation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=kJIUbtSowRg">Aran Glancy - Linear transformation and matrices</a></p></li>
+</ul>
+</section>
+<section id="svd">
+<h2>SVD<a class="headerlink" href="#svd" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Singular-value_decomposition">Singular Value Decomposition - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://fr.mathworks.com/company/newsletters/articles/professor-svd.html">Professor-svd</a></p></li>
+<li><p><a class="reference external" href="https://intoli.com/blog/pca-and-svd/">Intoli - PCA and SVD</a></p></li>
+</ul>
+</section>
+<section id="numpy">
+<h2>Numpy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.linalg.svd.html">Numpy SVD doc</a></p></li>
+</ul>
+</section>
+<section id="image-processing">
+<h2>Image processing<a class="headerlink" href="#image-processing" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.frankcleary.com/svdimage/">Frank Cleary - SVD of an image</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">u_bis</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+<span class="n">w</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+
+<span class="n">plotVectors</span><span class="p">([</span><span class="n">u</span><span class="p">,</span> <span class="n">u_bis</span><span class="p">,</span> <span class="n">w</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, 10)
+</pre></div>
+</div>
+<img alt="../_images/69fd4998cf05422c8707431febb2d70ee0affa201db4d642b23c4c821a79a7fb.png" src="../_images/69fd4998cf05422c8707431febb2d70ee0affa201db4d642b23c4c821a79a7fb.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./linear-algebra"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2.7%20Eigendecomposition.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2.9%20The%20Moore-Penrose%20Pseudoinverse.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition">2.8 Singular Value Decomposition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition">Intuition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#every-matrix-can-be-seen-as-a-linear-transformation">Every matrix can be seen as a linear transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-rotation-matrix">Example 4. rotation matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-three-transformations">The three transformations</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-values-interpretation">Singular values interpretation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svd-and-eigendecomposition">SVD and eigendecomposition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-left-singular-values">The left-singular values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-right-singular-values">The right-singular values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6">Example 6.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nonzero-singular-values">The nonzero singular values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7">Example 7.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-apply-the-svd-on-images">BONUS: Apply the SVD on images</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-a-circle-with-matplotlib">Drawing a circle with Matplotlib</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-matrix">Rotation matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-vectors">Basis vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformation">Linear transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svd">SVD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-processing">Image processing</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Mahmood Amintoosi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024. CC0 Licensed - Computer Science Dept., Ferdowsi University of Mashhad.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

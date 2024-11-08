@@ -1,0 +1,1363 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction &#8212; MFDS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'linear-algebra/2.12 Example - Principal Components Analysis';</script>
+    <link rel="icon" href="../_static/fum-logo.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Introduction" href="2.11%20The%20Determinant.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
+    <img src="../_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Mathematical Foundations of Data Science Course website
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Dimensional Spaces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../high-dimensional-spaces/high-dim-intro.html">Chapter on High Dimensional Spaces</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/SAT_Table.html">SAT-Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/NQueen.html">N-Queen Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_01_intro.html">Images as high dimensional data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_02_seg_k-means.html">Image Segmentaion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_03_seg_coords.html">Add coordinates as spatial features to clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/BF-clustering.html">Brute force search clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/k-means-clustering.html">k-means Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_CD.html">High Dimensional Data &amp; the curse of dimensionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_k-means.html">k-means in high dimensional spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_clustering.html">Clustering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/kmeans-clustering-iris.html">IRIS Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/LVQ.html">Vector Quantization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_01.html">PCA - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_02.html">PCA - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/SVD_image_compression.html">SVD for Image Compression</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Cahpter on Linear Algebra</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.5%20Norms.html">2.5 Norms</a></li>
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/fum-cs/mfds/blob/main/notebooks/linear-algebra/2.12 Example - Principal Components Analysis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fum-cs/mfds" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Flinear-algebra/2.12 Example - Principal Components Analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/linear-algebra/2.12 Example - Principal Components Analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-principal-components-analysis">2.12 Example - Principal Components Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describing-the-problem">Describing the problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-some-constraints-the-decoding-function">Adding some constraints: the decoding function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constraint-1">Constraint 1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constraint-2">Constraint 2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constraint-3">Constraint 3.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-encoding-function">Finding the encoding function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-the-function">Minimizing the function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-gradient-of-the-function">Calculating the gradient of the function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-bs-d">Finding <span class="math notranslate nohighlight">\(\bs{D}\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-frobenius-norm">The Frobenius norm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-principal-component">The first principal component</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-trace-operator">Using the Trace operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigendecomposition">Eigendecomposition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-matrix">Covariance matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-unit-norm-constraint">About the unit norm constraint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-orthogonal-matrix">Semi-orthogonal matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition-about-pca">Intuition about PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives">Derivatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-between-variance-maximized-and-error-minimized">Link between variance maximized and error minimized:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centering-data">Centering data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-norm-constraint">Unit norm constraint</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot style</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="o">%</span><span class="k">pylab</span> inline
+<span class="n">pylab</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotVectors</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot set of vectors.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vecs : array-like</span>
+<span class="sd">        Coordinates of the vectors to plot. Each vectors is in an array. For</span>
+<span class="sd">        instance: [[1, 3], [2, 2]] can be used to plot 2 vectors.</span>
+<span class="sd">    cols : array-like</span>
+<span class="sd">        Colors of the vectors. For instance: [&#39;red&#39;, &#39;blue&#39;] will display the</span>
+<span class="sd">        first vector in red and the second in blue.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Opacity of vectors</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    fig : instance of matplotlib.figure.Figure</span>
+<span class="sd">        The figure of the vectors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vecs</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+            <span class="n">alpha_i</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alpha_i</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">vecs</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                   <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                   <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+                   <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span>
+                   <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="n">alpha_i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[
+\newcommand\norm[1]{\left\lVert#1\right\rVert} 
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand\bs[1]{\boldsymbol{#1}}
+\newcommand\argmin[1]{\underset{\bs{#1}}{\arg\min}}
+\newcommand\argmax[1]{\underset{\bs{#1}}{\arg\max}}
+\]</div>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>This chapter is the last chapter of this series on linear algebra! It is about Principal Components Analysis. We will use some knowledge that we acquired along the preceding chapters of the series to understand this important data analysis tool! Feel free to check out the preceding chapters!</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-principal-components-analysis">
+<h1>2.12 Example - Principal Components Analysis<a class="headerlink" href="#example-principal-components-analysis" title="Link to this heading">#</a></h1>
+<p>Dimensions are a crucial topic in data science. The dimensions are all the features of the dataset. For instance, if you are looking at a dataset containing pieces of music, dimensions could be the genre, the length of the piece, the number of instruments, the presence of a singer etc. You can imagine all these dimensions as different columns. When there is only two dimensions, it is very convenient to plot: you can use the <span class="math notranslate nohighlight">\(x\)</span>- and <span class="math notranslate nohighlight">\(y\)</span>-axis. Add color and you can represent a third dimension. It is similar if you have tens or hundereds of dimensions, it will just be harder to visualize it.</p>
+<p>When you have that many dimensions it happens that some of them are correlated. For instance, we can reasonably think that the genre dimension will correlate with the instruments dimensions in our previous example. One way to reduce dimensionality is simply to keep only some of them. The problem is that you loose good information. It would be nice to have a way to reduce these dimensions while keeping all the information present in the data set.</p>
+<p>The aim of principal components analysis (PCA) is generaly to reduce the number of dimensions of a dataset where dimensions are not completly decorelated. PCA provides us with a new set of dimensions, the principal components (PC). They are ordered: the first PC is the dimension having the largest variance. In addition, each PC is orthogonal to the preceding one. Remember that orthogonal vectors means that their dot product is equal to <span class="math notranslate nohighlight">\(0\)</span> (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a>). This means that each PC is decorelated to the preceding one. It is way better than feature selection where you loose a lot of information.</p>
+<section id="example-1">
+<h2>Example 1.<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h2>
+<p>Unit vectors are an example of orthogonal vectors:</p>
+<img src="images/orthogonal-vectors.png" width="200" alt="Example of orthogonal vectors" title="Orthogonal vectors">
+<em>Orthogonal vectors</em>
+</section>
+<section id="describing-the-problem">
+<h2>Describing the problem<a class="headerlink" href="#describing-the-problem" title="Link to this heading">#</a></h2>
+<p>The problem can be expressed as finding a function that converts a set of data points from <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}^l\)</span>. This means that we change the number of dimensions of our dataset. We also need a function that can decode back from the transformed dataset to the initial one:</p>
+<img src="images/principal-components-analysis-PCA-change-coordinates.png" width="80%" alt="Principal components analysis (PCA)" title="Principal components analysis (PCA)">
+<em>Principal components analysis as a change of coordinate system</em>
+<p>The first step is to understand the shape of the data. <span class="math notranslate nohighlight">\(x^{(i)}\)</span> is one data point containing <span class="math notranslate nohighlight">\(n\)</span> dimensions. Let’s have <span class="math notranslate nohighlight">\(m\)</span> data points organized as column vectors (one column per point):</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{x}=
+\begin{bmatrix}
+    x^{(1)} &amp; x^{(2)} &amp; \cdots &amp; x^{(m)}
+\end{bmatrix}
+\]</div>
+<p>If we deploy the <span class="math notranslate nohighlight">\(n\)</span> dimensions of our data points we will have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\bs{x}=
+\begin{bmatrix}
+    x_1^{(1)} &amp; x_1^{(2)} &amp; \cdots &amp; x_1^{(m)}\\\\
+    x_2^{(1)} &amp; x_2^{(2)} &amp; \cdots &amp; x_2^{(m)}\\\\
+    \cdots &amp; \cdots &amp; \cdots &amp; \cdots\\\\
+    x_n^{(1)} &amp; x_n^{(2)} &amp; \cdots &amp; x_n^{(m)}
+\end{bmatrix}
+\end{split}\]</div>
+<p>We can also write:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\bs{x}=
+\begin{bmatrix}
+    x_1\\\\
+    x_2\\\\
+    \cdots\\\\
+    x_n
+\end{bmatrix}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(c\)</span> will have the shape:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\bs{c}=
+\begin{bmatrix}
+    c_1\\\\
+    c_2\\\\
+    \cdots\\\\
+    c_l
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="adding-some-constraints-the-decoding-function">
+<h2>Adding some constraints: the decoding function<a class="headerlink" href="#adding-some-constraints-the-decoding-function" title="Link to this heading">#</a></h2>
+<p>The encoding function <span class="math notranslate nohighlight">\(f(\bs{x})\)</span> transforms <span class="math notranslate nohighlight">\(\bs{x}\)</span> into <span class="math notranslate nohighlight">\(\bs{c}\)</span> and the decoding function transforms back <span class="math notranslate nohighlight">\(\bs{c}\)</span> into an approximation of <span class="math notranslate nohighlight">\(\bs{x}\)</span>. To keep things simple, PCA will respect some constraints:</p>
+<section id="constraint-1">
+<h3>Constraint 1.<a class="headerlink" href="#constraint-1" title="Link to this heading">#</a></h3>
+<p>The decoding function has to be a simple matrix multiplication:</p>
+<div class="math notranslate nohighlight">
+\[
+g(\bs{c})=\bs{Dc}
+\]</div>
+<p>By applying the matrix <span class="math notranslate nohighlight">\(\bs{D}\)</span> to the dataset from the new coordinates system we should get back to the initial coordinate system.</p>
+</section>
+<section id="constraint-2">
+<h3>Constraint 2.<a class="headerlink" href="#constraint-2" title="Link to this heading">#</a></h3>
+<p>The columns of <span class="math notranslate nohighlight">\(\bs{D}\)</span> must be orthogonal (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a>).</p>
+</section>
+<section id="constraint-3">
+<h3>Constraint 3.<a class="headerlink" href="#constraint-3" title="Link to this heading">#</a></h3>
+<p>The columns of <span class="math notranslate nohighlight">\(\bs{D}\)</span> must have unit norm (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a>).</p>
+</section>
+</section>
+<section id="finding-the-encoding-function">
+<h2>Finding the encoding function<a class="headerlink" href="#finding-the-encoding-function" title="Link to this heading">#</a></h2>
+<p>Important: For now we will consider only <strong>one data point</strong>. Thus we will have the following dimensions for these matrices (note that <span class="math notranslate nohighlight">\(\bs{x}\)</span> and <span class="math notranslate nohighlight">\(\bs{c}\)</span> are column vectors):</p>
+<img src="images/principal-components-analysis-PCA-decoding-function.png" width="250" alt="Principal components analysis (PCA) - the decoding function" title="The decoding function">
+<em>The decoding function</em>
+<p>We want a decoding function which is a simple matrix multiplication. For that reason, we have <span class="math notranslate nohighlight">\(g(\bs{c})=\bs{Dc}\)</span>. We will then find the encoding function from the decoding function. We want to minimize the error between the decoded data point and the actual data point. With our previous notation, this means reducing the distance between <span class="math notranslate nohighlight">\(\bs{x}\)</span> and <span class="math notranslate nohighlight">\(g(\bs{c})\)</span>. As an indicator of this distance, we will use the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.5-Norms/">2.5</a>):</p>
+<div class="math notranslate nohighlight">
+\[
+\norm{\bs{x} - g(\bs{c})}_2^2
+\]</div>
+<p>This is what we want to minimize. Let’s call <span class="math notranslate nohighlight">\(\bs{c}^*\)</span> the optimal <span class="math notranslate nohighlight">\(\bs{c}\)</span>. Mathematically it can be written:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{c}^* = \underset{c}{\arg\min} \norm{\bs{x} - g(\bs{c})}_2^2
+\]</div>
+<p>This means that we want to find the values of the vector <span class="math notranslate nohighlight">\(\bs{c}\)</span> such that <span class="math notranslate nohighlight">\(\norm{\bs{x} - g(\bs{c})}_2^2\)</span> is as small as possible.</p>
+<p>If you have a look back to <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.5-Norms/">2.5</a> you can see that the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\norm{\bs{y}}_2^2 = \bs{y}^\text{T}\bs{y}
+\]</div>
+<p>We have named the variable <span class="math notranslate nohighlight">\(\bs{y}\)</span> to avoid confusion with our <span class="math notranslate nohighlight">\(\bs{x}\)</span>. Here <span class="math notranslate nohighlight">\(\bs{y}=\bs{x} - g(\bs{c})\)</span></p>
+<p>Thus the equation that we want to minimize becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+(\bs{x} - g(\bs{c}))^\text{T}(\bs{x} - g(\bs{c}))
+\]</div>
+<p>Since the transpose respects addition we have:</p>
+<div class="math notranslate nohighlight">
+\[
+(\bs{x}^\text{T} - g(\bs{c})^\text{T})(\bs{x} - g(\bs{c}))
+\]</div>
+<p>By the distributive property (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.2-Multiplying-Matrices-and-Vectors/">2.2</a>) we can develop:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{x^\text{T}x} - \bs{x}^\text{T}g(\bs{c}) -  g(\bs{c})^\text{T}\bs{x} + g(\bs{c})^\text{T}g(\bs{c})
+\]</div>
+<p>The commutative property (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.2-Multiplying-Matrices-and-Vectors/">2.2</a>) tells us that <span class="math notranslate nohighlight">\(
+\bs{x^\text{T}y} = \bs{y^\text{T}x}
+\)</span>. We can use that in the previous equation: we have <span class="math notranslate nohighlight">\(
+\bs{x}^\text{T}g(\bs{c}) = g(\bs{c})^\text{T}\bs{x}
+\)</span>. So the equation becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{x^\text{T}x} -2\bs{x}^\text{T}g(\bs{c}) + g(\bs{c})^\text{T}g(\bs{c})
+\]</div>
+<p>The first term <span class="math notranslate nohighlight">\(\bs{x^\text{T}x}\)</span> does not depends on <span class="math notranslate nohighlight">\(\bs{c}\)</span> and since we want to minimize the function according to <span class="math notranslate nohighlight">\(\bs{c}\)</span> we can just get off this term. We simplify to:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{c}^* = \underset{c}{\arg\min} -2\bs{x}^\text{T}g(\bs{c}) + g(\bs{c})^\text{T}g(\bs{c})
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(g(\bs{c})=\bs{Dc}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{c}^* = \underset{c}{\arg\min} -2\bs{x}^\text{T}\bs{Dc} + (\bs{Dc})^\text{T}\bs{Dc}
+\]</div>
+<p>With <span class="math notranslate nohighlight">\((\bs{Dc})^\text{T}=\bs{c}^\text{T}\bs{D}^\text{T}\)</span> (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.2-Multiplying-Matrices-and-Vectors/">2.2</a>), we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{c}^* = \underset{c}{\arg\min} -2\bs{x}^\text{T}\bs{Dc} + \bs{c}^\text{T}\bs{D}^\text{T}\bs{Dc}
+\]</div>
+<p>As we saw in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a>, <span class="math notranslate nohighlight">\(\bs{D}^\text{T}\bs{D}=\bs{I}_l\)</span> because <span class="math notranslate nohighlight">\(\bs{D}\)</span> is orthogonal (actually, it is <a class="reference external" href="https://en.wikipedia.org/wiki/Semi-orthogonal_matrix">semi-orthogonal</a> if <span class="math notranslate nohighlight">\(n \neq l\)</span>) and their columns have unit norm. We can replace in the equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{c}^* = \underset{c}{\arg\min} -2\bs{x}^\text{T}\bs{Dc} + \bs{c}^\text{T}\bs{I}_l\bs{c}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\bs{c}^* = \underset{c}{\arg\min} -2\bs{x}^\text{T}\bs{Dc} + \bs{c}^\text{T}\bs{c}
+\]</div>
+<section id="minimizing-the-function">
+<h3>Minimizing the function<a class="headerlink" href="#minimizing-the-function" title="Link to this heading">#</a></h3>
+<p>So far so good! Now the goal is to find the minimum of the function <span class="math notranslate nohighlight">\(- 2\bs{x}^\text{T}\bs{Dc} + \bs{c}^\text{T}\bs{c}\)</span>. One widely used way of doing that is to use the <strong>gradient descent</strong> algorithm. It is not the focus of this chapter but we will say a word about it (see <a class="reference external" href="http://www.deeplearningbook.org/contents/numerical.html">4.3</a> of the Deep Learning Book for more details). The main idea is that the sign of the derivative of the function at a specific value of <span class="math notranslate nohighlight">\(x\)</span> tells you if you need to increase or decrease <span class="math notranslate nohighlight">\(x\)</span> to reach the minimum. When the slope is near <span class="math notranslate nohighlight">\(0\)</span>, the minimum should have been reached.</p>
+<img src="images/gradient-descent.png" width="400" alt="Mechanism of the gradient descent algorithm" title="Mechanism of the gradient descent algorithm">
+<em>Gradient descent</em>
+<p>However, functions with local minima can trouble the descent:</p>
+<img src="images/gradient-descent-local-minima.png" width="400" alt="Gradient descent in the case of local minimum" title="Gradient descent">
+<em>Gradient descent can get stuck in local minima</em>
+<p>These examples are in 2 dimensions but the principle stands for higher dimensional functions. The gradient is a vector containing the partial derivatives of all dimensions. Its mathematical notation is <span class="math notranslate nohighlight">\(\nabla_xf(\bs{x})\)</span>.</p>
+</section>
+<section id="calculating-the-gradient-of-the-function">
+<h3>Calculating the gradient of the function<a class="headerlink" href="#calculating-the-gradient-of-the-function" title="Link to this heading">#</a></h3>
+<p>Here we want to minimize through each dimension of <span class="math notranslate nohighlight">\(\bs{c}\)</span>. We are looking for a slope of <span class="math notranslate nohighlight">\(0\)</span>. The equation is:</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla_c(-2\bs{x}^\text{T}\bs{Dc} + \bs{c}^\text{T}\bs{c})=0
+\]</div>
+<p>Let’s take these terms separately to calculate the derivative according to <span class="math notranslate nohighlight">\(\bs{c}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d(-2\bs{x}^\text{T}\bs{Dc})}{d\bs{c}} = -2\bs{x}^\text{T}\bs{D}
+\]</div>
+<p>The second term is <span class="math notranslate nohighlight">\(\bs{c}^\text{T}\bs{c}\)</span>. We can develop the vector <span class="math notranslate nohighlight">\(\bs{c}\)</span> and calculate the derivative for each element:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{d(\bs{c}\text{T}\bs{c})}{d\bs{c}} &amp;=
+\left(\frac{d(\bs{c}_1^2 + \bs{c}_2^2 + \cdots + \bs{c}_l^2)}{d\bs{c}_1},
+\frac{d(\bs{c}_1^2 + \bs{c}_2^2 + \cdots + \bs{c}_l^2)}{d\bs{c}_2},
+\cdots,
+\frac{d(\bs{c}_1^2 + \bs{c}_2^2 + \cdots + \bs{c}_l^2)}{d\bs{c}_l}\right) \\\\
+&amp;=(2\bs{c}_1, 2\bs{c}_2, \cdots, 2\bs{c}_l)\\\\
+&amp;=2(\bs{c}_1, \bs{c}_2, \cdots, \bs{c}_l)\\\\
+&amp;=2\bs{c}
+\end{align*}
+\end{split}\]</div>
+<p>So we can progress in our derivatives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\nabla_c(-2\bs{x}^\text{T}\bs{Dc} + \bs{c}^\text{T}\bs{c})=0\\\\
+-2\bs{x}^\text{T}\bs{D} + 2\bs{c}=0\\\\
+-2\bs{D}^\text{T}\bs{x} + 2\bs{c}=0\\\\
+\bs{c}=\bs{D}^\text{T}\bs{x}
+\end{split}\]</div>
+<p>Great! We found the encoding function! Here are its dimensions:</p>
+<img src="images/principal-components-analysis-PCA-encoding-function.png" width="250" alt="Expression of the encoding function" title="The encoding function">
+<em>The encoding function</em>
+<p>To go back from <span class="math notranslate nohighlight">\(\bs{c}\)</span> to <span class="math notranslate nohighlight">\(\bs{x}\)</span> we use <span class="math notranslate nohighlight">\(g(\bs{c})=\bs{Dc}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+r(\bs{x}) = g(f(\bs{x})=\bs{D}\bs{D}^\text{T}\bs{x}
+\]</div>
+<img src="images/principal-components-analysis-PCA-reconstruction-function.png" width="300" alt="Expression of the reconstruction function" title="The reconstruction function">
+<em>The reconstruction function</em></section>
+</section>
+<section id="finding-bs-d">
+<h2>Finding <span class="math notranslate nohighlight">\(\bs{D}\)</span><a class="headerlink" href="#finding-bs-d" title="Link to this heading">#</a></h2>
+<p>The next step is to find the matrix <span class="math notranslate nohighlight">\(\bs{D}\)</span>. Recall that the purpose of the PCA is to change the coordinate system in order to maximize the variance along the first dimensions of the projected space. This is equivalent to minimizing the error between data points and their reconstruction (<a class="reference external" href="https://stats.stackexchange.com/questions/32174/pca-objective-function-what-is-the-connection-between-maximizing-variance-and-m">cf here</a>). See bellow the covariance matrix to have more details.</p>
+<span class='pquote'>
+    Maximizing the variance corresponds to minimizing the error of the reconstruction.
+</span><section id="the-frobenius-norm">
+<h3>The Frobenius norm<a class="headerlink" href="#the-frobenius-norm" title="Link to this heading">#</a></h3>
+<p>Since we have to take all points into account (the same matrix <span class="math notranslate nohighlight">\(\bs{D}\)</span> will be used for all points) we will use the Frobenius norm of the errors (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.5-Norms/">2.5</a>) which is the equivalent of the <span class="math notranslate nohighlight">\(L^2\)</span> norm for matrices. Here the formula of the Frobenius norm:</p>
+<div class="math notranslate nohighlight">
+\[
+\norm{\bs{A}}_F=\sqrt{\sum_{i,j}A^2_{i,j}}
+\]</div>
+<p>It is like if you unroll the matrix to end up with a one dimensional vector and that you take the <span class="math notranslate nohighlight">\(L^2\)</span> norm of this vector.</p>
+<p>We will call <span class="math notranslate nohighlight">\(\bs{D}^*\)</span> the optimal <span class="math notranslate nohighlight">\(\bs{D}\)</span> (in the sense that the error is as small as possible). We have:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{D}^* = \underset{\bs{D}}{\arg\min} \sqrt{\sum_{i,j}(x_j^{(i)}-r(\bs{x}^{(i)})_j})^2
+\]</div>
+<p>With the constraint that <span class="math notranslate nohighlight">\(\bs{D}^\text{T}\bs{D}=\bs{I}_l\)</span> because we have chosen the constraint of having the columns of <span class="math notranslate nohighlight">\(\bs{D}\)</span> orthogonal.</p>
+</section>
+<section id="the-first-principal-component">
+<h3>The first principal component<a class="headerlink" href="#the-first-principal-component" title="Link to this heading">#</a></h3>
+<p>We will start to find only the first principal component (PC). For that reason, we will have <span class="math notranslate nohighlight">\(l=1\)</span>. So the matrix <span class="math notranslate nohighlight">\(\bs{D}\)</span> will have the shape <span class="math notranslate nohighlight">\((n \times 1)\)</span>: it is a simple column vector. Since it is a vector we will call it <span class="math notranslate nohighlight">\(\bs{d}\)</span>:</p>
+<img src="images/first-principal-component.png" width="100" alt="Dimension of the first principal component" title="The first principal component">
+<em>The first principal component</em>
+<p>We can therefore remove the sum over <span class="math notranslate nohighlight">\(j\)</span> and the square root since we will take the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{d}^* = \underset{\bs{d}}{\arg\min} \sum_{i}\norm{(\bs{x}^{(i)}-r(\bs{x}^{(i)}))}_2^2
+\]</div>
+<p>We have also seen that:</p>
+<div class="math notranslate nohighlight">
+\[
+r(\bs{x})=\bs{D}\bs{D}^\text{T}\bs{x}
+\]</div>
+<p>Since we are looking only for the first PC:</p>
+<div class="math notranslate nohighlight">
+\[
+r(\bs{x})=\bs{d}\bs{d}^\text{T}\bs{x}
+\]</div>
+<p>We can plug <span class="math notranslate nohighlight">\(r(\bs{x})\)</span> into the equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{d}^* = \underset{\bs{d}}{\arg\min} \sum_{i}\norm{\bs{x}^{(i)}-\bs{dd}^\text{T}\bs{x}^{(i)}}_2^2
+\]</div>
+<p>Because of the constraint 3. (the columns of <span class="math notranslate nohighlight">\(\bs{D}\)</span> have unit norms) we have <span class="math notranslate nohighlight">\(\norm{\bs{d}}_2 = 1\)</span>. <span class="math notranslate nohighlight">\(\bs{d}\)</span> is one of the columns of <span class="math notranslate nohighlight">\(\bs{D}\)</span> and thus has a unit norm.</p>
+<p>Instead of using the sum along the <span class="math notranslate nohighlight">\(m\)</span> data points <span class="math notranslate nohighlight">\(\bs{x}\)</span> we can have the matrix <span class="math notranslate nohighlight">\(\bs{X}\)</span> which gather all the observations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\bs{X} = \begin{bmatrix}
+    \bs{x}^{(1)\text{T}}\\\\
+    \bs{x}^{(2)\text{T}}\\\\
+    \cdots\\\\
+    \bs{x}^{(m)\text{T}}
+\end{bmatrix}=
+\begin{bmatrix}
+    \bs{x}_1^{(1)} &amp; \bs{x}_2^{(1)} &amp; \cdots &amp; \bs{x}_n^{(1)}\\\\
+    \bs{x}_1^{(2)} &amp; \bs{x}_2^{(2)} &amp; \cdots &amp; \bs{x}_n^{(2)}\\\\
+    \cdots &amp; \cdots &amp; \cdots &amp; \cdots\\\\
+    \bs{x}_0^{(m)} &amp; \bs{x}_1^{(m)} &amp; \cdots &amp; \bs{x}_n^{(m)}
+\end{bmatrix}
+\end{split}\]</div>
+<p>We want <span class="math notranslate nohighlight">\(\bs{x}^{(i)\text{T}}\)</span> instead of <span class="math notranslate nohighlight">\(\bs{x}^{(i)}\)</span> in our expression of <span class="math notranslate nohighlight">\(\bs{d}^*\)</span>. We can transpose the content of the norm:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\bs{d}^* &amp;= \underset{\bs{d}}{\arg\min} \sum_{i}\norm{(\bs{x}^{(i)}-\bs{dd}^\text{T}\bs{x}^{(i)})^\text{T}}_2^2\\\\
+&amp;=\underset{\bs{d}}{\arg\min} \sum_{i}\norm{\bs{x}^{(i)\text{T}}-\bs{x}^{(i)\text{T}}\bs{dd}^\text{T}}_2^2\\\\
+\end{align*}
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{d}^* = \underset{\bs{d}}{\arg\min} \norm{\bs{X}-\bs{X}\bs{dd}^\text{T}}_\text{F}^2
+\]</div>
+<p>with the constraint that <span class="math notranslate nohighlight">\(\bs{dd}^\text{T}=1\)</span>.</p>
+</section>
+<section id="using-the-trace-operator">
+<h3>Using the Trace operator<a class="headerlink" href="#using-the-trace-operator" title="Link to this heading">#</a></h3>
+<p>We will now use the Trace operator (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.10-The-Trace-Operator/">2.10</a>) to simplify the equation to minimize. Recall that:</p>
+<div class="math notranslate nohighlight">
+\[
+\norm{\bs{A}}_F=\sqrt{\Tr({\bs{AA}^T})}
+\]</div>
+<p>So here <span class="math notranslate nohighlight">\(\bs{A}=\bs{X}-\bs{X}\bs{dd}^\text{T}\)</span>. So we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{d}^* = \underset{\bs{d}}{\arg\min} \Tr{((\bs{X}-\bs{Xdd}^\text{T})}(\bs{X}-\bs{Xdd}^\text{T})^\text{T})
+\]</div>
+<p>Since we can cycle the order of the matrices in a Trace (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.10-The-Trace-Operator/">2.10</a>) we can write:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\bs{d}^* &amp;= \argmin{d} \Tr{((\bs{X}-\bs{Xdd}^\text{T})^\text{T}}(\bs{X}-\bs{Xdd}^\text{T}))\\\\
+&amp;=\argmin{d} \Tr{((\bs{X}^\text{T}-(\bs{Xdd}^\text{T})^\text{T})}(\bs{X}-\bs{Xdd}^\text{T}))
+\end{align*}
+\end{split}\]</div>
+<p>And <span class="math notranslate nohighlight">\((\bs{Xdd}^\text{T})^\text{T}=(\bs{d}^\text{T})^\text{T}\bs{d}^\text{T}\bs{X}^\text{T}=\bs{d}\bs{d}^\text{T}\bs{X}^\text{T}\)</span>. Let’s plug that into our equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\bs{d}^* &amp;= \argmin{d} \Tr{(\bs{X}^\text{T}-\bs{d}\bs{d}^\text{T}\bs{X}^\text{T})}(\bs{X}-\bs{Xdd}^\text{T}))\\\\
+&amp;= \argmin{d} \Tr{(\bs{X}^\text{T}\bs{X}-\bs{X}^\text{T}\bs{Xdd}^\text{T} -\bs{d}\bs{d}^\text{T}\bs{X}^\text{T}\bs{X} +\bs{d}\bs{d}^\text{T}\bs{X}^\text{T}\bs{Xdd}^\text{T}})\\\\
+&amp;= \argmin{d} \Tr{(\bs{X}^\text{T}\bs{X})} - \Tr{(\bs{X}^\text{T}\bs{Xdd}^\text{T})}
+- \Tr{(\bs{d}\bs{d}^\text{T}\bs{X}^\text{T}\bs{X})} + \Tr{(\bs{d}\bs{d}^\text{T}\bs{X}^\text{T}\bs{Xdd}^\text{T})}
+\end{align*}
+\end{split}\]</div>
+<p>We can remove the first term that not depends on <span class="math notranslate nohighlight">\(d\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{d}^* = \argmin{d} - \Tr{(\bs{X}^\text{T}\bs{Xdd}^\text{T})}
+- \Tr{(\bs{d}\bs{d}^\text{T}\bs{X}^\text{T}\bs{X})} + \Tr{(\bs{d}\bs{d}^\text{T}\bs{X}^\text{T}\bs{Xdd}^\text{T})}
+\]</div>
+<p>Still because of the cycling property of a trace, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\Tr{(\bs{X}^\text{T}\bs{Xdd}^\text{T})} = \Tr{(\bs{d}\bs{d}^\text{T}\bs{X}^\text{T}\bs{X})}
+\]</div>
+<p>We can simplify to:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{d}^* = \argmin{d} -2\Tr{(\bs{X}^\text{T}\bs{Xdd}^\text{T})}
+ + \Tr{(\bs{d}\bs{d}^\text{T}\bs{X}^\text{T}\bs{Xdd}^\text{T})}
+\]</div>
+<p>and then</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{d}^* = \argmin{d} -2\Tr{(\bs{X}^\text{T}\bs{Xdd}^\text{T})}
+ + \Tr{(\bs{X}^\text{T}\bs{Xdd}^\text{T}\bs{d}\bs{d}^\text{T})}
+\]</div>
+<p>Because of the constraint <span class="math notranslate nohighlight">\(\bs{dd}^\text{T}=1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\bs{d}^* &amp;= \argmin{d} -2\Tr{(\bs{X}^\text{T}\bs{Xdd}^\text{T})}
+ + \Tr{(\bs{X}^\text{T}\bs{Xd}\bs{d}^\text{T})}\textrm{ subject to }\bs{dd}^\text{T}=1\\\\
+&amp;= \argmin{d} -\Tr{(\bs{X}^\text{T}\bs{Xdd}^\text{T})}\textrm{ subject to }\bs{dd}^\text{T}=1\\\\
+&amp;=\argmax{d} \Tr{(\bs{X}^\text{T}\bs{Xdd}^\text{T})}\textrm{ subject to }\bs{dd}^\text{T}=1
+\end{align*}
+\end{split}\]</div>
+<p>and with the cycling property:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{d}^* = \argmax{d} \Tr{(\bs{d}^\text{T}\bs{X}^\text{T}\bs{Xd})} \textrm{ subject to }\bs{dd}^\text{T}=1
+\]</div>
+</section>
+<section id="eigendecomposition">
+<h3>Eigendecomposition<a class="headerlink" href="#eigendecomposition" title="Link to this heading">#</a></h3>
+<p>We will see that we can find the maximum of the function by calculating the eigenvectors of <span class="math notranslate nohighlight">\(\bs{X^\text{T}X}\)</span>.</p>
+</section>
+<section id="covariance-matrix">
+<h3>Covariance matrix<a class="headerlink" href="#covariance-matrix" title="Link to this heading">#</a></h3>
+<p>As we wrote above, the optimization problem of maximizing the variance of the components and minimizing the error between the reconstructed and the actual data are equivalent. Actually, if you look at the formula of <span class="math notranslate nohighlight">\(\bs{d}\)</span> you can see that there is the term <span class="math notranslate nohighlight">\(\bs{X^\text{T}X}\)</span> in the middle.</p>
+<p>If we have centered our data around 0 (see bellow for more details about centering), <span class="math notranslate nohighlight">\(\bs{X^\text{T}X}\)</span> is the covariance matrix (see <a class="reference external" href="https://www.quora.com/Why-do-we-need-to-center-the-data-for-Principle-Components-Analysis">this Quora question</a>).</p>
+<p>The covariance matrix is a <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix (<span class="math notranslate nohighlight">\(n\)</span> being the number of dimensions). Its diagonal is the variance of the corresponding dimensions and the other cells are the covariance between the two corresponding dimensions (the amount of redundancy).</p>
+<p>This means that the largest covariance we have between two dimensions the more redundancy exists between these dimensions. This also means that the best-fit line is associated with small errors if the covariance is hight. To maximize the variance and minimize the covariance (in order to decorrelate the dimensions) means that the ideal covariance matrix is a diagonal matrix (non-zero values in the diagonal only). Therefore the diagonalization of the covariance matrix will give us the optimal solution.</p>
+</section>
+<section id="example-2">
+<h3>Example 2.<a class="headerlink" href="#example-2" title="Link to this heading">#</a></h3>
+<p>As an example we will create again a 2D data set (like in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.9-The-Moore-Penrose-Pseudoinverse/">2.9</a>). To see the effect of the PCA we will introduce some correlations between the two dimensions. Let’s create 100 data points with 2 dimensions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+<span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e59ed5d4734b951c3fbdc808979f46fc914897c79e6e1e5f8c063680cf29a5ae.png" src="../_images/e59ed5d4734b951c3fbdc808979f46fc914897c79e6e1e5f8c063680cf29a5ae.png" />
+</div>
+</div>
+<p>Highly correlated data means that the dimensions are redundant. It is possible to predict one from the other without losing much information.</p>
+<p>The first processing we will do is to center the data around 0. PCA is a regression model without intercept (see <a class="reference external" href="https://stats.stackexchange.com/questions/22329/how-does-centering-the-data-get-rid-of-the-intercept-in-regression-and-pca">here</a>) and the first component is thus necessarly crossing the origin.</p>
+<p>Here is a simple function that substract the mean of each column to each data point of this column. It can be used to center the data points around 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">centerData</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So let’s center our data <span class="math notranslate nohighlight">\(\bs{X}\)</span> around 0 for both dimensions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_centered</span> <span class="o">=</span> <span class="n">centerData</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_centered</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_centered</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/38426935dfdc32cd3d571a0efa70bb9c230c3a587a5edc276f193e02d74a206a.png" src="../_images/38426935dfdc32cd3d571a0efa70bb9c230c3a587a5edc276f193e02d74a206a.png" />
+</div>
+</div>
+<p>That’s better!</p>
+<p>We can now look for PCs. We saw that they correspond to values taken by <span class="math notranslate nohighlight">\(\bs{d}\)</span> that maximize the following function:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{d}^* = \argmax{d} \Tr{(\bs{d}^\text{T}\bs{X}^\text{T}\bs{Xd})} \textrm{ subject to }\bs{dd}^\text{T}=1
+\]</div>
+<p>To find <span class="math notranslate nohighlight">\(\bs{d}\)</span> we can calculate the eigenvectors of <span class="math notranslate nohighlight">\(\bs{X^\text{T}X}\)</span> (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.7-Eigendecomposition/">2.7</a> for more details about eigendecomposition). So let’s do that:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eigVals</span><span class="p">,</span> <span class="n">eigVecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">X_centered</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_centered</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">eigVecs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.91116273, -0.41204669],
+       [ 0.41204669, -0.91116273]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">X_centered</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_centered</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">X_centered</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_centered</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 18.04730409, 798.35242844]), array([[-0.91116273, -0.41204669],
+       [ 0.41204669, -0.91116273]]))
+(array([0.18047304, 7.98352428]), array([[-0.91116273, -0.41204669],
+       [ 0.41204669, -0.91116273]]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>These are the vectors maximizing our function. Each column vector is associated with an eigenvalue. The vector associated with the larger eigenvalue tells us the direction associated with the larger variance in our data. To check that, we will plot these vectors along with the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orange</span> <span class="o">=</span> <span class="s1">&#39;#FF9A13&#39;</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="s1">&#39;#1190FF&#39;</span>
+<span class="n">plotVectors</span><span class="p">(</span><span class="n">eigVecs</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="p">[</span><span class="n">orange</span><span class="p">,</span> <span class="n">blue</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_centered</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_centered</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4d6ac269d7f0ea93e302a6237f0bbc76b46c1b9d87e3f6a21b34c276abda6618.png" src="../_images/4d6ac269d7f0ea93e302a6237f0bbc76b46c1b9d87e3f6a21b34c276abda6618.png" />
+</div>
+</div>
+<p>We can see that the blue vector direction corresponds to the oblique shape of our data. The idea is that if you project the data points on the line corresponding to the blue vector direction you will end up with the largest variance. This vector has the direction that maximizes variance of projected data. Have a look at the following figure:</p>
+<img src="images/principal-component-analysis-variance-explained.png" width="400" alt="Representation of the variance explained across directions" title="Maximizing the variance">
+<em>Projection of the data point: this line direction is the one with the largest variance</em>
+<p>When you project data points on the pink line there is more variance. This line has the direction that maximizes the variance of the data points. It is the same for the figure above: our blue vector has the direction of the line where data point projection has the higher variance. Then the second eigenvector is orthogonal to the first.</p>
+<p>In our figure above, the blue vector is the second eigenvector so let’s check that it is the one associated with the bigger eigenvalue:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eigVals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.18047304, 7.98352428])
+</pre></div>
+</div>
+</div>
+</div>
+<p>So yes, the second vector corresponds to the biggest eigenvalue.</p>
+<p>Now that we have found the matrix <span class="math notranslate nohighlight">\(\bs{d}\)</span> we will use the encoding function to rotate the data. The goal of the rotation is to end up with a new coordinate system where data is uncorrelated and thus where the basis axes gather all the variance. It is then possible to keep only few axes: this is the purpose of dimensionality reduction.</p>
+<p>Recall that the encoding function is:</p>
+<div class="math notranslate nohighlight">
+\[
+\bs{c}=\bs{D}^\text{T}\bs{x}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\bs{D}\)</span> is the matrix containing the eigenvectors that we have calculated before. In addition, this formula corresponds to only one data point where dimensions are the rows of <span class="math notranslate nohighlight">\(\bs{x}\)</span>. In our case, we will apply it to all data points and since <span class="math notranslate nohighlight">\(\bs{X}\)</span> has dimensions on the columns we need to transpose it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_new</span> <span class="o">=</span> <span class="n">eigVecs</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_centered</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">eigVecs</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_centered</span><span class="o">.</span><span class="n">T</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">eigVecs</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_centered</span><span class="o">.</span><span class="n">T</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0ee780b1907ad1b4cdab8f394efcfb8a12cb126f8cc6783a0befc74ae014ee6e.png" src="../_images/0ee780b1907ad1b4cdab8f394efcfb8a12cb126f8cc6783a0befc74ae014ee6e.png" />
+</div>
+</div>
+<p>It worked! The rotation transformed our dataset that have now the more variance on one of the basis axis. You could keep only this dimension and have a fairly good representation of the data.</p>
+</section>
+<section id="about-the-unit-norm-constraint">
+<h3>About the unit norm constraint<a class="headerlink" href="#about-the-unit-norm-constraint" title="Link to this heading">#</a></h3>
+<p>We saw that the maximization is subject to <span class="math notranslate nohighlight">\(\bs{dd}^\text{T}=1\)</span>. This means that the solution vector has to be a unit vector. Without this constraint, you could scale <span class="math notranslate nohighlight">\(\bs{d}\)</span> up to the infinity to increase the function to maximize (see <a class="reference external" href="https://stats.stackexchange.com/questions/117695/why-is-the-eigenvector-in-pca-taken-to-be-unit-norm">here</a>). For instance, let’s see some vectors <span class="math notranslate nohighlight">\(\bs{x}\)</span> that could maximize the function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">26</span><span class="p">]])</span>
+<span class="n">d</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4165298.04389264]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>However this <span class="math notranslate nohighlight">\(\bs{d}\)</span> has not a unit norm (since <span class="math notranslate nohighlight">\(\bs{d}\)</span> is a column vector we use the transpose of <span class="math notranslate nohighlight">\(\bs{dd}^\text{T}\)</span> (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.2-Multiplying-Matrices-and-Vectors/">2.2</a>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[820]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The eigenvectors have unit norm and thus respect the constraint:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eigVecs</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">eigVecs</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0000000000000002
+</pre></div>
+</div>
+</div>
+</div>
+<p>and</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eigVecs</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">eigVecs</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0000000000000002
+</pre></div>
+</div>
+</div>
+</div>
+<p>And… This is the end! We have gone through a lot of things during this series on linear algebra! I hope that it was a useful introduction to this topic which is of large importance in the data science/machine learning/deep learning fields.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<section id="pca">
+<h2>PCA<a class="headerlink" href="#pca" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A lot of intuitive explanations on PCA: <a class="reference external" href="https://arxiv.org/pdf/1404.1100.pdf">https://arxiv.org/pdf/1404.1100.pdf</a></p></li>
+<li><p><a class="reference external" href="https://brilliant.org/wiki/principal-component-analysis/#from-approximate-equality-to-minimizing-function">https://brilliant.org/wiki/principal-component-analysis/#from-approximate-equality-to-minimizing-function</a></p></li>
+<li><p><a class="reference external" href="http://www4.ncsu.edu/~slrace/LinearAlgebra2017/Slides/PCAPrint.pdf">http://www4.ncsu.edu/~slrace/LinearAlgebra2017/Slides/PCAPrint.pdf</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c">https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.bgu.ac.il/~inabd171/wiki.files/lecture14_handouts.pdf">https://www.cs.bgu.ac.il/~inabd171/wiki.files/lecture14_handouts.pdf</a></p></li>
+</ul>
+</section>
+<section id="semi-orthogonal-matrix">
+<h2>Semi-orthogonal matrix<a class="headerlink" href="#semi-orthogonal-matrix" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Semi-orthogonal_matrix">https://en.wikipedia.org/wiki/Semi-orthogonal_matrix</a></p></li>
+</ul>
+</section>
+<section id="intuition-about-pca">
+<h2>Intuition about PCA<a class="headerlink" href="#intuition-about-pca" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://georgemdallas.wordpress.com/2013/10/30/principal-component-analysis-4-dummies-eigenvectors-eigenvalues-and-dimension-reduction/">https://georgemdallas.wordpress.com/2013/10/30/principal-component-analysis-4-dummies-eigenvectors-eigenvalues-and-dimension-reduction/</a></p></li>
+</ul>
+</section>
+<section id="derivatives">
+<h2>Derivatives<a class="headerlink" href="#derivatives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://math.stackexchange.com/questions/1377764/derivative-of-vector-and-vector-transpose-product">https://math.stackexchange.com/questions/1377764/derivative-of-vector-and-vector-transpose-product</a></p></li>
+</ul>
+</section>
+<section id="link-between-variance-maximized-and-error-minimized">
+<h2>Link between variance maximized and error minimized:<a class="headerlink" href="#link-between-variance-maximized-and-error-minimized" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/130721/what-norm-of-the-reconstruction-error-is-minimized-by-the-low-rank-approximation">https://stats.stackexchange.com/questions/130721/what-norm-of-the-reconstruction-error-is-minimized-by-the-low-rank-approximation</a></p></li>
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/32174/pca-objective-function-what-is-the-connection-between-maximizing-variance-and-m">https://stats.stackexchange.com/questions/32174/pca-objective-function-what-is-the-connection-between-maximizing-variance-and-m</a></p></li>
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/318625/why-do-the-leading-eigenvectors-of-a-maximize-texttrdtad">https://stats.stackexchange.com/questions/318625/why-do-the-leading-eigenvectors-of-a-maximize-texttrdtad</a></p></li>
+</ul>
+</section>
+<section id="centering-data">
+<h2>Centering data<a class="headerlink" href="#centering-data" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.quora.com/Why-do-we-need-to-center-the-data-for-Principle-Components-Analysis">https://www.quora.com/Why-do-we-need-to-center-the-data-for-Principle-Components-Analysis</a></p></li>
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/22329/how-does-centering-the-data-get-rid-of-the-intercept-in-regression-and-pca">https://stats.stackexchange.com/questions/22329/how-does-centering-the-data-get-rid-of-the-intercept-in-regression-and-pca</a></p></li>
+</ul>
+</section>
+<section id="unit-norm-constraint">
+<h2>Unit norm constraint<a class="headerlink" href="#unit-norm-constraint" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/117695/why-is-the-eigenvector-in-pca-taken-to-be-unit-norm">https://stats.stackexchange.com/questions/117695/why-is-the-eigenvector-in-pca-taken-to-be-unit-norm</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./linear-algebra"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2.11%20The%20Determinant.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-principal-components-analysis">2.12 Example - Principal Components Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describing-the-problem">Describing the problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-some-constraints-the-decoding-function">Adding some constraints: the decoding function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constraint-1">Constraint 1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constraint-2">Constraint 2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constraint-3">Constraint 3.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-encoding-function">Finding the encoding function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-the-function">Minimizing the function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-gradient-of-the-function">Calculating the gradient of the function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-bs-d">Finding <span class="math notranslate nohighlight">\(\bs{D}\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-frobenius-norm">The Frobenius norm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-principal-component">The first principal component</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-trace-operator">Using the Trace operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigendecomposition">Eigendecomposition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-matrix">Covariance matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-unit-norm-constraint">About the unit norm constraint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-orthogonal-matrix">Semi-orthogonal matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition-about-pca">Intuition about PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives">Derivatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-between-variance-maximized-and-error-minimized">Link between variance maximized and error minimized:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centering-data">Centering data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-norm-constraint">Unit norm constraint</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Mahmood Amintoosi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024. CC0 Licensed - Computer Science Dept., Ferdowsi University of Mashhad.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

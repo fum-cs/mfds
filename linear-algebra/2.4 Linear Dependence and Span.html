@@ -1,0 +1,1637 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2.4 Linear Dependence and Span &#8212; MFDS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'linear-algebra/2.4 Linear Dependence and Span';</script>
+    <link rel="icon" href="../_static/fum-logo.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.5 Norms" href="2.5%20Norms.html" />
+    <link rel="prev" title="2.3 Identity and Inverse Matrices" href="2.3%20Identity%20and%20Inverse%20Matrices.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
+    <img src="../_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Mathematical Foundations of Data Science Course website
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Dimensional Spaces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../high-dimensional-spaces/high-dim-intro.html">Chapter on High Dimensional Spaces</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/SAT_Table.html">SAT-Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/NQueen.html">N-Queen Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_01_intro.html">Images as high dimensional data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_02_seg_k-means.html">Image Segmentaion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_03_seg_coords.html">Add coordinates as spatial features to clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/BF-clustering.html">Brute force search clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/k-means-clustering.html">k-means Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_CD.html">High Dimensional Data &amp; the curse of dimensionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_k-means.html">k-means in high dimensional spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_clustering.html">Clustering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/kmeans-clustering-iris.html">IRIS Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/LVQ.html">Vector Quantization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_01.html">PCA - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_02.html">PCA - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/SVD_image_compression.html">SVD for Image Compression</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Cahpter on Linear Algebra</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2.4 Linear Dependence and Span</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2.5%20Norms.html">2.5 Norms</a></li>
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/fum-cs/mfds/blob/main/notebooks/linear-algebra/2.4 Linear Dependence and Span.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fum-cs/mfds" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Flinear-algebra/2.4 Linear Dependence and Span.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/linear-algebra/2.4 Linear Dependence and Span.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2.4 Linear Dependence and Span</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.4 Linear Dependence and Span</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-solutions">Number of solutions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-there-can-t-be-more-than-1-solution-and-less-than-an-infinite-number-of-solutions">Why there can’t be more than 1 solution and less than an infinite number of solutions ?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition">Intuition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representation-of-the-system">Matrix representation of the system</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-views-row-and-column-figures">Graphical views: Row and column figures</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-view-1-the-row-figure">Graphical view 1: the row figure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overdetermined-and-underdetermined-systems">Overdetermined and underdetermined systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-combination">Linear combination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span">Span</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-spaces-and-subspaces">Note on spaces and subspaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-view-2-the-column-figure">Graphical view 2: the column figure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-the-system-has-one-and-only-one-solution-for-every-value-of-bs-b">Determine if the system has one and only one solution for every value of <span class="math notranslate nohighlight">\(\bs{b}\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirement-1-underdetermined-system-the-system-must-have-at-least-one-solution-for-each-value-of-bs-b-n-geq-m">Requirement 1. Underdetermined system: the system must have at least one solution for each value of <span class="math notranslate nohighlight">\(\bs{b}\)</span>: <span class="math notranslate nohighlight">\(n\geq m\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirement-2-overdetermined-system-the-system-must-have-only-one-solution-for-each-value-of-bs-b-m-geq-n">Requirement 2. Overdetermined system: the system must have <strong>only</strong> one solution for each value of <span class="math notranslate nohighlight">\(\bs{b}\)</span>: <span class="math notranslate nohighlight">\(m\geq n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-dependence">Linear dependence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#square-matrix">Square matrix</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#books-and-videos-of-gilbert-strang">Books and videos of Gilbert Strang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-equations">System of equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-dependence-and-span">
+<h1>2.4 Linear Dependence and Span<a class="headerlink" href="#linear-dependence-and-span" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot style</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="o">%</span><span class="k">pylab</span> inline
+<span class="n">pylab</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Avoid inaccurate floating values (for inverse matrices in dot product for instance)</span>
+<span class="c1"># See https://stackoverflow.com/questions/24537791/numpy-matrix-inversion-rounding-errors</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotVectors</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot set of vectors.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vecs : array-like</span>
+<span class="sd">        Coordinates of the vectors to plot. Each vectors is in an array. For</span>
+<span class="sd">        instance: [[1, 3], [2, 2]] can be used to plot 2 vectors.</span>
+<span class="sd">    cols : array-like</span>
+<span class="sd">        Colors of the vectors. For instance: [&#39;red&#39;, &#39;blue&#39;] will display the</span>
+<span class="sd">        first vector in red and the second in blue.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Opacity of vectors</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    fig : instance of matplotlib.figure.Figure</span>
+<span class="sd">        The figure of the vectors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vecs</span><span class="p">)):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">vecs</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                   <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                   <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+                   <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span>
+                   <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This chapter is quite heavy by its size and its content but I did what I could to make it more intuitive and visual. We will see how to represent systems of equations graphically, how to interpret the number of solutions of a system, what is linear combination and more. As usual, we will use Numpy/Matplotlib as a tool to experiment these concepts and hopefully gain a more concrete understanding.</p>
+<div class="math notranslate nohighlight">
+\[
+\newcommand\bs[1]{\boldsymbol{#1}}
+\]</div>
+<p>Since it is all about systems of linear equations, let’s start again with the set of equations:</p>
+<div class="math notranslate nohighlight">
+\[\bs{Ax}=\bs{b}\]</div>
+<p>We saw in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.2-Multiplying-Matrices-and-Vectors/">2.2</a> that this system corresponds to:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A_{1,1}x_1 + A_{1,2}x_2 + \cdots + A_{1,n}x_n = b_1 \\\\
+A_{2,1}x_1 + A_{2,2}x_2 + \cdots + A_{2,n}x_n = b_2 \\\\
+\cdots \\\\
+A_{m,1}x_1 + A_{m,2}x_2 + \cdots + A_{m,n}x_n = b_n
+\end{split}\]</div>
+<p>So we have multiple equations with multiple unknowns. We know <span class="math notranslate nohighlight">\(A_{1,1}...A_{m,n}\)</span> and <span class="math notranslate nohighlight">\(b_1...b_n\)</span>. To solve the system we need to find the values of the variables <span class="math notranslate nohighlight">\(x_1...x_n\)</span> that satisfies all equations.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="number-of-solutions">
+<h1>Number of solutions<a class="headerlink" href="#number-of-solutions" title="Link to this heading">#</a></h1>
+<p>The first thing to ask when we face such a system of equations is: what is the number of solutions ?</p>
+<p>Three cases can represent the number of solutions of the system of equations <span class="math notranslate nohighlight">\(\bs{Ax}=\bs{b}\)</span>.</p>
+<ol class="arabic simple">
+<li><p>No solution</p></li>
+<li><p>1 solution</p></li>
+<li><p>An infinite number of solutions</p></li>
+</ol>
+<section id="why-there-can-t-be-more-than-1-solution-and-less-than-an-infinite-number-of-solutions">
+<h2>Why there can’t be more than 1 solution and less than an infinite number of solutions ?<a class="headerlink" href="#why-there-can-t-be-more-than-1-solution-and-less-than-an-infinite-number-of-solutions" title="Link to this heading">#</a></h2>
+<section id="intuition">
+<h3>Intuition<a class="headerlink" href="#intuition" title="Link to this heading">#</a></h3>
+<p>Simply because we deal with <strong>linear</strong> systems! Two lines can’t cross more than once.</p>
+<p>To be able to visualize it, let’s take two dimensions and two equations. The solutions of the system correspond to the intersection of the lines. One option is that the two lines never cross (parallel). Another option is that they cross once. And finally, the last option is that they cross everywhere (superimposed):</p>
+<p><img alt="Examples of systems of equations with 0, 1 and an infinite number of solutions" src="../_images/number-solutions-system-equations.png" />
+<em>A system of equations has no solution, 1 solution or an infinite number of solutions</em></p>
+<span class='pquote'>
+    Two lines can't cross more than once but can be either parallel or superimposed
+</span>
+</section>
+<section id="proof">
+<h3>Proof<a class="headerlink" href="#proof" title="Link to this heading">#</a></h3>
+<p>Let’s imagine that <span class="math notranslate nohighlight">\(\bs{x}\)</span> and <span class="math notranslate nohighlight">\(\bs{y}\)</span> are two solutions of our system. This means that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+\bs{Ax}=\bs{b}\\\\
+\bs{Ay}=\bs{b}
+\end{cases}
+\end{split}\]</div>
+<p>In that case, we will see that <span class="math notranslate nohighlight">\(\bs{z}=\alpha \bs{x} + (1-\alpha \bs{y})\)</span> is also a solution for any value of <span class="math notranslate nohighlight">\(\alpha\)</span>. If <span class="math notranslate nohighlight">\(\bs{z}\)</span> is a solution, we can say that <span class="math notranslate nohighlight">\(\bs{Az}=\bs{b}\)</span>. Indeed, if we plug <span class="math notranslate nohighlight">\(\bs{z}\)</span> into the left hand side of the equation we obtain:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\bs{Az}&amp;=\bs{A}(\alpha x + (1-\alpha y))\\\\
+    &amp;=\bs{Ax}\alpha + \bs{A}(1-\alpha y)\\\\
+    &amp;=\bs{Ax}\alpha + \bs{Ay}(1-\alpha)
+\end{align*}
+\end{split}\]</div>
+<p>And since <span class="math notranslate nohighlight">\(\bs{Ax}=\bs{Ay}=\bs{b}\)</span>. This leads to:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\bs{Az}&amp;=\bs{b}\alpha + \bs{b}(1-\alpha)\\\\
+    &amp;=\bs{b}\alpha + \bs{b}-\bs{b}\alpha\\\\
+    &amp;=\bs{b}
+\end{align*}
+\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(\bs{z}\)</span> is also a solution.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="matrix-representation-of-the-system">
+<h1>Matrix representation of the system<a class="headerlink" href="#matrix-representation-of-the-system" title="Link to this heading">#</a></h1>
+<p>As we saw it, the equation <span class="math notranslate nohighlight">\(\bs{Ax}=\bs{b}\)</span> can be represented by a matrix <span class="math notranslate nohighlight">\(\bs{A}\)</span> containing the weigths of each variable and a vector <span class="math notranslate nohighlight">\(\bs{x}\)</span> containing each variable (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.2-Multiplying-Matrices-and-Vectors/">2.2</a>). The product of <span class="math notranslate nohighlight">\(\bs{A}\)</span> and <span class="math notranslate nohighlight">\(\bs{x}\)</span> gives <span class="math notranslate nohighlight">\(\bs{b}\)</span> that is another vector of size <span class="math notranslate nohighlight">\(m\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    A_{1,1} &amp; A_{1,2} &amp; \cdots &amp; A_{1,n} \\\\
+    A_{2,1} &amp; A_{2,2} &amp; \cdots &amp; A_{2,n} \\\\
+    \cdots &amp; \cdots &amp; \cdots &amp; \cdots \\\\
+    A_{m,1} &amp; A_{m,2} &amp; \cdots &amp; A_{m,n}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+    x_1 \\\\
+    x_2 \\\\
+    \cdots \\\\
+    x_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+    b_1 \\\\
+    b_2 \\\\
+    \cdots \\\\
+    b_m
+\end{bmatrix}
+\end{split}\]</div>
+<p>Which corresponds to the set of linear equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A_{1,1}x_1 + A_{1,2}x_2 + \cdots + A_{1,n}x_n = b_1 \\\\
+A_{2,1}x_1 + A_{2,2}x_2 + \cdots + A_{2,n}x_n = b_2 \\\\
+\cdots \\\\
+A_{m,1}x_1 + A_{m,2}x_2 + \cdots + A_{m,n}x_n = b_n
+\end{split}\]</div>
+<p>Here are some intuitions about what is represented by these matrices. The number of columns of <span class="math notranslate nohighlight">\(\bs{A}\)</span> is the number of dimensions of our vector space. It is the number <span class="math notranslate nohighlight">\(n\)</span> of directions we can travel by. The number of solutions of our linear system corresponds to the number of ways we can reach <span class="math notranslate nohighlight">\(\bs{b}\)</span> by travelling through our <span class="math notranslate nohighlight">\(n\)</span> dimensions.</p>
+<p>But to understand this, we need to underline that two possibilities exist to represent the system of equations: <em><strong>the row figure</strong></em> and <em><strong>the column figure</strong></em>.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="graphical-views-row-and-column-figures">
+<h1>Graphical views: Row and column figures<a class="headerlink" href="#graphical-views-row-and-column-figures" title="Link to this heading">#</a></h1>
+<p>I recommend to look at <a class="reference external" href="http://ia802205.us.archive.org/18/items/MIT18.06S05_MP4/01.mp4">this video lesson of Gilbert Strang</a>. It provides a very nice intuition about these two ways of looking at a system of linear equations.</p>
+<p>When you are looking to the matrix <span class="math notranslate nohighlight">\(\bs{A}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\bs{A}=\begin{bmatrix}
+    A_{1,1} &amp; A_{1,2} &amp; \cdots &amp; A_{1,n} \\\\
+    A_{2,1} &amp; A_{2,2} &amp; \cdots &amp; A_{2,n} \\\\
+    \cdots &amp; \cdots &amp; \cdots &amp; \cdots \\\\
+    A_{m,1} &amp; A_{m,2} &amp; \cdots &amp; A_{m,n}
+\end{bmatrix}
+\end{split}\]</div>
+<p>You can consider its rows or its columns separately. Recall that the values are the weights corresponding to each variable. Each row synthetizes one equation. Each column is the set of weights given to 1 variable.</p>
+<p>It is possible to draw a different graphical represention of the set of equations looking at the rows or at the columns.</p>
+<section id="graphical-view-1-the-row-figure">
+<h2>Graphical view 1: the row figure<a class="headerlink" href="#graphical-view-1-the-row-figure" title="Link to this heading">#</a></h2>
+<p>The row figure is maybe more usual because it is the representation used when we have only one equation. It can now be extended to an infinite number of equations and unknowns (even if it would be hard to represent a 9-dimensional hyperplane in a 10-dimensional space…).</p>
+<p>We said that the solutions of the linear system of equations are the sets of values of <span class="math notranslate nohighlight">\(x_1...x_n\)</span> that satisfies all equations, that is to say, the values taken by the unknowns. For instance, in the case of <span class="math notranslate nohighlight">\(\bs{A}\)</span> being a (<span class="math notranslate nohighlight">\(2 \times 2\)</span>) matrix (<span class="math notranslate nohighlight">\(n=m=2\)</span>) the equations correspond to lines in a 2-dimensional space and the solution of the system is the intersection of these lines.</p>
+<p>Note that associating one direction in space to one parameter is only one way to represent the equations. There are number of ways to represent more than 3 parameters systems. For instance, you can add colors to have the representation of a fourth dimension. It is all about <strong>representation</strong>.</p>
+<img src="images/representing-features.png" width="900" alt="Different ways of representing features" title="Feature representation">
+<em>Graphical representations of features</em>
+<section id="overdetermined-and-underdetermined-systems">
+<h3>Overdetermined and underdetermined systems<a class="headerlink" href="#overdetermined-and-underdetermined-systems" title="Link to this heading">#</a></h3>
+<p>A linear system of equations can be viewed as a set of <span class="math notranslate nohighlight">\((n-1)\)</span>-dimensional hyperplanes in a <em>n</em>-dimensional space. So the linear system can be characterized with its number of equations (<span class="math notranslate nohighlight">\(m\)</span>) and the number of unknown variables (<span class="math notranslate nohighlight">\(n\)</span>).</p>
+<ul class="simple">
+<li><p>If there are more equations than unknows the system is called <strong>overdetermined</strong>. In the following example we can see a system of 3 equations (represented by 3 lines) and 2 unknowns (corresponding to 2 dimensions). In this example there is no solution since there is no point belonging to the three lines:</p></li>
+</ul>
+<img src="images/overdetermined-system-linear-equations.png" width="300" alt="Example of an overdetermined system of linear equations with no solution" title="Example of an overdetermined system of linear equations with no solution">
+<em>Example of an overdetermined system of linear equations with no solution</em>
+<ul class="simple">
+<li><p>If there is more unknowns than equations the system is called <strong>underdetermined</strong>. In the following picture, there is only 1 equation (1 line) and 2 dimensions. Each point that is on the line is a solution of the system. In this case there is an infinite number of solutions:</p></li>
+</ul>
+<img src="images/underdetermined-system-linear-equations.png" width="300" alt="Example of an underdetermined system of linear equations with an infinite number of solutions" title="Example of an underdetermined system of linear equations with an infinite number of solutions">
+<em>Example of an underdetermined system of linear equations with an infinite number of solutions</em>
+<p>Let’s see few examples of these different cases to clarify that.</p>
+</section>
+<section id="example-1">
+<h3>Example 1.<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(m=1\)</span>, <span class="math notranslate nohighlight">\(n=2\)</span>: <strong>1 equation and 2 variables</strong></p>
+<div class="math notranslate nohighlight">
+\[
+A_{1,1}x_1 + A_{1,2}x_2 = b_1
+\]</div>
+<p>The graphical interpretation of <span class="math notranslate nohighlight">\(n=2\)</span> is that we have a 2-D space. So we can represent it with 2 axes. Since our hyperplane is of <span class="math notranslate nohighlight">\(n-1\)</span>-dimensional, we have a 1-D hyperplane. This is simply a line. As <span class="math notranslate nohighlight">\(m=1\)</span>, we have only one equation. This means that we have only one line characterizing our linear system.</p>
+<p>Note that the last equation can also be written in a way that may be more usual:</p>
+<div class="math notranslate nohighlight">
+\[
+y = ax + b
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(y\)</span> corresponding to <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x\)</span> corresponding to <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(a\)</span> corresponding to <span class="math notranslate nohighlight">\(A_{1,1}\)</span> and <span class="math notranslate nohighlight">\(A_{1,2}=1\)</span>.</p>
+<p>For this first example we will take the following equation:</p>
+<div class="math notranslate nohighlight">
+\[
+y = 2x + 1
+\]</div>
+<p>Let’s draw the line of this equation with Numpy and Matplotlib (see BONUS in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.3-Identity-and-Inverse-Matrices/">2.3</a> for light tips to plot equations).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># draw axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/dd682a5f84bda34fd07c966cfe7f0e4e726b1bfaafb92c77608d3e63ec95cc8e.png" src="../_images/dd682a5f84bda34fd07c966cfe7f0e4e726b1bfaafb92c77608d3e63ec95cc8e.png" />
+</div>
+</div>
+<section id="solutions">
+<h4>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h4>
+<p>The solutions of this linear system correspond to the value of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> such as <span class="math notranslate nohighlight">\(y=2x+1\)</span>. Graphically, it corresponds to each point on the line so there is an infinite number of solutions. For instance, one solution is <span class="math notranslate nohighlight">\(x=0\)</span> and <span class="math notranslate nohighlight">\(y=1\)</span>, or <span class="math notranslate nohighlight">\(x=1\)</span> and <span class="math notranslate nohighlight">\(y=3\)</span> and so on.</p>
+</section>
+</section>
+<section id="example-2">
+<h3>Example 2.<a class="headerlink" href="#example-2" title="Link to this heading">#</a></h3>
+<p><em>m</em>=2, <em>n</em>=2: <strong>2 equations and 2 unknowns</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A_{1,1}x_1 + A_{1,2}x_2 = b_1\\\\
+A_{2,1}x_1 + A_{2,2}x_2 = b_2
+\end{split}\]</div>
+<p>The graphical interpretation of this system is that we still have lines in a 2-D space. However this time there are 2 lines since there are 2 equations.</p>
+<p>Let’s take these equations as example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+y = 2x + 1\\\\
+y = 6x - 2
+\end{cases}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">6</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># draw axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3722777d4a43a6f9db43ad0fd8d573956384ca0257518e47aa2fbf29a9e5c00c.png" src="../_images/3722777d4a43a6f9db43ad0fd8d573956384ca0257518e47aa2fbf29a9e5c00c.png" />
+</div>
+</div>
+<p>As we have seen, with 2 lines in a 2-D space, there are multiple possible cases. On the above figure, the two lines are crossing so there is one unique solution. If they are superimposed (same equation or equivalent, <em>cf</em>. linear dependance bellow) there are a infinite number of solutions since each points of the lines corresponds to an intersection. If they are parallel, there is no solution.</p>
+<p>The same thing can be observed with other values of <span class="math notranslate nohighlight">\(m\)</span> (number of equations) and <span class="math notranslate nohighlight">\(n\)</span> (number of dimensions). For instance, two 2-D planes in a 3-D space can be superposed (infinitely many solutions), or crossed (infinitely many solutions since their crossing is a line), or parallel (no solution).</p>
+</section>
+<section id="example-3">
+<h3>Example 3.<a class="headerlink" href="#example-3" title="Link to this heading">#</a></h3>
+<p><em>m</em>=3, <em>n</em>=2: <strong>3 equations and 2 unknowns</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A_{1,1}x_1 + A_{1,2}x_2 = b_1\\\\
+A_{2,1}x_1 + A_{2,2}x_2 = b_2\\\\
+A_{3,1}x_1 + A_{3,2}x_2 = b_3
+\end{split}\]</div>
+<p>The same idea stands with more than 2 equations in a 2-D space. In that example we have the following 3 equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+y = 2x + 1\\\\
+y = 6x - 2\\\\
+y = \frac{1}{10}x+6
+\end{cases}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">6</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">6</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># draw axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5ed596801bc847d685ea2f5d3514ae1f8abb1e48fc455a04bd1650454f3ceded.png" src="../_images/5ed596801bc847d685ea2f5d3514ae1f8abb1e48fc455a04bd1650454f3ceded.png" />
+</div>
+</div>
+<p>In the above case, there is 3 equations and no solution because there is no point in space that is on each of these lines.</p>
+</section>
+</section>
+<section id="linear-combination">
+<h2>Linear combination<a class="headerlink" href="#linear-combination" title="Link to this heading">#</a></h2>
+<p>Before going to the column figure, we need to talk about linear combination. The linear combination of 2 vectors corresponds to their weighted sum.</p>
+<section id="example-4">
+<h3>Example 4.<a class="headerlink" href="#example-4" title="Link to this heading">#</a></h3>
+<p>Let’s take two vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{u}=
+\begin{bmatrix}
+    1 \\\\
+    3
+\end{bmatrix}
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{v}=
+\begin{bmatrix}
+    2 \\\\
+    1
+\end{bmatrix}
+\end{split}\]</div>
+<p>These two vectors have 2 dimensions and thus contain coordinates in 2-D.</p>
+<p>The linear combination of <span class="math notranslate nohighlight">\(\vec{u}\)</span> and <span class="math notranslate nohighlight">\(\vec{v}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+a\vec{u}+b\vec{v}= a
+\begin{bmatrix}
+    1 \\\\
+    3
+\end{bmatrix} + b\begin{bmatrix}
+    2 \\\\
+    1
+\end{bmatrix}
+\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> the weights of the vectors.</p>
+<p>Graphically, the vectors are added to reach a specific point in space. For example if <span class="math notranslate nohighlight">\(a=2\)</span> and <span class="math notranslate nohighlight">\(b=1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+2\vec{u}+\vec{v}= 2
+\begin{bmatrix}
+    1 \\\\
+    3
+\end{bmatrix} +
+\begin{bmatrix}
+    2 \\\\
+    1
+\end{bmatrix} =
+\begin{bmatrix}
+    2 \cdot 1 + 2 \\\\
+    2 \cdot 3 + 1
+\end{bmatrix} =
+\begin{bmatrix}
+    4 \\\\
+    7
+\end{bmatrix}
+\end{split}\]</div>
+<p>The sum of <span class="math notranslate nohighlight">\(\vec{u}\)</span> and <span class="math notranslate nohighlight">\(\vec{v}\)</span> is a vector that will reach the point of corrdinates <span class="math notranslate nohighlight">\((4, 7)\)</span>. To show that on a plot, I will use the custom function <code class="docutils literal notranslate"><span class="pre">plotVectors()</span></code> that I defined at the beginning of <a class="reference external" href="https://github.com/hadrienj/deepLearningBook-Notes/blob/master/2.4%20Linear%20Dependence%20and%20Span/2.4%20Linear%20Dependence%20and%20Span.ipynb">the notebook</a>. It takes a set of coordinates and an array of colors as input and plot the corresponding vectors. So let’s plot <span class="math notranslate nohighlight">\(\vec{u}\)</span> and <span class="math notranslate nohighlight">\(\vec{v}\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orange</span> <span class="o">=</span> <span class="s1">&#39;#FF9A13&#39;</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="s1">&#39;#1190FF&#39;</span>
+<span class="n">plotVectors</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">orange</span><span class="p">,</span> <span class="n">blue</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, 5)
+</pre></div>
+</div>
+<img alt="../_images/c164c0846e36e69a4ce0383c1f66e3b626218ba14005ca901a26e765aa143990.png" src="../_images/c164c0846e36e69a4ce0383c1f66e3b626218ba14005ca901a26e765aa143990.png" />
+</div>
+</div>
+<p>We will now add these vectors and their weights. This gives:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Weigths of the vectors</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># Start and end coordinates of the vectors</span>
+<span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">([</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+           <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">b</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+           <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">a</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">b</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+           <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">a</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">b</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span>
+           <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="n">orange</span><span class="p">,</span> <span class="n">orange</span><span class="p">,</span> <span class="n">blue</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="c1"># Draw axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="c1"># Draw the name of the vectors</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{u}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">orange</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{u}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">orange</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{v}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/426c93036d113f338986678cc231beb71f011977eb2b52e437f5b0ee2e793c4d.png" src="../_images/426c93036d113f338986678cc231beb71f011977eb2b52e437f5b0ee2e793c4d.png" />
+</div>
+</div>
+<p>We can see that we end up with the coordinates (<span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(7\)</span>).</p>
+</section>
+</section>
+<section id="span">
+<h2>Span<a class="headerlink" href="#span" title="Link to this heading">#</a></h2>
+<p>Take the vectors <span class="math notranslate nohighlight">\(\vec{u}\)</span> and <span class="math notranslate nohighlight">\(\vec{v}\)</span> from the previous example and think about all the points you can reach by their combination changing <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>. This set of points is the span of the set of vectors <span class="math notranslate nohighlight">\(\{\vec{u}, \vec{v}\}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining u and v</span>
+<span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Ploting a sample of the set of points in the span of u and v</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue</span><span class="p">)</span>
+
+<span class="c1"># Defining x and y sizes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Draw axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ab82e438b4ebed3f406c9e6c74bbb6575afac13ecd67ef84a23b616f994d5089.png" src="../_images/ab82e438b4ebed3f406c9e6c74bbb6575afac13ecd67ef84a23b616f994d5089.png" />
+</div>
+</div>
+</section>
+<section id="note-on-spaces-and-subspaces">
+<h2>Note on spaces and subspaces<a class="headerlink" href="#note-on-spaces-and-subspaces" title="Link to this heading">#</a></h2>
+<p>(For more details see Strang (2006), p.70)</p>
+<p>The space of a vector determines all the values that can be taken by this vector. The vector spaces are denoted <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> because the values are real numbers. If there are multiple dimensions the space is denoted <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> with <span class="math notranslate nohighlight">\(n\)</span> corresponding to the number of dimensions. For instance <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> is the space of the usual <span class="math notranslate nohighlight">\(x\)</span>-<span class="math notranslate nohighlight">\(y\)</span> plane where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> values are real numbers.</p>
+<p>If you take a 2-dimensional plane in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> (3-dimensional space), this plane is a <strong>subspace</strong> of your original <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> space. On the same manner, if you start with a <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> space and take a line in this space, this line is a subspace of the original space.</p>
+<p>The linear combination of vectors gives vectors in the original space. Every linear combination of vectors inside a space will stay in this space. For instance, if you take 2 lines in a <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> space, any linear combinations will give you a vector in the same <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> space.</p>
+<span class='pquote'>
+    The linear combination of vectors gives vectors in the original space
+</span></section>
+<section id="graphical-view-2-the-column-figure">
+<h2>Graphical view 2: the column figure<a class="headerlink" href="#graphical-view-2-the-column-figure" title="Link to this heading">#</a></h2>
+<p>It is also possible to represent the set of equations by considering that the solution vector <span class="math notranslate nohighlight">\(\bs{b}\)</span> corresponds to a linear combination of each columns multiplied by their weights.</p>
+<p>From the set of equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A_{1,1}x_1 + A_{1,2}x_2 + A_{1,n}x_n = b_1 \\\\
+A_{2,1}x_1 + A_{2,2}x_2 + A_{2,n}x_n = b_2 \\\\
+\cdots \\\\
+A_{m,1}x_1 + A_{m,2}x_2 + A_{m,n}x_n = b_m
+\end{split}\]</div>
+<p>The column form is then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x_1
+\begin{bmatrix}
+    A_{1,1}\\\\
+    A_{2,1}\\\\
+    A_{m,1}
+\end{bmatrix}
++
+x_2
+\begin{bmatrix}
+    A_{1,2}\\\\
+    A_{2,2}\\\\
+    A_{m,2}
+\end{bmatrix}
++
+x_n
+\begin{bmatrix}
+    A_{1,n}\\\\
+    A_{2,n}\\\\
+    A_{m,n}
+\end{bmatrix}
+=
+\begin{bmatrix}
+    b_1\\\\
+    b_2\\\\
+    b_m
+\end{bmatrix}
+\end{split}\]</div>
+<p>On a graphical point of view, we have to travel from the origin (zero on every dimensions) to the point of coordinate <span class="math notranslate nohighlight">\(\bs{b}\)</span>. The columns of <span class="math notranslate nohighlight">\(\bs{A}\)</span> give us the directions we can travel by and their weights are the length of the way in that direction.</p>
+<span class='pquote'>
+     The columns of $\bs{A}$ give us the directions we can travel by and their weights are the length of the way in each direction.
+</span><section id="example-5">
+<h3>Example 5.<a class="headerlink" href="#example-5" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(m=2\)</span>, <span class="math notranslate nohighlight">\(n=2\)</span>: 2 equations and 2 variables</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A_{1,1}x_1 + A_{1,2}x_2 = b_1\\\\
+A_{2,1}x_1 + A_{2,2}x_2 = b_2
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+y = \frac{1}{2}x+1\\\\
+y = -x + 4
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+\frac{1}{2}x-y = -1\\\\
+x+y=4
+\end{cases}
+\end{split}\]</div>
+<p>So here is the matrix <span class="math notranslate nohighlight">\(\bs{A}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\bs{A}=
+\begin{bmatrix}
+    \frac{1}{2} &amp; -1 \\\\
+    1 &amp; 1
+\end{bmatrix}
+\end{split}\]</div>
+<p>The column figure gives us:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x
+\begin{bmatrix}
+    \frac{1}{2} \\\\
+    1
+\end{bmatrix}
++
+y
+\begin{bmatrix}
+    -1 \\\\
+    1
+\end{bmatrix}
+=
+\begin{bmatrix}
+    -1 \\\\
+    4
+\end{bmatrix}
+\end{split}\]</div>
+<p>The goal is to find the value of the weights (<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>) for which the linear combination of the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    \frac{1}{2} \\\\
+    1
+\end{bmatrix}
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    -1 \\\\
+    1
+\end{bmatrix}
+\end{split}\]</div>
+<p>gives the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    -1 \\\\
+    4
+\end{bmatrix}
+\end{split}\]</div>
+<p>We will solve the system graphically by plotting the equations and looking for their intersection:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">y1</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span> <span class="o">+</span> <span class="mi">4</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># draw axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f41319df1ddb790849e84e6be089db34eb1b03575aaa150e5a5270d7b78063c9.png" src="../_images/f41319df1ddb790849e84e6be089db34eb1b03575aaa150e5a5270d7b78063c9.png" />
+</div>
+</div>
+<p>We can see that the solution (the intersection of the lines representing our two equations) is <span class="math notranslate nohighlight">\(x=2\)</span> and <span class="math notranslate nohighlight">\(y=2\)</span>. This means that the linear combination is the following:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+2
+\begin{bmatrix}
+    \frac{1}{2} \\\\
+    1
+\end{bmatrix}
++
+2
+\begin{bmatrix}
+    -1 \\\\
+    1
+\end{bmatrix}
+=
+\begin{bmatrix}
+    -1 \\\\
+    4
+\end{bmatrix}
+\end{split}\]</div>
+<p>Let’s say that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{u}=
+\begin{bmatrix}
+    \frac{1}{2} \\\\
+    1
+\end{bmatrix}
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{v}=
+\begin{bmatrix}
+    -1 \\\\
+    1
+\end{bmatrix}
+\end{split}\]</div>
+<p>To talk in term of the column figure we can reach the point of coordinates <span class="math notranslate nohighlight">\((-1, 4)\)</span> if we add two times the vector <span class="math notranslate nohighlight">\(\vec{u}\)</span> and two times the vector <span class="math notranslate nohighlight">\(\vec{v}\)</span>. Let’s check that:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">u_bis</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">v_bis</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">([</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u_bis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v_bis</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+           <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">u_bis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v_bis</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+           <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">u_bis</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">v_bis</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+           <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">u_bis</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">v_bis</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span>
+           <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="n">blue</span><span class="p">,</span> <span class="n">blue</span><span class="p">,</span> <span class="n">orange</span><span class="p">,</span> <span class="n">orange</span><span class="p">])</span>
+<span class="c1"># plt.rc(&#39;text&#39;, usetex=True)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+<span class="c1"># draw axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{u}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{u}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{v}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">orange</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\vec</span><span class="si">{v}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">orange</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/693a3c847c206401e9ada66a9526933b1ed60c7805b6b38365bbe278651ebd21.png" src="../_images/693a3c847c206401e9ada66a9526933b1ed60c7805b6b38365bbe278651ebd21.png" />
+</div>
+</div>
+<p>We can see that it is working! We arrive to the point (<span class="math notranslate nohighlight">\(-1\)</span>, <span class="math notranslate nohighlight">\(4\)</span>).</p>
+</section>
+</section>
+<section id="determine-if-the-system-has-one-and-only-one-solution-for-every-value-of-bs-b">
+<h2>Determine if the system has one and only one solution for every value of <span class="math notranslate nohighlight">\(\bs{b}\)</span><a class="headerlink" href="#determine-if-the-system-has-one-and-only-one-solution-for-every-value-of-bs-b" title="Link to this heading">#</a></h2>
+<p>We will now see how to determine if a system of equations has one and only one solution. Note that this is only the general cases. This can be split into two requirements:</p>
+<ol class="arabic simple">
+<li><p>The system must have at least one solution</p></li>
+<li><p>Then, the system must have <strong>only</strong> one solution</p></li>
+</ol>
+<section id="requirement-1-underdetermined-system-the-system-must-have-at-least-one-solution-for-each-value-of-bs-b-n-geq-m">
+<h3>Requirement 1. Underdetermined system: the system must have at least one solution for each value of <span class="math notranslate nohighlight">\(\bs{b}\)</span>: <span class="math notranslate nohighlight">\(n\geq m\)</span><a class="headerlink" href="#requirement-1-underdetermined-system-the-system-must-have-at-least-one-solution-for-each-value-of-bs-b-n-geq-m" title="Link to this heading">#</a></h3>
+<span class='pquote'>
+     An underdetermined system of equations is a system with less equations than unknowns
+</span>
+<p>If we want our system to have one and only one solution a first requirement is that <span class="math notranslate nohighlight">\(n\)</span> must not be bigger than <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<p>Let’s take the example of a (<span class="math notranslate nohighlight">\(2\times 3\)</span>) matrix that corresponds to a set of 2 equations with 3 unknowns variables:</p>
+<div>
+$$
+\begin{cases}
+8x+y+z=1\\\\
+x+y+z=1
+\end{cases}
+$$
+</div>
+<div>
+$$
+x
+\begin{bmatrix}
+    8 \\\\
+    1
+\end{bmatrix}
++
+y
+\begin{bmatrix}
+    1 \\\\
+    1
+\end{bmatrix}
++
+z
+\begin{bmatrix}
+    1 \\\\
+    1
+\end{bmatrix}
+=
+\begin{bmatrix}
+    1 \\\\
+    1
+\end{bmatrix}
+$$
+</div>
+<p>Here is the representation of the planes plotted with the help of this <a class="reference external" href="https://technology.cpm.org/general/3dgraph/">website</a>:</p>
+<img src="images/intersection-2-planes-line.png" alt="Plot showing two planes. The intersection of the two planes is a line" title="The intersection of the two planes is a line" width="500">
+<em>The intersection of the two planes is a line</em>
+<p>We can see that in the best case the two planes are not parallel and there are solutions to the set of equations. It means that it exists some points that rely on both planes. But we can also see that there is inevitably an infinite number of points on the intersection (a line that we can see on the figure). We need a third plane to have a unique solution.</p>
+</section>
+<section id="requirement-2-overdetermined-system-the-system-must-have-only-one-solution-for-each-value-of-bs-b-m-geq-n">
+<h3>Requirement 2. Overdetermined system: the system must have <strong>only</strong> one solution for each value of <span class="math notranslate nohighlight">\(\bs{b}\)</span>: <span class="math notranslate nohighlight">\(m\geq n\)</span><a class="headerlink" href="#requirement-2-overdetermined-system-the-system-must-have-only-one-solution-for-each-value-of-bs-b-m-geq-n" title="Link to this heading">#</a></h3>
+<span class='pquote'>
+     An overdetermined system of equations is a system with more equations than unknowns
+</span>
+<p>The column figure is helpful to understand why the linear system has usually no solution if <span class="math notranslate nohighlight">\(n\)</span> (the number of unknowns) is smaller than <span class="math notranslate nohighlight">\(m\)</span> (the number of equations). Let’s add 1 equation to the above system in order to end up with a (<span class="math notranslate nohighlight">\(3\times2\)</span>) matrix (3 equations and 2 unknowns):</p>
+<div>
+$$
+\begin{cases}
+y = \frac{1}{2}x+1\\\\
+y = -x + 4\\\\
+y = 7x + 2
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+\frac{1}{2}x-y = -1\\\\
+x+y=4\\\\
+7x-y=2
+\end{cases}
+$$
+</div>
+<p>This corresponds to:</p>
+<div>
+$$
+x
+\begin{bmatrix}
+    \frac{1}{2} \\\\
+    1 \\\\
+    7
+\end{bmatrix}
++
+y
+\begin{bmatrix}
+    -1 \\\\
+    1 \\\\
+    -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+    -1 \\\\
+    4 \\\\
+    2
+\end{bmatrix}
+$$
+</div>
+<p>So we are still traveling in our 2-dimensional space (see the plot of the column space above) but the point that we are looking for is defined by 3 dimensions. There are cases where the third coordinate does not rely on our 2-dimensional <span class="math notranslate nohighlight">\(x\)</span>-<span class="math notranslate nohighlight">\(y\)</span> plane. In that case no solution exists.</p>
+<span class='pquote'>
+     We are traveling in a 2D space but the solution is defined by 3 dimensions. If the third coordinate does not rely on our 2D $x$-$y$ plane then there is no solution.
+</span></section>
+<section id="linear-dependence">
+<h3>Linear dependence<a class="headerlink" href="#linear-dependence" title="Link to this heading">#</a></h3>
+<p>The number of columns can thus provide information on the number of solutions. But the number that we have to take into account is the number of <strong>linearly independent</strong> columns. Columns are linearly dependent if one of them is a linear combination of the others. Thinking in the column picture, the direction of two linearly dependent vectors is the same. This doesn’t add a dimension that we can use to travel and reach <span class="math notranslate nohighlight">\(\bs{b}\)</span>.</p>
+<p>Here is an example of linear system containing linear dependency:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+y = 2x+6\\\\
+y = 2x
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+2x-y = -6\\\\
+2x-y=0
+\end{cases}
+\end{split}\]</div>
+<p>The row figure shows that the system has no solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">6</span>
+
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># draw axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/24c79c75ceef13dd8e6b86e114a3c7811b52f77d35f3da30d87efe1736dc8854.png" src="../_images/24c79c75ceef13dd8e6b86e114a3c7811b52f77d35f3da30d87efe1736dc8854.png" />
+</div>
+</div>
+<p>Since the lines are parallel, there is no point at their intersection.</p>
+<p>The column figure illustrates the point as well:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x
+\begin{bmatrix}
+    2 \\\\
+    2
+\end{bmatrix}
++
+y
+\begin{bmatrix}
+    -1 \\\\
+    -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+    -6 \\\\
+    0
+\end{bmatrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">([</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+           <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+           <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+           <span class="p">[</span><span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span>
+           <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="n">blue</span><span class="p">,</span> <span class="n">orange</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1"># draw axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A9A9A9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$b$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a8cf65acbf6e08add87ec3f9ee322c2c64026d22ab887874c1426bc618783e57.png" src="../_images/a8cf65acbf6e08add87ec3f9ee322c2c64026d22ab887874c1426bc618783e57.png" />
+</div>
+</div>
+<p>We would like to go to <span class="math notranslate nohighlight">\(b\)</span> but the only path we can take is the blue/orange line. The second equation doesn’t provide us with a new direction to take since it is just a linear combination of the first one.</p>
+<p>Thus, an overdetermined system of independant equations has at most 1 solution.</p>
+</section>
+<section id="square-matrix">
+<h3>Square matrix<a class="headerlink" href="#square-matrix" title="Link to this heading">#</a></h3>
+<p>How could we satisfy both requirements (<span class="math notranslate nohighlight">\(m\geq n\)</span> and <span class="math notranslate nohighlight">\(n\geq m\)</span>): we must have <span class="math notranslate nohighlight">\(m=n\)</span>!</p>
+<p>The resulting of all of this is that the system needs a <strong>square matrix</strong> <span class="math notranslate nohighlight">\(\bs{A}\)</span> (<span class="math notranslate nohighlight">\(m=n\)</span>) with linearly independant columns to have a unique solution for every values of <span class="math notranslate nohighlight">\(\bs{b}\)</span>.</p>
+<span class='pquote'>
+     The system needs a **square matrix** $\bs{A}$ ($m=n$) with linearly independant columns to have a unique solution for every values of $\bs{b}$
+</span>
+<p>The inverse of a matrix exists only if the set of equations has one and only one solution for each value of <span class="math notranslate nohighlight">\(\bs{b}\)</span> because:</p>
+<ul class="simple">
+<li><p>The matrix <span class="math notranslate nohighlight">\(\bs{A}\)</span> cannot have more than 1 inverse. Imagine that <span class="math notranslate nohighlight">\(\bs{A}\)</span> has 2 inverses <span class="math notranslate nohighlight">\(\bs{B}\)</span> and <span class="math notranslate nohighlight">\(\bs{C}\)</span> such as <span class="math notranslate nohighlight">\(\bs{AB}=\bs{I}\)</span> and <span class="math notranslate nohighlight">\(\bs{AC}=\bs{I}\)</span>. This would mean that <span class="math notranslate nohighlight">\(\bs{B}=\bs{C}\)</span>.</p></li>
+<li><p>The solution of the system <span class="math notranslate nohighlight">\(\bs{Ax}=\bs{b}\)</span> is <span class="math notranslate nohighlight">\(\bs{x}=\bs{A} ^{-1} \bs{b}\)</span>. So if there are multiple solutions, there are multiple inverses and the first point is not met.</p></li>
+</ul>
+<p>For more details about the row and the column figure, have a look at the books of Gilbert Strang (there are some ressources <a class="reference external" href="http://math.mit.edu/~gs/dela/dela_4-1.pdf">here</a>). There are tons of really great examples and graphical explanations! And the <em>1.2 Geometry of linear equations</em> in ‘Linear algebra and its applications’ also from Gilbert Strang.</p>
+<span class='notes'>
+    Feel free to drop me an email or a comment. The syllabus of this series can be found [in the introduction post](https://hadrienj.github.io/posts/Deep-Learning-Book-Series-Introduction/). All the notebooks can be found on [Github](https://github.com/hadrienj/deepLearningBook-Notes).
+</span></section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<section id="books-and-videos-of-gilbert-strang">
+<h2>Books and videos of Gilbert Strang<a class="headerlink" href="#books-and-videos-of-gilbert-strang" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Strang, G. (2006). Linear Algebra and Its Applications, 4th Edition (4th edition). Belmont, CA: Cengage Learning.</p></li>
+<li><p>Strang, G. (2014). Differential Equations and Linear Algebra (UK ed. edition). Wellesley, Mass: Wellesley-Cambridge.</p></li>
+<li><p><a class="reference external" href="https://ocw.mit.edu/resources/res-18-009-learn-differential-equations-up-close-with-gilbert-strang-and-cleve-moler-fall-2015/differential-equations-and-linear-algebra/vector-spaces-and-subspaces/the-column-space-of-a-matrix/">The column space of a matrix. Video from Gilbert Strang</a></p></li>
+</ul>
+</section>
+<section id="system-of-equations">
+<h2>System of equations<a class="headerlink" href="#system-of-equations" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/System_of_linear_equations">Wikipedia - System of linear equations</a></p></li>
+</ul>
+</section>
+<section id="numpy">
+<h2>Numpy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html">Numpy arange()</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./linear-algebra"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2.3%20Identity%20and%20Inverse%20Matrices.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2.3 Identity and Inverse Matrices</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2.5%20Norms.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2.5 Norms</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.4 Linear Dependence and Span</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-solutions">Number of solutions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-there-can-t-be-more-than-1-solution-and-less-than-an-infinite-number-of-solutions">Why there can’t be more than 1 solution and less than an infinite number of solutions ?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition">Intuition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representation-of-the-system">Matrix representation of the system</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-views-row-and-column-figures">Graphical views: Row and column figures</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-view-1-the-row-figure">Graphical view 1: the row figure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overdetermined-and-underdetermined-systems">Overdetermined and underdetermined systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-combination">Linear combination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span">Span</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-spaces-and-subspaces">Note on spaces and subspaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-view-2-the-column-figure">Graphical view 2: the column figure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-the-system-has-one-and-only-one-solution-for-every-value-of-bs-b">Determine if the system has one and only one solution for every value of <span class="math notranslate nohighlight">\(\bs{b}\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirement-1-underdetermined-system-the-system-must-have-at-least-one-solution-for-each-value-of-bs-b-n-geq-m">Requirement 1. Underdetermined system: the system must have at least one solution for each value of <span class="math notranslate nohighlight">\(\bs{b}\)</span>: <span class="math notranslate nohighlight">\(n\geq m\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirement-2-overdetermined-system-the-system-must-have-only-one-solution-for-each-value-of-bs-b-m-geq-n">Requirement 2. Overdetermined system: the system must have <strong>only</strong> one solution for each value of <span class="math notranslate nohighlight">\(\bs{b}\)</span>: <span class="math notranslate nohighlight">\(m\geq n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-dependence">Linear dependence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#square-matrix">Square matrix</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#books-and-videos-of-gilbert-strang">Books and videos of Gilbert Strang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-equations">System of equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Mahmood Amintoosi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024. CC0 Licensed - Computer Science Dept., Ferdowsi University of Mashhad.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

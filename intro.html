@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -63,9 +66,10 @@
     <link rel="icon" href="_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SAT-Table" href="SAT_Table.html" />
+    <link rel="next" title="Chapter on High Dimensional Spaces" href="high-dimensional-spaces/high-dim-intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,19 +85,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -101,7 +94,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -109,8 +101,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -128,7 +120,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +151,17 @@
     
     
     <img src="_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
-    <script>document.write(`<img src="_static/fum-cs-logo.png" class="logo__image only-dark" alt="MFDS - Home"/>`);</script>
+    <img src="_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -183,27 +172,74 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="SAT_Table.html">SAT-Table</a></li>
-<li class="toctree-l1"><a class="reference internal" href="NQueen.html">N-Queen Problem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_01_intro.html">Images as high dimensional data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_02_seg_k-means.html">Image Segmentaion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_03_seg_coords.html">Add coordinates as spatial features to clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="BF-clustering.html">Brute force search clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="k-means-clustering.html">k-means Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="high_dim_and_CD.html">High Dimensional Data &amp; the curse of dimensionality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="high_dim_and_k-means.html">k-means in high dimensional spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_clustering.html">Clustering images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kmeans-clustering-iris.html">IRIS Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LVQ.html">Vector Quantization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PCA_01.html">PCA - Part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PCA_02.html">PCA - Part 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVD_image_compression.html">SVD for Image Compression</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Dimensional Spaces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="high-dimensional-spaces/high-dim-intro.html">Chapter on High Dimensional Spaces</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/SAT_Table.html">SAT-Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/NQueen.html">N-Queen Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/image_01_intro.html">Images as high dimensional data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/image_02_seg_k-means.html">Image Segmentaion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/image_03_seg_coords.html">Add coordinates as spatial features to clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/BF-clustering.html">Brute force search clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/k-means-clustering.html">k-means Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/high_dim_and_CD.html">High Dimensional Data &amp; the curse of dimensionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/high_dim_and_k-means.html">k-means in high dimensional spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/image_clustering.html">Clustering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/kmeans-clustering-iris.html">IRIS Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/LVQ.html">Vector Quantization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/PCA_01.html">PCA - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/PCA_02.html">PCA - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high-dimensional-spaces/SVD_image_compression.html">SVD for Image Compression</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/linear-algebra-basics.html">Cahpter on Linear Algebra</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html">2.5 Norms</a></li>
+
+
+
+
+
+
+
+
+
 </ul>
 
     </div>
@@ -358,24 +394,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 
 </div></div>
       
@@ -401,31 +429,59 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-mathematical-foundations-of-data-science-course-website">
+  <p><img alt="" src="_images/banner1.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="welcome-to-mathematical-foundations-of-data-science-course-website">
 <h1>Welcome to Mathematical Foundations of Data Science Course website<a class="headerlink" href="#welcome-to-mathematical-foundations-of-data-science-course-website" title="Link to this heading">#</a></h1>
 <p>This courses covers the fundamental mathematics in data mining and machine learning; form the basis of data science, utilizing automated methods to analyze patterns and models for all kinds of data in applications ranging from scientific discovery to business analytics.</p>
 <div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">High Dimensional Spaces</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="SAT_Table.html">SAT-Table</a></li>
-<li class="toctree-l1"><a class="reference internal" href="NQueen.html">N-Queen Problem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_01_intro.html">Images as high dimensional data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_02_seg_k-means.html">Image Segmentaion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_03_seg_coords.html">Add coordinates as spatial features to clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="BF-clustering.html">Brute force search clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="k-means-clustering.html">k-means Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="high_dim_and_CD.html">High Dimensional Data &amp; the curse of dimensionality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="high_dim_and_k-means.html">k-means in high dimensional spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_clustering.html">Clustering images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kmeans-clustering-iris.html">IRIS Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LVQ.html">Vector Quantization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PCA_01.html">PCA - Part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PCA_02.html">PCA - Part 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVD_image_compression.html">SVD for Image Compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="high-dimensional-spaces/high-dim-intro.html">Chapter on High Dimensional Spaces</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/linear-algebra-basics.html">Cahpter on Linear Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/linear-algebra-basics.html#getting-started-with-linear-algebra">Getting started with linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/linear-algebra-basics.html#the-use-of-python-numpy">The use of Python/NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/linear-algebra-basics.html#syllabus">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/linear-algebra-basics.html#extra">Extra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/linear-algebra-basics.html#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/linear-algebra-basics.html#enjoy">Enjoy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/linear-algebra-basics.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/linear-algebra-basics.html#pdf-textbooks">PDF Textbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html#transposition">Transposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html#addition">Addition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html#broadcasting">Broadcasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html#numpy">Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.2%20Multiplying%20Matrices%20and%20Vectors.html#formalization-of-the-dot-product">Formalization of the dot product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.2%20Multiplying%20Matrices%20and%20Vectors.html#properties-of-the-dot-product">Properties of the dot product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.2%20Multiplying%20Matrices%20and%20Vectors.html#system-of-linear-equations">System of linear equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.2%20Multiplying%20Matrices%20and%20Vectors.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.3%20Identity%20and%20Inverse%20Matrices.html#inverse-matrices">Inverse Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.3%20Identity%20and%20Inverse%20Matrices.html#sovling-a-system-of-linear-equations">Sovling a system of linear equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.3%20Identity%20and%20Inverse%20Matrices.html#singular-matrices">Singular matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.3%20Identity%20and%20Inverse%20Matrices.html#conclusion">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.4%20Linear%20Dependence%20and%20Span.html#number-of-solutions">Number of solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.4%20Linear%20Dependence%20and%20Span.html#matrix-representation-of-the-system">Matrix representation of the system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.4%20Linear%20Dependence%20and%20Span.html#graphical-views-row-and-column-figures">Graphical views: Row and column figures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.4%20Linear%20Dependence%20and%20Span.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html">2.5 Norms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html#the-triangle-inequality">The triangle inequality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html#p-norms-general-rules">P-norms: general rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html#the-l-1-norm">The <span class="math notranslate nohighlight">\(L^1\)</span> norm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html#the-euclidean-norm-l-2-norm">The Euclidean norm (<span class="math notranslate nohighlight">\(L^2\)</span> norm)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html#the-squared-euclidean-norm-squared-l-2-norm">The squared Euclidean norm (squared <span class="math notranslate nohighlight">\(L^2\)</span> norm)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html#the-max-norm">The max norm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html#matrix-norms-the-frobenius-norm">Matrix norms: the Frobenius norm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html#expression-of-the-dot-product-with-norms">Expression of the dot product with norms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra/2.5%20Norms.html#references">References</a></li>
 </ul>
 </div>
 </section>
@@ -461,11 +517,11 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="SAT_Table.html"
+       href="high-dimensional-spaces/high-dim-intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SAT-Table</p>
+        <p class="prev-next-title">Chapter on High Dimensional Spaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -519,8 +575,8 @@ By Mahmood Amintoosi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
