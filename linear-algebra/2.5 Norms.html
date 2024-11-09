@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -199,7 +199,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Cahpter on Linear Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Chapter on Linear Algebra</a></li>
 
 
 
@@ -209,11 +209,6 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
 
 
@@ -229,7 +224,17 @@
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2.5 Norms</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">2.5 Norms</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.6%20Special%20Kinds%20of%20Matrices%20and%20Vectors.html">Introduction</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.7%20Eigendecomposition.html">Introduction</a></li>
 
 
 
@@ -239,6 +244,35 @@
 
 
 
+
+<li class="toctree-l2"><a class="reference internal" href="2.8%20Singular%20Value%20Decomposition.html">Introduction</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.9%20The%20Moore-Penrose%20Pseudoinverse.html">Introduction</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.10%20The%20Trace%20Operator.html">Introduction</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.11%20The%20Determinant.html">Introduction</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.12%20Example%20-%20Principal%20Components%20Analysis.html">Introduction</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Low-Rank%20Matrix%20Approximation.html">Low-Rank Matrix Approximation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Projection.html">Projection with dot product</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -457,32 +491,30 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.5 Norms</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-triangle-inequality">The triangle inequality</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-triangle-inequality">The triangle inequality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-norms-general-rules">P-norms: general rules</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-l-1-norm">The <span class="math notranslate nohighlight">\(L^1\)</span> norm</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-euclidean-norm-l-2-norm">The Euclidean norm (<span class="math notranslate nohighlight">\(L^2\)</span> norm)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-norms-general-rules">P-norms: general rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-l-1-norm">The <span class="math notranslate nohighlight">\(L^1\)</span> norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-euclidean-norm-l-2-norm">The Euclidean norm (<span class="math notranslate nohighlight">\(L^2\)</span> norm)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-squared-euclidean-norm-squared-l-2-norm">The squared Euclidean norm (squared <span class="math notranslate nohighlight">\(L^2\)</span> norm)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-squared-euclidean-norm-squared-l-2-norm">The squared Euclidean norm (squared <span class="math notranslate nohighlight">\(L^2\)</span> norm)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative-of-the-squared-l-2-norm">Derivative of the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative-of-the-l-2-norm">Derivative of the <span class="math notranslate nohighlight">\(L^2\)</span> norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-max-norm">The max norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-norms-the-frobenius-norm">Matrix norms: the Frobenius norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expression-of-the-dot-product-with-norms">Expression of the dot product with norms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-max-norm">The max norm</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-norms-the-frobenius-norm">Matrix norms: the Frobenius norm</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#expression-of-the-dot-product-with-norms">Expression of the dot product with norms</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -536,16 +568,15 @@
 <p>3- Norms respect the triangle inequality. See bellow.</p>
 <p>4- <span class="math notranslate nohighlight">\(\norm{\bs{k}\cdot \bs{u}}=| \bs{k}| \cdot \norm{\bs{u}}\)</span>. The norm of a vector multiplied by a scalar is equal to the absolute value of this scalar multiplied by the norm of the vector.</p>
 <p>It is usually written with two horizontal bars: <span class="math notranslate nohighlight">\(\norm{\bs{x}}\)</span></p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-triangle-inequality">
-<h1>The triangle inequality<a class="headerlink" href="#the-triangle-inequality" title="Link to this heading">#</a></h1>
+<section id="the-triangle-inequality">
+<h2>The triangle inequality<a class="headerlink" href="#the-triangle-inequality" title="Link to this heading">#</a></h2>
 <p>The norm of the sum of some vectors is less than or equal to the sum of the norms of these vectors.</p>
 <div class="math notranslate nohighlight">
 \[
 \norm{\bs{u}+\bs{v}} \leq \norm{\bs{u}}+\norm{\bs{v}}
 \]</div>
 <section id="example-1">
-<h2>Example 1.<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h2>
+<h3>Example 1.<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 \bs{u}=
@@ -667,8 +698,8 @@
 </span>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="p-norms-general-rules">
-<h1>P-norms: general rules<a class="headerlink" href="#p-norms-general-rules" title="Link to this heading">#</a></h1>
+<section id="p-norms-general-rules">
+<h2>P-norms: general rules<a class="headerlink" href="#p-norms-general-rules" title="Link to this heading">#</a></h2>
 <p>Here is the recipe to get the <span class="math notranslate nohighlight">\(p\)</span>-norm of a vector:</p>
 <ol class="arabic simple">
 <li><p>Calculate the absolute value of each element</p></li>
@@ -683,16 +714,16 @@
 \]</div>
 <p>This will be clear with examples using these widely used <span class="math notranslate nohighlight">\(p\)</span>-norms.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-l-1-norm">
-<h1>The <span class="math notranslate nohighlight">\(L^1\)</span> norm<a class="headerlink" href="#the-l-1-norm" title="Link to this heading">#</a></h1>
+<section id="the-l-1-norm">
+<h2>The <span class="math notranslate nohighlight">\(L^1\)</span> norm<a class="headerlink" href="#the-l-1-norm" title="Link to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(p=1\)</span> so this norm is simply the sum of the absolute values:</p>
 <div class="math notranslate nohighlight">
 \[
 \norm{\bs{x}}_1=\sum_{i} |\bs{x}_i|
 \]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-euclidean-norm-l-2-norm">
-<h1>The Euclidean norm (<span class="math notranslate nohighlight">\(L^2\)</span> norm)<a class="headerlink" href="#the-euclidean-norm-l-2-norm" title="Link to this heading">#</a></h1>
+<section id="the-euclidean-norm-l-2-norm">
+<h2>The Euclidean norm (<span class="math notranslate nohighlight">\(L^2\)</span> norm)<a class="headerlink" href="#the-euclidean-norm-l-2-norm" title="Link to this heading">#</a></h2>
 <p>The Euclidean norm is the <span class="math notranslate nohighlight">\(p\)</span>-norm with <span class="math notranslate nohighlight">\(p=2\)</span>. This may be the more used norm with the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -700,7 +731,7 @@
 \]</div>
 <p>Let’s see an example of this norm:</p>
 <section id="example-2">
-<h2>Example 2.<a class="headerlink" href="#example-2" title="Link to this heading">#</a></h2>
+<h3>Example 2.<a class="headerlink" href="#example-2" title="Link to this heading">#</a></h3>
 <p>Graphically, the Euclidean norm corresponds to the length of the vector from the origin to the point obtained by linear combination (like applying Pythagorean theorem).</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -783,8 +814,8 @@ u=
 \]</div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-squared-euclidean-norm-squared-l-2-norm">
-<h1>The squared Euclidean norm (squared <span class="math notranslate nohighlight">\(L^2\)</span> norm)<a class="headerlink" href="#the-squared-euclidean-norm-squared-l-2-norm" title="Link to this heading">#</a></h1>
+<section id="the-squared-euclidean-norm-squared-l-2-norm">
+<h2>The squared Euclidean norm (squared <span class="math notranslate nohighlight">\(L^2\)</span> norm)<a class="headerlink" href="#the-squared-euclidean-norm-squared-l-2-norm" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 \sum_i|\bs{x}_i|^2
@@ -792,7 +823,7 @@ u=
 <p>The squared <span class="math notranslate nohighlight">\(L^2\)</span> norm is convenient because it removes the square root and we end up with the simple sum of every squared values of the vector.</p>
 <p>The squared Euclidean norm is widely used in machine learning partly because it can be calculated with the vector operation <span class="math notranslate nohighlight">\(\bs{x}^\text{T}\bs{x}\)</span>. There can be performance gain due to the optimization See <a class="reference external" href="https://softwareengineering.stackexchange.com/questions/312445/why-does-expressing-calculations-as-matrix-multiplications-make-them-faster">here</a> and <a class="reference external" href="https://www.quora.com/What-makes-vector-operations-faster-than-for-loops">here</a> for more details.</p>
 <section id="example-3">
-<h2>Example 3.<a class="headerlink" href="#example-3" title="Link to this heading">#</a></h2>
+<h3>Example 3.<a class="headerlink" href="#example-3" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \bs{x}=
@@ -869,6 +900,7 @@ u=
 </div>
 <p>It works!</p>
 </section>
+</section>
 <section id="derivative-of-the-squared-l-2-norm">
 <h2>Derivative of the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm<a class="headerlink" href="#derivative-of-the-squared-l-2-norm" title="Link to this heading">#</a></h2>
 <p>Another advantage of the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm is that its partial derivative is easily computed:</p>
@@ -930,27 +962,26 @@ u=
 <p>One problem of the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm is that it hardly discriminates between 0 and small values because the increase of the function is slow.</p>
 <p>We can see this by graphically comparing the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm with the <span class="math notranslate nohighlight">\(L^2\)</span> norm. The <span class="math notranslate nohighlight">\(z\)</span>-axis corresponds to the norm and the <span class="math notranslate nohighlight">\(x\)</span>- and <span class="math notranslate nohighlight">\(y\)</span>-axis correspond to two parameters. The same thing is true with more than 2 dimensions but it would be hard to visualize it.</p>
 <p><span class="math notranslate nohighlight">\(L^2\)</span> norm:</p>
-<img src="images/l2-norm.png" width="500" alt="Representation of the L2 norm" title="The L2 norm">
-<em>The L2 norm</em>
+<p><img alt="Representation of the L2 norm" src="../_images/l2-norm.png" /></p>
+<p><em>The L2 norm</em></p>
 <p>Squared <span class="math notranslate nohighlight">\(L^2\)</span> norm:</p>
-<img src="images/squared-L2-Norm.png" width="500" alt="Representation of the squared L2 norm" title="The squared L2 norm">
-<em>The squared L2 norm</em>
+<p><img alt="Representation of the squared L2 norm" src="../_images/squared-L2-Norm.png" /></p>
+<p><em>The squared L2 norm</em></p>
 <p><span class="math notranslate nohighlight">\(L^1\)</span> norm:</p>
-<img src="images/l1-norm.png" alt="Representation of the L1 norm" title="The L1 norm" width="500">
-<em>The L1 norm</em>
+<p><img alt="Representation of the L1 norm" src="../_images/l1-norm.png" /></p>
+<p><em>The L1 norm</em></p>
 <p>These plots are done with the help of this <a class="reference external" href="https://academo.org/demos/3d-surface-plotter/">website</a>. Go and plot these norms if you need to move them in order to catch their shape.</p>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-max-norm">
-<h1>The max norm<a class="headerlink" href="#the-max-norm" title="Link to this heading">#</a></h1>
+<section id="the-max-norm">
+<h2>The max norm<a class="headerlink" href="#the-max-norm" title="Link to this heading">#</a></h2>
 <p>It is the <span class="math notranslate nohighlight">\(L^\infty\)</span> norm and corresponds to the absolute value of the greatest element of the vector.</p>
 <div class="math notranslate nohighlight">
 \[
 \norm{\bs{x}}_\infty = \max\limits_i|x_i|
 \]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="matrix-norms-the-frobenius-norm">
-<h1>Matrix norms: the Frobenius norm<a class="headerlink" href="#matrix-norms-the-frobenius-norm" title="Link to this heading">#</a></h1>
+<section id="matrix-norms-the-frobenius-norm">
+<h2>Matrix norms: the Frobenius norm<a class="headerlink" href="#matrix-norms-the-frobenius-norm" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 \norm{\bs{A}}_F=\sqrt{\sum_{i,j}A^2_{i,j}}
@@ -985,14 +1016,14 @@ u=
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="expression-of-the-dot-product-with-norms">
-<h1>Expression of the dot product with norms<a class="headerlink" href="#expression-of-the-dot-product-with-norms" title="Link to this heading">#</a></h1>
+<section id="expression-of-the-dot-product-with-norms">
+<h2>Expression of the dot product with norms<a class="headerlink" href="#expression-of-the-dot-product-with-norms" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 \bs{x}^\text{T}\bs{y} = \norm{\bs{x}}_2\cdot\norm{\bs{y}}_2\cos\theta
 \]</div>
 <section id="example-4">
-<h2>Example 4.<a class="headerlink" href="#example-4" title="Link to this heading">#</a></h2>
+<h3>Example 4.<a class="headerlink" href="#example-4" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \bs{x}=
@@ -1080,12 +1111,13 @@ u=
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Norm_(mathematics)">https://en.wikipedia.org/wiki/Norm_(mathematics)</a></p></li>
 <li><p><a class="reference external" href="https://academo.org/demos/3d-surface-plotter/">3D plots</a></p></li>
 </ul>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -1155,32 +1187,30 @@ u=
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.5 Norms</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-triangle-inequality">The triangle inequality</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-triangle-inequality">The triangle inequality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#p-norms-general-rules">P-norms: general rules</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-l-1-norm">The <span class="math notranslate nohighlight">\(L^1\)</span> norm</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-euclidean-norm-l-2-norm">The Euclidean norm (<span class="math notranslate nohighlight">\(L^2\)</span> norm)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-norms-general-rules">P-norms: general rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-l-1-norm">The <span class="math notranslate nohighlight">\(L^1\)</span> norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-euclidean-norm-l-2-norm">The Euclidean norm (<span class="math notranslate nohighlight">\(L^2\)</span> norm)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-squared-euclidean-norm-squared-l-2-norm">The squared Euclidean norm (squared <span class="math notranslate nohighlight">\(L^2\)</span> norm)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-squared-euclidean-norm-squared-l-2-norm">The squared Euclidean norm (squared <span class="math notranslate nohighlight">\(L^2\)</span> norm)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative-of-the-squared-l-2-norm">Derivative of the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative-of-the-l-2-norm">Derivative of the <span class="math notranslate nohighlight">\(L^2\)</span> norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-max-norm">The max norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-norms-the-frobenius-norm">Matrix norms: the Frobenius norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expression-of-the-dot-product-with-norms">Expression of the dot product with norms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-max-norm">The max norm</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-norms-the-frobenius-norm">Matrix norms: the Frobenius norm</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#expression-of-the-dot-product-with-norms">Expression of the dot product with norms</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>

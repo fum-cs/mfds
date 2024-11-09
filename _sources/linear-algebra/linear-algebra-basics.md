@@ -1,4 +1,8 @@
-# Cahpter on Linear Algebra
+![](img/banner.png)
+%%HTML
+<script src="require.js"></script>
+
+# Chapter on Linear Algebra
 
 I should mention that the original material was from [Akhil Vasvani's github repo about linear algebra](https://github.com/akhilvasvani/Linear-Algebra-Basics/).
 

@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -67,7 +67,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.2 Multiplying Matrices and Vectors" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html" />
-    <link rel="prev" title="Cahpter on Linear Algebra" href="linear-algebra-basics.html" />
+    <link rel="prev" title="Chapter on Linear Algebra" href="linear-algebra-basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -199,7 +199,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Cahpter on Linear Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Chapter on Linear Algebra</a></li>
 
 
 
@@ -209,11 +209,6 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
 
 
@@ -457,47 +452,46 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.1 Scalars, Vectors, Matrices and Tensors</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-vector-with-python-and-numpy">Create a vector with Python and Numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-vector-with-python-and-numpy">Create a vector with Python and Numpy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-3x2-matrix-with-nested-brackets">Create a (3x2) matrix with nested brackets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-3x2-matrix-with-nested-brackets">Create a (3x2) matrix with nested brackets</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shape">Shape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape">Shape</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#transposition">Transposition</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-matrix-a-and-transpose-it">Create a matrix A and transpose it</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#addition">Addition</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-matrices-a-and-b-and-add-them">Create two matrices A and B and add them</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-scalar-to-a-matrix">Add a scalar to a matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transposition">Transposition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-matrix-a-and-transpose-it">Create a matrix A and transpose it</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6">Example 6.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-two-matrices-of-different-shapes">Add two matrices of different shapes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addition">Addition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-matrices-a-and-b-and-add-them">Create two matrices A and B and add them</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-scalar-to-a-matrix">Add a scalar to a matrix</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6">Example 6.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-two-matrices-of-different-shapes">Add two matrices of different shapes</a></li>
 </ul>
-
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -522,6 +516,8 @@
 \]</div>
 <section class="tex2jax_ignore mathjax_ignore" id="scalars-vectors-matrices-and-tensors">
 <h1>2.1 Scalars, Vectors, Matrices and Tensors<a class="headerlink" href="#scalars-vectors-matrices-and-tensors" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This first chapter is quite light and concerns the basic elements used in linear algebra and their definitions. It also introduces important functions in Python/Numpy that we will use all along this series. It will explain how to create and use vectors and matrices through examples.</p>
 <p>Let’s start with some basic definitions:</p>
 <p><img alt="An example of a scalar, a vector, a matrix and a tensor" src="../_images/scalar-vector-matrix-tensor.png" />
@@ -562,9 +558,9 @@
 <li><p>matrices are written in uppercase, italics and bold. For instance: <span class="math notranslate nohighlight">\(\bs{X}\)</span></p></li>
 </ul>
 <section id="example-1">
-<h2>Example 1.<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h2>
+<h3>Example 1.<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h3>
 <section id="create-a-vector-with-python-and-numpy">
-<h3>Create a vector with Python and Numpy<a class="headerlink" href="#create-a-vector-with-python-and-numpy" title="Link to this heading">#</a></h3>
+<h4>Create a vector with Python and Numpy<a class="headerlink" href="#create-a-vector-with-python-and-numpy" title="Link to this heading">#</a></h4>
 <p><em>Coding tip</em>: Unlike the <code class="docutils literal notranslate"><span class="pre">matrix()</span></code> function which necessarily creates <span class="math notranslate nohighlight">\(2\)</span>-dimensional matrices, you can create <span class="math notranslate nohighlight">\(n\)</span>-dimensionnal arrays with the <code class="docutils literal notranslate"><span class="pre">array()</span></code> function. The main advantage to use <code class="docutils literal notranslate"><span class="pre">matrix()</span></code> is the useful methods (conjugate transpose, inverse, matrix operations…). We will use the <code class="docutils literal notranslate"><span class="pre">array()</span></code> function in this series.</p>
 <p>We will start by creating a vector. This is just a <span class="math notranslate nohighlight">\(1\)</span>-dimensional array:</p>
 <div class="cell docutils container">
@@ -583,9 +579,9 @@
 </section>
 </section>
 <section id="example-2">
-<h2>Example 2.<a class="headerlink" href="#example-2" title="Link to this heading">#</a></h2>
+<h3>Example 2.<a class="headerlink" href="#example-2" title="Link to this heading">#</a></h3>
 <section id="create-a-3x2-matrix-with-nested-brackets">
-<h3>Create a (3x2) matrix with nested brackets<a class="headerlink" href="#create-a-3x2-matrix-with-nested-brackets" title="Link to this heading">#</a></h3>
+<h4>Create a (3x2) matrix with nested brackets<a class="headerlink" href="#create-a-3x2-matrix-with-nested-brackets" title="Link to this heading">#</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">array()</span></code> function can also create <span class="math notranslate nohighlight">\(2\)</span>-dimensional arrays with nested brackets:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -605,7 +601,7 @@
 </section>
 </section>
 <section id="shape">
-<h2>Shape<a class="headerlink" href="#shape" title="Link to this heading">#</a></h2>
+<h3>Shape<a class="headerlink" href="#shape" title="Link to this heading">#</a></h3>
 <p>The shape of an array (that is to say its dimensions) tells you the number of values for each dimension. For a <span class="math notranslate nohighlight">\(2\)</span>-dimensional array it will give you the number of rows and the number of columns. Let’s find the shape of our preceding <span class="math notranslate nohighlight">\(2\)</span>-dimensional array <code class="docutils literal notranslate"><span class="pre">A</span></code>. Since <code class="docutils literal notranslate"><span class="pre">A</span></code> is a Numpy array (it was created with the <code class="docutils literal notranslate"><span class="pre">array()</span></code> function) you can access its shape with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -648,17 +644,17 @@
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="transposition">
-<h1>Transposition<a class="headerlink" href="#transposition" title="Link to this heading">#</a></h1>
+<section id="transposition">
+<h2>Transposition<a class="headerlink" href="#transposition" title="Link to this heading">#</a></h2>
 <p>With transposition you can convert a row vector to a column vector and vice versa:</p>
-<img src="images/vector-transposition.png" alt="Transposition of a vector" title="Vector transposition" width="200">
-<em>Vector transposition</em>
+<p><img alt="Transposition of a vector" src="../_images/vector-transposition.png" /></p>
+<p><em>Vector transposition</em></p>
 <p>The transpose <span class="math notranslate nohighlight">\(\bs{A}^{\text{T}}\)</span> of the matrix <span class="math notranslate nohighlight">\(\bs{A}\)</span> corresponds to the mirrored axes. If the matrix is a square matrix (same number of columns and rows):</p>
-<img src="images/square-matrix-transposition.png" alt="Transposition of a square matrix" title="Square matrix transposition" width="300">
-<em>Square matrix transposition</em>
+<p><img alt="Transposition of a square matrix" src="../_images/square-matrix-transposition.png" /></p>
+<p><em>Square matrix transposition</em></p>
 <p>If the matrix is not square the idea is the same:</p>
-<img src="images/non-squared-matrix-transposition.png" alt="Transposition of a square matrix" title="Non square matrix transposition" width="300">
-<em>Non-square matrix transposition</em>
+<p><img alt="Transposition of a square matrix" src="../_images/non-squared-matrix-transposition.png" /></p>
+<p><em>Non-square matrix transposition</em></p>
 <p>The superscript <span class="math notranslate nohighlight">\(^\text{T}\)</span> is used for transposed matrices.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -678,11 +674,12 @@
 \end{bmatrix}
 \end{split}\]</div>
 <p>The shape (<span class="math notranslate nohighlight">\(m \times n\)</span>) is inverted and becomes (<span class="math notranslate nohighlight">\(n \times m\)</span>).</p>
-<img src="images/dimensions-transposition-matrix.png" alt="Dimensions of matrix transposition" title="Dimensions of matrix transposition" width="300">
-<em>Dimensions of matrix transposition</em><section id="example-3">
-<h2>Example 3.<a class="headerlink" href="#example-3" title="Link to this heading">#</a></h2>
+<p><img alt="Dimensions of matrix transposition" src="../_images/dimensions-transposition-matrix.png" /></p>
+<p><em>Dimensions of matrix transposition</em></p>
+<section id="example-3">
+<h3>Example 3.<a class="headerlink" href="#example-3" title="Link to this heading">#</a></h3>
 <section id="create-a-matrix-a-and-transpose-it">
-<h3>Create a matrix A and transpose it<a class="headerlink" href="#create-a-matrix-a-and-transpose-it" title="Link to this heading">#</a></h3>
+<h4>Create a matrix A and transpose it<a class="headerlink" href="#create-a-matrix-a-and-transpose-it" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
@@ -741,10 +738,10 @@
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="addition">
-<h1>Addition<a class="headerlink" href="#addition" title="Link to this heading">#</a></h1>
-<img src="images/matrix-addition.png" alt="Addition of two matrices" title="Addition of two matrices" width="300">
-<em>Addition of two matrices</em>
+<section id="addition">
+<h2>Addition<a class="headerlink" href="#addition" title="Link to this heading">#</a></h2>
+<p><img alt="Addition of two matrices" src="../_images/matrix-addition.png" /></p>
+<p><em>Addition of two matrices</em></p>
 <p>Matrices can be added if they have the same shape:</p>
 <div class="math notranslate nohighlight">
 \[\bs{A} + \bs{B} = \bs{C}\]</div>
@@ -772,9 +769,9 @@
 \end{split}\]</div>
 <p>The shape of <span class="math notranslate nohighlight">\(\bs{A}\)</span>, <span class="math notranslate nohighlight">\(\bs{B}\)</span> and <span class="math notranslate nohighlight">\(\bs{C}\)</span> are identical. Let’s check that in an example:</p>
 <section id="example-4">
-<h2>Example 4.<a class="headerlink" href="#example-4" title="Link to this heading">#</a></h2>
+<h3>Example 4.<a class="headerlink" href="#example-4" title="Link to this heading">#</a></h3>
 <section id="create-two-matrices-a-and-b-and-add-them">
-<h3>Create two matrices A and B and add them<a class="headerlink" href="#create-two-matrices-a-and-b-and-add-them" title="Link to this heading">#</a></h3>
+<h4>Create two matrices A and B and add them<a class="headerlink" href="#create-two-matrices-a-and-b-and-add-them" title="Link to this heading">#</a></h4>
 <p>With Numpy you can add matrices just as you would add vectors or scalars.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -839,9 +836,9 @@
 </section>
 </section>
 <section id="example-5">
-<h2>Example 5.<a class="headerlink" href="#example-5" title="Link to this heading">#</a></h2>
+<h3>Example 5.<a class="headerlink" href="#example-5" title="Link to this heading">#</a></h3>
 <section id="add-a-scalar-to-a-matrix">
-<h3>Add a scalar to a matrix<a class="headerlink" href="#add-a-scalar-to-a-matrix" title="Link to this heading">#</a></h3>
+<h4>Add a scalar to a matrix<a class="headerlink" href="#add-a-scalar-to-a-matrix" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span>
@@ -875,8 +872,8 @@
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="broadcasting">
-<h1>Broadcasting<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h1>
+<section id="broadcasting">
+<h2>Broadcasting<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h2>
 <p>Numpy can handle operations on arrays of different shapes. The smaller array will be extended to match the shape of the bigger one. The advantage is that this is done in <code class="docutils literal notranslate"><span class="pre">C</span></code> under the hood (like any vectorized operations in Numpy). Actually, we used broadcasting in the example 5. The scalar was converted in an array of same shape as <span class="math notranslate nohighlight">\(\bs{A}\)</span>.</p>
 <p>Here is another generic example:</p>
 <div class="math notranslate nohighlight">
@@ -913,9 +910,9 @@
 \end{split}\]</div>
 <p>where the (<span class="math notranslate nohighlight">\(3 \times 1\)</span>) matrix is converted to the right shape (<span class="math notranslate nohighlight">\(3 \times 2\)</span>) by copying the first column. Numpy will do that automatically if the shapes can match.</p>
 <section id="example-6">
-<h2>Example 6.<a class="headerlink" href="#example-6" title="Link to this heading">#</a></h2>
+<h3>Example 6.<a class="headerlink" href="#example-6" title="Link to this heading">#</a></h3>
 <section id="add-two-matrices-of-different-shapes">
-<h3>Add two matrices of different shapes<a class="headerlink" href="#add-two-matrices-of-different-shapes" title="Link to this heading">#</a></h3>
+<h4>Add two matrices of different shapes<a class="headerlink" href="#add-two-matrices-of-different-shapes" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
@@ -1044,21 +1041,22 @@
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy-1.13.0/user/basics.broadcasting.html">Broadcasting in Numpy</a></p></li>
 <li><p><a class="reference external" href="https://stackoverflow.com/questions/4151128/what-are-the-differences-between-numpy-arrays-and-matrices-which-one-should-i-u">Discussion on Arrays and matrices</a></p></li>
 <li><p><a class="reference external" href="https://www.mathsisfun.com/algebra/matrix-introduction.html">Math is fun - Matrix introduction</a></p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="numpy">
-<h1>Numpy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h1>
+<section id="numpy">
+<h2>Numpy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html">arange</a></p></li>
 <li><p><a class="reference external" href="https://www.pythonforbeginners.com/error-handling/python-try-and-except">Error Handling: try and except</a></p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.randn.html">Random.Randn</a></p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1097,7 +1095,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Cahpter on Linear Algebra</p>
+        <p class="prev-next-title">Chapter on Linear Algebra</p>
       </div>
     </a>
     <a class="right-next"
@@ -1126,47 +1124,46 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.1 Scalars, Vectors, Matrices and Tensors</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-vector-with-python-and-numpy">Create a vector with Python and Numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-vector-with-python-and-numpy">Create a vector with Python and Numpy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-3x2-matrix-with-nested-brackets">Create a (3x2) matrix with nested brackets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-3x2-matrix-with-nested-brackets">Create a (3x2) matrix with nested brackets</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shape">Shape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape">Shape</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#transposition">Transposition</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-matrix-a-and-transpose-it">Create a matrix A and transpose it</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#addition">Addition</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-matrices-a-and-b-and-add-them">Create two matrices A and B and add them</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-scalar-to-a-matrix">Add a scalar to a matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transposition">Transposition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-matrix-a-and-transpose-it">Create a matrix A and transpose it</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6">Example 6.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-two-matrices-of-different-shapes">Add two matrices of different shapes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addition">Addition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-two-matrices-a-and-b-and-add-them">Create two matrices A and B and add them</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-scalar-to-a-matrix">Add a scalar to a matrix</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6">Example 6.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-two-matrices-of-different-shapes">Add two matrices of different shapes</a></li>
 </ul>
-
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
+</ul>
   </nav></div>
 
 </div></div>
