@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -199,7 +199,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Cahpter on Linear Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Chapter on Linear Algebra</a></li>
 
 
 
@@ -209,11 +209,6 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
 
 
@@ -229,7 +224,17 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="2.5%20Norms.html">2.5 Norms</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="2.5%20Norms.html">2.5 Norms</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.6%20Special%20Kinds%20of%20Matrices%20and%20Vectors.html">Introduction</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.7%20Eigendecomposition.html">Introduction</a></li>
 
 
 
@@ -239,6 +244,35 @@
 
 
 
+
+<li class="toctree-l2"><a class="reference internal" href="2.8%20Singular%20Value%20Decomposition.html">Introduction</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.9%20The%20Moore-Penrose%20Pseudoinverse.html">Introduction</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.10%20The%20Trace%20Operator.html">Introduction</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.11%20The%20Determinant.html">Introduction</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.12%20Example%20-%20Principal%20Components%20Analysis.html">Introduction</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Low-Rank%20Matrix%20Approximation.html">Low-Rank Matrix Approximation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Projection.html">Projection with dot product</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -710,21 +744,21 @@ A_{m,1}x_1 + A_{m,2}x_2 + \cdots + A_{m,n}x_n = b_n
 <p>The row figure is maybe more usual because it is the representation used when we have only one equation. It can now be extended to an infinite number of equations and unknowns (even if it would be hard to represent a 9-dimensional hyperplane in a 10-dimensional space…).</p>
 <p>We said that the solutions of the linear system of equations are the sets of values of <span class="math notranslate nohighlight">\(x_1...x_n\)</span> that satisfies all equations, that is to say, the values taken by the unknowns. For instance, in the case of <span class="math notranslate nohighlight">\(\bs{A}\)</span> being a (<span class="math notranslate nohighlight">\(2 \times 2\)</span>) matrix (<span class="math notranslate nohighlight">\(n=m=2\)</span>) the equations correspond to lines in a 2-dimensional space and the solution of the system is the intersection of these lines.</p>
 <p>Note that associating one direction in space to one parameter is only one way to represent the equations. There are number of ways to represent more than 3 parameters systems. For instance, you can add colors to have the representation of a fourth dimension. It is all about <strong>representation</strong>.</p>
-<img src="images/representing-features.png" width="900" alt="Different ways of representing features" title="Feature representation">
-<em>Graphical representations of features</em>
+<p><img alt="Different ways of representing features" src="../_images/representing-features.png" /></p>
+<p><em>Graphical representations of features</em></p>
 <section id="overdetermined-and-underdetermined-systems">
 <h3>Overdetermined and underdetermined systems<a class="headerlink" href="#overdetermined-and-underdetermined-systems" title="Link to this heading">#</a></h3>
 <p>A linear system of equations can be viewed as a set of <span class="math notranslate nohighlight">\((n-1)\)</span>-dimensional hyperplanes in a <em>n</em>-dimensional space. So the linear system can be characterized with its number of equations (<span class="math notranslate nohighlight">\(m\)</span>) and the number of unknown variables (<span class="math notranslate nohighlight">\(n\)</span>).</p>
 <ul class="simple">
 <li><p>If there are more equations than unknows the system is called <strong>overdetermined</strong>. In the following example we can see a system of 3 equations (represented by 3 lines) and 2 unknowns (corresponding to 2 dimensions). In this example there is no solution since there is no point belonging to the three lines:</p></li>
 </ul>
-<img src="images/overdetermined-system-linear-equations.png" width="300" alt="Example of an overdetermined system of linear equations with no solution" title="Example of an overdetermined system of linear equations with no solution">
-<em>Example of an overdetermined system of linear equations with no solution</em>
+<p><img alt="Example of an overdetermined system of linear equations with no solution" src="../_images/overdetermined-system-linear-equations.png" /></p>
+<p><em>Example of an overdetermined system of linear equations with no solution</em></p>
 <ul class="simple">
 <li><p>If there is more unknowns than equations the system is called <strong>underdetermined</strong>. In the following picture, there is only 1 equation (1 line) and 2 dimensions. Each point that is on the line is a solution of the system. In this case there is an infinite number of solutions:</p></li>
 </ul>
-<img src="images/underdetermined-system-linear-equations.png" width="300" alt="Example of an underdetermined system of linear equations with an infinite number of solutions" title="Example of an underdetermined system of linear equations with an infinite number of solutions">
-<em>Example of an underdetermined system of linear equations with an infinite number of solutions</em>
+<p><img alt="Example of an underdetermined system of linear equations with an infinite number of solutions" src="../_images/underdetermined-system-linear-equations.png" /></p>
+<p><em>Example of an underdetermined system of linear equations with an infinite number of solutions</em></p>
 <p>Let’s see few examples of these different cases to clarify that.</p>
 </section>
 <section id="example-1">
@@ -1059,9 +1093,8 @@ x_n
 \end{bmatrix}
 \end{split}\]</div>
 <p>On a graphical point of view, we have to travel from the origin (zero on every dimensions) to the point of coordinate <span class="math notranslate nohighlight">\(\bs{b}\)</span>. The columns of <span class="math notranslate nohighlight">\(\bs{A}\)</span> give us the directions we can travel by and their weights are the length of the way in that direction.</p>
-<span class='pquote'>
-     The columns of $\bs{A}$ give us the directions we can travel by and their weights are the length of the way in each direction.
-</span><section id="example-5">
+<p>The columns of <span class="math notranslate nohighlight">\(\bs{A}\)</span> give us the directions we can travel by and their weights are the length of the way in each direction.</p>
+<section id="example-5">
 <h3>Example 5.<a class="headerlink" href="#example-5" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(m=2\)</span>, <span class="math notranslate nohighlight">\(n=2\)</span>: 2 equations and 2 variables</p>
 <div class="math notranslate nohighlight">
