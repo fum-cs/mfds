@@ -1,27 +1,8 @@
- Volume in drive C has no label.
- Volume Serial Number is 823F-D2B7
+<img\s+src="([^"]+)"\s+alt="([^"]+)"\s+title="([^"]+)"\s*width="\d+">\s*
+![$2]($1)
 
- Directory of C:\git\fum-cs\mfds\notebooks\linear-algebra
 
-11/08/2024  08:53 PM    <DIR>          .
-11/08/2024  08:53 PM    <DIR>          ..
-08/20/2019  09:49 PM            21,115 2.1 Scalars, Vectors, Matrices, and Tensors.ipynb
-08/20/2019  09:49 PM             8,000 2.10 The Trace Operator.ipynb
-08/20/2019  09:49 PM            40,847 2.11 The Determinant.ipynb
-08/20/2019  09:49 PM            80,653 2.12 Example - Principal Components Analysis.ipynb
-08/20/2019  09:49 PM            32,749 2.2 Multiplying Matrices and Vectors.ipynb
-08/20/2019  09:49 PM            24,753 2.3 Identity and Inverse Matrices.ipynb
-08/20/2019  09:49 PM           130,505 2.4 Linear Dependence and Span.ipynb
-08/20/2019  09:49 PM            52,768 2.5 Norms.ipynb
-08/20/2019  09:49 PM            35,278 2.6 Special Kinds of Matrices and Vectors.ipynb
-08/20/2019  09:49 PM           135,056 2.7 Eigendecomposition.ipynb
-08/20/2019  09:49 PM         1,501,458 2.8 Singular Value Decomposition.ipynb
-08/20/2019  09:49 PM            83,048 2.9 The Moore-Penrose Pseudoinverse.ipynb
-11/08/2024  08:52 PM    <DIR>          images
-11/08/2024  08:12 PM             9,385 linear-algebra-basics.md
-11/08/2024  08:53 PM                 0 list.txt
-08/20/2019  09:49 PM             3,325 Low-Rank Matrix Approximation.ipynb
-08/20/2019  09:49 PM            15,268 Projection.ipynb
-08/20/2019  09:49 PM            63,765 test_svd.jpg
-              17 File(s)      2,237,973 bytes
-               3 Dir(s)  111,473,561,600 bytes free
+<em>(.*?)<\/em>
+\n*$1*
+
+<img\s+src="([^"]+)"\s+width="[^"]*"\s+alt="([^"]*)"\s+title="[^"]*"\s*\/?>
