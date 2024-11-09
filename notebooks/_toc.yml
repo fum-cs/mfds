@@ -28,7 +28,6 @@ parts:
       - file: high-dimensional-spaces/PCA_02
       - file: high-dimensional-spaces/plot_pca_vs_lda
       - file: high-dimensional-spaces/SVD_image_compression
-      - file: high-dimensional-spaces/linear-algebra-basics
   - caption: Linear Algebra for DS
     chapters:
     - file: linear-algebra/linear-algebra-basics
@@ -45,3 +44,5 @@ parts:
       - file: "linear-algebra/2.10 The Trace Operator"
       - file: "linear-algebra/2.11 The Determinant"
       - file: "linear-algebra/2.12 Example - Principal Components Analysis"
+      - file: "linear-algebra/Low-Rank Matrix Approximation"
+      - file: "linear-algebra/Projection"
