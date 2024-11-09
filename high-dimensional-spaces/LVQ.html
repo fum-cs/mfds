@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,6 +60,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'high-dimensional-spaces/LVQ';</script>
     <link rel="icon" href="../_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -186,6 +188,7 @@
 <li class="toctree-l2"><a class="reference internal" href="image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kmeans-clustering-iris.html">IRIS Clustering</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Vector Quantization</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PCA_01.html">PCA - Part 1</a></li>
@@ -424,8 +427,20 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vector Quantization</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-14-3-9-of-esl">Sec 14.3.9 of ESL</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-quantization-vq-and-k-means-clustering">Vector Quantization (VQ) and K-means Clustering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-grayscale-image-compression">Example: Grayscale Image Compression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vq-compression-steps">VQ Compression Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-obligation">Storage Obligation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -443,6 +458,31 @@
 <h2>Sec 14.3.9 of ESL<a class="headerlink" href="#sec-14-3-9-of-esl" title="Link to this heading">#</a></h2>
 <p><strong>Mahmood Amintoosi, Fall 2024</strong></p>
 <p>Computer Science Dept, Ferdowsi University of Mashhad</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="vector-quantization-vq-and-k-means-clustering">
+<h1>Vector Quantization (VQ) and K-means Clustering<a class="headerlink" href="#vector-quantization-vq-and-k-means-clustering" title="Link to this heading">#</a></h1>
+<p>Based on Page 533 of <a class="reference external" href="https://fumdrive.um.ac.ir/index.php/s/yWr8rw9j9P8CQmL">ESL</a></p>
+<p>Vector quantization (VQ) is a powerful technique used in image and signal compression. This method is particularly effective when combined with the K-means clustering algorithm, which helps reduce the amount of data needed to represent an image.</p>
+<section id="example-grayscale-image-compression">
+<h2>Example: Grayscale Image Compression<a class="headerlink" href="#example-grayscale-image-compression" title="Link to this heading">#</a></h2>
+<p>Consider the grayscale coffee image with resolution of <strong>400 x 600 pixels</strong>, meaning it contains <strong>240,000 pixels</strong> in total. Each pixel represents a grayscale value between <strong>0 and 255</strong>, requiring <strong>8 bits</strong> of storage per pixel. Consequently, the full image occupies approximately 240 KB of storage.</p>
+<section id="vq-compression-steps">
+<h3>VQ Compression Steps<a class="headerlink" href="#vq-compression-steps" title="Link to this heading">#</a></h3>
+<p>The following steps demonstrate how VQ compression is performed on this image:</p>
+<ol class="arabic simple">
+<li><p><strong>Block Partitioning</strong>: The image is divided into <strong>2x2 blocks</strong> of pixels. This means each block contains <strong>4 pixel values</strong>, and the total number of blocks is <strong>200 x 300</strong>.</p></li>
+<li><p><strong>K-means Clustering</strong>: We apply the K-means clustering algorithm to the pixel blocks, treating each block as a vector in <strong>IR⁴</strong> (four-dimensional space).</p></li>
+<li><p><strong>Choosing K = 4</strong>: This results in a significant reduction in quality, but a more significant reduction in storage.</p></li>
+<li><p><strong>Encoding Step</strong>: Each block of pixels is approximated by its closest cluster centroid, known as a <strong>codeword</strong>. The identity of the closest codeword for each block needs to be stored. This requires <strong>log₂(K)</strong> bits per block.</p></li>
+<li><p><strong>Decoding Step</strong>: To reconstruct the approximated image, the centroids are used to create the final image. This step is called the <strong>decoding step</strong>.</p></li>
+</ol>
+</section>
+<section id="storage-obligation">
+<h3>Storage Obligation<a class="headerlink" href="#storage-obligation" title="Link to this heading">#</a></h3>
+<p>When K is reduced to 4, the storage requirement the storage for the
+compressed image amounts to <span class="math notranslate nohighlight">\(log_2(K)/(4 \times 8) = 1/16 = 0.0625\)</span> of the original image, equating to <strong>0.50 bits per pixel</strong>.</p>
+<p>The crucial steps in VQ involve encoding each block to its nearest codeword and then decoding the image using these codewords, illustrating how K-means can facilitate significant compression in image storage.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -714,6 +754,7 @@
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -780,8 +821,20 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vector Quantization</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-14-3-9-of-esl">Sec 14.3.9 of ESL</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-quantization-vq-and-k-means-clustering">Vector Quantization (VQ) and K-means Clustering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-grayscale-image-compression">Example: Grayscale Image Compression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vq-compression-steps">VQ Compression Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-obligation">Storage Obligation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
