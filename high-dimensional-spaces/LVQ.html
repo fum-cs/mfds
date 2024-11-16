@@ -67,7 +67,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bias-Variance Tradeoff" href="Bias-Variance-Tradeoff.html" />
-    <link rel="prev" title="IRIS Clustering" href="kmeans-clustering-iris.html" />
+    <link rel="prev" title="Clustering images by hierarchical clustering" href="image-clustering_HC.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -186,7 +186,6 @@
 <li class="toctree-l2"><a class="reference internal" href="high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_clustering.html">Clustering images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kmeans-clustering-iris.html">IRIS Clustering</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Vector Quantization</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
@@ -437,6 +436,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-obligation">Storage Obligation</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-compression-using-kmeans">Image Compression Using kmeans</a></li>
 </ul>
 </li>
 </ul>
@@ -472,9 +472,9 @@
 <p>The following steps demonstrate how VQ compression is performed on this image:</p>
 <ol class="arabic simple">
 <li><p><strong>Block Partitioning</strong>: The image is divided into <strong>2x2 blocks</strong> of pixels. This means each block contains <strong>4 pixel values</strong>, and the total number of blocks is <strong>200 x 300</strong>.</p></li>
-<li><p><strong>K-means Clustering</strong>: We apply the K-means clustering algorithm to the pixel blocks, treating each block as a vector in <strong>IR⁴</strong> (four-dimensional space).</p></li>
+<li><p><strong>K-means Clustering</strong>: We apply the K-means clustering algorithm to the pixel blocks, treating each block as a vector in <span class="math notranslate nohighlight">\(\mathbb{R}^4\)</span> (four-dimensional space).</p></li>
 <li><p><strong>Choosing K = 4</strong>: This results in a significant reduction in quality, but a more significant reduction in storage.</p></li>
-<li><p><strong>Encoding Step</strong>: Each block of pixels is approximated by its closest cluster centroid, known as a <strong>codeword</strong>. The identity of the closest codeword for each block needs to be stored. This requires <strong>log₂(K)</strong> bits per block.</p></li>
+<li><p><strong>Encoding Step</strong>: Each block of pixels is approximated by its closest cluster centroid, known as a <strong>codeword</strong>. The identity of the closest codeword for each block needs to be stored. This requires <span class="math notranslate nohighlight">\(log_2(K)\)</span> bits per block.</p></li>
 <li><p><strong>Decoding Step</strong>: To reconstruct the approximated image, the centroids are used to create the final image. This step is called the <strong>decoding step</strong>.</p></li>
 </ol>
 </section>
@@ -520,25 +520,25 @@ compressed image amounts to <span class="math notranslate nohighlight">\(log_2(K
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1a64634f348&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x20a1f0aaf50&gt;
 </pre></div>
 </div>
-<img alt="../_images/43144de9b3bc70129099c068f28b23091f624faed481e736b42665633e99cf84.png" src="../_images/43144de9b3bc70129099c068f28b23091f624faed481e736b42665633e99cf84.png" />
+<img alt="../_images/d5118cf5041bcbcd95ea3e5b414aebe3f51b074dee5a04decf91058f6ca06e74.png" src="../_images/d5118cf5041bcbcd95ea3e5b414aebe3f51b074dee5a04decf91058f6ca06e74.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blk</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="mi">250</span><span class="p">:</span><span class="mi">330</span><span class="p">,</span><span class="mi">300</span><span class="p">:</span><span class="mi">400</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blk</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="mi">250</span><span class="p">:</span><span class="mi">330</span><span class="p">,</span><span class="mi">320</span><span class="p">:</span><span class="mi">400</span><span class="p">]</span>
 <span class="n">blk</span>
 <span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">blk</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1a64641bb88&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x20a200556f0&gt;
 </pre></div>
 </div>
-<img alt="../_images/7adad919da8b9cd9de5eab510e9e4bfa553d8fd0493695d9c380bfb4ecff4cd7.png" src="../_images/7adad919da8b9cd9de5eab510e9e4bfa553d8fd0493695d9c380bfb4ecff4cd7.png" />
+<img alt="../_images/6f618d7b460e8f31a234e84a9b8e47b3b7b9bf3f921d8fd12157aa685591173d.png" src="../_images/6f618d7b460e8f31a234e84a9b8e47b3b7b9bf3f921d8fd12157aa685591173d.png" />
 </div>
 </div>
 <p>Some utility functions</p>
@@ -571,114 +571,8 @@ compressed image amounts to <span class="math notranslate nohighlight">\(log_2(K
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">im2col_distinct</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">bs</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">m</span><span class="o">*</span><span class="n">n</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 60000) 240000 60000.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">clustering</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="c1"># clustering = KMedoids(n_clusters=k, random_state=0).fit(x.T)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">clustering</span><span class="o">.</span><span class="n">labels_</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">cluster_centers</span> <span class="o">=</span> <span class="n">clustering</span><span class="o">.</span><span class="n">cluster_centers_</span>
-<span class="n">seg_img_centers</span> <span class="o">=</span> <span class="n">cluster_centers</span><span class="p">[</span><span class="n">labels</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 4)
-(60000,)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.08964681, 0.08964376, 0.0891365 , 0.08983376],
-       [0.52257102, 0.52450528, 0.52411545, 0.52291897],
-       [0.31711779, 0.31502177, 0.31424693, 0.31655577],
-       [0.79977116, 0.80243902, 0.80349648, 0.80130889]])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comp_img</span> <span class="o">=</span> <span class="n">col2im_distinct</span><span class="p">(</span><span class="n">seg_img_centers</span><span class="p">,</span><span class="n">bs</span><span class="p">,[</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">])</span>
-<span class="c1"># print(y.shape,imc.shape,type(imc[0,0]))</span>
-<span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">comp_img</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1a6472b53c8&gt;
-</pre></div>
-</div>
-<img alt="../_images/effa3a78935e1348b85e12a5f0a4d98955fa91e5d232290db75ecf1a74b62a29.png" src="../_images/effa3a78935e1348b85e12a5f0a4d98955fa91e5d232290db75ecf1a74b62a29.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>
-<span class="n">cluster_centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
-
-<span class="c1">## New approach for replacing each pixel </span>
-<span class="c1"># with corresponding cluster center</span>
-
-<span class="n">seg_img_centers</span> <span class="o">=</span> <span class="n">cluster_centers</span><span class="p">[</span><span class="n">labels</span><span class="p">]</span>
-<span class="n">seg_img_centers</span> <span class="o">=</span> <span class="n">seg_img_centers</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="c1"># plt.subplot(1, 3, 1)</span>
-<span class="c1"># plt.axis(&quot;off&quot;)</span>
-<span class="c1"># plt.imshow(img, cmap=&quot;gray&quot;)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">seg_img_centers</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">comp_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1a646ea0508&gt;
-</pre></div>
-</div>
-<img alt="../_images/e90c0b116df40aac98cd63a69099ab1555fe74e5131f41c325aa7837aa7a4f7b.png" src="../_images/e90c0b116df40aac98cd63a69099ab1555fe74e5131f41c325aa7837aa7a4f7b.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">patch_arr</span> <span class="o">=</span> <span class="n">view_as_blocks</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">patch_arr</span> <span class="o">=</span> <span class="n">viewB</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">patch_arr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">patch_arr</span>
@@ -752,7 +646,152 @@ compressed image amounts to <span class="math notranslate nohighlight">\(log_2(K
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">im2col_distinct</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">bs</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">m</span><span class="o">*</span><span class="n">n</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 60000) 240000 60000.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="c1"># clustering = KMedoids(n_clusters=k, random_state=0).fit(x.T)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\m.amintoosi\AppData\Roaming\Python\Python310\site-packages\sklearn\cluster\_kmeans.py:1412: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">cluster_centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+<span class="n">cluster_centers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 4)
+(60000,)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.52268354, 0.52463973, 0.52423633, 0.52303693],
+       [0.08968596, 0.08971989, 0.08917598, 0.08987512],
+       [0.79994586, 0.80255419, 0.80365328, 0.80144409],
+       [0.3172317 , 0.31510994, 0.31436142, 0.31667701]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rec_img_centers</span> <span class="o">=</span> <span class="n">cluster_centers</span><span class="p">[</span><span class="n">labels</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rec_img_centers</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(60000, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rec_img_blk</span> <span class="o">=</span> <span class="n">col2im_distinct</span><span class="p">(</span><span class="n">rec_img_centers</span><span class="p">,</span><span class="n">bs</span><span class="p">,[</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">])</span>
+<span class="c1"># print(y.shape,imc.shape,type(imc[0,0]))</span>
+<span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rec_img_blk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x20a200e4820&gt;
+</pre></div>
+</div>
+<img alt="../_images/1ddcabb6d4a7a9607d8643fe4547f877ca9562b4a82d35292382d26d54e95175.png" src="../_images/1ddcabb6d4a7a9607d8643fe4547f877ca9562b4a82d35292382d26d54e95175.png" />
+</div>
+</div>
 </section>
+</section>
+<section id="image-compression-using-kmeans">
+<h2>Image Compression Using kmeans<a class="headerlink" href="#image-compression-using-kmeans" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>
+<span class="n">cluster_centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+
+<span class="c1"># replacing each pixel with corresponding cluster center</span>
+
+<span class="n">rec_img_pixels</span> <span class="o">=</span> <span class="n">cluster_centers</span><span class="p">[</span><span class="n">labels</span><span class="p">]</span>
+<span class="n">rec_img_pixels</span> <span class="o">=</span> <span class="n">rec_img_pixels</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="c1"># plt.subplot(1, 3, 1)</span>
+<span class="c1"># plt.axis(&quot;off&quot;)</span>
+<span class="c1"># plt.imshow(img, cmap=&quot;gray&quot;)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rec_img_blk</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Block Clustering&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rec_img_pixels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pixel Clustering&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\m.amintoosi\AppData\Roaming\Python\Python310\site-packages\sklearn\cluster\_kmeans.py:1412: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Pixel Clustering&#39;)
+</pre></div>
+</div>
+<img alt="../_images/a1eebd753882e19f38bb3893a0b4d5fa17842bc769202415da1fb95fc83d2dce.png" src="../_images/a1eebd753882e19f38bb3893a0b4d5fa17842bc769202415da1fb95fc83d2dce.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cluster_centers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.52732396],
+       [0.0897978 ],
+       [0.80943031],
+       [0.31605731]])
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -787,12 +826,12 @@ compressed image amounts to <span class="math notranslate nohighlight">\(log_2(K
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="kmeans-clustering-iris.html"
+       href="image-clustering_HC.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">IRIS Clustering</p>
+        <p class="prev-next-title">Clustering images by hierarchical clustering</p>
       </div>
     </a>
     <a class="right-next"
@@ -831,6 +870,7 @@ compressed image amounts to <span class="math notranslate nohighlight">\(log_2(K
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-obligation">Storage Obligation</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-compression-using-kmeans">Image Compression Using kmeans</a></li>
 </ul>
 </li>
 </ul>
