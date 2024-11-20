@@ -20,7 +20,7 @@ parts:
       - file: high-dimensional-spaces/high_dim_and_KNN
       - file: high-dimensional-spaces/image_clustering
       - file: high-dimensional-spaces/image-clustering_HC
-      - file: high-dimensional-spaces/kmeans-clustering-iris
+      # - file: high-dimensional-spaces/kmeans-clustering-iris
       - file: high-dimensional-spaces/LVQ
       - file: high-dimensional-spaces/Bias-Variance-Tradeoff
       - file: high-dimensional-spaces/Silhouette-clustering
