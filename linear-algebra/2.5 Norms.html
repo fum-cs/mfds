@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -69,7 +66,6 @@
     <link rel="prev" title="2.4 Linear Dependence and Span" href="2.4%20Linear%20Dependence%20and%20Span.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -94,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -101,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,17 +156,21 @@
     
     
     <img src="../_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
-    <img src="../_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
+    <script>document.write(`<img src="../_static/fum-cs-logo.png" class="logo__image only-dark" alt="MFDS - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -185,8 +196,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_clustering.html">Clustering images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/kmeans-clustering-iris.html">IRIS Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/LVQ.html">Vector Quantization</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_01.html">PCA - Part 1</a></li>
@@ -392,16 +403,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -445,6 +464,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-norms-the-frobenius-norm">Matrix norms: the Frobenius norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expression-of-the-dot-product-with-norms">Expression of the dot product with norms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#papers">Papers</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
@@ -461,7 +481,12 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="norms">
 <h1>2.5 Norms<a class="headerlink" href="#norms" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -469,9 +494,15 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot parameters</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
 <span class="o">%</span><span class="k">pylab</span> inline
@@ -484,11 +515,18 @@
 </pre></div>
 </div>
 </div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="math notranslate nohighlight">
 \[
@@ -658,7 +696,7 @@
 </section>
 <section id="the-euclidean-norm-l-2-norm">
 <h2>The Euclidean norm (<span class="math notranslate nohighlight">\(L^2\)</span> norm)<a class="headerlink" href="#the-euclidean-norm-l-2-norm" title="Link to this heading">#</a></h2>
-<p>The Euclidean norm is the <span class="math notranslate nohighlight">\(p\)</span>-norm with <span class="math notranslate nohighlight">\(p=2\)</span>. This may be the more used norm with the squared <span class="math notranslate nohighlight">\(L^2\)</span> norm.</p>
+<p>The Euclidean norm is the <span class="math notranslate nohighlight">\(p\)</span>-norm with <span class="math notranslate nohighlight">\(p=2\)</span> which may be the more used norm (<span class="math notranslate nohighlight">\(L^2\)</span> norm).</p>
 <div class="math notranslate nohighlight">
 \[
 \norm{\bs{x}}_2=(\sum_i \bs{x}_i^2)^{1/2}\Leftrightarrow \sqrt{\sum_i \bs{x}_i^2}
@@ -683,7 +721,7 @@
 &amp;=5
 \end{align*}
 \end{split}\]</div>
-<p>So the <span class="math notranslate nohighlight">\(L^2\)</span> norm is <span class="math notranslate nohighlight">\(5\)</span>.</p>
+<p>So the <span class="math notranslate nohighlight">\(L^2\)</span> norm of <span class="math notranslate nohighlight">\(\bs{u}\)</span> is <span class="math notranslate nohighlight">\(5\)</span>.</p>
 <p>The <span class="math notranslate nohighlight">\(L^2\)</span> norm can be calculated with the <code class="docutils literal notranslate"><span class="pre">linalg.norm</span></code> function from numpy. We can check the result:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1044,6 +1082,12 @@ u=
 </div>
 </div>
 </section>
+<section id="papers">
+<h3>Papers<a class="headerlink" href="#papers" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/yhath91jfymqvoycrmplp/1396-IPRIA2017-BlockNorm-in-SR.pdf?rlkey=lnvvpy2zizy38zrhrl7tjtwhz&amp;amp;dl=0">Using Block Norm in Sparse Optimization for Super-Resolution</a>, By R. Hamedi, M. Amintoosi and M. Zaferanieh</p></li>
+</ul>
+</section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
@@ -1100,8 +1144,7 @@ u=
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1130,6 +1173,7 @@ u=
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-norms-the-frobenius-norm">Matrix norms: the Frobenius norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expression-of-the-dot-product-with-norms">Expression of the dot product with norms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#papers">Papers</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
@@ -1181,8 +1225,8 @@ By Mahmood Amintoosi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
