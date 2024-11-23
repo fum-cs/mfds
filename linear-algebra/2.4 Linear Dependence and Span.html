@@ -589,9 +589,9 @@
 A_{1,1}x_1 + A_{1,2}x_2 + \cdots + A_{1,n}x_n = b_1 \\\\
 A_{2,1}x_1 + A_{2,2}x_2 + \cdots + A_{2,n}x_n = b_2 \\\\
 \cdots \\\\
-A_{m,1}x_1 + A_{m,2}x_2 + \cdots + A_{m,n}x_n = b_n
+A_{m,1}x_1 + A_{m,2}x_2 + \cdots + A_{m,n}x_n = b_m
 \end{split}\]</div>
-<p>So we have multiple equations with multiple unknowns. We know <span class="math notranslate nohighlight">\(A_{1,1}...A_{m,n}\)</span> and <span class="math notranslate nohighlight">\(b_1...b_n\)</span>. To solve the system we need to find the values of the variables <span class="math notranslate nohighlight">\(x_1...x_n\)</span> that satisfies all equations.</p>
+<p>So we have multiple equations with multiple unknowns. We know <span class="math notranslate nohighlight">\(A_{1,1}...A_{m,n}\)</span> and <span class="math notranslate nohighlight">\(b_1...b_m\)</span>. To solve the system we need to find the values of the variables <span class="math notranslate nohighlight">\(x_1...x_n\)</span> that satisfies all equations.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="number-of-solutions">
 <h1>Number of solutions<a class="headerlink" href="#number-of-solutions" title="Link to this heading">#</a></h1>
@@ -675,7 +675,7 @@ A_{m,1}x_1 + A_{m,2}x_2 + \cdots + A_{m,n}x_n = b_n
 A_{1,1}x_1 + A_{1,2}x_2 + \cdots + A_{1,n}x_n = b_1 \\\\
 A_{2,1}x_1 + A_{2,2}x_2 + \cdots + A_{2,n}x_n = b_2 \\\\
 \cdots \\\\
-A_{m,1}x_1 + A_{m,2}x_2 + \cdots + A_{m,n}x_n = b_n
+A_{m,1}x_1 + A_{m,2}x_2 + \cdots + A_{m,n}x_n = b_m
 \end{split}\]</div>
 <p>Here are some intuitions about what is represented by these matrices. The number of columns of <span class="math notranslate nohighlight">\(\bs{A}\)</span> is the number of dimensions of our vector space. It is the number <span class="math notranslate nohighlight">\(n\)</span> of directions we can travel by. The number of solutions of our linear system corresponds to the number of ways we can reach <span class="math notranslate nohighlight">\(\bs{b}\)</span> by travelling through our <span class="math notranslate nohighlight">\(n\)</span> dimensions.</p>
 <p>But to understand this, we need to underline that two possibilities exist to represent the system of equations: <em><strong>the row figure</strong></em> and <em><strong>the column figure</strong></em>.</p>
@@ -1013,10 +1013,10 @@ a\vec{u}+b\vec{v}= a
 <p>From the set of equations:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-A_{1,1}x_1 + A_{1,2}x_2 + A_{1,n}x_n = b_1 \\\\
-A_{2,1}x_1 + A_{2,2}x_2 + A_{2,n}x_n = b_2 \\\\
+A_{1,1}x_1 + A_{1,2}x_2 + \cdots+ A_{1,n}x_n = b_1 \\\\
+A_{2,1}x_1 + A_{2,2}x_2 + \cdots+ A_{2,n}x_n = b_2 \\\\
 \cdots \\\\
-A_{m,1}x_1 + A_{m,2}x_2 + A_{m,n}x_n = b_m
+A_{m,1}x_1 + A_{m,2}x_2 + \cdots+ A_{m,n}x_n = b_m
 \end{split}\]</div>
 <p>The column form is then:</p>
 <div class="math notranslate nohighlight">
@@ -1034,7 +1034,7 @@ x_2
     A_{2,2}\\\\
     A_{m,2}
 \end{bmatrix}
-+
++ \cdots +
 x_n
 \begin{bmatrix}
     A_{1,n}\\\\
