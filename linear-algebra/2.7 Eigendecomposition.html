@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; MFDS</title>
+    <title>2.7 Eigendecomposition &#8212; MFDS</title>
   
   
   
@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -66,9 +63,10 @@
     <link rel="icon" href="../_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.8 Singular Value Decomposition" href="2.8%20Singular%20Value%20Decomposition.html" />
+    <link rel="prev" title="2.6 Special Kinds of Matrices and Vectors" href="2.6%20Special%20Kinds%20of%20Matrices%20and%20Vectors.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +82,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -93,6 +102,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +110,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,10 +127,7 @@
       
       
       
-        
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,17 +157,21 @@
     
     
     <img src="../_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
-    <img src="../_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
+    <script>document.write(`<img src="../_static/fum-cs-logo.png" class="logo__image only-dark" alt="MFDS - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -186,20 +197,40 @@
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_clustering.html">Clustering images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/kmeans-clustering-iris.html">IRIS Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/LVQ.html">Vector Quantization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_01.html">PCA - Part 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_02.html">PCA - Part 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/SVD_image_compression.html">SVD for Image Compression</a></li>
+
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Chapter on Linear Algebra</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="linear-algebra-basics.html">Chapter on Linear Algebra</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.5%20Norms.html">2.5 Norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.6%20Special%20Kinds%20of%20Matrices%20and%20Vectors.html">2.6 Special Kinds of Matrices and Vectors</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.7 Eigendecomposition</a></li>
 
 
 
@@ -208,6 +239,17 @@
 
 
 
+
+<li class="toctree-l2"><a class="reference internal" href="2.8%20Singular%20Value%20Decomposition.html">2.8 Singular Value Decomposition</a></li>
+
+
+
+
+
+
+
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -393,16 +435,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -416,7 +466,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>2.7 Eigendecomposition</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -426,8 +476,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigendecomposition">2.7 Eigendecomposition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.7 Eigendecomposition</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-as-linear-transformations">Matrices as linear transformations</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
 </ul>
@@ -500,7 +549,12 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input tag_hide-cell tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot style</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
@@ -517,8 +571,14 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotVectors</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -558,23 +618,21 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="math notranslate nohighlight">
 \[
 \newcommand\bs[1]{\boldsymbol{#1}}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
 \]</div>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p>We will see some major concepts of linear algebra in this chapter. It is also quite heavy so hang on! We will start with getting some ideas on eigenvectors and eigenvalues. We will develop on the idea that a matrix can be seen as a linear transformation and that applying a matrix on its eigenvectors gives new vectors with the same direction. Then we will see how to express quadratic equations into the matrix form. We will see that the eigendecomposition of the matrix corresponding to a quadratic equation can be used to find the minimum and maximum of this function. As a bonus, we will also see how to visualize linear transformations in Python!</p>
-</section>
 <section class="tex2jax_ignore mathjax_ignore" id="eigendecomposition">
 <h1>2.7 Eigendecomposition<a class="headerlink" href="#eigendecomposition" title="Link to this heading">#</a></h1>
+<p>We will see some major concepts of linear algebra in this chapter. It is also quite heavy so hang on! We will start with getting some ideas on eigenvectors and eigenvalues. We will develop on the idea that a matrix can be seen as a linear transformation and that applying a matrix on its eigenvectors gives new vectors with the same direction. Then we will see how to express quadratic equations into the matrix form. We will see that the eigendecomposition of the matrix corresponding to a quadratic equation can be used to find the minimum and maximum of this function. As a bonus, we will also see how to visualize linear transformations in Python!</p>
 <p>The eigendecomposition is one form of matrix decomposition. Decomposing a matrix means that we want to find a product of matrices that is equal to the initial matrix. In the case of the eigendecomposition, we decompose the initial matrix into the product of its eigenvectors and eigenvalues. Before all, let’s see what are eigenvectors and eigenvalues.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="matrices-as-linear-transformations">
 <h1>Matrices as linear transformations<a class="headerlink" href="#matrices-as-linear-transformations" title="Link to this heading">#</a></h1>
-<p>As we have seen in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.3-Identity-and-Inverse-Matrices/">2.3</a> with the example of the identity matrix, you can think of matrices as linear transformations. Some matrices will rotate your space, others will rescale it etc. So when we apply a matrix to a vector, we end up with a transformed version of the vector. When we say that we ‘apply’ the matrix to the vector it means that we calculate the dot product of the matrix with the vector. We will start with a basic example of this kind of transformation.</p>
+<p>As we have seen in previous sections with the example of the identity matrix, you can think of matrices as linear transformations. Some matrices will rotate your space, others will rescale it etc. So when we apply a matrix to a vector, we end up with a transformed version of the vector. When we say that we ‘apply’ the matrix to the vector it means that we calculate the dot product of the matrix with the vector. We will start with a basic example of this kind of transformation.</p>
 <section id="example-1">
 <h2>Example 1.<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -1003,10 +1061,8 @@
 \[
 \bs{A}=\bs{V}\cdot diag(\bs{\lambda}) \cdot \bs{V}^{-1}
 \]</div>
-<span class='pquote'>
-    We can decompose the matrix $\bs{A}$ with eigenvectors and eigenvalues. It is done with: $\bs{A}=\bs{V}\cdot diag(\bs{\lambda}) \cdot \bs{V}^{-1}$
-</span>
-<p><span class="math notranslate nohighlight">\(diag(\bs{v})\)</span> is a diagonal matrix (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a>) containing all the eigenvalues. Continuing with our example we have</p>
+<p>We can decompose the matrix <span class="math notranslate nohighlight">\(\bs{A}\)</span> with eigenvectors and eigenvalues. It is done with: <span class="math notranslate nohighlight">\(\bs{A}=\bs{V}\cdot diag(\bs{\lambda}) \cdot \bs{V}^{-1}\)</span></p>
+<p><span class="math notranslate nohighlight">\(diag(\bs{v})\)</span> is a diagonal matrix containing all the eigenvalues. Continuing with our example we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \bs{V}=\begin{bmatrix}
@@ -1153,7 +1209,7 @@ diag(\bs{v})=
 </section>
 <section id="real-symmetric-matrix">
 <h2>Real symmetric matrix<a class="headerlink" href="#real-symmetric-matrix" title="Link to this heading">#</a></h2>
-<p>In the case of real symmetric matrices (more details about symmetric matrices in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a>), the eigendecomposition can be expressed as</p>
+<p>In the case of real symmetric matrices (more details about symmetric matrices in previous section), the eigendecomposition can be expressed as</p>
 <div class="math notranslate nohighlight">
 \[
 \bs{A} = \bs{Q}\Lambda \bs{Q}^\text{T}
@@ -1567,86 +1623,80 @@ x_2 = \frac{1}{\sqrt{5}}(y_1 + 2y_2)
 <section id="with-the-principal-axes-theorem">
 <h2>With the Principal Axes Theorem<a class="headerlink" href="#with-the-principal-axes-theorem" title="Link to this heading">#</a></h2>
 <p>Actually there is a simpler way to do the change of variable. We can stay in the matrix form. Recall that we start with the form:</p>
-<div>
-$$
+<div class="math notranslate nohighlight">
+\[
 f(\bs{x})=\bs{x^\text{T}Ax}
-$$
-</div>
+\]</div>
 <p>The linear substitution can be wrote in these terms. We want replace the variables <span class="math notranslate nohighlight">\(\bs{x}\)</span> by <span class="math notranslate nohighlight">\(\bs{y}\)</span> that relates by:</p>
-<div>
-$$
+<div class="math notranslate nohighlight">
+\[
 \bs{x}=P\bs{y}
-$$
-</div>
+\]</div>
 <p>We want to find <span class="math notranslate nohighlight">\(P\)</span> such as our new equation (after the change of variable) doesn’t contain the cross terms. The first step is to replace that in the first equation:</p>
-<div>
-$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
 \bs{x^\text{T}Ax}
-&=
+&amp;=
 (\bs{Py})^\text{T}\bs{A}(\bs{Py})\\\\
-&=
+&amp;=
 \bs{y}^\text{T}(\bs{P}^\text{T}\bs{AP})\bs{y}
 \end{align*}
-$$
-</div>
+\end{split}\]</div>
 <p>Can you see the how to transform the left hand side (<span class="math notranslate nohighlight">\(\bs{x}\)</span>) into the right hand side (<span class="math notranslate nohighlight">\(\bs{y}\)</span>)? The substitution is done by replacing <span class="math notranslate nohighlight">\(\bs{A}\)</span> with <span class="math notranslate nohighlight">\(\bs{P^\text{T}AP}\)</span>. We also know that <span class="math notranslate nohighlight">\(\bs{A}\)</span> is symmetric and thus that there is a diagonal matrix <span class="math notranslate nohighlight">\(\bs{D}\)</span> containing the eigenvectors of <span class="math notranslate nohighlight">\(\bs{A}\)</span> and such as <span class="math notranslate nohighlight">\(\bs{D}=\bs{P}^\text{T}\bs{AP}\)</span>. We thus end up with:</p>
-<div>
-$$
+<div class="math notranslate nohighlight">
+\[
 \bs{x^\text{T}Ax}=\bs{y^\text{T}\bs{D} y}
-$$
-</div>
+\]</div>
 <span class='pquote'>
     We can use $\bs{D}$ to simplify our quadratic equation and remove the cross terms
 </span>
 <p>All of this implies that we can use <span class="math notranslate nohighlight">\(\bs{D}\)</span> to simplify our quadratic equation and remove the cross terms. If you remember from example 2 we know that the eigenvalues of <span class="math notranslate nohighlight">\(\bs{A}\)</span> are:</p>
-<div>
-$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \bs{D}=
 \begin{bmatrix}
-    7 & 0\\\\
-    0 & 2
+    7 &amp; 0\\\\
+    0 &amp; 2
 \end{bmatrix}
-$$
-</div>
-<div>
-$$
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
 \bs{x^\text{T}Ax}
-&=
+&amp;=
 \bs{y^\text{T}\bs{D} y}\\\\
-&=
+&amp;=
 \bs{y}^\text{T}
 \begin{bmatrix}
-    7 & 0\\\\
-    0 & 2
+    7 &amp; 0\\\\
+    0 &amp; 2
 \end{bmatrix}
 \bs{y}\\\\
-&=
+&amp;=
 \begin{bmatrix}
-    y_1 & y_2
+    y_1 &amp; y_2
 \end{bmatrix}
 \begin{bmatrix}
-    7 & 0\\\\
-    0 & 2
-\end{bmatrix}
-\begin{bmatrix}
-    y_1\\\\
-    y_2
-\end{bmatrix}\\\\
-&=
-\begin{bmatrix}
-    7y_1 +0y_2 & 0y_1 + 2y_2
+    7 &amp; 0\\\\
+    0 &amp; 2
 \end{bmatrix}
 \begin{bmatrix}
     y_1\\\\
     y_2
 \end{bmatrix}\\\\
-&=
+&amp;=
+\begin{bmatrix}
+    7y_1 +0y_2 &amp; 0y_1 + 2y_2
+\end{bmatrix}
+\begin{bmatrix}
+    y_1\\\\
+    y_2
+\end{bmatrix}\\\\
+&amp;=
 7y_1^2 + 2y_2^2
 \end{align*}
-$$
-</div>
+\end{split}\]</div>
 <p>That’s nice! If you look back to the change of variable that we have done in the quadratic form, you will see that we have found the same values!</p>
 <p>This form (without cross-term) is called the <strong>principal axes form</strong>.</p>
 <section id="summary">
@@ -1675,7 +1725,7 @@ f(\bs{x}) =\bs{x^\text{T}Ax}
 \[
 f(\bs{x}) =\bs{x^\text{T}\lambda x} = \bs{x^\text{T}x}\lambda
 \]</div>
-<p>Since <span class="math notranslate nohighlight">\(\bs{x}\)</span> is a unit vector, <span class="math notranslate nohighlight">\(\norm{\bs{x}}_2=1\)</span> and <span class="math notranslate nohighlight">\(\bs{x^\text{T}x}=1\)</span> (cf. <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.5-Norms/">2.5</a> Norms). We end up with</p>
+<p>Since <span class="math notranslate nohighlight">\(\bs{x}\)</span> is a unit vector, <span class="math notranslate nohighlight">\(\norm{\bs{x}}_2=1\)</span> and <span class="math notranslate nohighlight">\(\bs{x^\text{T}x}=1\)</span>. We end up with</p>
 <div class="math notranslate nohighlight">
 \[
 f(\bs{x}) = \lambda
@@ -1807,22 +1857,9 @@ f(\bs{x}) &amp;= 7y_1^2 + 2y_2^2\\\\
     b &amp; c
 \end{bmatrix}
 \end{split}\]</div>
-<p>Graphically, these functions can take one of three general shapes (click on the links to go to the Surface Plotter and move the shapes):</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>1.<a class="reference external" href="https://academo.org/demos/3d-surface-plotter/?expression=x*x%2By*y&amp;amp;xRange=-50%2C+50&amp;amp;yRange=-50%2C+50&amp;amp;resolution=49">Positive-definite form</a></p></th>
-<th class="head text-center"><p>2.<a class="reference external" href="https://academo.org/demos/3d-surface-plotter/?expression=-x*x-y*y&amp;amp;xRange=-50%2C+50&amp;amp;yRange=-50%2C+50&amp;amp;resolution=25">Negative-definite form</a></p></th>
-<th class="head text-center"><p>3.<a class="reference external" href="https://academo.org/demos/3d-surface-plotter/?expression=x*x-y*y&amp;amp;xRange=-50%2C+50&amp;amp;yRange=-50%2C+50&amp;amp;resolution=49">Indefinite form</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><img src="images/quadratic-functions-positive-definite-form.png" alt="Quadratic function with a positive definite form" title="Quadratic function with a positive definite form"></p></td>
-<td class="text-center"><p><img src="images/quadratic-functions-negative-definite-form.png" alt="Quadratic function with a negative definite form" title="Quadratic function with a negative definite form"></p></td>
-<td class="text-center"><p><img src="images/quadratic-functions-indefinite-form.png" alt="Quadratic function with a indefinite form" title="Quadratic function with a indefinite form"></p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>Graphically, these functions can take one of three general shapes:</p>
+<p><img alt="" src="../_images/quadratic-functions-p-n-i-definite-form.png" /></p>
+<p>Source: <a href="https://academo.org/demos/3d-surface-plotter"> Academo.org </a></p>
 <p>With the constraints that <span class="math notranslate nohighlight">\(\bs{x}\)</span> is a unit vector, the minimum of the function <span class="math notranslate nohighlight">\(f(\bs{x})\)</span> corresponds to the smallest eigenvalue and is obtained with its corresponding eigenvector. The maximum corresponds to the biggest eigenvalue and is obtained with its corresponding eigenvector.</p>
 </section>
 </section>
@@ -1983,6 +2020,24 @@ f(\bs{x}) &amp;= 7y_1^2 + 2y_2^2\\\\
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="2.6%20Special%20Kinds%20of%20Matrices%20and%20Vectors.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2.6 Special Kinds of Matrices and Vectors</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2.8%20Singular%20Value%20Decomposition.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2.8 Singular Value Decomposition</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1990,8 +2045,7 @@ f(\bs{x}) &amp;= 7y_1^2 + 2y_2^2\\\\
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -2000,8 +2054,7 @@ f(\bs{x}) &amp;= 7y_1^2 + 2y_2^2\\\\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigendecomposition">2.7 Eigendecomposition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.7 Eigendecomposition</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-as-linear-transformations">Matrices as linear transformations</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
 </ul>
@@ -2102,8 +2155,8 @@ By Mahmood Amintoosi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

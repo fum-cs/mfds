@@ -16,19 +16,17 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -38,11 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -67,10 +64,9 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.1 Scalars, Vectors, Matrices and Tensors" href="2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html" />
-    <link rel="prev" title="SVD for Image Compression" href="../high-dimensional-spaces/SVD_image_compression.html" />
+    <link rel="prev" title="Vector Quantization" href="../high-dimensional-spaces/LVQ.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,8 +82,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -95,6 +102,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -102,8 +110,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -119,8 +127,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,17 +157,21 @@
     
     
     <img src="../_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
-    <img src="../_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
+    <script>document.write(`<img src="../_static/fum-cs-logo.png" class="logo__image only-dark" alt="MFDS - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -188,18 +199,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/LVQ.html">Vector Quantization</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_01.html">PCA - Part 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_02.html">PCA - Part 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/SVD_image_compression.html">SVD for Image Compression</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter on Linear Algebra</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Chapter on Linear Algebra</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.5%20Norms.html">2.5 Norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.6%20Special%20Kinds%20of%20Matrices%20and%20Vectors.html">2.6 Special Kinds of Matrices and Vectors</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.7%20Eigendecomposition.html">2.7 Eigendecomposition</a></li>
 
 
 
@@ -208,6 +239,17 @@
 
 
 
+
+<li class="toctree-l2"><a class="reference internal" href="2.8%20Singular%20Value%20Decomposition.html">2.8 Singular Value Decomposition</a></li>
+
+
+
+
+
+
+
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -362,16 +404,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -395,17 +445,15 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter on Linear Algebra</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-linear-algebra">Getting started with linear algebra</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-use-of-python-numpy">The use of Python/NumPy</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#syllabus">Syllabus</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#extra">Extra</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enjoy">Enjoy</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-textbooks">PDF Textbooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-linear-algebra">Getting started with linear algebra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-use-of-python-numpy">The use of Python/NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syllabus">Syllabus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra">Extra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enjoy">Enjoy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-textbooks">PDF Textbooks</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -417,28 +465,26 @@
                 <article class="bd-article">
                   
   <p><img alt="" src="../_images/banner2.png" /></p>
-<script src="require.js"></script>
 <section class="tex2jax_ignore mathjax_ignore" id="chapter-on-linear-algebra">
 <h1>Chapter on Linear Algebra<a class="headerlink" href="#chapter-on-linear-algebra" title="Link to this heading">#</a></h1>
 <p>I should mention that the original material was from <a class="reference external" href="https://github.com/akhilvasvani/Linear-Algebra-Basics/">Akhil Vasvani’s github repo about linear algebra</a>.</p>
 <p>Borrowing from Hadrienj’s series of blog posts and his corresponding Python Notebooks to notes on <a class="reference external" href="http://www.deeplearningbook.org/">the Deep Learning Book</a> from Ian Goodfellow, Yoshua Bengio, and Aaron Courville (2016), the aim of these notebooks is to help beginners/advanced beginners to grasp linear algebra concepts underlying deep learning and machine learning. Acquiring these skills can boost your ability to understand and apply various data science algorithms.</p>
 <p>These notes cover the chapter 2 on Linear Algebra. This chapter gives a sense of what is most used in the domain of machine learning and deep learning. It is thus a great syllabus for anyone who want to dive in deep learning and acquire the concepts of linear algebra useful to better understand deep learning algorithms.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="getting-started-with-linear-algebra">
-<h1>Getting started with linear algebra<a class="headerlink" href="#getting-started-with-linear-algebra" title="Link to this heading">#</a></h1>
+<section id="getting-started-with-linear-algebra">
+<h2>Getting started with linear algebra<a class="headerlink" href="#getting-started-with-linear-algebra" title="Link to this heading">#</a></h2>
 <p>The goal of this series is to provide content for beginners who wants to understand enough linear algebra to be confortable with machine learning and deep learning. However, the chapter on linear algebra from the <a class="reference external" href="http://www.deeplearningbook.org/">Deep Learning book</a> is a bit tough for beginners. So usinge code, examples and drawings on each part of this chapter in order to add steps that may not be obvious for beginners. I also think that you can convey as much information and knowledge through examples than through general definitions. The illustrations are a way to see the big picture of an idea. Finally, I think that coding is a great tool to experiment concretely these abstract mathematical notions. Along with pen and paper, it adds a layer of what you can try to push your understanding through new horizons.</p>
 <p>Graphical representation is also very helpful to understand linear algebra. I tried to bind the concepts with plots (and code to produce it). The type of representation I liked most by doing this series is the fact that you can see any matrix as linear transformation of the space. In several chapters we will extend this idea and see how it can be useful to understand eigendecomposition, Singular Value Decomposition (SVD) or the Principal Components Analysis (PCA).</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-use-of-python-numpy">
-<h1>The use of Python/NumPy<a class="headerlink" href="#the-use-of-python-numpy" title="Link to this heading">#</a></h1>
+<section id="the-use-of-python-numpy">
+<h2>The use of Python/NumPy<a class="headerlink" href="#the-use-of-python-numpy" title="Link to this heading">#</a></h2>
 <p>In addition, creating and reading examples is really helpful to understanding the theory. The goal is two folds:</p>
 <ol class="arabic simple">
 <li><p>To provide a starting point to use Python/NumPy to apply linear algebra concepts. And since the final goal is to use linear algebra concepts for data science it seems natural to continuously go between theory and code. All you will need is a working Python installation with major mathematical librairies like NumPy/SciPy/matplotlib.</p></li>
 <li><p>Give a more concrete vision of the underlying concepts. I found hugely useful to play and experiment with these notebooks in order to build my understanding of somewhat complicated theoretical concepts or notations. I hope that reading them will be as useful.</p></li>
 </ol>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="syllabus">
-<h1>Syllabus<a class="headerlink" href="#syllabus" title="Link to this heading">#</a></h1>
+<section id="syllabus">
+<h2>Syllabus<a class="headerlink" href="#syllabus" title="Link to this heading">#</a></h2>
 <p>The syllabus follow exactly the <a class="reference external" href="http://www.deeplearningbook.org/">Deep Learning Book</a> so you can find more details if you can’t understand one specific point while you are reading it. Here is a short description of the content:</p>
 <ol class="arabic">
 <li><p><strong>Scalars, Vectors, Matrices and Tensors</strong></p>
@@ -479,32 +525,33 @@
 </li>
 </ol>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="extra">
-<h1>Extra<a class="headerlink" href="#extra" title="Link to this heading">#</a></h1>
+<section id="extra">
+<h2>Extra<a class="headerlink" href="#extra" title="Link to this heading">#</a></h2>
 <p>Added in Projection example with a diagram detailing how it works.</p>
 <p>Added in Low-Rank Matrix Approximation. Useful when SVD cannot be used for LARGE datasets.</p>
 <p>Also TensorFlow has <a class="reference external" href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/python/ops/linalg">linear algebra operations</a> as well.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="requirements">
-<h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
 <p>This content is aimed at beginners but it should be easier for people with at least some experience with mathematics.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="enjoy">
-<h1>Enjoy<a class="headerlink" href="#enjoy" title="Link to this heading">#</a></h1>
+<section id="enjoy">
+<h2>Enjoy<a class="headerlink" href="#enjoy" title="Link to this heading">#</a></h2>
 <p>Please let me know if you find any typos or incorrect information. I am happy to edit it. You can send me emails or open issues and pull request in the notebooks Github.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <p>Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). Deep learning. MIT press.</p>
 <p>Thank you (<a class="reference external" href="https://hadrienj.github.io">https://hadrienj.github.io</a>) for your wonderful illustrations, figures, diagrams and findings.</p>
 <p>Thank you Aerin Kim (<a class="reference external" href="https://towardsdatascience.com/&#64;aerinykim">https://towardsdatascience.com/&#64;aerinykim</a>) for your intuition and findings.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="pdf-textbooks">
-<h1>PDF Textbooks<a class="headerlink" href="#pdf-textbooks" title="Link to this heading">#</a></h1>
+<section id="pdf-textbooks">
+<h2>PDF Textbooks<a class="headerlink" href="#pdf-textbooks" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="http://www-users.math.umn.edu/~moham189/docs/Spring_2016/Fat,%20Square%20and%20Thin%20Matrices/Fat_Square_Thin_Matrices_Systems_of_Equations.pdf">Fat, Square, and Thin Matrices - Number of Solutions to Systems of Linear Equations</a></p>
 <p><a class="reference external" href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf">All Matrix Operations in Linear Algebra</a></p>
 <p><a class="reference external" href="https://web.ma.utexas.edu/users/sadun/S08/427K/matrix.pdf">Simple Matrix Operations</a></p>
 <p><a class="reference external" href="http://cs229.stanford.edu/section/cs229-linalg.pdf">Stanford: Linear Algebra Review and Reference</a></p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -540,12 +587,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../high-dimensional-spaces/SVD_image_compression.html"
+       href="../high-dimensional-spaces/LVQ.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SVD for Image Compression</p>
+        <p class="prev-next-title">Vector Quantization</p>
       </div>
     </a>
     <a class="right-next"
@@ -564,8 +611,7 @@
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -574,17 +620,15 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter on Linear Algebra</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-linear-algebra">Getting started with linear algebra</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-use-of-python-numpy">The use of Python/NumPy</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#syllabus">Syllabus</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#extra">Extra</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enjoy">Enjoy</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-textbooks">PDF Textbooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-linear-algebra">Getting started with linear algebra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-use-of-python-numpy">The use of Python/NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syllabus">Syllabus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra">Extra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enjoy">Enjoy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-textbooks">PDF Textbooks</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
@@ -632,8 +676,8 @@ By Mahmood Amintoosi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

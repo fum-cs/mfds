@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; MFDS</title>
+    <title>2.8 Singular Value Decomposition &#8212; MFDS</title>
   
   
   
@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -66,9 +63,9 @@
     <link rel="icon" href="../_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2.7 Eigendecomposition" href="2.7%20Eigendecomposition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -93,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,10 +126,7 @@
       
       
       
-        
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,17 +156,21 @@
     
     
     <img src="../_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
-    <img src="../_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
+    <script>document.write(`<img src="../_static/fum-cs-logo.png" class="logo__image only-dark" alt="MFDS - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -186,20 +196,40 @@
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_clustering.html">Clustering images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/kmeans-clustering-iris.html">IRIS Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/LVQ.html">Vector Quantization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_01.html">PCA - Part 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_02.html">PCA - Part 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/SVD_image_compression.html">SVD for Image Compression</a></li>
+
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Chapter on Linear Algebra</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="linear-algebra-basics.html">Chapter on Linear Algebra</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.5%20Norms.html">2.5 Norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.6%20Special%20Kinds%20of%20Matrices%20and%20Vectors.html">2.6 Special Kinds of Matrices and Vectors</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.7%20Eigendecomposition.html">2.7 Eigendecomposition</a></li>
 
 
 
@@ -208,6 +238,17 @@
 
 
 
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.8 Singular Value Decomposition</a></li>
+
+
+
+
+
+
+
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -393,16 +434,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -416,7 +465,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>2.8 Singular Value Decomposition</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -426,8 +475,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition">2.8 Singular Value Decomposition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.8 Singular Value Decomposition</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition">Intuition</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#every-matrix-can-be-seen-as-a-linear-transformation">Every matrix can be seen as a linear transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
@@ -478,22 +526,33 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
+  <div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/lsp/.virtualenvs/kaggle/lib/python2.7/site-packages/matplotlib/font_manager.py:273: UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
   warnings.warn(&#39;Matplotlib is building the font cache using fc-list. This may take a moment.&#39;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot style</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
@@ -510,8 +569,14 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%javascript</span>
 <span class="nx">IPython</span><span class="p">.</span><span class="nx">OutputArea</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">_should_scroll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">lines</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -524,8 +589,14 @@
 <script type="application/javascript">IPython.OutputArea.prototype._should_scroll = function(lines) {
     return false;
 }</script></div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotVectors</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -565,32 +636,30 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="math notranslate nohighlight">
 \[
 \newcommand\bs[1]{\boldsymbol{#1}}
 \]</div>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p>The last chapter was a lot of fun! This one will be a bit less heavy. We will see another way to decompose matrices: the Singular Value Decomposition or SVD. Since the beginning of this series, I emphasized the fact that you can see matrices as linear transformation in space. With the SVD, you decompose a matrix in three other matrices. You can see these new matrices as <em>sub-transformations</em> of the space. Instead of doing the transformation in one movement, we decompose it in three movements. As a bonus, we will apply the SVD to image processing. We will see the effect of SVD on an image of Lucy the goose (it is just a goose named Lucy…) so keep on reading!</p>
-</section>
 <section class="tex2jax_ignore mathjax_ignore" id="singular-value-decomposition">
 <h1>2.8 Singular Value Decomposition<a class="headerlink" href="#singular-value-decomposition" title="Link to this heading">#</a></h1>
-<img src="images/unit-circle-transformation1.png" width="400" alt="Plot of the unit circle and its transformation" title="Transformation of the unit circle">
-<em>The unit circle and its transformation by a matrix.</em>
+<p>The last chapter was a lot of fun! This one will be a bit less heavy. We will see another way to decompose matrices: the Singular Value Decomposition or SVD. Since the beginning of this series, I emphasized the fact that you can see matrices as linear transformation in space. With the SVD, you decompose a matrix in three other matrices. You can see these new matrices as <em>sub-transformations</em> of the space. Instead of doing the transformation in one movement, we decompose it in three movements. As a bonus, we will apply the SVD to image processing. We will see the effect of SVD on an image of Lucy the goose (it is just a goose named Lucy…) so keep on reading!</p>
+<p><img alt="Plot of the unit circle and its transformation" src="../_images/unit-circle-transformation1.png" /></p>
+<p><em>The unit circle and its transformation by a matrix.</em></p>
 <p>We saw in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.7-Eigendecomposition/">2.7</a> that the eigendecomposition can be done only for square matrices. The way to go to decompose other types of matrices that can’t be decomposed with eigendecomposition is to use <strong>Singular Value Decomposition</strong> (SVD).</p>
 <p>We will decompose <span class="math notranslate nohighlight">\(\bs{A}\)</span> into 3 matrices (instead of two with eigendecomposition):</p>
-<img src="images/singular-value-decomposition.png" width="300" alt="Illustration of the singular value decomposition" title="The singular value decomposition">
-<em>The singular value decomposition</em>
+<p><img alt="Illustration of the singular value decomposition" src="../_images/singular-value-decomposition.png" /></p>
+<p><em>The singular value decomposition</em></p>
 <p>The matrices <span class="math notranslate nohighlight">\(\bs{U}\)</span>, <span class="math notranslate nohighlight">\(\bs{D}\)</span>, and <span class="math notranslate nohighlight">\(\bs{V}\)</span> have the following properties:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\bs{U}\)</span> and <span class="math notranslate nohighlight">\(\bs{V}\)</span> are orthogonal matrices (<span class="math notranslate nohighlight">\(\bs{U}^\text{T}=\bs{U}^{-1}\)</span> and <span class="math notranslate nohighlight">\(\bs{V}^\text{T}=\bs{V}^{-1}\)</span>; see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a> for more details about orthogonal matrices)</p></li>
-<li><p><span class="math notranslate nohighlight">\(\bs{D}\)</span> is a diagonal matrix (all 0 except the diagonal ; see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a>). However <span class="math notranslate nohighlight">\(\bs{D}\)</span> is not necessarily square.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bs{U}\)</span> and <span class="math notranslate nohighlight">\(\bs{V}\)</span> are orthogonal matrices (<span class="math notranslate nohighlight">\(\bs{U}^\text{T}=\bs{U}^{-1}\)</span> and <span class="math notranslate nohighlight">\(\bs{V}^\text{T}=\bs{V}^{-1}\)</span>; see previous sections for more details about orthogonal matrices)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bs{D}\)</span> is a diagonal matrix (all 0 except the diagonal ; see previous sections). However <span class="math notranslate nohighlight">\(\bs{D}\)</span> is not necessarily square.</p></li>
 </ul>
 <p>The columns of <span class="math notranslate nohighlight">\(\bs{U}\)</span> are called the left-singular vectors of <span class="math notranslate nohighlight">\(\bs{A}\)</span> while the columns of <span class="math notranslate nohighlight">\(\bs{V}\)</span> are the right-singular vectors of <span class="math notranslate nohighlight">\(\bs{A}\)</span>. The values along the diagonal of <span class="math notranslate nohighlight">\(\bs{D}\)</span> are the singular values of <span class="math notranslate nohighlight">\(\bs{A}\)</span>.</p>
 <p>Here are the dimensions of the factorization:</p>
-<img src="images/singular-value-decomposition-understanding-dimensions.png" width="300" alt="Dimensions of the singular value decomposition (SVD)" title="The dimensions of the singular value decomposition (SVD)">
-<em>The dimensions of the singular value decomposition</em>
+<p><img alt="Dimensions of the singular value decomposition (SVD)" src="../_images/singular-value-decomposition-understanding-dimensions.png" /></p>
+<p><em>The dimensions of the singular value decomposition</em></p>
 <p>The diagonal matrix of singular values is not square but have the shape of <span class="math notranslate nohighlight">\(\bs{A}\)</span>. Look at the example provided in the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.svd.html">Numpy doc</a> to see that they create a matrix of zeros with the same shape as <span class="math notranslate nohighlight">\(\bs{A}\)</span> and fill it with the singular values:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">smat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
 <span class="n">smat</span><span class="p">[:</span><span class="mi">6</span><span class="p">,</span> <span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
@@ -600,9 +669,7 @@
 <section class="tex2jax_ignore mathjax_ignore" id="intuition">
 <h1>Intuition<a class="headerlink" href="#intuition" title="Link to this heading">#</a></h1>
 <p>I think that the intuition behind the singular value decomposition needs some explanations about the idea of matrix transformation. For that reason, here are several examples showing how the space can be transformed by 2D square matrices. Hopefully, this will lead to a better understanding of this statement: <span class="math notranslate nohighlight">\(\bs{A}\)</span> is a matrix that can be seen as a linear transformation. This transformation can be decomposed in three sub-transformations: 1. rotation, 2. re-scaling, 3. rotation. These three steps correspond to the three matrices <span class="math notranslate nohighlight">\(\bs{U}\)</span>, <span class="math notranslate nohighlight">\(\bs{D}\)</span>, and <span class="math notranslate nohighlight">\(\bs{V}\)</span>.</p>
-<span class='pquote'>
-    $\bs{A}$ is a matrix that can be seen as a linear transformation. This transformation can be decomposed in three sub-transformations: 1. rotation, 2. re-scaling, 3. rotation. These three steps correspond to the three matrices $\bs{U}$, $\bs{D}$, and $\bs{V}$.
-</span>
+<p><span class="math notranslate nohighlight">\(\bs{A}\)</span> is a matrix that can be seen as a linear transformation. This transformation can be decomposed in three sub-transformations: 1. rotation, 2. re-scaling, 3. rotation. These three steps correspond to the three matrices <span class="math notranslate nohighlight">\(\bs{U}\)</span>, <span class="math notranslate nohighlight">\(\bs{D}\)</span>, and <span class="math notranslate nohighlight">\(\bs{V}\)</span>.</p>
 <p>You can look at <a class="reference external" href="https://en.wikipedia.org/wiki/Singular-value_decomposition">this animation</a> from the Wikipedia article on the SVD. If you scroll down the page you will see each step.</p>
 <section id="every-matrix-can-be-seen-as-a-linear-transformation">
 <h2>Every matrix can be seen as a linear transformation<a class="headerlink" href="#every-matrix-can-be-seen-as-a-linear-transformation" title="Link to this heading">#</a></h2>
@@ -658,15 +725,15 @@
 \end{bmatrix}
 \end{split}\]</div>
 <p>just doubled each coordinate of our vector. Here are the graphical representation of <span class="math notranslate nohighlight">\(\bs{v}\)</span> and its transformation <span class="math notranslate nohighlight">\(\bs{w}\)</span>:</p>
-<img src="images/transformation-vector-by-matrix.png" width="400" alt="Plot of a vector and its transformation" title="The matrix increased both coordinates of the vector">
-<em>Applying the matrix on the vector multiplied each coordinate by two</em>
+<p><img alt="Plot of a vector and its transformation" src="../_images/transformation-vector-by-matrix.png" /></p>
+<p><em>Applying the matrix on the vector multiplied each coordinate by two</em></p>
 <p>You can look at other examples of simple transformations on vectors and unit circle in <a class="reference external" href="https://www.youtube.com/watch?v=kJIUbtSowRg">this video</a>.</p>
 </section>
 <section id="example-2">
 <h2>Example 2.<a class="headerlink" href="#example-2" title="Link to this heading">#</a></h2>
-<p>To represent the linear transformation associated with matrices we can also draw the unit circle and see how a matrix can transform it (see the BONUS in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.7-Eigendecomposition/">2.7</a>). The unit circle represents the coordinates of every unit vectors (vector of length 1, see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.6-Special-Kinds-of-Matrices-and-Vectors/">2.6</a>).</p>
-<img src="images/unit-circle.png" width="200" alt="Representation of the unit circle" title="The unit circle">
-<em>The unit circle</em>
+<p>To represent the linear transformation associated with matrices we can also draw the unit circle and see how a matrix can transform it (see the BONUS in previous section). The unit circle represents the coordinates of every unit vectors (vector of length 1).</p>
+<p><img alt="Representation of the unit circle" src="../_images/unit-circle.png" /></p>
+<p><em>The unit circle</em></p>
 <p>It is then possible to apply a matrix to all these unit vectors to see the kind of deformation it will produce.</p>
 <p>Again, let’s apply the matrix:</p>
 <div class="math notranslate nohighlight">
@@ -697,7 +764,7 @@
 \end{bmatrix}
 \end{split}\]</div>
 <img src="images/unit-circle-transformation.png" width="400" alt="Representation of the unit circle and its transformation" title="The unit circle and its transformation">
-<em>Another representation of the effect of the matrix: each coordinate of the unit circle was multiplied by two</em>
+<p><em>Another representation of the effect of the matrix: each coordinate of the unit circle was multiplied by two</em></p>
 <p>We can see that the matrix doubled the size of the circle. But in some transformations, the change applied to the <span class="math notranslate nohighlight">\(x\)</span> coordinate is different from the change applied to the <span class="math notranslate nohighlight">\(y\)</span> coordinate. Let’s see what it means graphically.</p>
 </section>
 <section id="example-3">
@@ -731,8 +798,8 @@
 \end{bmatrix}
 \end{split}\]</div>
 <p>This gives the following new circle:</p>
-<img src="images/unit-circle-transformation1.png" width="400" alt="Representation of the unit circle and its transformation" title="The unit circle and its transformation">
-<em>This time the matrix didn't rescale each coordinate with the same weight</em>
+<p><img alt="Representation of the unit circle and its transformation" src="../_images/unit-circle-transformation1.png" /></p>
+<p><em>Another representation of the effect of the matrix: each coordinate of the unit circle was multiplied by two</em></p>
 <p>We can check that with the equations associated with this matrix transformation. Let’s say that the coordinates of the new circle (after transformation) are <span class="math notranslate nohighlight">\(x'\)</span> and <span class="math notranslate nohighlight">\(y'\)</span>. The relation between the old coordinates (<span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>) and the new coordinates (<span class="math notranslate nohighlight">\(x'\)</span>, <span class="math notranslate nohighlight">\(y'\)</span>) is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -852,7 +919,7 @@ R=
 <p>Let’s rotate some vectors through an angle of <span class="math notranslate nohighlight">\(\theta = 45^\circ\)</span>.</p>
 <p>Let’s start with the vector <span class="math notranslate nohighlight">\(\bs{u}\)</span> of coordinates <span class="math notranslate nohighlight">\(x=0\)</span> and <span class="math notranslate nohighlight">\(y=1\)</span> and the vector <span class="math notranslate nohighlight">\(\bs{v}\)</span> of coordinates <span class="math notranslate nohighlight">\(x=1\)</span> and <span class="math notranslate nohighlight">\(y=0\)</span>. The vectors <span class="math notranslate nohighlight">\(\bs{u'}\)</span> <span class="math notranslate nohighlight">\(\bs{v'}\)</span> are the rotated vectors.</p>
 <img src="images/unit-vectors-rotation.png" width="200" alt="Rotation of the unit vectors through matrix operation" title="Rotation of the unit vectors">
-<em>Counter clockwise rotation of the unit vectors with $\theta = 45^\circ$</em>
+<p><em>Another representation of the effect of the matrix: each coordinate of the unit circle was multiplied by two</em></p>
 <p>First, let’s plot <span class="math notranslate nohighlight">\(\bs{u}\)</span> and <span class="math notranslate nohighlight">\(\bs{v}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -924,8 +991,9 @@ v_y = sin(45)
 </div>
 <p><em>Coding tip:</em> the numpy functions <code class="docutils literal notranslate"><span class="pre">sin</span></code> and <code class="docutils literal notranslate"><span class="pre">cos</span></code> take input in radians. We can convert our angle from degrees to radians with the function <code class="docutils literal notranslate"><span class="pre">np.radians()</span></code>.</p>
 <p>We can also transform a circle. We will take a rescaled circle (the one from the example 3.) to be able to see the effect of the rotation.</p>
-<img src="images/rescaled-circle-rotated.png" width="300" alt="A rescaled circle (not the same hight and width) rotated" title="Rescaled circle rotated">
-<em>The effect of a rotation matrix on a rescaled circle</em><div class="cell docutils container">
+<p><img alt="A rescaled circle (not the same hight and width) rotated" src="../_images/rescaled-circle-rotated.png" /></p>
+<p><em>Another representation of the effect of the matrix: each coordinate of the unit circle was multiplied by two</em></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">((</span><span class="n">x</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
@@ -963,8 +1031,9 @@ v_y = sin(45)
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>I hope that you got how vectors and matrices can be transformed by rotating or scaling matrices. The SVD can be seen as the decomposition of one complex transformation in 3 simpler transformations (a rotation, a scaling and another rotation).</p>
 <p>Note that we took only square matrices. The SVD can be done even with non square matrices but it is harder to represent transformation associated with non square matrices. For instance, a 3 by 2 matrix will map a 2D space to a 3D space.</p>
-<img src="images/non-square-matrix-change-dimensions.png" width="250" alt="A non square matrix change the number of dimensions of the input" title="Example of a change of dimensions">
-<em>A non square matrix change the number of dimensions of the input</em></section>
+<p><img alt="A rescaled circle (not the same hight and width) rotated" src="../_images/rescaled-circle-rotated.png" /></p>
+<p><em>Another representation of the effect of the matrix: each coordinate of the unit circle was multiplied by two</em></p>
+</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="the-three-transformations">
 <h1>The three transformations<a class="headerlink" href="#the-three-transformations" title="Link to this heading">#</a></h1>
@@ -1476,8 +1545,8 @@ v_y = sin(45)
 <p>Remember that <span class="math notranslate nohighlight">\(\bs{D}\)</span> are the singular values that need to be put into a diagonal matrix. Also, <span class="math notranslate nohighlight">\(\bs{V}\)</span> doesn’t need to be transposed (see above).</p>
 <p>The singular vectors and singular values are ordered with the first ones corresponding to the more variance explained. For this reason, using just the first few singular vectors and singular values will provide the reconstruction of the principal elements of the image.</p>
 <p>We can reconstruct an image from a certain number of singular values. For instance for 2 singular values we will have:</p>
-<img src="images/dimensions-reconstruction-image-singular-value-decomposition.png" width="400" alt="The dimensions of singular value decomposition to reconstruct image from few components" title="Image reconstruction dimensions">
-<em>We can reconstruct the image from few components</em>
+<p><img alt="A rescaled circle (not the same hight and width) rotated" src="../_images/rescaled-circle-rotated.png" /></p>
+<p><em>Another representation of the effect of the matrix: each coordinate of the unit circle was multiplied by two</em></p>
 <p>In this example, we have reconstructed the 669px by 1000px image from two singular values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1617,6 +1686,15 @@ v_y = sin(45)
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="2.7%20Eigendecomposition.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2.7 Eigendecomposition</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -1624,8 +1702,7 @@ v_y = sin(45)
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1634,8 +1711,7 @@ v_y = sin(45)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition">2.8 Singular Value Decomposition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.8 Singular Value Decomposition</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition">Intuition</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#every-matrix-can-be-seen-as-a-linear-transformation">Every matrix can be seen as a linear transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
@@ -1723,8 +1799,8 @@ By Mahmood Amintoosi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

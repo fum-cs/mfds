@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; MFDS</title>
+    <title>2.6 Special Kinds of Matrices and Vectors &#8212; MFDS</title>
   
   
   
@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -66,9 +63,10 @@
     <link rel="icon" href="../_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.7 Eigendecomposition" href="2.7%20Eigendecomposition.html" />
+    <link rel="prev" title="2.5 Norms" href="2.5%20Norms.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +82,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -93,6 +102,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +110,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,10 +127,7 @@
       
       
       
-        
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,17 +157,21 @@
     
     
     <img src="../_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
-    <img src="../_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
+    <script>document.write(`<img src="../_static/fum-cs-logo.png" class="logo__image only-dark" alt="MFDS - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -186,20 +197,40 @@
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image_clustering.html">Clustering images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/kmeans-clustering-iris.html">IRIS Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/LVQ.html">Vector Quantization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_01.html">PCA - Part 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/PCA_02.html">PCA - Part 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../high-dimensional-spaces/SVD_image_compression.html">SVD for Image Compression</a></li>
+
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-basics.html">Chapter on Linear Algebra</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="linear-algebra-basics.html">Chapter on Linear Algebra</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.5%20Norms.html">2.5 Norms</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.6 Special Kinds of Matrices and Vectors</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="2.7%20Eigendecomposition.html">2.7 Eigendecomposition</a></li>
 
 
 
@@ -208,6 +239,17 @@
 
 
 
+
+<li class="toctree-l2"><a class="reference internal" href="2.8%20Singular%20Value%20Decomposition.html">2.8 Singular Value Decomposition</a></li>
+
+
+
+
+
+
+
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -393,16 +435,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -416,7 +466,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>2.6 Special Kinds of Matrices and Vectors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -426,8 +476,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#special-kinds-of-matrices-and-vectors">2.6 Special Kinds of Matrices and Vectors</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.6 Special Kinds of Matrices and Vectors</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-matrices">Diagonal matrices</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
@@ -479,8 +528,13 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot parameters</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
 <span class="o">%</span><span class="k">pylab</span> inline
@@ -493,29 +547,33 @@
 </pre></div>
 </div>
 </div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="math notranslate nohighlight">
 \[
 \newcommand\bs[1]{\boldsymbol{#1}}
 \]</div>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p>We have seen in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.3-Identity-and-Inverse-Matrices/">2.3</a> some interesting kind of matrices. We will see other type of vectors and matrices in this chapter. It is not a big chapter but it is important to understand the next ones.</p>
-</section>
 <section class="tex2jax_ignore mathjax_ignore" id="special-kinds-of-matrices-and-vectors">
 <h1>2.6 Special Kinds of Matrices and Vectors<a class="headerlink" href="#special-kinds-of-matrices-and-vectors" title="Link to this heading">#</a></h1>
-<img src="images/diagonal-and-symmetric-matrices.png" width="400" alt="Diagonal and symmetric matrices" title="Diagonal and symmetric matrices">
-<em>Example of diagonal and symmetric matrices</em>
+<p>We have seen in previous sections some interesting kind of matrices. We will see other type of vectors and matrices in this chapter. It is not a big chapter but it is important to understand the next ones.</p>
+<p><img alt="Diagonal and symmetric matrices" src="../_images/diagonal-and-symmetric-matrices.png" /></p>
+<p><em>Example of diagonal and symmetric matrices</em></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="diagonal-matrices">
 <h1>Diagonal matrices<a class="headerlink" href="#diagonal-matrices" title="Link to this heading">#</a></h1>
-<img src="images/diagonal-matrix.png" width="150" alt="Example of a diagonal matrix" title="Diagonal matrix">
-<em>Example of a diagonal matrix</em>
+<p><img alt="Example of a diagonal matrix" src="../_images/diagonal-matrix.png" /></p>
+<p><em>Example of a diagonal matrix</em></p>
 <p>A matrix <span class="math notranslate nohighlight">\(\bs{A}_{i,j}\)</span> is diagonal if its entries are all zeros except on the diagonal (when <span class="math notranslate nohighlight">\(i=j\)</span>).</p>
 <section id="example-1">
 <h2>Example 1.<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h2>
@@ -794,8 +852,8 @@
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="symmetric-matrices">
 <h1>Symmetric matrices<a class="headerlink" href="#symmetric-matrices" title="Link to this heading">#</a></h1>
-<img src="images/symmetric-matrix.png" width="150" alt="Illustration of a symmetric matrix" title="Symmetric matrix">
-<em>Illustration of a symmetric matrix</em>
+<p><img alt="Illustration of a symmetric matrix" src="../_images/symmetric-matrix.png" /></p>
+<p><em>Illustration of a symmetric matrix</em></p>
 <p>The matrix <span class="math notranslate nohighlight">\(A\)</span> is symmetric if it is equal to its transpose:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -913,17 +971,14 @@
 \end{bmatrix}=0
 \end{split}\]</div>
 <p>In addition, when the norm of orthogonal vectors is the unit norm they are called <strong>orthonormal</strong>.</p>
-<span class='pquote'>
-    It is impossible to have more than $n$ vectors mutually orthogonal in $\mathbb{R}^n$.
-</span>
 <p>It is impossible to have more than <span class="math notranslate nohighlight">\(n\)</span> vectors mutually orthogonal in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>. For instance try to draw 3 vectors in a 2-dimensional space (<span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>) that are mutually orthogonal…</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="orthogonal-matrices">
 <h1>Orthogonal matrices<a class="headerlink" href="#orthogonal-matrices" title="Link to this heading">#</a></h1>
 <p>Orthogonal matrices are important because they have interesting properties. A matrix is orthogonal if columns are mutually orthogonal and have a unit norm (orthonormal) and rows are mutually orthonormal and have unit norm.</p>
-<img src="images/orthogonal-matrix.png" width="300" alt="Under the hood of an orthogonal matrix" title="Under the hood of an orthogonal matrix">
-<em>Under the hood of an orthogonal matrix</em>
+<p><img alt="Under the hood of an orthogonal matrix" src="../_images/orthogonal-matrix.png" /></p>
+<p><em>Under the hood of an orthogonal matrix</em></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \bs{A}= 
@@ -1011,7 +1066,7 @@
 \end{bmatrix}
 \end{align*}
 \end{split}\]</div>
-<p>We saw in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.5-Norms/">2.5</a> that the norm of the vector <span class="math notranslate nohighlight">\(\begin{bmatrix}
+<p>We saw that the norm of the vector <span class="math notranslate nohighlight">\(\begin{bmatrix}
     a &amp; c
 \end{bmatrix}\)</span> is equal to <span class="math notranslate nohighlight">\(a^2+c^2\)</span> (<span class="math notranslate nohighlight">\(L^2\)</span> or squared <span class="math notranslate nohighlight">\(L^2\)</span>). In addtion, we saw that the rows of <span class="math notranslate nohighlight">\(\bs{A}\)</span> have a unit norm because <span class="math notranslate nohighlight">\(\bs{A}\)</span> is orthogonal. This means that <span class="math notranslate nohighlight">\(a^2+c^2=1\)</span> and <span class="math notranslate nohighlight">\(b^2+d^2=1\)</span>. So we now have:</p>
 <div class="math notranslate nohighlight">
@@ -1068,17 +1123,17 @@ ab+cd
 \[
 (\bs{A^\text{T}A})\bs{A}^{-1}=\bs{I}\bs{A}^{-1}
 \]</div>
-<p>Recall from <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.3-Identity-and-Inverse-Matrices/">2.3</a> that a matrix or vector doesn’t change when it is multiplied by the identity matrix. So we have:</p>
+<p>Recall that a matrix or vector doesn’t change when it is multiplied by the identity matrix. So we have:</p>
 <div class="math notranslate nohighlight">
 \[
 (\bs{A^\text{T}A})\bs{A}^{-1}=\bs{A}^{-1}
 \]</div>
-<p>We also saw in <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.2-Multiplying-Matrices-and-Vectors/">2.2</a> that matrix multiplication is associative so we can remove the parenthesis:</p>
+<p>We also saw that matrix multiplication is associative so we can remove the parenthesis:</p>
 <div class="math notranslate nohighlight">
 \[
 \bs{A^\text{T}A}\bs{A}^{-1}=\bs{A}^{-1}
 \]</div>
-<p>We also know that <span class="math notranslate nohighlight">\(\bs{A}\bs{A}^{-1}=\bs{I}\)</span> (see <a class="reference external" href="https://hadrienj.github.io/posts/Deep-Learning-Book-Series-2.3-Identity-and-Inverse-Matrices/">2.3</a>) so we can replace:</p>
+<p>We also know that <span class="math notranslate nohighlight">\(\bs{A}\bs{A}^{-1}=\bs{I}\)</span> so we can replace:</p>
 <div class="math notranslate nohighlight">
 \[
 \bs{A^\text{T}}\bs{I}=\bs{A}^{-1}
@@ -1246,6 +1301,24 @@ ab+cd
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="2.5%20Norms.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2.5 Norms</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2.7%20Eigendecomposition.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2.7 Eigendecomposition</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1253,8 +1326,7 @@ ab+cd
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1263,8 +1335,7 @@ ab+cd
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#special-kinds-of-matrices-and-vectors">2.6 Special Kinds of Matrices and Vectors</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.6 Special Kinds of Matrices and Vectors</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-matrices">Diagonal matrices</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2.</a></li>
@@ -1344,8 +1415,8 @@ By Mahmood Amintoosi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
