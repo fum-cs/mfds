@@ -17,8 +17,8 @@ This courses covers the fundamental mathematics in data mining and machine learn
       <img src="_images/M-Amintoosi.jpg" alt="Mahmood Amintoosi" style="width:100px;height:auto;">  
     </td>  
     <td>  
-      <strong>Mahmood Amintoosi</strong><br>  
-      Email: <a href="mailto:m.amintoosi@um.ac.ir">m.amintoosi@um.ac.ir</a>  
+      <strong><a href="https://mamintoosi.github.io/">Mahmood Amintoosi</a></strong><br>  
+      Email: m.amintoosi AT um.ac.ir
     </td>  
   </tr>  
 </table>  
@@ -33,7 +33,8 @@ This courses covers the fundamental mathematics in data mining and machine learn
       <img src="_images/H-Mehr.jpg" alt="Hoda MehrBagherpour" style="width:100px;height:auto;">  
     </td>  
     <td>  
-      <strong>Hoda MehrBagherpour</strong>  
+      <strong><a href="https://github.com/HodaMehr2000">Hoda MehrBagherpour</a></strong><br>  
+      Email: mehrbagherpour AT mail.um.ac.ir  
     </td>  
   </tr>  
 </table>

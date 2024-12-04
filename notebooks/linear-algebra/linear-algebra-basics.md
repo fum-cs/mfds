@@ -1,6 +1,6 @@
 ![](img/banner.png)
 
-# Chapter on Linear Algebra
+# 2. Linear Algebra
 
 I should mention that the original material was from [Akhil Vasvani's github repo about linear algebra](https://github.com/akhilvasvani/Linear-Algebra-Basics/).
 
