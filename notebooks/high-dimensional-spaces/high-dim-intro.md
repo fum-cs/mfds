@@ -1,3 +1,5 @@
+![](img/banner.png)
+
 # Chapter on High Dimensional Spaces
 
 This chapter is dedicated to exploring high dimensional spaces and their implications in data science. The content is structured to provide students with a comprehensive understanding of the concepts and methodologies related to high-dimensional data and clustering techniques.

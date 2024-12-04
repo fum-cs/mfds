@@ -1,6 +1,4 @@
 ![](img/banner.png)
-%%HTML
-<script src="require.js"></script>
 
 # Chapter on Linear Algebra
 
@@ -10,13 +8,13 @@ Borrowing from Hadrienj's series of blog posts and his corresponding Python Note
 
 These notes cover the chapter 2 on Linear Algebra. This chapter gives a sense of what is most used in the domain of machine learning and deep learning. It is thus a great syllabus for anyone who want to dive in deep learning and acquire the concepts of linear algebra useful to better understand deep learning algorithms.
 
-# Getting started with linear algebra
+## Getting started with linear algebra
 
 The goal of this series is to provide content for beginners who wants to understand enough linear algebra to be confortable with machine learning and deep learning. However, the chapter on linear algebra from the [Deep Learning book](http://www.deeplearningbook.org/) is a bit tough for beginners. So usinge code, examples and drawings on each part of this chapter in order to add steps that may not be obvious for beginners. I also think that you can convey as much information and knowledge through examples than through general definitions. The illustrations are a way to see the big picture of an idea. Finally, I think that coding is a great tool to experiment concretely these abstract mathematical notions. Along with pen and paper, it adds a layer of what you can try to push your understanding through new horizons.
 
 Graphical representation is also very helpful to understand linear algebra. I tried to bind the concepts with plots (and code to produce it). The type of representation I liked most by doing this series is the fact that you can see any matrix as linear transformation of the space. In several chapters we will extend this idea and see how it can be useful to understand eigendecomposition, Singular Value Decomposition (SVD) or the Principal Components Analysis (PCA).
 
-# The use of Python/NumPy
+## The use of Python/NumPy
 
 In addition, creating and reading examples is really helpful to understanding the theory. The goal is two folds:
 
@@ -24,7 +22,7 @@ In addition, creating and reading examples is really helpful to understanding th
 
 2. Give a more concrete vision of the underlying concepts. I found hugely useful to play and experiment with these notebooks in order to build my understanding of somewhat complicated theoretical concepts or notations. I hope that reading them will be as useful.
 
-# Syllabus
+## Syllabus
 
 The syllabus follow exactly the [Deep Learning Book](http://www.deeplearningbook.org/) so you can find more details if you can't understand one specific point while you are reading it. Here is a short description of the content:
 
@@ -76,7 +74,7 @@ The syllabus follow exactly the [Deep Learning Book](http://www.deeplearningbook
 
     This is the last chapter of this series on linear algebra! It is about Principal Components Analysis (PCA). We will use some knowledge that we acquired along the preceding chapters to understand this important data analysis tool!
 
-# Extra
+## Extra
 
 Added in Projection example with a diagram detailing how it works.
 
@@ -84,15 +82,15 @@ Added in Low-Rank Matrix Approximation. Useful when SVD cannot be used for LARGE
 
 Also TensorFlow has [linear algebra operations](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/python/ops/linalg) as well.
 
-# Requirements
+## Requirements
 
 This content is aimed at beginners but it should be easier for people with at least some experience with mathematics.
 
-# Enjoy
+## Enjoy
 
 Please let me know if you find any typos or incorrect information. I am happy to edit it. You can send me emails or open issues and pull request in the notebooks Github.
 
-# References
+## References
 
 Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning. MIT press.
 
@@ -100,7 +98,7 @@ Thank you (https://hadrienj.github.io) for your wonderful illustrations, figures
 
 Thank you Aerin Kim (https://towardsdatascience.com/@aerinykim) for your intuition and findings.
 
-# PDF Textbooks
+## PDF Textbooks
 
 [Fat, Square, and Thin Matrices - Number of Solutions to Systems of Linear Equations](http://www-users.math.umn.edu/~moham189/docs/Spring_2016/Fat,%20Square%20and%20Thin%20Matrices/Fat_Square_Thin_Matrices_Systems_of_Equations.pdf)
 

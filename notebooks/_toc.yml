@@ -22,25 +22,24 @@ parts:
       - file: high-dimensional-spaces/image-clustering_HC
       # - file: high-dimensional-spaces/kmeans-clustering-iris
       - file: high-dimensional-spaces/LVQ
-      - file: high-dimensional-spaces/Bias-Variance-Tradeoff
-      - file: high-dimensional-spaces/Silhouette-clustering
-      - file: high-dimensional-spaces/PCA_01
-      - file: high-dimensional-spaces/PCA_02
-      - file: high-dimensional-spaces/plot_pca_vs_lda
-      - file: high-dimensional-spaces/SVD_image_compression
+      # - file: high-dimensional-spaces/Bias-Variance-Tradeoff
+      # - file: high-dimensional-spaces/Silhouette-clustering
+      # - file: high-dimensional-spaces/PCA_01
+      # - file: high-dimensional-spaces/PCA_02
+      # - file: high-dimensional-spaces/plot_pca_vs_lda
+      # - file: high-dimensional-spaces/SVD_image_compression
   - caption: Linear Algebra for DS
     chapters:
     - file: linear-algebra/linear-algebra-basics
-      sections:    
+      sections:
       - file: "linear-algebra/2.1 Scalars, Vectors, Matrices, and Tensors"
       - file: "linear-algebra/2.2 Multiplying Matrices and Vectors"
       - file: "linear-algebra/2.3 Identity and Inverse Matrices"
       - file: "linear-algebra/2.4 Linear Dependence and Span"
       - file: "linear-algebra/2.5 Norms"
-
-    # - file: "linear-algebra/2.6 Special Kinds of Matrices and Vectors"
-    # - file: "linear-algebra/2.7 Eigendecomposition"
-    # - file: "linear-algebra/2.8 Singular Value Decomposition"
+      - file: "linear-algebra/2.6 Special Kinds of Matrices and Vectors"
+      - file: "linear-algebra/2.7 Eigendecomposition"
+      - file: "linear-algebra/2.8 Singular Value Decomposition"
     # - file: "linear-algebra/2.9 The Moore-Penrose Pseudoinverse"
     # - file: "linear-algebra/2.10 The Trace Operator"
     # - file: "linear-algebra/2.11 The Determinant"
