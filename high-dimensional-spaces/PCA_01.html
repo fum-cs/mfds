@@ -63,6 +63,8 @@
     <link rel="icon" href="../_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PCA - Part 2" href="PCA_02.html" />
+    <link rel="prev" title="Vector Quantization" href="LVQ.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +127,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -183,8 +183,8 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Dimensional Spaces</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="high-dim-intro.html">Chapter on High Dimensional Spaces</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="high-dim-intro.html">1. High Dimensional Spaces</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="SAT_Table.html">SAT-Table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="NQueen.html">N-Queen Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_01_intro.html">Images as high dimensional data</a></li>
@@ -199,12 +199,42 @@
 <li class="toctree-l2"><a class="reference internal" href="image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LVQ.html">Vector Quantization</a></li>
 
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">PCA - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCA_02.html">PCA - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Bias-Variance Tradeoff</a></li>
+
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../linear-algebra/linear-algebra-basics.html">Chapter on Linear Algebra</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear-algebra/linear-algebra-basics.html">2. Linear Algebra</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.5%20Norms.html">2.5 Norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.6%20Special%20Kinds%20of%20Matrices%20and%20Vectors.html">2.6 Special Kinds of Matrices and Vectors</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.7%20Eigendecomposition.html">2.7 Eigendecomposition</a></li>
 
 
 
@@ -213,6 +243,17 @@
 
 
 
+
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.8%20Singular%20Value%20Decomposition.html">2.8 Singular Value Decomposition</a></li>
+
+
+
+
+
+
+
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -446,6 +487,22 @@ document.write(`
 <h1>PCA - Part 1<a class="headerlink" href="#pca-part-1" title="Link to this heading">#</a></h1>
 <p><strong>Mahmood Amintoosi, Fall 2024</strong></p>
 <p>Computer Science Dept, Ferdowsi University of Mashhad</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://setosa.io/ev/principal-component-analysis/">Principal Component Analysis explained visually</a></p></li>
+<li><p><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">In Depth: Principal Component Analysis, Python Data Science Handbook</a></p></li>
+<li><p><a class="reference external" href="https://www.dropbox.com/s/ftw3f8wvx07gos9/PRML_ch12_sec1.pdf?dl=0">PRML-PCA Slides</a></p>
+<ul>
+<li><p><a class="reference external" href="https://fum-cs.github.io/fds/misc/MatrixCalculus.pdf">Matrix Differentiation</a> by
+Randal J. Barnes</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.cs.rpi.edu/~zaki/DMML/slides/pdf/ychap7.pdf">Chapter 7 of Zaki (Slides)</a></p></li>
+</ul>
+<p><strong>Kaggle</strong>{: .label .label-green }<a class="reference external" href="https://www.kaggle.com/leo2510/country-clustering-and-pca-analysis">Country Profiling Using PCA and Clustering</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.exploratory.io/an-introduction-to-principal-component-analysis-pca-with-2018-world-soccer-players-data-810d84a14eab">An Introduction to Principal Component Analysis (PCA) with 2018 World Soccer Players Data</a>, <a class="reference external" href="https://fum-cs.github.io/fds/misc/An%20Introduction%20to%20Principal%20Component%20Analysis%20(PCA)%20with%202018%20World%20Soccer%20Players%20Data.pdf">PDF</a></p></li>
+<li><p><a class="reference external" href="https://blog.exploratory.io/using-pca-to-see-which-countries-have-better-players-for-world-cup-games-a72f91698b95">Using PCA to See Which Countries have Better Players for World Cup Games</a>, <a class="reference external" href="https://fum-cs.github.io/fds/misc/Using%20PCA%20to%20See%20Which%20Countries%20have%20Better%20Players%20for%20World%20Cup%20Games.pdf">PDF</a></p></li>
+</ul>
 <p>Chapter 7 of Zaki</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1085,6 +1142,24 @@ centered by subtracting the mean <span class="math notranslate nohighlight">\(\m
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="LVQ.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Vector Quantization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="PCA_02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">PCA - Part 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

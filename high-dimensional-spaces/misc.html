@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. High Dimensional Spaces &#8212; MFDS</title>
+    <title>Bias-Variance Tradeoff &#8212; MFDS</title>
   
   
   
@@ -57,14 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'high-dimensional-spaces/high-dim-intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'high-dimensional-spaces/misc';</script>
     <link rel="icon" href="../_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="SAT-Table" href="SAT_Table.html" />
-    <link rel="prev" title="Welcome to Mathematical Foundations of Data Science Course website" href="../intro.html" />
+    <link rel="next" title="2. Linear Algebra" href="../linear-algebra/linear-algebra-basics.html" />
+    <link rel="prev" title="PCA - Part 2" href="PCA_02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,7 +182,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Dimensional Spaces</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">1. High Dimensional Spaces</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="high-dim-intro.html">1. High Dimensional Spaces</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="SAT_Table.html">SAT-Table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="NQueen.html">N-Queen Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_01_intro.html">Images as high dimensional data</a></li>
@@ -201,7 +199,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="PCA_01.html">PCA - Part 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PCA_02.html">PCA - Part 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html">Bias-Variance Tradeoff</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bias-Variance Tradeoff</a></li>
 
 </ul>
 </details></li>
@@ -325,7 +323,7 @@
       
       
       
-      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Fhigh-dimensional-spaces/high-dim-intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Fhigh-dimensional-spaces/misc.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -355,7 +353,7 @@
       
       
       
-      <li><a href="../_sources/high-dimensional-spaces/high-dim-intro.md" target="_blank"
+      <li><a href="../_sources/high-dimensional-spaces/misc.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -439,7 +437,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1. High Dimensional Spaces</h1>
+    <h1>Bias-Variance Tradeoff</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -449,19 +447,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-chapter-content">Overview of Chapter Content</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-and-satisfiability-problems">Clustering and Satisfiability Problems</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-n-queen-problem">The N-Queen Problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-image-data">Introduction to Image Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-techniques">Clustering Techniques</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-dimensional-analysis">High Dimensional Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-segmentation-and-clustering">Image Segmentation and Clustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction">Dimensionality Reduction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-of-clustering">Evaluation of Clustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bias-Variance Tradeoff</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#from-high-dimensional-into-low-dimensional-euclidean-space">From high-dimensional into low-dimensional Euclidean space</a></li>
 </ul>
-</li>
-</ul>
+
             </nav>
         </div>
     </div>
@@ -473,52 +462,53 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="" src="../_images/banner.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="high-dimensional-spaces">
-<h1>1. High Dimensional Spaces<a class="headerlink" href="#high-dimensional-spaces" title="Link to this heading">#</a></h1>
-<p>This chapter is dedicated to exploring high dimensional spaces and their implications in data science. The content is structured to provide students with a comprehensive understanding of the concepts and methodologies related to high-dimensional data and clustering techniques.</p>
-<section id="overview-of-chapter-content">
-<h2>Overview of Chapter Content<a class="headerlink" href="#overview-of-chapter-content" title="Link to this heading">#</a></h2>
-<section id="clustering-and-satisfiability-problems">
-<h3>Clustering and Satisfiability Problems<a class="headerlink" href="#clustering-and-satisfiability-problems" title="Link to this heading">#</a></h3>
-<p>We begin with an introduction to clustering in high-dimensional spaces. The initial focus is on demonstrating that the process of clustering a subset of data into two distinct groups can be framed as a satisfiability problem. This foundational concept sets the stage for understanding more complex clustering scenarios.</p>
+<section id="bias-variance-tradeoff">
+<h1>Bias-Variance Tradeoff<a class="headerlink" href="#bias-variance-tradeoff" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff">Wiki</a></p></li>
+<li><p><a class="reference external" href="https://mlu-explain.github.io/bias-variance/">MLU-Explain bias-variance</a></p></li>
+<li><p><a class="reference external" href="https://mlu-explain.github.io/double-descent/">MLU-Explain double-descent, part 1</a></p></li>
+</ul>
+<p><strong>Further Reading</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mlu-explain.github.io/double-descent2/">MLU-Explain double-descent, part 2</a></p></li>
+<li><p><a class="reference external" href="https://medium.com/&#64;DeepthiTabithaBennet/the-bias-variance-tradeoff-a-newbies-guide-by-a-newbie-95fb03dbebcb">The Bias-Variance Tradeoff: A Newbie’s Guide, by a Newbie</a></p></li>
+<li><p><a class="reference external" href="https://spotintelligence.com/2023/04/11/bias-variance-trade-off/">bias-variance-trade-off</a></p></li>
+</ul>
+<p><strong>Paper:</strong> <a class="reference external" href="https://arxiv.org/abs/2205.15549">VC Theoretical Explanation of Double Descent</a></p>
+<p><strong>Paper:</strong> <a class="reference external" href="https://www.pnas.org/doi/10.1073/pnas.1903070116">Reconciling modern machine-learning practice and the classical bias–variance trade-off</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://medium.com/mlearning-ai/double-descent-8f92dfdc442f">Double Descent</a>, <a class="reference internal" href="#misc/medium-com_mlearning-ai_double-descent-highlightes.md"><span class="xref myst">Highlights</span></a></p></li>
+<li><p><a class="reference external" href="https://hippocampus-garden.com/double_descent/">Reproducing Deep Double Descent</a>, <a class="reference internal" href="#misc/hippocampus-garden-com_double_descent-highlightes.md"><span class="xref myst">Highlights</span></a></p>
+<ul>
+<li><p><a class="reference external" href="https://colab.research.google.com/drive/1lT2dUqal90NbLVQIGvseyAdKzH19MH2T?usp=sharing">deep_double_descent, colab</a></p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference external" href="https://fumdrive.um.ac.ir/index.php/f/4160875">Sec 22.3 of Zaki</a></p></li>
+</ul>
+<p><strong>Paper:</strong> <a class="reference external" href="https://arxiv.org/abs/2211.10322">Understanding the double descent curve in Machine Learning</a></p>
 </section>
-<section id="the-n-queen-problem">
-<h3>The N-Queen Problem<a class="headerlink" href="#the-n-queen-problem" title="Link to this heading">#</a></h3>
-<p>Building upon the satisfiability problem, we extend our discussion to the N-Queen problem. This classical optimization problem highlights the interplay between combinatorial structures and clustering approaches, providing insights into the broader applications of these concepts in data science.</p>
-</section>
-<section id="introduction-to-image-data">
-<h3>Introduction to Image Data<a class="headerlink" href="#introduction-to-image-data" title="Link to this heading">#</a></h3>
-<p>This section transitions to the realm of image data, which serves as a prime example of high-dimensional instances. Students are introduced to images as multidimensional arrays, setting the context for subsequent clustering and analysis techniques tailored to visual data.</p>
-</section>
-<section id="clustering-techniques">
-<h3>Clustering Techniques<a class="headerlink" href="#clustering-techniques" title="Link to this heading">#</a></h3>
-<p>Several clustering methodologies are discussed, including k-means clustering and hierarchical clustering. Students will learn about the mechanics of these algorithms and their applications in partitioning high-dimensional datasets.</p>
-</section>
-<section id="high-dimensional-analysis">
-<h3>High Dimensional Analysis<a class="headerlink" href="#high-dimensional-analysis" title="Link to this heading">#</a></h3>
-<p>This section delves into the relationship between high-dimensional data and various clustering algorithms. Topics include the impacts of dimensionality on k-means clustering, the k-nearest neighbors (KNN) algorithm, and the consequences of bias-variance tradeoff in clustering contexts.</p>
-</section>
-<section id="image-segmentation-and-clustering">
-<h3>Image Segmentation and Clustering<a class="headerlink" href="#image-segmentation-and-clustering" title="Link to this heading">#</a></h3>
-<p>Focusing on image processing, we explore segmentation techniques using k-means and other clustering algorithms. Students will engage with practical examples showcasing how these methods can be applied to real-world image data.</p>
-</section>
-<section id="dimensionality-reduction">
-<h3>Dimensionality Reduction<a class="headerlink" href="#dimensionality-reduction" title="Link to this heading">#</a></h3>
-<p>To address the challenges posed by high-dimensional spaces, we cover dimensionality reduction techniques such as Principal Component Analysis (PCA) and Singular Value Decomposition (SVD). Students will learn how these methods can simplify complex datasets while preserving essential features, enhancing visualization and analysis.</p>
-</section>
-<section id="evaluation-of-clustering">
-<h3>Evaluation of Clustering<a class="headerlink" href="#evaluation-of-clustering" title="Link to this heading">#</a></h3>
-<p>This section also introduces evaluation metrics for clustering algorithms, including the Silhouette score, providing students with tools to assess the effectiveness of their clustering strategies.</p>
-</section>
-<section id="conclusion">
-<h3>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
-<p>In conclusion, this chapter equips students with a solid foundation in high-dimensional spaces and clustering methodologies. Through theoretical understanding and practical application, students will be prepared to tackle complex data science problems involving high-dimensional data.</p>
-<hr class="docutils" />
-<p>This overview serves as a guide to the various topics and concepts covered in the chapter, illustrating the relevance and application of high-dimensional analyses in the field of data science.</p>
-</section>
-</section>
-<div class="toctree-wrapper compound">
-</div>
+<section id="from-high-dimensional-into-low-dimensional-euclidean-space">
+<h1>From high-dimensional into low-dimensional Euclidean space<a class="headerlink" href="#from-high-dimensional-into-low-dimensional-euclidean-space" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stackabuse.com/random-projection-theory-and-implementation-in-python-with-scikit-learn/">Random Projection: Theory and Implementation in Python with Scikit-Learn</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Johnson%E2%80%93Lindenstrauss_lemma">Johnson–Lindenstrauss lemma</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Random_projection">Gaussian random projection</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_johnson_lindenstrauss_bound.html#sphx-glr-auto-examples-miscellaneous-plot-johnson-lindenstrauss-bound-py">Scikit-learn: The Johnson-Lindenstrauss bound for embedding with random projections</a></p></li>
+</ul>
+<p><strong>Paper:</strong> <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8129083/">Supervised dimensionality reduction for big data</a></p>
+<p><strong>Paper:</strong> <a class="reference external" href="https://arxiv.org/pdf/2103.00564.pdf">An Introduction to Johnson–Lindenstrauss Transforms
+</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sketchingbigdata.org/fall17/">Sketching Algorithms for Big Data, Harvard</a></p>
+<ul>
+<li><p><a class="reference external" href="https://www.sketchingbigdata.org/fall17/lec/lec5.pdf">JL Lemma, History of lower bounds</a></p></li>
+<li><p><a class="reference external" href="https://www.sketchingbigdata.org/fall17/lec/lec6.pdf">JL Lower bound Optimality</a></p></li>
+</ul>
+</li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -552,20 +542,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../intro.html"
+       href="PCA_02.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to Mathematical Foundations of Data Science Course website</p>
+        <p class="prev-next-title">PCA - Part 2</p>
       </div>
     </a>
     <a class="right-next"
-       href="SAT_Table.html"
+       href="../linear-algebra/linear-algebra-basics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SAT-Table</p>
+        <p class="prev-next-title">2. Linear Algebra</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -585,19 +575,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-chapter-content">Overview of Chapter Content</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-and-satisfiability-problems">Clustering and Satisfiability Problems</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-n-queen-problem">The N-Queen Problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-image-data">Introduction to Image Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-techniques">Clustering Techniques</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-dimensional-analysis">High Dimensional Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-segmentation-and-clustering">Image Segmentation and Clustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction">Dimensionality Reduction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-of-clustering">Evaluation of Clustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bias-Variance Tradeoff</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#from-high-dimensional-into-low-dimensional-euclidean-space">From high-dimensional into low-dimensional Euclidean space</a></li>
 </ul>
-</li>
-</ul>
+
   </nav></div>
 
 </div></div>
