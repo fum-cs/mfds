@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PCA - Part 1 &#8212; MFDS</title>
+    <title>Dimensionality Reduction - Part 1 &#8212; MFDS</title>
   
   
   
@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'high-dimensional-spaces/PCA_01';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'high-dimensional-spaces/Dimensionality-reduction_01';</script>
     <link rel="icon" href="../_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="PCA - Part 2" href="PCA_02.html" />
+    <link rel="next" title="Dimensionality Reduction - Part 2" href="Dimensionality-reduction_02.html" />
     <link rel="prev" title="Vector Quantization" href="LVQ.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -199,8 +199,8 @@
 <li class="toctree-l2"><a class="reference internal" href="image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LVQ.html">Vector Quantization</a></li>
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">PCA - Part 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PCA_02.html">PCA - Part 2</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Dimensionality Reduction - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dimensionality-reduction_02.html">Dimensionality Reduction - Part 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html">Bias-Variance Tradeoff</a></li>
 
 </ul>
@@ -308,7 +308,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/fum-cs/mfds/blob/main/notebooks/high-dimensional-spaces/PCA_01.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/fum-cs/mfds/blob/main/notebooks/high-dimensional-spaces/Dimensionality-reduction_01.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +356,7 @@
       
       
       
-      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Fhigh-dimensional-spaces/PCA_01.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Fhigh-dimensional-spaces/Dimensionality-reduction_01.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -386,7 +386,7 @@
       
       
       
-      <li><a href="../_sources/high-dimensional-spaces/PCA_01.ipynb" target="_blank"
+      <li><a href="../_sources/high-dimensional-spaces/Dimensionality-reduction_01.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -457,7 +457,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -468,11 +470,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>PCA - Part 1</h1>
+    <h1>Dimensionality Reduction - Part 1</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis">Principal Component Analysis</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -483,10 +493,12 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="" src="../_images/banner.png" /></p>
-<script src="require.js"></script><section class="tex2jax_ignore mathjax_ignore" id="pca-part-1">
-<h1>PCA - Part 1<a class="headerlink" href="#pca-part-1" title="Link to this heading">#</a></h1>
+<script src="require.js"></script><section class="tex2jax_ignore mathjax_ignore" id="dimensionality-reduction-part-1">
+<h1>Dimensionality Reduction - Part 1<a class="headerlink" href="#dimensionality-reduction-part-1" title="Link to this heading">#</a></h1>
 <p><strong>Mahmood Amintoosi, Fall 2024</strong></p>
 <p>Computer Science Dept, Ferdowsi University of Mashhad</p>
+<section id="principal-component-analysis">
+<h2>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://setosa.io/ev/principal-component-analysis/">Principal Component Analysis explained visually</a></p></li>
 <li><p><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">In Depth: Principal Component Analysis, Python Data Science Handbook</a></p></li>
@@ -497,12 +509,13 @@ Randal J. Barnes</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://www.cs.rpi.edu/~zaki/DMML/slides/pdf/ychap7.pdf">Chapter 7 of Zaki (Slides)</a></p></li>
-<li><p><a class="reference external" href="https://www.sci.utah.edu/~shireen/pdfs/tutorials/Elhabian_LDA09.pdf">Linear Discriminant Analysis (LDA)</a></p></li>
 </ul>
-<p><strong>Kaggle:</strong> <a class="reference external" href="https://www.kaggle.com/leo2510/country-clustering-and-pca-analysis">Country Profiling Using PCA and Clustering</a></p>
+<p><strong>Further Readning</strong></p>
 <ul class="simple">
+<li><p><a class="reference external" href="https://www.kaggle.com/leo2510/country-clustering-and-pca-analysis">Country Profiling Using PCA and Clustering</a></p></li>
 <li><p><a class="reference external" href="https://blog.exploratory.io/an-introduction-to-principal-component-analysis-pca-with-2018-world-soccer-players-data-810d84a14eab">An Introduction to Principal Component Analysis (PCA) with 2018 World Soccer Players Data</a>, <a class="reference external" href="https://fum-cs.github.io/fds/misc/An%20Introduction%20to%20Principal%20Component%20Analysis%20(PCA)%20with%202018%20World%20Soccer%20Players%20Data.pdf">PDF</a></p></li>
 <li><p><a class="reference external" href="https://blog.exploratory.io/using-pca-to-see-which-countries-have-better-players-for-world-cup-games-a72f91698b95">Using PCA to See Which Countries have Better Players for World Cup Games</a>, <a class="reference external" href="https://fum-cs.github.io/fds/misc/Using%20PCA%20to%20See%20Which%20Countries%20have%20Better%20Players%20for%20World%20Cup%20Games.pdf">PDF</a></p></li>
+<li><p>Paper: <a class="reference external" href="https://github.com/mamintoosi/Eigenbackground-Revisited">Eigenbackground Revisited</a></p></li>
 </ul>
 <p>Chapter 7 of Zaki</p>
 <div class="cell docutils container">
@@ -1112,6 +1125,7 @@ centered by subtracting the mean <span class="math notranslate nohighlight">\(\m
 </div>
 </div>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1153,11 +1167,11 @@ centered by subtracting the mean <span class="math notranslate nohighlight">\(\m
       </div>
     </a>
     <a class="right-next"
-       href="PCA_02.html"
+       href="Dimensionality-reduction_02.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">PCA - Part 2</p>
+        <p class="prev-next-title">Dimensionality Reduction - Part 2</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1167,6 +1181,21 @@ centered by subtracting the mean <span class="math notranslate nohighlight">\(\m
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis">Principal Component Analysis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

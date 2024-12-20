@@ -61,6 +61,8 @@
     <link rel="icon" href="../_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Linear Algebra" href="../linear-algebra/linear-algebra-basics.html" />
+    <link rel="prev" title="Dimensionality Reduction - Part 2" href="Dimensionality-reduction_02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,8 +181,8 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Dimensional Spaces</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="high-dim-intro.html">Chapter on High Dimensional Spaces</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="high-dim-intro.html">1. High Dimensional Spaces</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="SAT_Table.html">SAT-Table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="NQueen.html">N-Queen Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_01_intro.html">Images as high dimensional data</a></li>
@@ -197,12 +197,41 @@
 <li class="toctree-l2"><a class="reference internal" href="image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LVQ.html">Vector Quantization</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="Dimensionality-reduction_01.html">Dimensionality Reduction - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dimensionality-reduction_02.html">Dimensionality Reduction - Part 2</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bias-Variance Tradeoff</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../linear-algebra/linear-algebra-basics.html">Chapter on Linear Algebra</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear-algebra/linear-algebra-basics.html">2. Linear Algebra</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.5%20Norms.html">2.5 Norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.6%20Special%20Kinds%20of%20Matrices%20and%20Vectors.html">2.6 Special Kinds of Matrices and Vectors</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.7%20Eigendecomposition.html">2.7 Eigendecomposition</a></li>
 
 
 
@@ -211,6 +240,17 @@
 
 
 
+
+<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.8%20Singular%20Value%20Decomposition.html">2.8 Singular Value Decomposition</a></li>
+
+
+
+
+
+
+
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -444,7 +484,27 @@ document.write(`
 <h1>Bias-Variance Tradeoff<a class="headerlink" href="#bias-variance-tradeoff" title="Link to this heading">#</a></h1>
 <p><strong>Mahmood Amintoosi, Fall 2024</strong></p>
 <p>Computer Science Dept, Ferdowsi University of Mashhad</p>
-<p><a class="reference external" href="https://medium.com/&#64;DeepthiTabithaBennet/the-bias-variance-tradeoff-a-newbies-guide-by-a-newbie-95fb03dbebcb">https://medium.com/&#64;DeepthiTabithaBennet/the-bias-variance-tradeoff-a-newbies-guide-by-a-newbie-95fb03dbebcb</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff">Wiki: Bias variance tradeoff</a></p></li>
+<li><p><a class="reference external" href="https://mlu-explain.github.io/bias-variance/">MLU-Explain bias-variance</a></p></li>
+<li><p><a class="reference external" href="https://mlu-explain.github.io/double-descent/">MLU-Explain double-descent, part 1</a></p></li>
+<li><p><a class="reference external" href="https://mlu-explain.github.io/double-descent2/">MLU-Explain double-descent, part 2</a></p></li>
+<li><p><a class="reference external" href="https://medium.com/&#64;DeepthiTabithaBennet/the-bias-variance-tradeoff-a-newbies-guide-by-a-newbie-95fb03dbebcb">The Bias-Variance Tradeoff: A Newbie’s Guide, by a Newbie</a></p></li>
+<li><p><a class="reference external" href="https://spotintelligence.com/2023/04/11/bias-variance-trade-off/">bias-variance-trade-off</a></p></li>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/2205.15549">VC Theoretical Explanation of Double Descent</a></p></li>
+<li><p>Paper: <a class="reference external" href="https://www.pnas.org/doi/10.1073/pnas.1903070116">Reconciling modern machine-learning practice and the classical bias–variance trade-off</a></p>
+<ul>
+<li><p><a class="reference external" href="https://medium.com/mlearning-ai/double-descent-8f92dfdc442f">Double Descent</a>, <a class="reference internal" href="#misc/medium-com_mlearning-ai_double-descent-highlightes.md"><span class="xref myst">Highlights</span></a></p></li>
+<li><p><a class="reference external" href="https://hippocampus-garden.com/double_descent/">Reproducing Deep Double Descent</a>, <a class="reference internal" href="#misc/hippocampus-garden-com_double_descent-highlightes.md"><span class="xref myst">Highlights</span></a></p>
+<ul>
+<li><p><a class="reference external" href="https://colab.research.google.com/drive/1lT2dUqal90NbLVQIGvseyAdKzH19MH2T?usp=sharing">deep_double_descent, colab</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://fumdrive.um.ac.ir/index.php/f/4160875">Sec 22.3 of Zaki</a></p></li>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/2211.10322">Understanding the double descent curve in Machine Learning</a></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -716,6 +776,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Dimensionality-reduction_02.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Dimensionality Reduction - Part 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../linear-algebra/linear-algebra-basics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2. Linear Algebra</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
