@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,10 +60,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'high-dimensional-spaces/App-PCA';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'high-dimensional-spaces/PCA_02';</script>
     <link rel="icon" href="../_static/fum-logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Comparison of LDA and PCA" href="plot_pca_vs_lda.html" />
+    <link rel="prev" title="PCA - Part 1" href="PCA_01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -114,8 +116,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -170,8 +170,8 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Dimensional Spaces</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="high-dim-intro.html">1. High Dimensional Spaces</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="high-dim-intro.html">Chapter on High Dimensional Spaces</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="SAT_Table.html">SAT-Table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="NQueen.html">N-Queen Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_01_intro.html">Images as high dimensional data</a></li>
@@ -184,43 +184,20 @@
 <li class="toctree-l2"><a class="reference internal" href="high_dim_and_KNN.html">kNN in high dimensional spaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_clustering.html">Clustering images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image-clustering_HC.html">Clustering images by hierarchical clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmeans-clustering-iris.html">IRIS Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LVQ.html">Vector Quantization</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="Dimensionality-reduction_01.html">Dimensionality Reduction - Part 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Dimensionality-reduction_02.html">Dimensionality Reduction - Part 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Bias-Variance-Tradeoff.html">Bias-Variance Tradeoff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Silhouette-clustering.html">Clustering validation: Silhouette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCA_01.html">PCA - Part 1</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">PCA - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_pca_vs_lda.html">Comparison of LDA and PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SVD_image_compression.html">SVD for Image Compression</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra for DS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../linear-algebra/linear-algebra-basics.html">2. Linear Algebra</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.1%20Scalars%2C%20Vectors%2C%20Matrices%2C%20and%20Tensors.html">2.1 Scalars, Vectors, Matrices and Tensors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.2%20Multiplying%20Matrices%20and%20Vectors.html">2.2 Multiplying Matrices and Vectors</a></li>
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.3%20Identity%20and%20Inverse%20Matrices.html">2.3 Identity and Inverse Matrices</a></li>
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.4%20Linear%20Dependence%20and%20Span.html">2.4 Linear Dependence and Span</a></li>
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.5%20Norms.html">2.5 Norms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.6%20Special%20Kinds%20of%20Matrices%20and%20Vectors.html">2.6 Special Kinds of Matrices and Vectors</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.7%20Eigendecomposition.html">2.7 Eigendecomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linear-algebra/linear-algebra-basics.html">Chapter on Linear Algebra</a></li>
 
 
 
@@ -229,17 +206,6 @@
 
 
 
-
-<li class="toctree-l2"><a class="reference internal" href="../linear-algebra/2.8%20Singular%20Value%20Decomposition.html">2.8 Singular Value Decomposition</a></li>
-
-
-
-
-
-
-
-</ul>
-</details></li>
 </ul>
 
     </div>
@@ -294,7 +260,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/fum-cs/mfds/blob/main/notebooks/high-dimensional-spaces/App-PCA.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/fum-cs/mfds/blob/main/notebooks/high-dimensional-spaces/PCA_02.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -342,7 +308,7 @@
       
       
       
-      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Fhigh-dimensional-spaces/App-PCA.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/fum-cs/mfds/issues/new?title=Issue%20on%20page%20%2Fhigh-dimensional-spaces/PCA_02.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -372,7 +338,7 @@
       
       
       
-      <li><a href="../_sources/high-dimensional-spaces/App-PCA.ipynb" target="_blank"
+      <li><a href="../_sources/high-dimensional-spaces/PCA_02.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -812,6 +778,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="PCA_01.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">PCA - Part 1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="plot_pca_vs_lda.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Comparison of LDA and PCA</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

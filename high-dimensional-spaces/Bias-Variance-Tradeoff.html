@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -36,10 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -65,6 +68,7 @@
     <link rel="prev" title="Dimensionality Reduction - Part 2" href="Dimensionality-reduction_02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -80,19 +84,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -100,7 +93,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -108,8 +100,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -125,7 +117,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -155,21 +148,17 @@
     
     
     <img src="../_static/fum-cs-logo.png" class="logo__image only-light" alt="MFDS - Home"/>
-    <script>document.write(`<img src="../_static/fum-cs-logo.png" class="logo__image only-dark" alt="MFDS - Home"/>`);</script>
+    <img src="../_static/fum-cs-logo.png" class="logo__image only-dark pst-js-only" alt="MFDS - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -436,24 +425,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 
 </div></div>
       
@@ -487,6 +468,9 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff">Wiki: Bias variance tradeoff</a></p></li>
 <li><p><a class="reference external" href="https://mlu-explain.github.io/bias-variance/">MLU-Explain bias-variance</a></p></li>
+</ul>
+<p><strong>Further Reading</strong></p>
+<ul class="simple">
 <li><p><a class="reference external" href="https://mlu-explain.github.io/double-descent/">MLU-Explain double-descent, part 1</a></p></li>
 <li><p><a class="reference external" href="https://mlu-explain.github.io/double-descent2/">MLU-Explain double-descent, part 2</a></p></li>
 <li><p><a class="reference external" href="https://medium.com/&#64;DeepthiTabithaBennet/the-bias-variance-tradeoff-a-newbies-guide-by-a-newbie-95fb03dbebcb">The Bias-Variance Tradeoff: A Newbie’s Guide, by a Newbie</a></p></li>
@@ -606,6 +590,47 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualization</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Loop through each model complexity for visualization</span>
+<span class="k">for</span> <span class="n">degree</span> <span class="ow">in</span> <span class="n">model_poly_degrees</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">model_poly_degrees</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Plot training data</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training Data&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Testing Data&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="c1"># Plot predictions for the last dataset</span>
+    <span class="c1"># Sort the data for plotting</span>
+    <span class="n">sorted_indices_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+
+    <span class="c1"># Plot predictions for the last dataset using sorted data</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="n">sorted_indices_train</span><span class="p">],</span> <span class="n">pred_train</span><span class="p">[</span><span class="n">degree</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">sorted_indices_train</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train Prediction&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">pred_test</span><span class="p">[</span><span class="n">degree</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test Prediction&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Plot the true function</span>
+    <span class="n">x_fine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fine</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x_fine</span><span class="p">),</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Function&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Polynomial Degree </span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/794f9557703055049302767ded5d22138f29e382d59c2c8179ea2f21549025a9.png" src="../_images/794f9557703055049302767ded5d22138f29e382d59c2c8179ea2f21549025a9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_estimator_bias_squared</span><span class="p">(</span><span class="n">pred_test</span><span class="p">):</span>
     <span class="n">pred_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pred_test</span><span class="p">)</span>
     <span class="n">average_model_prediction</span> <span class="o">=</span> <span class="n">pred_test</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -654,7 +679,7 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Model Complexity (Polynomial Degree)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.25</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bias-Variance Tradeoff&#39;</span><span class="p">)</span>
 </pre></div>
@@ -664,85 +689,76 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Bias-Variance Tradeoff&#39;)
 </pre></div>
 </div>
-<img alt="../_images/54b5a032d7768062aec9642f69d3cfe630ad8516e6840e356d58b47550602e8f.png" src="../_images/54b5a032d7768062aec9642f69d3cfe630ad8516e6840e356d58b47550602e8f.png" />
+<img alt="../_images/08673f69b78c6bee60a95ec64ea09701be9cfb491c0e48af629d0e7fc0f98902.png" src="../_images/08673f69b78c6bee60a95ec64ea09701be9cfb491c0e48af629d0e7fc0f98902.png" />
 </div>
 </div>
-<p><a class="reference external" href="https://spotintelligence.com/2023/04/11/bias-variance-trade-off/">https://spotintelligence.com/2023/04/11/bias-variance-trade-off/</a></p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # https://spotintelligence.com/2023/04/11/bias-variance-trade-off/</span>
+<span class="c1"># from sklearn.model_selection import train_test_split</span>
+<span class="c1"># from sklearn.preprocessing import PolynomialFeatures</span>
+<span class="c1"># from sklearn.linear_model import LinearRegression</span>
+<span class="c1"># from sklearn.metrics import mean_squared_error</span>
+<span class="c1"># import matplotlib.pyplot as plt</span>
+<span class="c1"># import numpy as np</span>
 
-<span class="c1"># Generate some synthetic data with a non-linear relationship</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="c1"># y = x ** 3 + np.random.normal(size=100)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1">#np.sin(x * np.pi)</span>
+<span class="c1"># # Generate some synthetic data with a non-linear relationship</span>
+<span class="c1"># np.random.seed(0)</span>
+<span class="c1"># x = np.linspace(-5, 5, num=100)</span>
+<span class="c1"># # y = x ** 3 + np.random.normal(size=100)</span>
+<span class="c1"># y = f(x) #np.sin(x * np.pi)</span>
 
-<span class="c1"># Split the data into training and testing sets</span>
-<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># # Split the data into training and testing sets</span>
+<span class="c1"># x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)</span>
 
-<span class="c1"># Fit polynomial regression models with different degrees of polynomials</span>
-<span class="n">degrees</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
-<span class="n">train_errors</span><span class="p">,</span> <span class="n">test_errors</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-<span class="n">bias_squared</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">variance</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># # Fit polynomial regression models with different degrees of polynomials</span>
+<span class="c1"># degrees = [1, 2, 3, 4, 5, 8, 10]</span>
+<span class="c1"># train_errors, test_errors = [], []</span>
+<span class="c1"># bias_squared = []</span>
+<span class="c1"># variance = []</span>
 
-<span class="k">for</span> <span class="n">degree</span> <span class="ow">in</span> <span class="n">degrees</span><span class="p">:</span>
+<span class="c1"># for degree in degrees:</span>
 
-    <span class="c1"># Transform the features to polynomial features</span>
-    <span class="n">poly_features</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
-    <span class="n">x_poly_train</span> <span class="o">=</span> <span class="n">poly_features</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">x_poly_test</span> <span class="o">=</span> <span class="n">poly_features</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1">#     # Transform the features to polynomial features</span>
+<span class="c1">#     poly_features = PolynomialFeatures(degree=degree)</span>
+<span class="c1">#     x_poly_train = poly_features.fit_transform(x_train.reshape(-1, 1))</span>
+<span class="c1">#     x_poly_test = poly_features.transform(x_test.reshape(-1, 1))</span>
 
-    <span class="c1"># Fit the linear regression model to the polynomial features</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_poly_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1">#     # Fit the linear regression model to the polynomial features</span>
+<span class="c1">#     model = LinearRegression()</span>
+<span class="c1">#     model.fit(x_poly_train, y_train)</span>
 
-    <span class="c1"># Evaluate the model on the training and testing data</span>
-    <span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_poly_train</span><span class="p">)</span>
-    <span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_poly_test</span><span class="p">)</span>
-    <span class="n">train_error</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span>
-    <span class="n">test_error</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span>
-    <span class="n">train_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">train_error</span><span class="p">)</span>
-    <span class="n">test_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_error</span><span class="p">)</span>
-    <span class="n">bias_squared</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_estimator_bias_squared</span><span class="p">(</span><span class="n">y_pred_test</span><span class="p">))</span>
-    <span class="n">variance</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_estimator_variance</span><span class="p">(</span><span class="n">y_pred_test</span><span class="p">))</span>
+<span class="c1">#     # Evaluate the model on the training and testing data</span>
+<span class="c1">#     y_pred_train = model.predict(x_poly_train)</span>
+<span class="c1">#     y_pred_test = model.predict(x_poly_test)</span>
+<span class="c1">#     train_error = mean_squared_error(y_train, y_pred_train)</span>
+<span class="c1">#     test_error = mean_squared_error(y_test, y_pred_test)</span>
+<span class="c1">#     train_errors.append(train_error)</span>
+<span class="c1">#     test_errors.append(test_error)</span>
+<span class="c1">#     bias_squared.append(calculate_estimator_bias_squared(y_pred_test))</span>
+<span class="c1">#     variance.append(calculate_estimator_variance(y_pred_test))</span>
 
 
-<span class="c1"># Plot the training and testing errors as a function of the degree of polynomial</span>
+<span class="c1"># # Plot the training and testing errors as a function of the degree of polynomial</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">train_errors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training error&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">test_errors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Testing error&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">bias_squared</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$bias^2$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">variance</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;variance&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># plt.plot(degrees, train_errors, label=&#39;Training error&#39;)</span>
+<span class="c1"># plt.plot(degrees, test_errors, label=&#39;Testing error&#39;)</span>
+<span class="c1"># plt.plot(degrees, bias_squared, color=&#39;blue&#39;, label=&#39;$bias^2$&#39;, linewidth=5)</span>
+<span class="c1"># plt.plot(degrees, variance, color=&#39;green&#39;, label=&#39;variance&#39;, linewidth=5)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Degree of polynomial&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean squared error&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># plt.legend()</span>
+<span class="c1"># plt.xlabel(&#39;Degree of polynomial&#39;)</span>
+<span class="c1"># plt.ylabel(&#39;Mean squared error&#39;)</span>
+<span class="c1"># plt.show()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/a4991d175c9fc9d7a46eb341cd294ff6eab0b57f8f100851c61c1631ad1d5090.png" src="../_images/a4991d175c9fc9d7a46eb341cd294ff6eab0b57f8f100851c61c1631ad1d5090.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_error</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6939637643352092
-</pre></div>
-</div>
-</div>
+</details>
 </div>
 </section>
 
@@ -844,8 +860,8 @@ By Mahmood Amintoosi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
