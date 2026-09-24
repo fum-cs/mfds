@@ -1,49 +1,91 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
+# MFDS table of contents
+# Teaching order: applications first (images, kNN, k-means), then the math that explains them.
 
 format: jb-book
 root: intro
 parts:
-  - caption: High Dimensional Spaces
+  - caption: Data, Matrices, and Images
+    chapters:
+    - file: python/Python-DSHB-intro
+    - file: python/02.02-The-Basics-Of-NumPy-Arrays
+    - file: high-dimensional-spaces/image_01_intro
+    - file: "linear-algebra/Scalars, Vectors, Matrices, and Tensors"
+    - file: "linear-algebra/Multiplying Matrices and Vectors"
+    - file: "linear-algebra/Identity and Inverse Matrices"
+    - file: "linear-algebra/Norms"
+
+  - caption: Classification and Clustering
+    chapters:
+    - file: high-dimensional-spaces/kNN-Classification-Evaluation
+    - file: high-dimensional-spaces/k-means-clustering
+    - file: high-dimensional-spaces/kmeans-clustering-iris
+    - file: high-dimensional-spaces/image_02_seg_k-means
+    - file: high-dimensional-spaces/SAT_Table
+    - file: high-dimensional-spaces/NQueen
+    - file: high-dimensional-spaces/Silhouette-clustering
+    - file: high-dimensional-spaces/BF-clustering
+    - file: high-dimensional-spaces/image_03_seg_coords
+    - file: high-dimensional-spaces/LVQ
+    - file: high-dimensional-spaces/Clustering-Validation-Metrics
+
+  - caption: High-Dimensional Spaces
     chapters:
     - file: high-dimensional-spaces/high-dim-intro
-      sections:
-      - file: high-dimensional-spaces/SAT_Table
-      - file: high-dimensional-spaces/NQueen
-      - file: high-dimensional-spaces/image_01_intro
-      - file: high-dimensional-spaces/image_02_seg_k-means
-      - file: high-dimensional-spaces/image_03_seg_coords
-      - file: high-dimensional-spaces/BF-clustering
-      - file: high-dimensional-spaces/k-means-clustering
-      - file: high-dimensional-spaces/high_dim_and_CD
-      - file: high-dimensional-spaces/high_dim_and_k-means
-      - file: high-dimensional-spaces/high_dim_and_KNN
-      - file: high-dimensional-spaces/image_clustering
-      - file: high-dimensional-spaces/image-clustering_HC
-      # - file: high-dimensional-spaces/kmeans-clustering-iris
-      - file: high-dimensional-spaces/LVQ
-      # - file: high-dimensional-spaces/Silhouette-clustering
-      - file: high-dimensional-spaces/Dimensionality-reduction_01
-      - file: high-dimensional-spaces/Dimensionality-reduction_02
-      # - file: high-dimensional-spaces/plot_pca_vs_lda
-      # - file: high-dimensional-spaces/SVD_image_compression
-      - file: high-dimensional-spaces/Bias-Variance-Tradeoff
-      # - file: high-dimensional-spaces/misc
-  - caption: Linear Algebra for DS
+    - file: high-dimensional-spaces/high_dim_and_KNN
+    - file: high-dimensional-spaces/high_dim_and_k-means
+    - file: high-dimensional-spaces/high_dim_and_CD
+    - file: high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality
+
+  - caption: Linear Algebra and SVD
     chapters:
     - file: linear-algebra/linear-algebra-basics
-      sections:
-      - file: "linear-algebra/2.1 Scalars, Vectors, Matrices, and Tensors"
-      - file: "linear-algebra/2.2 Multiplying Matrices and Vectors"
-      - file: "linear-algebra/2.3 Identity and Inverse Matrices"
-      - file: "linear-algebra/2.4 Linear Dependence and Span"
-      - file: "linear-algebra/2.5 Norms"
-      - file: "linear-algebra/2.6 Special Kinds of Matrices and Vectors"
-      - file: "linear-algebra/2.7 Eigendecomposition"
-      - file: "linear-algebra/2.8 Singular Value Decomposition"
-    # - file: "linear-algebra/2.9 The Moore-Penrose Pseudoinverse"
-    # - file: "linear-algebra/2.10 The Trace Operator"
-    # - file: "linear-algebra/2.11 The Determinant"
-    # - file: "linear-algebra/2.12 Example - Principal Components Analysis"
-    # - file: "linear-algebra/Low-Rank Matrix Approximation"
-    # - file: "linear-algebra/Projection"
+    - file: "linear-algebra/Linear Dependence and Span"
+    - file: "linear-algebra/Special Kinds of Matrices and Vectors"
+    - file: linear-algebra/Projection
+    - file: "linear-algebra/Eigendecomposition"
+    - file: "linear-algebra/Singular Value Decomposition"
+    - file: "linear-algebra/The Moore-Penrose Pseudoinverse"
+    - file: "linear-algebra/The Trace Operator"
+    - file: "linear-algebra/The Determinant"
+
+  - caption: Low-Rank Approximation, PCA, and Dimensionality Reduction
+    chapters:
+    - file: "linear-algebra/Low-Rank Matrix Approximation"
+    - file: "linear-algebra/Example - Principal Components Analysis"
+    - file: high-dimensional-spaces/App-PCA
+    - file: high-dimensional-spaces/SVD_image_compression
+    - file: high-dimensional-spaces/Dimensionality-reduction_01
+    - file: high-dimensional-spaces/Dimensionality-reduction_02
+    - file: high-dimensional-spaces/plot_pca_vs_lda
+    - file: high-dimensional-spaces/image_clustering
+    - file: high-dimensional-spaces/image-clustering_HC
+
+  - caption: Random Graphs and Random Walks
+    chapters:
+    - file: random-graphs/intro
+    - file: random-graphs/1_Introduction
+    - file: random-graphs/2_Fundamentals
+    - file: random-graphs/01-Erdos-Renyi
+    - file: random-graphs/02-Phase-Transition
+    - file: random-graphs/03-Light-Random-Walks
+
+  - caption: Learning Foundations
+    chapters:
+    - file: high-dimensional-spaces/Bias-Variance-Tradeoff
+    - file: learning/01-Learning-Foundations
+    - file: learning/02-Perceptron-and-Online-Learning
+    - file: learning/lecture2_2_gradient-descent
+    - file: learning/lecture2_3_stochastic-gradient-descent
+    - file: learning/03-Boosting-Ranking-Voting
+
+  - caption: Additional Topics
+    chapters:
+    - file: high-dimensional-spaces/Random-Projection
+    - file: other/01-Compressed-Sensing
+    - file: high-dimensional-spaces/misc
+    - file: other/02-Course-Synthesis
+
+  - caption: Appendix
+    chapters:
+    - file: python/02.05-Computation-on-arrays-broadcasting
+    - file: random-graphs/02-Introduction-to-NetworkX

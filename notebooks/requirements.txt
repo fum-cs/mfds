@@ -1,3 +1,8 @@
 jupyter-book
 matplotlib
 numpy
+scipy
+scikit-learn
+networkx
+seaborn
+pandas
