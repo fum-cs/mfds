@@ -4,10 +4,11 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Data, Matrices, and Images
+  - caption: Opening, Data, Matrices, and Images
     chapters:
+    - file: other/Course-Opening
     - file: python/Python-DSHB-intro
-    - file: python/02.02-The-Basics-Of-NumPy-Arrays
+    - file: python/The-Basics-Of-NumPy-Arrays
     - file: high-dimensional-spaces/image_01_intro
     - file: "linear-algebra/Scalars, Vectors, Matrices, and Tensors"
     - file: "linear-algebra/Multiplying Matrices and Vectors"
@@ -20,6 +21,7 @@ parts:
     - file: high-dimensional-spaces/k-means-clustering
     - file: high-dimensional-spaces/kmeans-clustering-iris
     - file: high-dimensional-spaces/image_02_seg_k-means
+    - file: high-dimensional-spaces/Discrete-Optimization-and-Clustering
     - file: high-dimensional-spaces/SAT_Table
     - file: high-dimensional-spaces/NQueen
     - file: high-dimensional-spaces/Silhouette-clustering
@@ -31,15 +33,16 @@ parts:
   - caption: High-Dimensional Spaces
     chapters:
     - file: high-dimensional-spaces/high-dim-intro
+    - file: high-dimensional-spaces/Rejection-Sampling-and-Unit-Ball
     - file: high-dimensional-spaces/high_dim_and_KNN
     - file: high-dimensional-spaces/high_dim_and_k-means
-    - file: high-dimensional-spaces/high_dim_and_CD
     - file: high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality
 
   - caption: Linear Algebra and SVD
     chapters:
     - file: linear-algebra/linear-algebra-basics
     - file: "linear-algebra/Linear Dependence and Span"
+    - file: linear-algebra/Subspaces-and-Linear-Maps
     - file: "linear-algebra/Special Kinds of Matrices and Vectors"
     - file: linear-algebra/Projection
     - file: "linear-algebra/Eigendecomposition"
@@ -63,29 +66,31 @@ parts:
   - caption: Random Graphs and Random Walks
     chapters:
     - file: random-graphs/intro
-    - file: random-graphs/1_Introduction
-    - file: random-graphs/2_Fundamentals
-    - file: random-graphs/01-Erdos-Renyi
-    - file: random-graphs/02-Phase-Transition
-    - file: random-graphs/03-Light-Random-Walks
+    - file: random-graphs/Introduction
+    - file: random-graphs/Fundamentals
+    - file: random-graphs/Erdos-Renyi
+    - file: random-graphs/Phase-Transition
+    - file: random-graphs/Light-Random-Walks
 
   - caption: Learning Foundations
     chapters:
     - file: high-dimensional-spaces/Bias-Variance-Tradeoff
-    - file: learning/01-Learning-Foundations
-    - file: learning/02-Perceptron-and-Online-Learning
+    - file: learning/Learning-Foundations
+    - file: learning/Perceptron-and-Online-Learning
     - file: learning/lecture2_2_gradient-descent
     - file: learning/lecture2_3_stochastic-gradient-descent
-    - file: learning/03-Boosting-Ranking-Voting
+    - file: learning/Boosting-Ranking-Voting
 
-  - caption: Additional Topics
+  - caption: Random Projections and Further Topics
     chapters:
     - file: high-dimensional-spaces/Random-Projection
-    - file: other/01-Compressed-Sensing
+    - file: high-dimensional-spaces/Gaussian-Random-Projection
+    - file: high-dimensional-spaces/Johnson-Lindenstrauss
+    - file: other/Compressed-Sensing
     - file: high-dimensional-spaces/misc
-    - file: other/02-Course-Synthesis
+    - file: other/Course-Synthesis
 
   - caption: Appendix
     chapters:
-    - file: python/02.05-Computation-on-arrays-broadcasting
-    - file: random-graphs/02-Introduction-to-NetworkX
+    - file: python/Computation-on-arrays-broadcasting
+    - file: random-graphs/Introduction-to-NetworkX

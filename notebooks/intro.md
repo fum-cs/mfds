@@ -8,58 +8,21 @@ This course builds the shared mathematical language for **data**: matrices and i
 
 **Audience:** first-semester MSc Math (Data Science). Linear algebra and basic probability assumed; Python is learned in parallel through short notebooks.
 
-## Course map
-
-1. **Data, Matrices, and Images** — Python/NumPy warm-up; images as matrices; basic matrix algebra and norms  
-2. **Classification and Clustering** — kNN, k-means (including image segmentation), silhouette, BF clustering, LVQ  
-3. **High-Dimensional Spaces** — curse of dimensionality with kNN and k-means  
-4. **Linear Algebra and SVD** — span, special matrices, projection, eigen/SVD, pseudoinverse, trace, determinant  
-5. **Low-Rank, PCA, and Dimensionality Reduction** — low-rank approx, PCA, image compression, PCA vs LDA  
-6. **Random Graphs and Random Walks** — Erdős–Rényi, phase transition, light random walks  
-7. **Learning Foundations** — bias–variance, generalization, perceptron, GD/SGD, boosting/ranking survey  
-8. **Additional Topics** — random projections, compressed sensing, synthesis  
-
-## Not in this course (deferred)
-
-- **Statistical Machine Learning:** Bayesian methods, GMM/EM, HMM, MCMC, graphical models  
-- **Other ML course:** SVM and kernels  
-
-## Main text
-
-A. Blum, J. Hopcroft, R. Kannan, *Foundations of Data Science*  
-[https://www.cs.cornell.edu/jeh/book.pdf](https://www.cs.cornell.edu/jeh/book.pdf)
-
-Supporting texts: Zaki & Meira Jr.; Hastie–Tibshirani–Friedman; Bishop; VanderPlas (*Python Data Science Handbook*).
+See the repository [README](https://github.com/fum-cs/mfds) for the full course aim, topic outline, references, prerequisites, and build instructions.
 
 ```{tableofcontents}
 ```
 
 ## Instructors
 
-<table style="width:100%;">  
-  <tr>  
-    <td style="width:20%;">  
-      <img src="_images/M-Amintoosi.jpg" alt="Mahmood Amintoosi" style="width:100px;height:auto;">  
-    </td>  
-    <td>  
-      <strong><a href="https://mamintoosi.github.io/">Mahmood Amintoosi</a></strong><br>  
-      Email: m.amintoosi AT um.ac.ir
-    </td>  
-  </tr>  
-</table>  
+**[Mahmood Amintoosi](https://mamintoosi.github.io/)**  
+Email: m.amintoosi AT um.ac.ir
 
----  
+<!-- ![](M-Amintoosi.jpg) -->
 
-## Teaching Assistants  
+## Teaching Assistants (TA-Head)
 
-<table style="width:100%;">  
-  <tr>  
-    <td style="width:20%;">  
-      <img src="_images/H-Mehr.jpg" alt="Hoda MehrBagherpour" style="width:100px;height:auto;">  
-    </td>  
-    <td>  
-      <strong><a href="https://github.com/HodaMehr2000">Hoda MehrBagherpour</a></strong><br>  
-      Email: mehrbagherpour AT mail.um.ac.ir  
-    </td>  
-  </tr>  
-</table>
+**[Hoda MehrBagherpour](https://github.com/HodaMehr2000)**  
+Email: mehrbagherpour AT mail.um.ac.ir
+
+<!-- ![](H-Mehr.jpg) -->
