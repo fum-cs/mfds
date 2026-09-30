@@ -1,0 +1,107 @@
+version: 1
+
+project:
+  title: Mathematical Foundations of Data Science
+  description: >-
+    Course materials for the M.Sc. Mathematical Foundations of Data Science
+    course (Data Science track), Computer Science Dept., Ferdowsi University
+    of Mashhad.
+  authors:
+    - name: Mahmood Amintoosi
+  copyright: "2026. CC0 Licensed - Computer Science Dept., Ferdowsi University of Mashhad"
+  bibliography:
+    - notebooks/references.bib
+  exports:
+    - format: html
+  # - format: pdf   # PDF via Typst — uncomment after the HTML build is verified
+  toc:
+    - file: notebooks/intro.md
+    - title: Opening, Data, Matrices, and Images
+      children:
+        - file: notebooks/other/Course-Opening.md
+        - file: notebooks/python/Python-DSHB-intro.md
+        - file: notebooks/python/The-Basics-Of-NumPy-Arrays.ipynb
+        - file: notebooks/high-dimensional-spaces/image_01_intro.ipynb
+        - file: "notebooks/linear-algebra/Scalars, Vectors, Matrices, and Tensors.ipynb"
+        - file: "notebooks/linear-algebra/Multiplying Matrices and Vectors.ipynb"
+        - file: "notebooks/linear-algebra/Identity and Inverse Matrices.ipynb"
+        - file: notebooks/linear-algebra/Norms.ipynb
+    - title: Classification and Clustering
+      children:
+        - file: notebooks/high-dimensional-spaces/kNN-Classification-Evaluation.ipynb
+        - file: notebooks/high-dimensional-spaces/k-means-clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/kmeans-clustering-iris.ipynb
+        - file: notebooks/high-dimensional-spaces/image_02_seg_k-means.ipynb
+        - file: notebooks/high-dimensional-spaces/Discrete-Optimization-and-Clustering.md
+        - file: notebooks/high-dimensional-spaces/SAT_Table.ipynb
+        - file: notebooks/high-dimensional-spaces/NQueen.ipynb
+        - file: notebooks/high-dimensional-spaces/Silhouette-clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/BF-clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/image_03_seg_coords.ipynb
+        - file: notebooks/high-dimensional-spaces/LVQ.ipynb
+        - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
+    - title: High-Dimensional Spaces
+      children:
+        - file: notebooks/high-dimensional-spaces/high-dim-intro.md
+        - file: notebooks/high-dimensional-spaces/Rejection-Sampling-and-Unit-Ball.md
+        - file: notebooks/high-dimensional-spaces/high_dim_and_KNN.ipynb
+        - file: notebooks/high-dimensional-spaces/high_dim_and_k-means.ipynb
+        - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb
+    - title: Linear Algebra and SVD
+      children:
+        - file: notebooks/linear-algebra/linear-algebra-basics.md
+        - file: "notebooks/linear-algebra/Linear Dependence and Span.ipynb"
+        - file: notebooks/linear-algebra/Subspaces-and-Linear-Maps.md
+        - file: "notebooks/linear-algebra/Special Kinds of Matrices and Vectors.ipynb"
+        - file: notebooks/linear-algebra/Projection.ipynb
+        - file: notebooks/linear-algebra/Eigendecomposition.ipynb
+        - file: "notebooks/linear-algebra/Singular Value Decomposition.ipynb"
+        - file: "notebooks/linear-algebra/The Moore-Penrose Pseudoinverse.ipynb"
+        - file: "notebooks/linear-algebra/The Trace Operator.ipynb"
+        - file: "notebooks/linear-algebra/The Determinant.ipynb"
+    - title: Low-Rank Approximation, PCA, and Dimensionality Reduction
+      children:
+        - file: "notebooks/linear-algebra/Low-Rank Matrix Approximation.ipynb"
+        - file: "notebooks/linear-algebra/Example - Principal Components Analysis.ipynb"
+        - file: notebooks/high-dimensional-spaces/App-PCA.ipynb
+        - file: notebooks/high-dimensional-spaces/SVD_image_compression.ipynb
+        - file: notebooks/high-dimensional-spaces/Dimensionality-reduction_01.ipynb
+        - file: notebooks/high-dimensional-spaces/Dimensionality-reduction_02.ipynb
+        - file: notebooks/high-dimensional-spaces/plot_pca_vs_lda.ipynb
+        - file: notebooks/high-dimensional-spaces/image_clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/image-clustering_HC.ipynb
+    - title: Random Graphs and Random Walks
+      children:
+        - file: notebooks/random-graphs/intro.md
+        - file: notebooks/random-graphs/Introduction.ipynb
+        - file: notebooks/random-graphs/Fundamentals.ipynb
+        - file: notebooks/random-graphs/Erdos-Renyi.md
+        - file: notebooks/random-graphs/Phase-Transition.md
+        - file: notebooks/random-graphs/Light-Random-Walks.md
+    - title: Learning Foundations
+      children:
+        - file: notebooks/high-dimensional-spaces/Bias-Variance-Tradeoff.ipynb
+        - file: notebooks/learning/Learning-Foundations.md
+        - file: notebooks/learning/Perceptron-and-Online-Learning.md
+        - file: notebooks/learning/lecture2_2_gradient-descent.ipynb
+        - file: notebooks/learning/lecture2_3_stochastic-gradient-descent.ipynb
+        - file: notebooks/learning/Boosting-Ranking-Voting.md
+    - title: Random Projections and Further Topics
+      children:
+        - file: notebooks/high-dimensional-spaces/Random-Projection.ipynb
+        - file: notebooks/high-dimensional-spaces/Gaussian-Random-Projection.md
+        - file: notebooks/high-dimensional-spaces/Johnson-Lindenstrauss.md
+        - file: notebooks/other/Compressed-Sensing.md
+        - file: notebooks/high-dimensional-spaces/misc.md
+        - file: notebooks/other/Course-Synthesis.md
+    - title: Appendix
+      children:
+        - file: notebooks/python/Computation-on-arrays-broadcasting.ipynb
+        - file: notebooks/random-graphs/Introduction-to-NetworkX.ipynb
+
+site:
+  template: book-theme
+  github: https://github.com/fum-cs/mfds
+  options:
+    logo: notebooks/img/fum-cs-logo.png
+    favicon: notebooks/img/fum-logo.ico

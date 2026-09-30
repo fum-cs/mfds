@@ -11,7 +11,7 @@ A course in the **Data Science** track (M.Sc. Mathematics) on the shared mathema
 **Instructor:** Mahmood Amintoosi  
 **TA-Head:** Hoda MehrBagherpour
 
-Past offerings are frozen with git tags — see [semesters.md](semesters.md). The **Fall-2025** tag is the pre-restructure snapshot.
+Past offerings are frozen with git tags — see [semesters.md](semesters.md). The **Fall-2025** tag is the pre-restructure snapshot; **jupyter-book-v1** is the last Jupyter Book 1 state.
 
 ## Course aim
 
@@ -59,15 +59,22 @@ A short NumPy / data-matrix warm-up is included at the start.
 
 ## Build
 
-From the `notebooks` folder:
+The book is built with **Jupyter Book 2** (MyST). All configuration is in a
+single `myst.yml` at the repository root. From the repository root:
 
 ```
-jupyter-book build ./
-ghp-import -n -p -f ./_build/html
-jupyter-book build --builder pdflatex ./
+pip install jupyter-book
+git push            # deploys automatically via GitHub Actions
 ```
 
-See also [production.md](production.md).
+or build locally:
+
+```
+env -u PORT jupyter book build --html   # site in _build/html/
+```
+
+See [production.md](production.md) for details, local serving, and a manual
+github-pages fallback.
 
 ## Semester snapshots
 
