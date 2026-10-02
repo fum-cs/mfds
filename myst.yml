@@ -11,9 +11,8 @@ project:
   copyright: "2026. CC0 Licensed - Computer Science Dept., Ferdowsi University of Mashhad"
   bibliography:
     - notebooks/references.bib
-  exports:
-    - format: html
-  # - format: pdf   # PDF via Typst — uncomment after the HTML build is verified
+  # exports:          # Document exports (pdf, docx, ...) are defined here;
+    # - format: pdf   # the HTML site is built by `jupyter-book build --html` via the `site:` block below.
   toc:
     - file: notebooks/intro.md
     - title: Opening, Data, Matrices, and Images
