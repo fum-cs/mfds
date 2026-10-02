@@ -61,14 +61,9 @@ project:
     - title: Low-Rank Approximation, PCA, and Dimensionality Reduction
       children:
         - file: notebooks/linear-algebra/Low-Rank-Matrix-Approximation.ipynb
-        - file: notebooks/linear-algebra/Example-Principal-Components-Analysis.ipynb
         - file: notebooks/linear-algebra/PCA-Part1.ipynb
         - file: notebooks/linear-algebra/PCA-Part2.ipynb
-        - file: notebooks/high-dimensional-spaces/Appendix-PCA.ipynb
         - file: notebooks/high-dimensional-spaces/SVD-Image-Compression.ipynb
-        - file: notebooks/high-dimensional-spaces/Dimensionality-Reduction-Part1.ipynb
-        - file: notebooks/high-dimensional-spaces/Dimensionality-Reduction-Part2.ipynb
-        - file: notebooks/high-dimensional-spaces/Comparison-of-LDA-and-PCA.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Clustering-Hierarchical.ipynb
     - title: Random Graphs and Random Walks
@@ -97,6 +92,7 @@ project:
       children:
         - file: notebooks/python/Computation-on-arrays-broadcasting.ipynb
         - file: notebooks/random-graphs/Introduction-to-NetworkX.ipynb
+        - file: notebooks/linear-algebra/Example-Principal-Components-Analysis.ipynb
 
 site:
   template: book-theme
