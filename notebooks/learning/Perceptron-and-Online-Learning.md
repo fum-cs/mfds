@@ -21,4 +21,3 @@
 ## Sources
 
 - Blum, Hopcroft, Kannan, *Foundations of Data Science*, Ch. 12–13 (selected)
-- `Gradient-Descent.ipynb`, `Stochastic-Gradient-Descent.ipynb`

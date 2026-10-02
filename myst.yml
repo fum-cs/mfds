@@ -84,8 +84,6 @@ project:
         - file: notebooks/high-dimensional-spaces/Bias-Variance-Tradeoff.ipynb
         - file: notebooks/learning/Learning-Foundations.md
         - file: notebooks/learning/Perceptron-and-Online-Learning.md
-        - file: notebooks/learning/Gradient-Descent.ipynb
-        - file: notebooks/learning/Stochastic-Gradient-Descent.ipynb
         - file: notebooks/learning/Boosting-Ranking-Voting.md
     - title: Random Projections and Further Topics
       children:
