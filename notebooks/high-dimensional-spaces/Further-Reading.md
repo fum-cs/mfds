@@ -16,8 +16,8 @@
 **Paper:** [VC Theoretical Explanation of Double Descent](https://arxiv.org/abs/2205.15549)
 
 **Paper:** [Reconciling modern machine-learning practice and the classical bias–variance trade-off](https://www.pnas.org/doi/10.1073/pnas.1903070116)
-  - [Double Descent](https://medium.com/mlearning-ai/double-descent-8f92dfdc442f), [Highlights](misc/medium-com_mlearning-ai_double-descent-highlightes.md)
-  - [Reproducing Deep Double Descent](https://hippocampus-garden.com/double_descent/), [Highlights](misc/hippocampus-garden-com_double_descent-highlightes.md)
+  - [Double Descent](https://medium.com/mlearning-ai/double-descent-8f92dfdc442f)
+  - [Reproducing Deep Double Descent](https://hippocampus-garden.com/double_descent/)
     + [deep_double_descent, colab](https://colab.research.google.com/drive/1lT2dUqal90NbLVQIGvseyAdKzH19MH2T?usp=sharing)
 * [Sec 22.3 of Zaki](https://fumdrive.um.ac.ir/index.php/f/4160875)
 

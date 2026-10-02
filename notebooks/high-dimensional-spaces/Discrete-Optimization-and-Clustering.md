@@ -14,9 +14,9 @@
 2. Truth tables and enumeration (SAT-Table)
 3. N-Queens as a structured assignment problem
 4. From hard constraints to soft grouping → clustering
-5. Lab link: `SAT_Table`, `NQueen` notebooks
+5. Lab link: `SAT-Table`, `N-Queen` notebooks
 
 ## Sources
 
-- Class notebooks `SAT_Table`, `NQueen`
+- Class notebooks `SAT-Table`, `N-Queen`
 - Optional: `SAT-Solver.cpp` as a small code reference

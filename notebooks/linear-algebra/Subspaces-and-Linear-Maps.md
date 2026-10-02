@@ -15,7 +15,7 @@
 2. Column space vs null space
 3. Linear maps: projection, rotation, scaling
 4. Data view: each feature map sends points to a new space
-5. Lab pointers: `Linear Dependence and Span`, `Projection`, `Multiplying Matrices and Vectors`
+5. Lab pointers: `Linear-Dependence-and-Span`, `Projection`, `Multiplying-Matrices-and-Vectors`
 
 ## Sources
 
