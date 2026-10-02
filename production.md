@@ -102,13 +102,108 @@ pip install ghp-import
 ghp-import -n -p -f ./_build/html
 ```
 
-### PDF (optional)
+## LaTeX and PDF output
 
-Uncomment `- format: pdf` in `myst.yml` and run:
+The book can also be rendered as LaTeX source and as a PDF. Both come out of the
+**same pipeline**, so they are two stopping points rather than two pipelines:
 
 ```
-env -u PORT jupyter book build --pdf
+notebooks/*.md, *.ipynb  ->  LaTeX (.tex)  ->  TeX engine (xelatex)  ->  PDF
+                              ^-- build --tex      ^-- build --pdf
 ```
 
-(PDF export in v2 goes through Typst. Notebooks are not executed by default —
-use `jupyter book build --html --execute` to run them.)
+`build --tex` stops at the generated `.tex` (a deliverable you can edit, compile or
+hand to a journal); `build --pdf` additionally compiles it. Notebook **code and
+stored outputs are included** in both (the PDF is ~14 MB / ~390 pages), and
+interactive HTML/widget output never makes it into a PDF.
+
+### Prerequisites
+
+```bash
+pandoc --version          # any modern pandoc
+xelatex --version         # a full TeX Live installation (the template uses xelatex)
+```
+
+On this workstation: pandoc 3.10 and TeX Live 2024.
+
+### Configuring the exports
+
+Both formats are configured in `project.exports` in `myst.yml`, using the
+`plain_latex_book` template:
+
+```yaml
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: _build/exports/mfds-book.pdf
+      articles: &book_articles      # the list is shared with the tex export
+        - file: notebooks/intro.md
+          title: "Mathematical Foundations of Data Science"
+          level: 0                   # 0 -> \chapter, 1 -> \section
+        ...
+    - format: tex
+      template: plain_latex_book
+      output: _build/exports/mfds-book-tex.zip
+      articles: *book_articles
+```
+
+Three things matter here:
+
+* **`level` per article.** By default MyST renders every page at `\section`,
+  which is wrong for the `book` class. `0` makes a chapter (`\chapter`), `1` a
+  section. The list above mirrors `project.toc`: the first page of each group is
+  a chapter, the rest are sections.
+* **`title` per article.** Without it, pages whose first heading is not an `H1`
+  silently lose their heading and the chapter disappears from the book.
+* The YAML anchor (`&book_articles` / `*book_articles`) avoids repeating 61
+  entries twice.
+
+### Building
+
+```bash
+env -u PORT jupyter-book build --tex    # -> _build/exports/mfds-book-tex.zip
+env -u PORT jupyter-book build --pdf    # -> _build/exports/mfds-book.pdf  (~2 min)
+env -u PORT jupyter-book build -a       # every configured export
+```
+
+`PORT` must be unset here too (see the gotcha above).
+
+### LaTeX gotchas in this repository
+
+These are real failure modes found while producing the PDF; all of them are
+silent in HTML and only bite in the LaTeX/PDF export:
+
+1. **Unicode arrows in prose.** myst-to-tex rewrites `→` to a bare `\rightarrow`
+   *outside* math mode, and LaTeX then cascades into
+   `Command \item invalid in math mode`. Write `$\rightarrow$` instead.
+2. **`%` at the end of inline math.** In `$1 - (0.99)^2 \simeq 2%$` the `%`
+   comments out the closing `$`, the math never closes, and **xelatex exits 1
+   while printing no error at all**. Escape it: `2\%$`.
+3. **Unicode glyphs the font lacks are dropped silently** (LaTeX only warns
+   "Missing character"): Persian letters, `₁₂₃` subscripts, `ő` in
+   Erdős–Rényi, box-drawing characters in stored outputs. Keep the prose ASCII
+   or use math mode; check the count with `grep -c 'Missing character'` in the
+   build log.
+4. **BibTeX and non-ASCII fields.** Persian author names in `references.bib`
+   make BibTeX fail with `name has a comma at the end`; wrap such fields in an
+   extra brace group. Note that BibTeX ignores `%` comments *inside* an entry.
+5. HTML is unaffected by all of the above, but fixing it in the source fixes
+   both outputs.
+
+### Helper scripts
+
+`tools/` holds the diagnostics used for this work:
+
+| script | purpose |
+| --- | --- |
+| `pdf_scan_unicode.py` | lists Unicode math symbols in prose (breaks the PDF) |
+| `pdf_fix_prose_symbols.py` | wraps them in math mode |
+| `translate_persian_to_english.py` | the Persian -> English pass (already applied) |
+| `fix_trailing_spaces.py` | cleans list items left with trailing spaces |
+| `pdf_bisect_latex.py`, `pdf_bisect_binary.py` | find the chapter that makes xelatex fail |
+
+### Not covered by CI
+
+`.github/workflows/deploy.yml` builds **HTML only**. The PDF is produced locally;
+adding it to CI would need a job that installs TeX Live and uploads
+`_build/exports/`.

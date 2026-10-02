@@ -11,8 +11,205 @@ project:
   copyright: "2026. CC0 Licensed - Computer Science Dept., Ferdowsi University of Mashhad"
   bibliography:
     - notebooks/references.bib
-  # exports:          # Document exports (pdf, docx, ...) are defined here;
-    # - format: pdf   # the HTML site is built by `jupyter-book build --html` via the `site:` block below.
+  exports:
+    # LaTeX/PDF exports live here; the HTML site is built from the `site:`
+    # block below via `jupyter-book build --html` (exports rejects html).
+    # The PDF is compiled from the generated LaTeX (MyST -> pandoc -> .tex
+    # -> TeX engine); `--tex` stops at the .tex output.
+    # Articles mirror project.toc: the first page of each group is a chapter
+    # (level 0), the rest are sections (level 1). Titles come from each page H1
+    # (filename-derived when a page has none) so every entry gets a heading.
+    - format: pdf
+      template: plain_latex_book
+      output: _build/exports/mfds-book.pdf
+      articles: &book_articles
+        - file: notebooks/intro.md
+          title: "Mathematical Foundations of Data Science"
+          level: 0
+        - file: notebooks/other/Course-Opening.md
+          title: "Course Opening: Students, Goals, and Applications"
+          level: 0
+        - file: notebooks/python/Python-DSHB-intro.md
+          title: "Foundation from the Python Data Science Handbook"
+          level: 1
+        - file: notebooks/python/The-Basics-Of-NumPy-Arrays.ipynb
+          title: "The Basics of NumPy Arrays"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Images-as-High-Dimensional-Data.ipynb
+          title: "Images as high dimensional data"
+          level: 1
+        - file: notebooks/linear-algebra/Scalars-Vectors-Matrices-and-Tensors.ipynb
+          title: "Scalars, Vectors, Matrices and Tensors"
+          level: 1
+        - file: notebooks/linear-algebra/Multiplying-Matrices-and-Vectors.ipynb
+          title: "Multiplying Matrices and Vectors"
+          level: 1
+        - file: notebooks/linear-algebra/Identity-and-Inverse-Matrices.ipynb
+          title: "Identity and Inverse Matrices"
+          level: 1
+        - file: notebooks/linear-algebra/Norms.ipynb
+          title: "Norms"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/kNN-Classification-Evaluation.ipynb
+          title: "k-Nearest Neighbors and Classification Evaluation Metrics"
+          level: 0
+        - file: notebooks/high-dimensional-spaces/K-Means-Clustering.ipynb
+          title: "k-means Clustering"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/IRIS-Clustering.ipynb
+          title: "IRIS Clustering"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
+          title: "Image Segmentaion"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Discrete-Optimization-and-Clustering.md
+          title: "Discrete Optimization, Truth Tables, and Clustering"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/SAT-Table.ipynb
+          title: "SAT-Table"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/N-Queen.ipynb
+          title: "N-Queen Problem"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Silhouette-clustering.ipynb
+          title: "Clustering validation: Silhouette"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/BF-Clustering.ipynb
+          title: "Brute force search clustering"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Image-Segmentation-Coordinates.ipynb
+          title: "Image Segmentation Coordinates"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/LVQ.ipynb
+          title: "Vector Quantization"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
+          title: "Clustering Validation Metrics"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/High-Dimensional-Spaces.md
+          title: "High Dimensional Spaces"
+          level: 0
+        - file: notebooks/high-dimensional-spaces/Rejection-Sampling-and-Unit-Ball.md
+          title: "Rejection Sampling and Points in the Unit Ball"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-kNN.ipynb
+          title: "kNN in high dimensional spaces"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-K-Means.ipynb
+          title: "k-means in high dimensional spaces"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb
+          title: "High Dimensional Data & The Curse of Dimensionality"
+          level: 1
+        - file: notebooks/linear-algebra/linear-algebra-basics.md
+          title: "Linear Algebra"
+          level: 0
+        - file: notebooks/linear-algebra/Linear-Dependence-and-Span.ipynb
+          title: "Linear Dependence and Span"
+          level: 1
+        - file: notebooks/linear-algebra/Subspaces-and-Linear-Maps.md
+          title: "Subspaces and Maps to Other Spaces"
+          level: 1
+        - file: notebooks/linear-algebra/Special-Kinds-of-Matrices-and-Vectors.ipynb
+          title: "Special Kinds of Matrices and Vectors"
+          level: 1
+        - file: notebooks/linear-algebra/Projection.ipynb
+          title: "Projection with dot product"
+          level: 1
+        - file: notebooks/linear-algebra/Eigendecomposition.ipynb
+          title: "Eigendecomposition"
+          level: 1
+        - file: notebooks/linear-algebra/Singular-Value-Decomposition.ipynb
+          title: "Singular Value Decomposition"
+          level: 1
+        - file: notebooks/linear-algebra/The-Moore-Penrose-Pseudoinverse.ipynb
+          title: "The Moore-Penrose Pseudoinverse"
+          level: 1
+        - file: notebooks/linear-algebra/The-Trace-Operator.ipynb
+          title: "The Trace Operator"
+          level: 1
+        - file: notebooks/linear-algebra/The-Determinant.ipynb
+          title: "The Determinant"
+          level: 1
+        - file: notebooks/linear-algebra/Low-Rank-Matrix-Approximation.ipynb
+          title: "Low Rank Matrix Approximation"
+          level: 0
+        - file: notebooks/linear-algebra/PCA-Part1.ipynb
+          title: "Principal Component Analysis, Part 1"
+          level: 1
+        - file: notebooks/linear-algebra/PCA-Part2.ipynb
+          title: "Principal Component Analysis, Part 2"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/SVD-Image-Compression.ipynb
+          title: "SVD for Image Compression"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Image-Clustering.ipynb
+          title: "Image Clustering"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Image-Clustering-Hierarchical.ipynb
+          title: "Clustering images by hierarchical clustering"
+          level: 1
+        - file: notebooks/random-graphs/Graph-Theory-Intro.md
+          title: "Introduction to Graph Theory and Complex Networks Analysis"
+          level: 0
+        - file: notebooks/random-graphs/Introduction.ipynb
+          title: "Introduction to Graph Theory and Complex Network Analysis"
+          level: 1
+        - file: notebooks/random-graphs/Fundamentals.ipynb
+          title: "Fundamentals"
+          level: 1
+        - file: notebooks/random-graphs/Erdos-Renyi.md
+          title: "Erdős–Rényi Random Graphs"
+          level: 1
+        - file: notebooks/random-graphs/Phase-Transition.md
+          title: "Giant Component and Phase Transition"
+          level: 1
+        - file: notebooks/random-graphs/Light-Random-Walks.md
+          title: "Light Random Walks on Graphs"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Bias-Variance-Tradeoff.ipynb
+          title: "Bias-Variance Tradeoff"
+          level: 0
+        - file: notebooks/learning/Learning-Foundations.md
+          title: "Learning Foundations: Classification and Generalization"
+          level: 1
+        - file: notebooks/learning/Perceptron-and-Online-Learning.md
+          title: "Perceptron and Online Learning"
+          level: 1
+        - file: notebooks/learning/Boosting-Ranking-Voting.md
+          title: "Boosting Sketch, Ranking, and Voting"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Random-Projection.ipynb
+          title: "Random Projection: Theory and Implementation"
+          level: 0
+        - file: notebooks/high-dimensional-spaces/Gaussian-Random-Projection.md
+          title: "Gaussian Random Projection"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Johnson-Lindenstrauss.md
+          title: "Johnson–Lindenstrauss Lemma"
+          level: 1
+        - file: notebooks/other/Compressed-Sensing.md
+          title: "Compressed Sensing (Survey)"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Further-Reading.md
+          title: "Further Reading"
+          level: 1
+        - file: notebooks/other/Course-Synthesis.md
+          title: "Course Synthesis and Bridge to SML"
+          level: 1
+        - file: notebooks/python/Computation-on-arrays-broadcasting.ipynb
+          title: "Computation on Arrays: Broadcasting"
+          level: 0
+        - file: notebooks/random-graphs/Introduction-to-NetworkX.ipynb
+          title: "Introduction to Network Analysis with NetworkX"
+          level: 1
+        - file: notebooks/linear-algebra/Example-Principal-Components-Analysis.ipynb
+          title: "Example - Principal Components Analysis"
+          level: 1
+    - format: tex
+      template: plain_latex_book
+      output: _build/exports/mfds-book-tex.zip
+      articles: *book_articles
   toc:
     - file: notebooks/intro.md
     - title: Opening, Data, Matrices, and Images
