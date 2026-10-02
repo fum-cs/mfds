@@ -13,7 +13,7 @@
 1. Decision variables, constraints, objective
 2. Truth tables and enumeration (SAT-Table)
 3. N-Queens as a structured assignment problem
-4. From hard constraints to soft grouping → clustering
+4. From hard constraints to soft grouping $\rightarrow$ clustering
 5. Lab link: `SAT-Table`, `N-Queen` notebooks
 
 ## Sources

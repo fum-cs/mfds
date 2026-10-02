@@ -24,8 +24,8 @@
 
 ## What is deferred
 
-- Bayesian methods, HMM, MCMC → Statistical Machine Learning
-- SVM / kernels → other ML course
+- Bayesian methods, HMM, MCMC $\rightarrow$ Statistical Machine Learning
+- SVM / kernels $\rightarrow$ other ML course
 
 ## Sources
 

@@ -16,7 +16,7 @@
 1. Empirical risk vs true risk
 2. Overfitting and model complexity
 3. Why more data helps (informal)
-4. Bias–variance link back to the bias�variance notebook
+4. Bias–variance link back to the bias–variance notebook
 
 ## Sources
 
