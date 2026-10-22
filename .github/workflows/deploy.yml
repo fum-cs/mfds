@@ -30,19 +30,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
       - name: Setup Pages
         uses: actions/configure-pages@v6
+
       - uses: actions/setup-node@v7
         with:
           node-version: 24.x
+
+      # ۱. راه‌اندازی پایتون برای اجرای nbconvert
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12' # توصیه می‌شود از نسخه پایدار استفاده کنید
+
+      # ۲. نصب Jupyter Book (بدون تغییر)
       - name: Install Jupyter Book (via myst)
         run: npm install -g jupyter-book
+
+      # ۳. نصب nbconvert برای ساخت اسلایدها
+      - name: Install nbconvert
+        run: pip install nbconvert
+
+      # ۴. ساخت کتاب (بدون تغییر)
       - name: Build HTML Assets
         run: jupyter-book build --html
+
+      # ۵. ساخت اسلایدها و قرار دادن آن‌ها در زیرپوشه خروجی سایت
+      - name: Build Slides
+        run: |
+          mkdir -p _build/html/slides
+      #    jupyter nbconvert --to slides notebooks/**/*.ipynb --output-dir _build/html/slides/ --reveal-prefix "https://cdn.jsdelivr.net/npm/reveal.js@4"
+          # دستور بالا همه فایل‌های .ipynb موجود در پوشه notebooks و زیرپوشه‌های آن را تبدیل می‌کند.
+          jupyter nbconvert --to slides notebooks\high-dimensional-spaces\kNN-Classification-Evaluation.ipynb --output-dir _build/html/slides/ 
+
+      # ۶. آپلود کل خروجی (کتاب + اسلایدها)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
           path: './_build/html'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
