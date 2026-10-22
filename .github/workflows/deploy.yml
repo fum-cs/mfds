@@ -60,9 +60,8 @@ jobs:
       - name: Build Slides
         run: |
           mkdir -p _build/html/slides
-      #    jupyter nbconvert --to slides notebooks/**/*.ipynb --output-dir _build/html/slides/ --reveal-prefix "https://cdn.jsdelivr.net/npm/reveal.js@4"
+          jupyter nbconvert --to slides notebooks/**/*.ipynb --output-dir _build/html/slides/ --reveal-prefix "https://cdn.jsdelivr.net/npm/reveal.js@4"
           # دستور بالا همه فایل‌های .ipynb موجود در پوشه notebooks و زیرپوشه‌های آن را تبدیل می‌کند.
-          jupyter nbconvert --to slides notebooks\high-dimensional-spaces\kNN-Classification-Evaluation.ipynb --output-dir _build/html/slides/ 
 
       # ۶. آپلود کل خروجی (کتاب + اسلایدها)
       - name: Upload artifact
