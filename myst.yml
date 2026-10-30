@@ -217,6 +217,7 @@ project:
         - file: notebooks/other/Course-Opening.md
         - file: notebooks/python/Python-DSHB-intro.md
         - file: notebooks/python/The-Basics-Of-NumPy-Arrays.ipynb
+        - file: notebooks/python/Computation-on-arrays-broadcasting.ipynb
         - file: notebooks/high-dimensional-spaces/Images-as-High-Dimensional-Data.ipynb
         - file: notebooks/linear-algebra/Scalars-Vectors-Matrices-and-Tensors.ipynb
         - file: notebooks/linear-algebra/Multiplying-Matrices-and-Vectors.ipynb
