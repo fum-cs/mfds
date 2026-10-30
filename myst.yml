@@ -219,10 +219,6 @@ project:
         - file: notebooks/python/The-Basics-Of-NumPy-Arrays.ipynb
         - file: notebooks/python/Computation-on-arrays-broadcasting.ipynb
         - file: notebooks/high-dimensional-spaces/Images-as-High-Dimensional-Data.ipynb
-        - file: notebooks/linear-algebra/Scalars-Vectors-Matrices-and-Tensors.ipynb
-        - file: notebooks/linear-algebra/Multiplying-Matrices-and-Vectors.ipynb
-        - file: notebooks/linear-algebra/Identity-and-Inverse-Matrices.ipynb
-        - file: notebooks/linear-algebra/Norms.ipynb
     - title: Classification and Clustering
       children:
         - file: notebooks/high-dimensional-spaces/kNN-Classification-Evaluation.ipynb
@@ -246,9 +242,13 @@ project:
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb
     - title: Linear Algebra and SVD
       children:
-        - file: notebooks/linear-algebra/linear-algebra-basics.md
+        - file: notebooks/linear-algebra/linear-algebra-basics.md      
+        - file: notebooks/linear-algebra/Scalars-Vectors-Matrices-and-Tensors.ipynb
+        - file: notebooks/linear-algebra/Multiplying-Matrices-and-Vectors.ipynb
+        - file: notebooks/linear-algebra/Identity-and-Inverse-Matrices.ipynb 
         - file: notebooks/linear-algebra/Linear-Dependence-and-Span.ipynb
-        - file: notebooks/linear-algebra/Subspaces-and-Linear-Maps.md
+        - file: notebooks/linear-algebra/Norms.ipynb             
+        # - file: notebooks/linear-algebra/Subspaces-and-Linear-Maps.md
         - file: notebooks/linear-algebra/Special-Kinds-of-Matrices-and-Vectors.ipynb
         - file: notebooks/linear-algebra/Projection.ipynb
         - file: notebooks/linear-algebra/Eigendecomposition.ipynb
