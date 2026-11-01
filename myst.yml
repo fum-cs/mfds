@@ -222,7 +222,7 @@ project:
     - title: Classification and Clustering
       children:
         - file: notebooks/high-dimensional-spaces/kNN-Classification-Evaluation.ipynb
-        - file: notebooks/high-dimensional-spaces/K-Means-Clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/Clustering-Part1.ipynb
         - file: notebooks/high-dimensional-spaces/IRIS-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
         - file: notebooks/high-dimensional-spaces/Discrete-Optimization-and-Clustering.md
@@ -232,6 +232,7 @@ project:
         - file: notebooks/high-dimensional-spaces/BF-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-Coordinates.ipynb
         - file: notebooks/high-dimensional-spaces/LVQ.ipynb
+        - file: notebooks/high-dimensional-spaces/Clustering-Part2.ipynb
         - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
     - title: High-Dimensional Spaces
       children:
