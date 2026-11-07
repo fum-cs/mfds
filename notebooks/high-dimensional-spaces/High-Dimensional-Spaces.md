@@ -2,37 +2,99 @@
 
 # High Dimensional Spaces
 
-This chapter is dedicated to exploring high dimensional spaces and their implications in data science. The content is structured to provide students with a comprehensive understanding of the concepts and methodologies related to high-dimensional data and clustering techniques.
+A data set is an $n \times d$ matrix — $n$ points, $d$ coordinates — and in modern
+work $d$ is often large: a $200\times300$ grayscale image is *one* point in
+$\mathbb{R}^{60\,000}$, a document embedding has a few hundred coordinates, a
+genome sample tens of thousands. Distances, neighbourhoods and centroids are
+computed with exactly the formulas we use in the plane, but the geometry those
+formulas describe is **not** the geometry of the plane. Almost all of the volume
+of a cube lies near its corners, almost all of the volume of a ball lies in a thin
+shell near its surface, and the nearest neighbour of a point is nearly as far away
+as its farthest neighbour.
 
-## Overview of Chapter Content
+This part of the course builds that intuition, puts numbers on it, shows what it
+does to the two algorithms we already use — **k-nearest neighbours** and
+**k-means** — and then gives the constructive answer: **random projections**, which
+shrink the dimension while keeping the distances, with the
+**Johnson–Lindenstrauss lemma** as the guarantee. The pages, in the order of the
+table of contents:
 
-### Clustering and Satisfiability Problems
-We begin with an introduction to clustering in high-dimensional spaces. The initial focus is on demonstrating that the process of clustering a subset of data into two distinct groups can be framed as a satisfiability problem. This foundational concept sets the stage for understanding more complex clustering scenarios.
+| page | what it does |
+|---|---|
+| [High Dimensional Data & The Curse of Dimensionality](High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb) | The theory: cubes and spheres in $d$ dimensions, the empty centre, local neighbourhoods and the distance to the boundary, and random directions that are nearly orthogonal. |
+| [Sampling in High Dimensional Spaces](High-Dimensional-Sampling.ipynb) | The laboratory: the thin-shell volume experiment, rejection sampling and its acceptance ratio, uniform points on a hypersphere (normalised Gaussian vectors) and inside the ball (inverse-transform radius), and the Gaussian annulus. |
+| [kNN in high dimensional spaces](High-Dimensional-Data-and-kNN.ipynb) | An experiment: classification accuracy of a 5-nearest-neighbour classifier on synthetic data as the number of features grows from 2 to 100. |
+| [k-means in high dimensional spaces](High-Dimensional-Data-and-K-Means.ipynb) | The same experiment for clustering: the adjusted Rand index of k-means against the true labels, as a function of $d$. |
+| [Random Projection: Theory and Implementation](Random-Projection.ipynb) | The constructive answer: the Johnson–Lindenstrauss lemma, Gaussian and sparse (Achlioptas) projection matrices, the $1/\sqrt{k}$ scaling experiment, a Scikit-Learn check that pairwise distances survive the projection, and a short survey of compressed sensing. |
 
-### The N-Queen Problem
-Building upon the satisfiability problem, we extend our discussion to the N-Queen problem. This classical optimization problem highlights the interplay between combinatorial structures and clustering approaches, providing insights into the broader applications of these concepts in data science.
+## Three facts behind the title
 
-### Introduction to Image Data
-This section transitions to the realm of image data, which serves as a prime example of high-dimensional instances. Students are introduced to images as multidimensional arrays, setting the context for subsequent clustering and analysis techniques tailored to visual data.
+**1. The cube swallows the ball.** For a point $X$ uniform on $[-1,1]^d$, the
+probability that it falls inside the inscribed unit ball is the ratio of the two
+volumes,
 
-### Clustering Techniques
-Several clustering methodologies are discussed, including k-means clustering and hierarchical clustering. Students will learn about the mechanics of these algorithms and their applications in partitioning high-dimensional datasets.
+$$
+\mathbb{P}(\|X\|\le 1) = \frac{V_d}{2^d},
+\qquad V_d = \frac{\pi^{d/2}}{\Gamma\!\left(\frac{d}{2}+1\right)},
+$$
 
-### High Dimensional Analysis
-This section delves into the relationship between high-dimensional data and various clustering algorithms. Topics include the impacts of dimensionality on k-means clustering, the k-nearest neighbors (KNN) algorithm, and the consequences of bias-variance tradeoff in clustering contexts.
+and this ratio tends to $0$. In high dimension a cube is essentially all corners.
 
-### Image Segmentation and Clustering
-Focusing on image processing, we explore segmentation techniques using k-means and other clustering algorithms. Students will engage with practical examples showcasing how these methods can be applied to real-world image data.
+**2. The ball is a shell.** The same computation for the radius gives, for any
+fixed $\epsilon>0$,
 
-### Dimensionality Reduction
-To address the challenges posed by high-dimensional spaces, we cover dimensionality reduction techniques such as Principal Component Analysis (PCA) and Singular Value Decomposition (SVD). Students will learn how these methods can simplify complex datasets while preserving essential features, enhancing visualization and analysis.
+$$
+\mathbb{P}(\|X\| > 1-\epsilon) = 1-(1-\epsilon)^d \xrightarrow[d\to\infty]{} 1 .
+$$
 
-### Evaluation of Clustering
-This section also introduces evaluation metrics for clustering algorithms, including the Silhouette score, providing students with tools to assess the effectiveness of their clustering strategies.
+For $d=100$ and $\epsilon=0.05$ this probability is already $0.994$: the centre of
+the ball is empty, and all the points are on the peel.
 
-### Conclusion
-In conclusion, this chapter equips students with a solid foundation in high-dimensional spaces and clustering methodologies. Through theoretical understanding and practical application, students will be prepared to tackle complex data science problems involving high-dimensional data.
+**3. Nearest and farthest neighbours look alike.** With $n$ points in the unit
+cube, the typical distance to the nearest neighbour grows with $d$ while the
+diameter stays fixed, so the ratio (farthest distance) / (nearest distance) tends
+to $1$. A neighbourhood stops being *local*: it is no longer a small ball around
+the query point, it is a slab that reaches across the whole data set.
 
----
+Facts 1 and 2 are what the first page proves and draws; fact 3 is what the two
+experiments measure, once for a classifier and once for a clustering. The last page
+then shows that the same concentration is the *reason why* a random projection
+works.
 
-This overview serves as a guide to the various topics and concepts covered in the chapter, illustrating the relevance and application of high-dimensional analyses in the field of data science.
+## Reading order and prerequisites
+
+The pages are meant to be read in the order above. The only prerequisites are the
+Euclidean norm and the distance formula, both from
+[Norms](../linear-algebra/Norms.ipynb), plus the idea — introduced in
+[Images as high dimensional data](Images-as-High-Dimensional-Data.ipynb) — that an
+image is a vector and therefore a point in a high-dimensional space.
+
+Reading the theory page first matters: without it the two experiments look like
+"algorithms that get worse", when in fact the algorithms are doing exactly what
+they were told and the *space* is what changed. The sampling
+page then turns the same statements into measurements you can run yourself. In the other direction, the random
+projection page is where the same facts turn into an algorithm, so it is worth
+reading the theory page before it.
+
+## Where this part sits in the course
+
+- **Classification and Clustering.** The kNN page,
+  [k-Nearest Neighbors and Classification Evaluation Metrics](kNN-Classification-Evaluation.ipynb),
+  and the clustering pages, [Clustering](Clustering-Part1.ipynb),
+  [k-means Clustering](Clustering-Part2.ipynb) and
+  [Exhaustive Clustering](Exhaustive-Clustering.ipynb), are where these algorithms
+  are defined. This part explains why their behaviour degrades as $d$ grows.
+- **Low-rank approximation and PCA.** If distances stop being informative, one
+  answer is to work in fewer dimensions by keeping the directions of largest
+  variance: see [Principal Component Analysis, Part 1](../linear-algebra/PCA-Part1.ipynb)
+  and [SVD for Image Compression](SVD-Image-Compression.ipynb). Random projection
+  is the cheap, data-independent alternative to that idea, and the two are
+  compared at the end of the last page.
+
+## Sources
+
+- A. Blum, J. Hopcroft, R. Kannan, *Foundations of Data Science*, the chapters on
+  high-dimensional space, random projections and the Johnson–Lindenstrauss lemma.
+- Achlioptas, D. (2003), *Database-friendly random projections:
+  Johnson–Lindenstrauss with binary coins* — the sparse projection matrices used in
+  the last page.

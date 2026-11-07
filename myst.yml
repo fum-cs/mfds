@@ -69,20 +69,11 @@ project:
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
           title: "Image Segmentaion"
           level: 1
-        - file: notebooks/high-dimensional-spaces/Discrete-Optimization-and-Clustering.md
-          title: "Discrete Optimization, Truth Tables, and Clustering"
-          level: 1
-        - file: notebooks/high-dimensional-spaces/SAT-Table.ipynb
-          title: "SAT-Table"
-          level: 1
-        - file: notebooks/high-dimensional-spaces/N-Queen.ipynb
-          title: "N-Queen Problem"
-          level: 1
         - file: notebooks/high-dimensional-spaces/Silhouette-clustering.ipynb
           title: "Clustering validation: Silhouette"
           level: 1
-        - file: notebooks/high-dimensional-spaces/BF-Clustering.ipynb
-          title: "Brute force search clustering"
+        - file: notebooks/high-dimensional-spaces/Exhaustive-Clustering.ipynb
+          title: "Exhaustive Clustering: Enumeration, Counting, and Pruning"
           level: 1
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-Coordinates.ipynb
           title: "Image Segmentation Coordinates"
@@ -96,8 +87,11 @@ project:
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Spaces.md
           title: "High Dimensional Spaces"
           level: 0
-        - file: notebooks/high-dimensional-spaces/Rejection-Sampling-and-Unit-Ball.md
-          title: "Rejection Sampling and Points in the Unit Ball"
+        - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb
+          title: "High Dimensional Data & The Curse of Dimensionality"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/High-Dimensional-Sampling.ipynb
+          title: "Sampling in High Dimensional Spaces"
           level: 1
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-kNN.ipynb
           title: "kNN in high dimensional spaces"
@@ -105,8 +99,8 @@ project:
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-K-Means.ipynb
           title: "k-means in high dimensional spaces"
           level: 1
-        - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb
-          title: "High Dimensional Data & The Curse of Dimensionality"
+        - file: notebooks/high-dimensional-spaces/Random-Projection.ipynb
+          title: "Random Projection: Theory and Implementation"
           level: 1
         - file: notebooks/linear-algebra/linear-algebra-basics.md
           title: "Linear Algebra"
@@ -186,24 +180,9 @@ project:
         - file: notebooks/learning/Boosting-Ranking-Voting.md
           title: "Boosting Sketch, Ranking, and Voting"
           level: 1
-        - file: notebooks/high-dimensional-spaces/Random-Projection.ipynb
-          title: "Random Projection: Theory and Implementation"
-          level: 0
-        - file: notebooks/high-dimensional-spaces/Gaussian-Random-Projection.md
-          title: "Gaussian Random Projection"
-          level: 1
-        - file: notebooks/high-dimensional-spaces/Johnson-Lindenstrauss.md
-          title: "Johnson–Lindenstrauss Lemma"
-          level: 1
-        - file: notebooks/other/Compressed-Sensing.md
-          title: "Compressed Sensing (Survey)"
-          level: 1
-        - file: notebooks/high-dimensional-spaces/Further-Reading.md
-          title: "Further Reading"
-          level: 1
         - file: notebooks/other/Course-Synthesis.md
           title: "Course Synthesis and Bridge to SML"
-          level: 1
+          level: 0
         - file: notebooks/python/Computation-on-arrays-broadcasting.ipynb
           title: "Computation on Arrays: Broadcasting"
           level: 0
@@ -232,10 +211,7 @@ project:
         - file: notebooks/high-dimensional-spaces/Clustering-Part1.ipynb
         - file: notebooks/high-dimensional-spaces/IRIS-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
-        - file: notebooks/high-dimensional-spaces/Discrete-Optimization-and-Clustering.md
-        - file: notebooks/high-dimensional-spaces/SAT-Table.ipynb
-        - file: notebooks/high-dimensional-spaces/N-Queen.ipynb
-        - file: notebooks/high-dimensional-spaces/BF-Clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/Exhaustive-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-Coordinates.ipynb
         - file: notebooks/high-dimensional-spaces/LVQ.ipynb
         - file: notebooks/high-dimensional-spaces/Clustering-Part2.ipynb
@@ -243,10 +219,11 @@ project:
     - title: High-Dimensional Spaces
       children:
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Spaces.md
-        - file: notebooks/high-dimensional-spaces/Rejection-Sampling-and-Unit-Ball.md
+        - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb
+        - file: notebooks/high-dimensional-spaces/High-Dimensional-Sampling.ipynb
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-kNN.ipynb
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-K-Means.ipynb
-        - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb
+        - file: notebooks/high-dimensional-spaces/Random-Projection.ipynb
     - title: Linear Algebra and SVD
       children:
         - file: notebooks/linear-algebra/linear-algebra-basics.md      
@@ -285,19 +262,14 @@ project:
         - file: notebooks/learning/Learning-Foundations.md
         - file: notebooks/learning/Perceptron-and-Online-Learning.md
         - file: notebooks/learning/Boosting-Ranking-Voting.md
-    - title: Random Projections and Further Topics
-      children:
-        - file: notebooks/high-dimensional-spaces/Random-Projection.ipynb
-        - file: notebooks/high-dimensional-spaces/Gaussian-Random-Projection.md
-        - file: notebooks/high-dimensional-spaces/Johnson-Lindenstrauss.md
-        - file: notebooks/other/Compressed-Sensing.md
-        - file: notebooks/high-dimensional-spaces/Further-Reading.md
-        - file: notebooks/other/Course-Synthesis.md
     - title: Appendix
       children:
         - file: notebooks/python/Computation-on-arrays-broadcasting.ipynb
         - file: notebooks/random-graphs/Introduction-to-NetworkX.ipynb
         - file: notebooks/linear-algebra/Example-Principal-Components-Analysis.ipynb
+    - title: Misc
+      children:
+        - file: notebooks/other/Course-Synthesis.md
 
 site:
   template: book-theme

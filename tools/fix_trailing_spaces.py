@@ -13,8 +13,7 @@ PATTERN = re.compile(r'^(\s*[-*]\s+\*\*[^*]+\*\*)[ \t]+$')
 TARGETS = [
     'notebooks/high-dimensional-spaces/kNN-Classification-Evaluation.ipynb',
     'notebooks/high-dimensional-spaces/Image-Clustering.ipynb',
-    'notebooks/high-dimensional-spaces/BF-Clustering.ipynb',
-    'notebooks/high-dimensional-spaces/SAT-Table.ipynb',
+    'notebooks/high-dimensional-spaces/Exhaustive-Clustering.ipynb',
     'notebooks/high-dimensional-spaces/IRIS-Clustering.ipynb',
     'notebooks/high-dimensional-spaces/Image-Clustering-Hierarchical.ipynb',
     'notebooks/intro.md',

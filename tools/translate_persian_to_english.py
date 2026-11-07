@@ -23,7 +23,7 @@ GENERAL = {
     # --- notebooks/intro.md (English H1 already carries the course title)
     'مبانی ریاضی علوم داده': '',
 
-    # --- BF-Clustering.ipynb (lecture notes)
+    # --- Exhaustive-Clustering.ipynb (lecture notes)
     'جدول درستی رو قبلا دیدیم:': 'We saw the truth table before:',
     'همون رو اصلاح می کنیم': 'Let us fix it.',
     'یک تابع می‌نویسیم که هر سطر جدول درستی رو': 'Write a function that turns each row of the truth table',
@@ -54,7 +54,7 @@ GENERAL = {
     'در نهایت، تصاویر هر خوشه را با استفاده از کتابخانه matplotlib نمایش میدهد.': 'Finally, it displays the images of each cluster using matplotlib.',
     'خوشه‌بندی تصاویر در فضای با ابعاد بالا': 'Image clustering in high-dimensional space',
 
-    # --- SAT-Table.ipynb
+    # --- the former truth-table page (now part of Exhaustive-Clustering.ipynb)
     'محاسبه فرمول استرلینگ': "Computing Stirling's formula",
     'جدول درستی با سه متغیر': 'Truth table with three variables',
     'تابع رو چگونه اصلاح کنیم که هر سطر جدول درستی رو برگردونه؟': 'How do we fix the function so that it returns each row of the truth table?',
@@ -107,11 +107,10 @@ DROP_LINES = {'مبانی ریاضی علوم داده'}
 
 TARGETS = [
     'notebooks/intro.md',
-    'notebooks/high-dimensional-spaces/BF-Clustering.ipynb',
+    'notebooks/high-dimensional-spaces/Exhaustive-Clustering.ipynb',
     'notebooks/high-dimensional-spaces/IRIS-Clustering.ipynb',
     'notebooks/high-dimensional-spaces/Image-Clustering.ipynb',
     'notebooks/high-dimensional-spaces/Image-Clustering-Hierarchical.ipynb',
-    'notebooks/high-dimensional-spaces/SAT-Table.ipynb',
     'notebooks/high-dimensional-spaces/kNN-Classification-Evaluation.ipynb',
 ]
 

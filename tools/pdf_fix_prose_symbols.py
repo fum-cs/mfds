@@ -25,7 +25,6 @@ REPLACEMENTS = {
 
 TARGETS = [
     'notebooks/other/Course-Opening.md',
-    'notebooks/high-dimensional-spaces/Discrete-Optimization-and-Clustering.md',
     'notebooks/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb',
     'notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb',
     'notebooks/linear-algebra/PCA-Part2.ipynb',
