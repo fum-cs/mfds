@@ -11,6 +11,10 @@ project:
   copyright: "2026. CC0 Licensed - Computer Science Dept., Ferdowsi University of Mashhad"
   bibliography:
     - notebooks/references.bib
+  settings:
+    # Several notebooks store "<matplotlib...>" text next to their figures.
+    # Drop those strings at build time instead of warning about them.
+    output_matplotlib_strings: remove
   exports:
     # LaTeX/PDF exports live here; the HTML site is built from the `site:`
     # block below via `jupyter-book build --html` (exports rejects html).
@@ -53,7 +57,10 @@ project:
         - file: notebooks/high-dimensional-spaces/kNN-Classification-Evaluation.ipynb
           title: "k-Nearest Neighbors and Classification Evaluation Metrics"
           level: 0
-        - file: notebooks/high-dimensional-spaces/K-Means-Clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/Clustering-Part1.ipynb
+          title: "Clustering"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Clustering-Part2.ipynb
           title: "k-means Clustering"
           level: 1
         - file: notebooks/high-dimensional-spaces/IRIS-Clustering.ipynb
@@ -228,7 +235,6 @@ project:
         - file: notebooks/high-dimensional-spaces/Discrete-Optimization-and-Clustering.md
         - file: notebooks/high-dimensional-spaces/SAT-Table.ipynb
         - file: notebooks/high-dimensional-spaces/N-Queen.ipynb
-        - file: notebooks/high-dimensional-spaces/Silhouette-clustering.ipynb
         - file: notebooks/high-dimensional-spaces/BF-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-Coordinates.ipynb
         - file: notebooks/high-dimensional-spaces/LVQ.ipynb
