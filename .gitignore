@@ -3,3 +3,7 @@ notebooks/_build/*/
 __pycache__
 _build/
 .freebuff/
+.ipynb_checkpoints/
+_sources/
+*.pt
+*.pkl
