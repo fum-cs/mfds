@@ -75,8 +75,8 @@ project:
         - file: notebooks/high-dimensional-spaces/Exhaustive-Clustering.ipynb
           title: "Exhaustive Clustering: Enumeration, Counting, and Pruning"
           level: 1
-        - file: notebooks/high-dimensional-spaces/LVQ.ipynb
-          title: "Vector Quantization"
+        - file: notebooks/high-dimensional-spaces/Learning-Vector-Quantization.ipynb
+          title: "Learning Vector Quantization (LVQ)"
           level: 1
         - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
           title: "Clustering Validation Metrics"
@@ -208,7 +208,7 @@ project:
         - file: notebooks/high-dimensional-spaces/Clustering-Part1.ipynb
         # - file: notebooks/high-dimensional-spaces/IRIS-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
-        - file: notebooks/high-dimensional-spaces/LVQ.ipynb
+        - file: notebooks/high-dimensional-spaces/Learning-Vector-Quantization.ipynb
         - file: notebooks/high-dimensional-spaces/Clustering-Part2.ipynb
         - file: notebooks/HWs/otsu-thresholding-exercise.md
         - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
