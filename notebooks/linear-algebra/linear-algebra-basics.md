@@ -1,6 +1,7 @@
+# Linear Algebra
+
 ![](img/banner.png)
 
-# Linear Algebra
 I should mention that the original material was from [Akhil Vasvani's github repo about linear algebra](https://github.com/akhilvasvani/Linear-Algebra-Basics/).
 
 Borrowing from Hadrienj's series of blog posts and his corresponding Python Notebooks to notes on [the Deep Learning Book](http://www.deeplearningbook.org/) from Ian Goodfellow, Yoshua Bengio, and Aaron Courville (2016), the aim of these notebooks is to help beginners/advanced beginners to grasp linear algebra concepts underlying deep learning and machine learning. Acquiring these skills can boost your ability to understand and apply various data science algorithms.

@@ -1,8 +1,7 @@
-![](img/banner.png)
-
 # Example: Human Tumor Microarray Data
 
-**Mahmood Amintoosi, Fall 2026**
+![](img/banner.png)
+
 
 Computer Science Dept, Ferdowsi University of Mashhad
 

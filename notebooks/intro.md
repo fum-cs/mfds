@@ -1,6 +1,6 @@
-![](img/banner.png)
-
 # Mathematical Foundations of Data Science
+
+![](img/banner.png)
 
 
 This course builds the shared mathematical language for **data**: matrices and images, distance and clustering, high-dimensional geometry, SVD/PCA, random graphs, and learning foundations. Applications come first; the math is introduced when it explains what you already saw.

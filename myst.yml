@@ -78,11 +78,29 @@ project:
         - file: notebooks/high-dimensional-spaces/Learning-Vector-Quantization.ipynb
           title: "Learning Vector Quantization (LVQ)"
           level: 1
-        - file: notebooks/high-dimensional-spaces/Vector-Quantization.ipynb
-          title: "Vector Quantization and Image Compression"
+        - file: notebooks/high-dimensional-spaces/Proximity-Matrices-and-Dissimilarity.ipynb
+          title: "Proximity Matrices and Dissimilarity"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Three-Families-of-Clustering-Algorithms.ipynb
+          title: "Three Families of Clustering Algorithms"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/K-Medoids.ipynb
+          title: "K-Medoids"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Practical-Issues-Cluster-Number.ipynb
+          title: "Practical Issues: Starting Values and Choosing K"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Hierarchical-Clustering.ipynb
+          title: "Hierarchical Clustering"
           level: 1
         - file: notebooks/high-dimensional-spaces/Tumor-Microarray-Example.md
           title: "Example: Human Tumor Microarray Data"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Self-Organizing-Maps.ipynb
+          title: "Self-Organizing Maps"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Vector-Quantization.ipynb
+          title: "Vector Quantization and Image Compression"
           level: 1
         - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
           title: "Clustering Validation Metrics"
@@ -215,10 +233,16 @@ project:
         # - file: notebooks/high-dimensional-spaces/IRIS-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
         - file: notebooks/high-dimensional-spaces/Clustering-Part2.ipynb
-        - file: notebooks/high-dimensional-spaces/Tumor-Microarray-Example.md
         - file: notebooks/HWs/otsu-thresholding-exercise.md
         - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
         - file: notebooks/high-dimensional-spaces/Learning-Vector-Quantization.ipynb
+        - file: notebooks/high-dimensional-spaces/Proximity-Matrices-and-Dissimilarity.ipynb
+        - file: notebooks/high-dimensional-spaces/Three-Families-of-Clustering-Algorithms.ipynb
+        - file: notebooks/high-dimensional-spaces/K-Medoids.ipynb
+        - file: notebooks/high-dimensional-spaces/Practical-Issues-Cluster-Number.ipynb
+        - file: notebooks/high-dimensional-spaces/Hierarchical-Clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/Tumor-Microarray-Example.md
+        - file: notebooks/high-dimensional-spaces/Self-Organizing-Maps.ipynb
     - title: High-Dimensional Spaces
       children:
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Spaces.md
