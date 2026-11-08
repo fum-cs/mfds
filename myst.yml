@@ -214,11 +214,11 @@ project:
         - file: notebooks/high-dimensional-spaces/Clustering-Part1.ipynb
         # - file: notebooks/high-dimensional-spaces/IRIS-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
-        - file: notebooks/high-dimensional-spaces/Learning-Vector-Quantization.ipynb
         - file: notebooks/high-dimensional-spaces/Clustering-Part2.ipynb
         - file: notebooks/high-dimensional-spaces/Tumor-Microarray-Example.md
         - file: notebooks/HWs/otsu-thresholding-exercise.md
         - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
+        - file: notebooks/high-dimensional-spaces/Learning-Vector-Quantization.ipynb
     - title: High-Dimensional Spaces
       children:
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Spaces.md
