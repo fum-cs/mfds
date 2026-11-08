@@ -78,6 +78,12 @@ project:
         - file: notebooks/high-dimensional-spaces/Learning-Vector-Quantization.ipynb
           title: "Learning Vector Quantization (LVQ)"
           level: 1
+        - file: notebooks/high-dimensional-spaces/Vector-Quantization.ipynb
+          title: "Vector Quantization and Image Compression"
+          level: 1
+        - file: notebooks/high-dimensional-spaces/Tumor-Microarray-Example.md
+          title: "Example: Human Tumor Microarray Data"
+          level: 1
         - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
           title: "Clustering Validation Metrics"
           level: 1
@@ -210,6 +216,7 @@ project:
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
         - file: notebooks/high-dimensional-spaces/Learning-Vector-Quantization.ipynb
         - file: notebooks/high-dimensional-spaces/Clustering-Part2.ipynb
+        - file: notebooks/high-dimensional-spaces/Tumor-Microarray-Example.md
         - file: notebooks/HWs/otsu-thresholding-exercise.md
         - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
     - title: High-Dimensional Spaces
@@ -244,6 +251,7 @@ project:
         - file: notebooks/linear-algebra/PCA-Part1.ipynb
         - file: notebooks/linear-algebra/PCA-Part2.ipynb
         - file: notebooks/high-dimensional-spaces/SVD-Image-Compression.ipynb
+        - file: notebooks/high-dimensional-spaces/Vector-Quantization.ipynb
     - title: Random Graphs and Random Walks
       children:
         - file: notebooks/random-graphs/Graph-Theory-Intro.md
