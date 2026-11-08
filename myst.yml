@@ -75,9 +75,6 @@ project:
         - file: notebooks/high-dimensional-spaces/Exhaustive-Clustering.ipynb
           title: "Exhaustive Clustering: Enumeration, Counting, and Pruning"
           level: 1
-        - file: notebooks/high-dimensional-spaces/Image-Segmentation-Coordinates.ipynb
-          title: "Image Segmentation Coordinates"
-          level: 1
         - file: notebooks/high-dimensional-spaces/LVQ.ipynb
           title: "Vector Quantization"
           level: 1
@@ -211,12 +208,9 @@ project:
         - file: notebooks/high-dimensional-spaces/Clustering-Part1.ipynb
         # - file: notebooks/high-dimensional-spaces/IRIS-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
-        - file: notebooks/high-dimensional-spaces/Image-Segmentation-Coordinates.ipynb
         - file: notebooks/high-dimensional-spaces/LVQ.ipynb
         - file: notebooks/high-dimensional-spaces/Clustering-Part2.ipynb
         - file: notebooks/HWs/otsu-thresholding-exercise.md
-        - file: notebooks/high-dimensional-spaces/Image-Clustering.ipynb
-        - file: notebooks/high-dimensional-spaces/Image-Clustering-Hierarchical.ipynb
         - file: notebooks/high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
     - title: High-Dimensional Spaces
       children:
@@ -226,6 +220,8 @@ project:
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-kNN.ipynb
         - file: notebooks/high-dimensional-spaces/High-Dimensional-Data-and-K-Means.ipynb
         - file: notebooks/high-dimensional-spaces/Random-Projection.ipynb
+        - file: notebooks/high-dimensional-spaces/Image-Clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/Image-Clustering-Hierarchical.ipynb
     - title: Linear Algebra and SVD
       children:
         - file: notebooks/linear-algebra/linear-algebra-basics.md      
