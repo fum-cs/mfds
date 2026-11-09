@@ -93,6 +93,9 @@ project:
         - file: notebooks/high-dimensional-spaces/Hierarchical-Clustering.ipynb
           title: "Hierarchical Clustering"
           level: 1
+        - file: notebooks/high-dimensional-spaces/Spectral-Clustering.ipynb
+          title: "Spectral Clustering"
+          level: 1
         - file: notebooks/high-dimensional-spaces/Tumor-Microarray-Example.md
           title: "Example: Human Tumor Microarray Data"
           level: 1
@@ -241,6 +244,7 @@ project:
         - file: notebooks/high-dimensional-spaces/K-Medoids.ipynb
         - file: notebooks/high-dimensional-spaces/Practical-Issues-Cluster-Number.ipynb
         - file: notebooks/high-dimensional-spaces/Hierarchical-Clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/Spectral-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Tumor-Microarray-Example.md
         - file: notebooks/high-dimensional-spaces/Self-Organizing-Maps.ipynb
     - title: High-Dimensional Spaces
