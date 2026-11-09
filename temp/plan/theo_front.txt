@@ -1,0 +1,903 @@
+Academic Press is an imprint of Elsevier
+30 Corporate Drive, Suite 400, Burlington, MA 01803, USA
+525 B Street, Suite 1900, San Diego, California 92101-4495, USA
+84 Theobald's Road, London WC1X 8RR, UK
+This book is printed on acid-free paper. 
+
+Copyright © 2009, Elsevier Inc. All rights reserved.
+
+No part of this publication may be reproduced or transmitted in any form or by any means, electronic or
+mechanical, including photocopy, recording, or any information storage and retrieval system, without
+permission in writing from the publisher.
+
+Permissions may be sought directly from Elsevier's Science & Technology Rights Department in
+Oxford, UK: phone: (+44) 1865 843830, fax: (+44) 1865 853333, E-mail: permissions@elsevier.com.
+You may also complete your request on-line via the Elsevier homepage (http://elsevier.com), by
+selecting "Support & Contact" then "Copyright and Permission" and then "Obtaining Permissions."
+
+Library of Congress Cataloging-in-Publication Data
+Application submitted
+
+British Library Cataloguing-in-Publication Data
+A catalogue record for this book is available from the British Library.
+
+ISBN: 978-1-59749-272-0
+
+  For information on all Academic Press publications
+  visit our Web site at www.books.elsevier.com
+
+Printed in the United States of America
+09 10 11 12 13 14 15 16 5 4 3 2 1
+Preface
+
+This book is the outgrowth of our teaching advanced undergraduate and graduate
+courses over the past 20 years. These courses have been taught to different
+audiences, including students in electrical and electronics engineering, computer
+engineering, computer science, and informatics, as well as to an interdisciplinary
+audience of a graduate course on automation. This experience led us to make
+the book as self-contained as possible and to address students with different back-
+grounds. As prerequisitive knowledge, the reader requires only basic calculus,
+elementary linear algebra, and some probability theory basics. A number of mathe-
+matical tools, such as probability and statistics as well as constrained optimization,
+needed by various chapters, are treated in four Appendices. The book is designed to
+serve as a text for advanced undergraduate and graduate students,and it can be used
+for either a one- or a two-semester course. Furthermore,it is intended to be used as a
+self-study and reference book for research and for the practicing scientist/engineer.
+This latter audience was also our second incentive for writing this book, due to the
+involvement of our group in a number of projects related to pattern recognition.
+
+SCOPE AND APPROACH
+
+The goal of the book is to present in a unified way the most widely used tech-
+niques and methodologies for pattern recognition tasks. Pattern recognition is
+in the center of a number of application areas, including image analysis, speech
+and audio recognition, biometrics, bioinformatics, data mining, and information
+retrieval. Despite their differences, these areas share, to a large extent, a corpus
+of techniques that can be used in extracting, from the available data, information
+related to data categories, important "hidden"patterns, and trends. The emphasis in
+this book is on the most generic of the methods that are currently available. Hav-
+ing acquired the basic knowledge and understanding, the reader can subsequently
+move on to more specialized application-dependent techniques, which have been
+developed and reported in a vast number of research papers.
+
+    Each chapter of the book starts with the basics and moves, progressively, to
+more advanced topics'and reviews up-to-date techniques. We have made an effort
+to keep a balance between mathematical and descriptive presentation. This is not
+always an easy task. However, we strongly believe that in a topic such as pattern
+recognition, trying to bypass mathematics deprives the reader of understanding the
+essentials behind the methods and also the potential of developing new techniques,
+which fit the needs of the problem at hand that he or she has to tackle. In pattern
+recognition, the final adoption of an appropriate technique and algorithm is very
+much a problem-dependent task. Moreover, according to our experience, teaching
+pattern recognition is also a good "excuse" for the students to refresh and solidify xv
+xvi Preface
+
+          some of the mathematical basics they have been taught in earlier years. "Repetitio
+          est mater studiosum."
+
+       NEW TO THIS EDITION
+
+          The new features of the fourth edition include the following.
+                MATLAB codes and computer experiments are given at the end of most
+                 chapters.
+                More examples and a number of new figures have been included to enhance
+                 the readability and pedagogic aspects of the book.
+                New sections on some important topics of high current interest have been
+                 added, including:
+                 · Nonlinear dimensionality reduction
+                 · Nonnegative matrix factorization
+                 · Relevance feedback
+                 · Robust regression
+                 · Semi-supervised learning
+                 · Spectral clustering
+                 · Clustering combination techniques
+              Also, a number of sections have been rewritten in the context of more recent
+
+          applications in mind.
+
+       SUPPLEMENTS TO THE TEXT
+
+          Demonstrations based on MATLAB are available for download from the book Web
+          site, www.elsevierdirect.com/9781597492720. Also available are electronic figures
+          from the text and (for instructors only) a solutions manual for the end-of-chapter
+          problems and exercises. The interested reader can download detailed proofs,
+          which in the book necessarily, are sometimes, slightly condensed. PowerPoint
+          presentations are also available covering all chapters of the book.
+
+              Our intention is to update the site regularly with more and/or improved versions
+          of the MATLAB demonstrations. Suggestions are always welcome. Also at this Web
+          site a page will be available for typos, which are unavoidable, despite frequent
+          careful reading. The authors would appreciate readers notifying them about any
+          typos found.
+                                                                                      Preface xvii
+
+ACKNOWLEDGMENTS
+
+This book would have not been written without the constant support and help
+from a number of colleagues and students throughout the years. We are espe-
+cially indebted to Kostas Berberidis, Velissaris Gezerlis, Xaris Georgion, Kristina
+Georgoulakis, Leyteris Kofidis, Thanassis Liavas, Michalis Mavroforakis, Aggelos
+Pikrakis,Thanassis Rontogiannis, Margaritis Sdralis, Kostas Slavakis, and Theodoros
+Yiannakoponlos. The constant support provided by Yannis Kopsinis and Kostas
+Thernelis from the early stages up to the final stage, with those long nights, has
+been invaluable. The book improved a great deal after the careful reading and
+the serious comments and suggestions of Alexandros Bölnn. Dionissis Cavouras,
+Vassilis Digalakis, Vassilis Drakopoulos, Nikos Galatsanos, George Glentis, Spiros
+Hatzispyros, Evagelos Karkaletsis, Elias Koutsoupias, Aristides Likas, Gerassimos
+Mileounis, George Monstakides, George Paliouras, Stavros Perantonis, Takis Stam-
+atoponlos, Nikos Vassilas, Manolis Zervakis, and Vassilis Zissimopoulos.
+
+    The book has greatly gained and improved thanks to the comments of a number
+of people who provided feedback on the revision plan and/or comments on revised
+chapters:
+
+    Tulay Adali, University of Maryland; Mehniet Celenk, Ohio University; Rama Chel-
+lappa, University of Maryland; Mark Clements, Georgia Institute of Technology;
+Robert Duin, Delft University of Technology; Miguel Figneroa,Villanueva University
+of Puerto Rico; Dimitris Gunopoulos, University of Athens; Mathias Kolsch, Naval
+Postgraduate School; Adam Krzyzak, Concordia University; Baoxiu Li,Arizona State
+University; David Miller, Pennsylvania State University; Bernhard Schölkopf, Max
+Planck Institute; Hari Sundaram, Arizona State University; Harry Wechsler, George
+Mason University; and Alexander Zien, Max Planck Institute.
+
+    We are greatly indebted to these colleagues for their time and their constructive
+criticisms. Our collaboration and friendship with Nikos Kalouptsidis have been
+a source of constant inspiration for all these years. We are both deeply indebted
+to him.
+
+    Last but not least, K. Koutroumbas would like to thank Sophia, Dimitris-
+    Marios, and Valentini-Theodora for their tolerance and support and
+    S.Theodoridis would like to thank Despina, Eva, and Eleni, his joyful and
+    supportive "harem."
+Introduction  CHAPTER
+
+              1
+
+1.1 IS PATTERN RECOGNITION IMPORTANT?
+
+Pattern recognition is the scientific discipline whose goal is the classification of
+objects into a number of categories or classes. Depending on the application, these
+objects can be images or signal waveforms or any type of measurements that need
+to be classified. We will refer to these objects using the generic term patterns.
+Pattern recognition has a long history, but before the 1960s it was mostly the output
+of theoretical research in the area of statistics. As with everything else, the advent
+of computers increased the demand for practical applications of pattern recogni-
+tion, which in turn set new demands for further theoretical developments. As our
+society evolves from the industrial to its postindustrial phase, automation in indus-
+trial production and the need for information handling and retrieval are becoming
+increasingly important. This trend has pushed pattern recognition to the high edge
+of today's engineering applications and research. Pattern recognition is an integral
+part of most machine intelligence systems built for decision making.
+
+    Machine vision is an area in which pattern recognition is of importance.
+A machine vision system captures images via a camera and analyzes them to produce
+descriptions of what is imaged. A typical application of a machine vision system is
+in the manufacturing industry, either for automated visual inspection or for automa-
+tion in the assembly line. For example, in inspection, manufactured objects on a
+moving conveyor may pass the inspection station, where the camera stands, and it
+has to be ascertained whether there is a defect. Thus, images have to be analyzed
+online, and a pattern recognition system has to classify the objects into the "defect"
+or"nondefect"class. After that,an action has to be taken,such as to reject the offend-
+ing parts. In an assembly line, different objects must be located and "recognized,"
+that is, classified in one of a number of classes known a priori. Examples are the
+"screwdriver class," the "German key class," and so forth in a tools' manufacturing
+unit. Then a robot arm can move the objects in the right place.
+
+    Character (letter or number) recognition is another important area of pattern
+recognition,with major implications in automation and information handling. Opti-
+cal character recognition (OCR) systems are already commercially available and
+more or less familiar to all of us. An OCR system has a "front-end" device consisting
+of a light source, a scan lens, a document transport, and a detector. At the output of 1
+2 CHAPTER 1 Introduction
+
+       the light-sensitive detector, light-intensity variation is translated into "numbers" and
+       an image array is formed. In the sequel, a series of image processing techniques are
+       applied leading to line and character segmentation. The pattern recognition soft-
+       ware then takes over to recognize the characters--that is, to classify each character
+       in the correct "letter, number, punctuation" class. Storing the recognized document
+       has a twofold advantage over storing its scanned image. First, further electronic
+       processing, if needed, is easy via a word processor, and second, it is much more
+       efficient to store ASCII characters than a document image. Besides the printed
+       character recognition systems, there is a great deal of interest invested in systems
+       that recognize handwriting. A typical commercial application of such a system is
+       in the machine reading of bank checks. The machine must be able to recognize
+       the amounts in figures and digits and match them. Furthermore, it could check
+       whether the payee corresponds to the account to be credited. Even if only half of
+       the checks are manipulated correctly by such a machine, much labor can be saved
+       from a tedious job. Another application is in automatic mail-sorting machines for
+       postal code identification in post offices. Online handwriting recognition systems
+       are another area of great commercial interest. Such systems will accompany pen
+       computers, with which the entry of data will be done not via the keyboard but by
+       writing. This complies with today's tendency to develop machines and computers
+       with interfaces acquiring human-like skills.
+
+            Computer-aided diagnosis is another important application of pattern recogni-
+       tion, aiming at assisting doctors in making diagnostic decisions. The final diagnosis
+       is, of course, made by the doctor. Computer-assisted diagnosis has been applied to
+       and is of interest for a variety of medical data,such as X-rays,computed tomographic
+       images, ultrasound images, electrocardiograms (ECGs), and electroencephalograms
+       (EEGs). The need for a computer-aided diagnosis stems from the fact that medi-
+       cal data are often not easily interpretable, and the interpretation can depend very
+       much on the skill of the doctor. Let us take for example X-ray mammography
+       for the detection of breast cancer. Although mammography is currently the best
+       method for detecting breast cancer, 10 to 30% of women who have the disease and
+       undergo mammography have negative mammograms. In approximately two thirds
+       of these cases with false results the radiologist failed to detect the cancer, which
+       was evident retrospectively. This may be due to poor image quality, eye fatigue
+       of the radiologist, or the subtle nature of the findings. The percentage of correct
+       classifications improves at a second reading by another radiologist. Thus, one can
+       aim to develop a pattern recognition system in order to assist radiologists with a
+       "second" opinion. Increasing confidence in the diagnosis based on mammograms
+       would, in turn, decrease the number of patients with suspected breast cancer who
+       have to undergo surgical breast biopsy, with its associated complications.
+
+            Speech recognition is another area in which a great deal of research and devel-
+       opment effort has been invested. Speech is the most natural means by which
+       humans communicate and exchange information. Thus, the goal of building intelli-
+       gent machines that recognize spoken information has been a long-standing one for
+       scientists and engineers as well as science fiction writers. Potential applications of
+       such machines are numerous. They can be used, for example, to improve efficiency
+                                               1.1 Is Pattern Recognition Important? 3
+
+in a manufacturing environment, to control machines in hazardous environments
+remotely, and to help handicapped people to control machines by talking to them.
+A major effort, which has already had considerable success, is to enter data into
+a computer via a microphone. Software, built around a pattern (spoken sounds
+in this case) recognition system, recognizes the spoken text and translates it into
+ASCII characters, which are shown on the screen and can be stored in the memory.
+Entering information by "talking" to a computer is twice as fast as entry by a skilled
+typist. Furthermore, this can enhance our ability to communicate with deaf and
+dumb people.
+
+    Data mining and knowledge discovery in databases is another key application
+area of pattern recognition. Data mining is of intense interest in a wide range of
+applications such as medicine and biology, market and financial analysis, business
+management, science exploration, image and music retrieval. Its popularity stems
+from the fact that in the age of information and knowledge society there is an ever
+increasing demand for retrieving information and turning it into knowledge. More-
+over,this information exists in huge amounts of data in various forms including,text,
+images, audio and video, stored in different places distributed all over the world.
+The traditional way of searching information in databases was the description-based
+model where object retrieval was based on keyword description and subsequent
+word matching. However, this type of searching presupposes that a manual anno-
+tation of the stored information has previously been performed by a human. This
+is a very time-consuming job and, although feasible when the size of the stored
+information is limited, it is not possible when the amount of the available informa-
+tion becomes large. Moreover, the task of manual annotation becomes problematic
+when the stored information is widely distributed and shared by a heterogeneous
+"mixture"of sites and users. Content-based retrieval systems are becoming more and
+more popular where information is sought based on "similarity" between an object,
+which is presented into the system, and objects stored in sites all over the world.
+In a content-based image retrieval CBIR (system) an image is presented to an input
+device (e.g., scanner). The system returns"similar"images based on a measured"sig-
+nature," which can encode, for example, information related to color, texture and
+shape. In a music content-based retrieval system, an example (i.e., an extract from
+a music piece), is presented to a microphone input device and the system returns
+"similar" music pieces. In this case, similarity is based on certain (automatically)
+measured cues that characterize a music piece, such as the music meter, the music
+tempo, and the location of certain repeated patterns.
+
+    Mining for biomedical and DNA data analysis has enjoyed an explosive growth
+since the mid-1990s. All DNA sequences comprise four basic building elements;
+the nucleotides: adenine (A), cytosine (C), guanine (G) and thymine (T). Like the
+letters in our alphabets and the seven notes in music, these four nucleotides are
+combined to form long sequences in a twisted ladder form. Genes consist of,usually,
+hundreds of nucleotides arranged in a particular order. Specific gene-sequence
+patterns are related to particular diseases and play an important role in medicine.
+To this end, pattern recognition is a key area that offers a wealth of developed tools
+for similarity search and comparison between DNA sequences. Such comparisons
+4 CHAPTER 1 Introduction
+
+       between healthy and diseased tissues are very important in medicine to identify
+       critical differences between these two classes.
+
+           The foregoing are only five examples from a much larger number of possible
+       applications. Typically, we refer to fingerprint identification, signature authentica-
+       tion, text retrieval, and face and gesture recognition. The last applications have
+       recently attracted much research interest and investment in an attempt to facil-
+       itate human-machine interaction and further enhance the role of computers in
+       office automation, automatic personalization of environments, and so forth. Just to
+       provoke imagination, it is worth pointing out that the MPEG-7 standard includes
+       a provision for content-based video information retrieval from digital libraries of
+       the type: search and find all video scenes in a digital library showing person "X"
+       laughing. Of course, to achieve the final goals in all of these applications, pattern
+       recognition is closely linked with other scientific disciplines, such as linguistics,
+       computer graphics, machine vision, and database design.
+
+            Having aroused the reader's curiosity about pattern recognition, we will next
+       sketch the basic philosophy and methodological directions in which the various
+       pattern recognition approaches have evolved and developed.
+
+     1.2 FEATURES, FEATURE VECTORS, AND CLASSIFIERS
+
+       Let us first simulate a simplified case "mimicking" a medical image classification
+       task. Figure 1.1 shows two images, each having a distinct region inside it. The
+       two regions are also themselves visually different. We could say that the region of
+       Figure 1.1a results from a benign lesion, class A, and that of Figure 1.1b from a
+       malignant one (cancer), class B. We will further assume that these are not the only
+       patterns (images) that are available to us, but we have access to an image database
+
+(a)  (b)
+
+FIGURE 1.1
+Examples of image regions corresponding to (a) class A and (b) class B.
+                                     1.2 Features, Feature Vectors, and Classifiers 5
+
+                                     
+
+                                                               
+                                                                  
+
+                                                                 
+                                                                 
+
+                                                                                             
+
+FIGURE 1.2
+Plot of the mean value versus the standard deviation for a number of different images originating
+from class A ( ) and class B (). In this case, a straight line separates the two classes.
+
+with a number of patterns, some of which are known to originate from class A and
+some from class B.
+
+   The first step is to identify the measurable quantities that make these two regions
+distinct from each other. Figure 1.2 shows a plot of the mean value of the inten-
+sity in each region of interest versus the corresponding standard deviation around
+this mean. Each point corresponds to a different image from the available database.
+It turns out that class A patterns tend to spread in a different area from class B pat-
+terns. The straight line seems to be a good candidate for separating the two classes.
+Let us now assume that we are given a new image with a region in it and that we
+do not know to which class it belongs. It is reasonable to say that we measure the
+mean intensity and standard deviation in the region of interest and we plot the cor-
+responding point. This is shown by the asterisk () in Figure 1.2. Then it is sensible
+to assume that the unknown pattern is more likely to belong to class A than class B.
+
+   The preceding artificial classification task has outlined the rationale behind a
+large class of pattern recognition problems. The measurements used for the classifi-
+cation,the mean value and the standard deviation in this case,are known as features.
+In the more general case l features xi, i  1, 2, . . . , l, are used, and they form the
+feature vector
+
+                                             x  [x1, x2, . . . , xl ]T
+
+where T denotes transposition. Each of the feature vectors identifies uniquely
+a single pattern (object). Throughout this book features and feature vectors will
+be treated as random variables and vectors, respectively. This is natural, as the
+measurements resulting from different patterns exhibit a random variation. This
+is due partly to the measurement noise of the measuring devices and partly to
+6 CHAPTER 1 Introduction
+
+       the distinct characteristics of each pattern. For example, in X-ray imaging large
+       variations are expected because of the differences in physiology among individuals.
+       This is the reason for the scattering of the points in each class shown in Figure 1.1.
+
+           The straight line in Figure 1.2 is known as the decision line, and it constitutes
+       the classifier whose role is to divide the feature space into regions that correspond
+       to either class A or class B. If a feature vector x, corresponding to an unknown
+       pattern, falls in the class A region, it is classified as class A, otherwise as class B.
+       This does not necessarily mean that the decision is correct. If it is not correct,
+       a misclassification has occurred. In order to draw the straight line in Figure 1.2
+       we exploited the fact that we knew the labels (class A or B) for each point of
+       the figure. The patterns (feature vectors) whose true class is known and which
+       are used for the design of the classifier are known as training patterns (training
+       feature vectors).
+
+            Having outlined the definitions and the rationale, let us point out the basic
+       questions arising in a classification task.
+
+             How are the features generated? In the preceding example, we used the
+               mean and the standard deviation, because we knew how the images had been
+               generated. In practice,this is far from obvious. It is problem dependent,and it
+               concerns the feature generation stage of the design of a classification system
+               that performs a given pattern recognition task.
+
+             What is the best number l of features to use? This is also a very important
+               task and it concerns the feature selection stage of the classification system.
+               In practice, a larger than necessary number of feature candidates is generated,
+               and then the "best" of them is adopted.
+
+             Having adopted the appropriate, for the specific task, features, how does one
+               design the classifier? In the preceding example the straight line was drawn
+               empirically, just to please the eye. In practice, this cannot be the case, and
+               the line should be drawn optimally, with respect to an optimality criterion.
+               Furthermore,problems for which a linear classifier (straight line or hyperplane
+               in the l-dimensional space) can result in acceptable performance are not the
+               rule. In general, the surfaces dividing the space in the various class regions
+               are nonlinear. What type of nonlinearity must one adopt, and what type of
+               optimizing criterion must be used in order to locate a surface in the right place
+               in the l-dimensional feature space? These questions concern the classifier
+               design stage.
+
+             Finally, once the classifier has been designed, how can one assess the perfor-
+               mance of the designed classifier? That is, what is the classification error rate?
+               This is the task of the system evaluation stage.
+
+            Figure 1.3 shows the various stages followed for the design of a classification
+       system. As is apparent from the feedback arrows, these stages are not independent.
+       On the contrary,they are interrelated and,depending on the results,one may go back
+          1.3 Supervised, Unsupervised, and Semi-Supervised Learning 7
+
+patterns            feature    feature                               classifier    system
+                  generation  selection                               design     evaluation
+          sensor
+
+FIGURE 1.3
+The basic stages involved in the design of a classification system.
+
+to redesign earlier stages in order to improve the overall performance. Furthermore,
+there are some methods that combine stages, for example, the feature selection and
+the classifier design stage, in a common optimization task.
+
+    Although the reader has already been exposed to a number of basic problems
+at the heart of the design of a classification system, there are still a few things to
+be said.
+
+1.3 SUPERVISED, UNSUPERVISED, AND SEMI-SUPERVISED
+      LEARNING
+
+In the example of Figure 1.1, we assumed that a set of training data were available,
+and the classifier was designed by exploiting this a priori known information. This
+is known as supervised pattern recognition or in the more general context of
+machine learning as supervised learning. However, this is not always the case, and
+there is another type of pattern recognition tasks for which training data, of known
+class labels, are not available. In this type of problem, we are given a set of feature
+vectors x and the goal is to unravel the underlying similarities and cluster (group)
+"similar" vectors together. This is known as unsupervised pattern recognition or
+unsupervised learning or clustering. Such tasks arise in many applications in social
+sciences and engineering, such as remote sensing, image segmentation, and image
+and speech coding. Let us pick two such problems.
+
+    In multispectral remote sensing, the electromagnetic energy emanating from
+the earth's surface is measured by sensitive scanners located aboard a satellite, an
+aircraft,or a space station. This energy may be reflected solar energy (passive) or the
+reflected part of the energy transmitted from the vehicle (active) in order to "inter-
+rogate" the earth's surface. The scanners are sensitive to a number of wavelength
+bands of the electromagnetic radiation. Different properties of the earth's surface
+contribute to the reflection of the energy in the different bands. For example, in the
+visible-infrared range properties such as the mineral and moisture contents of soils,
+the sedimentation of water, and the moisture content of vegetation are the main
+contributors to the reflected energy. In contrast, at the thermal end of the infrared,
+it is the thermal capacity and thermal properties of the surface and near subsurface
+that contribute to the reflection. Thus, each band measures different properties
+8 CHAPTER 1 Introduction
+
+of the same patch of the earth's surface. In this way, images of the earth's surface
+corresponding to the spatial distribution of the reflected energy in each band can
+be created. The task now is to exploit this information in order to identify the
+various ground cover types, that is, built-up land, agricultural land, forest, fire burn,
+water, and diseased crop. To this end, one feature vector x for each cell from the
+"sensed" earth's surface is formed. The elements xi, i  1, 2, . . . , l, of the vector are
+the corresponding image pixel intensities in the various spectral bands. In practice,
+the number of spectral bands varies.
+
+    A clustering algorithm can be employed to reveal the groups in which feature
+vectors are clustered in the l-dimensional feature space. Points that correspond to
+the same ground cover type, such as water, are expected to cluster together and
+form groups. Once this is done, the analyst can identify the type of each cluster by
+associating a sample of points in each group with available reference ground data,
+that is, maps or visits. Figure 1.4 demonstrates the procedure.
+
+    Clustering is also widely used in the social sciences in order to study and correlate
+survey and statistical data and draw useful conclusions, which will then lead to the
+right actions. Let us again resort to a simplified example and assume that we
+are interested in studying whether there is any relation between a country's gross
+national product (GNP) and the level of people's illiteracy, on the one hand, and
+children's mortality rate on the other. In this case, each country is represented by
+a three-dimensional feature vector whose coordinates are indices measuring the
+quantities of interest. A clustering algorithm will then reveal a rather compact
+cluster corresponding to countries that exhibit low GNPs, high illiteracy levels, and
+high children's mortality expressed as a population percentage.
+
+                                                 x2
+      forest
+
+                                                                                         soil
+
+soil water          vegetation  water
+
+                                vegetation
+
+            forest                               forest
+
+soil
+
+            (a)                             (b)                                                x1
+
+FIGURE 1.4
+
+(a) An illustration of various types of ground cover and (b) clustering of the respective features
+for multispectral imaging using two bands.
+                                                                  1.5 MATLAB Programs 9
+
+    A major issue in unsupervised pattern recognition is that of defining the
+"similarity" between two feature vectors and choosing an appropriate measure
+for it. Another issue of importance is choosing an algorithmic scheme that will
+cluster (group) the vectors on the basis of the adopted similarity measure. In gen-
+eral, different algorithmic schemes may lead to different results, which the expert
+has to interpret.
+
+    Semi-supervised learning/pattern recognition for designing a classification sys-
+tem shares the same goals as the supervised case, however now, the designer has
+at his or her disposal a set of patterns of unknown class origin, in addition to the
+training patterns, whose true class is known. We usually refer to the former ones as
+unlabeled and the latter as labeled data. Semi-supervised pattern recognition can
+be of importance when the system designer has access to a rather limited number
+of labeled data. In such cases, recovering additional information from the unla-
+beled samples, related to the general structure of the data at hand, can be useful in
+improving the system design. Semi-supervised learning finds its way also to cluster-
+ing tasks. In this case, labeled data are used as constraints in the form of must-links
+and cannot-links. In other words, the clustering task is constrained to assign cer-
+tain points in the same cluster or to exclude certain points of being assigned in the
+same cluster. From this perspective, semi-supervised learning provides an a priori
+knowledge that the clustering algorithm has to respect.
+
+1.4 MATLAB PROGRAMS
+
+At the end of most of the chapters there is a number of MATLAB programs and
+computer experiments. The MATLAB codes provided are not intended to form part
+of a software package, but they are to serve a purely pedagogical goal. Most of
+these codes are given to our students who are asked to play with and discover the
+"secrets"associated with the corresponding methods. This is also the reason that for
+most of the cases the data used are simulated data around the Gaussian distribution.
+They have been produced carefully in order to guide the students in understanding
+the basic concepts. This is also the reason that the provided codes correspond to
+those of the techniques and algorithms that, to our opinion, comprise the backbone
+of each chapter and the student has to understand in a first reading. Whenever
+the required MATLAB code was available (at the time this book was prepared) in
+a MATLAB toolbox, we chose to use the associated MATLAB function and explain
+how to use its arguments. No doubt,each instructor has his or her own preferences,
+experiences,and unique way of viewing teaching. The provided routines are written
+in a way that can run on other data sets as well. In a separate accompanying book
+we provide a more complete list of MATLAB codes embedded in a user-friendly
+Graphical User Interface (GUI) and also involving more realistic examples using
+real images and audio signals.
+10 CHAPTER 1 Introduction
+
+       1.5 OUTLINE OF THE BOOK
+
+         Chapters 2-10 deal with supervised pattern recognition and Chapters 11-16 deal
+         with the unsupervised case. Semi-supervised learning is introduced in Chapter 10.
+         The goal of each chapter is to start with the basics, definitions, and approaches, and
+         move progressively to more advanced issues and recent techniques. To what extent
+         the various topics covered in the book will be presented in a first course on pattern
+         recognition depends very much on the course's focus, on the students' background,
+         and, of course, on the lecturer. In the following outline of the chapters, we give
+         our view and the topics that we cover in a first course on pattern recognition. No
+         doubt, other views do exist and may be better suited to different audiences. At the
+         end of each chapter, a number of problems and computer exercises are provided.
+
+              Chapter 2 is focused on Bayesian classification and techniques for estimating
+         unknown probability density functions. In a first course on pattern recognition, the
+         sections related to Bayesian inference, the maximum entropy, and the expectation
+         maximization (EM) algorithm are omitted. Special focus is put on the Bayesian clas-
+         sification,the minimum distance (Euclidean and Mahalanobis),the nearest neighbor
+         classifiers, and the naive Bayes classifier. Bayesian networks are briefly introduced.
+
+              Chapter 3 deals with the design of linear classifiers. The sections dealing with the
+         probability estimation property of the mean square solution as well as the bias vari-
+         ance dilemma are only briefly mentioned in our first course. The basic philosophy
+         underlying the support vector machines can also be explained, although a deeper
+         treatment requires mathematical tools (summarized in Appendix C) that most of the
+         students are not familiar with during a first course class. On the contrary,emphasis is
+         put on the linear separability issue, the perceptron algorithm, and the mean square
+         and least squares solutions. After all, these topics have a much broader horizon
+         and applicability. Support vector machines are briefly introduced. The geometric
+         interpretation offers students a better understanding of the SVM theory.
+
+              Chapter 4 deals with the design of nonlinear classifiers. The section dealing with
+         exact classification is bypassed in a first course. The proof of the backpropagation
+         algorithm is usually very boring for most of the students and we bypass its details.
+         A description of its rationale is given, and the students experiment with it using
+         MATLAB. The issues related to cost functions are bypassed. Pruning is discussed
+         with an emphasis on generalization issues. Emphasis is also given to Cover's theorem
+         and radial basis function (RBF) networks. The nonlinear support vector machines,
+         decision trees, and combining classifiers are only briefly touched via a discussion
+         on the basic philosophy behind their rationale.
+
+              Chapter 5 deals with the feature selection stage, and we have made an effort
+         to present most of the well-known techniques. In a first course we put emphasis
+         on the t-test. This is because hypothesis testing also has a broad horizon, and at
+         the same time it is easy for the students to apply it in computer exercises. Then,
+         depending on time constraints, divergence, Bhattacharrya distance, and scattered
+         matrices are presented and commented on, although their more detailed treatment
+                                                                 1.5 Outline of The Book 11
+
+is for a more advanced course. Emphasis is given to Fisher's linear discriminant
+method ( LDA) for the two-class case.
+
+    Chapter 6 deals with the feature generation stage using transformations. The
+Karhunen-Loève transform and the singular value decomposition are first intro-
+duced as dimensionality reduction techniques. Both methods are briefly covered in
+the second semester. In the sequel the independent component analysis (ICA),non-
+negative matrix factorization and nonlinear dimensionality reduction techniques
+are presented. Then the discrete Fourier transform (DFT), discrete cosine trans-
+form (DCT), discrete sine transform (DST), Hadamard, and Haar transforms are
+defined. The rest of the chapter focuses on the discrete time wavelet transform.
+The incentive is to give all the necessary information so that a newcomer in the
+wavelet field can grasp the basics and be able to develop software, based on
+filter banks, in order to generate features. All these techniques are bypassed in
+a first course.
+
+    Chapter 7 deals with feature generation focused on image and audio classifica-
+tion. The sections concerning local linear transforms, moments, parametric models,
+and fractals are not covered in a first course. Emphasis is placed on first- and second-
+order statistics features as well as the run-length method. The chain code for shape
+description is also taught. Computer exercises are then offered to generate these
+features and use them for classification for some case studies. In a one-semester
+course there is no time to cover more topics.
+
+    Chapter 8 deals with template matching. Dynamic programming (DP) and the
+Viterbi algorithm are presented and then applied to speech recognition. In a
+two-semester course, emphasis is given to the DP and the Viterbi algorithm.
+The edit distance seems to be a good case for the students to grasp the basics. Cor-
+relation matching is taught and the basic philosophy behind deformable template
+matching can also be presented.
+
+    Chapter 9 deals with context-dependent classification. Hidden Markov mod-
+els are introduced and applied to communications and speech recognition. This
+chapter is bypassed in a first course.
+
+    Chapter 10 deals with system evaluation and semi-supervised learning. The
+various error rate estimation techniques are discussed, and a case study with real
+data is treated. The leave-one-out method and the resubstitution methods are
+emphasized in the second semester,and students practice with computer exercises.
+Semi-supervised learning is bypassed in a first course.
+
+    Chapter 11 deals with the basic concepts of clustering. It focuses on definitions
+as well as on the major stages involved in a clustering task. The various types of
+data encountered in clustering applications are reviewed, and the most commonly
+used proximity measures are provided. In a first course, only the most widely used
+proximity measures are covered (e.g., lp norms, inner product, Hamming distance).
+
+    Chapter 12 deals with sequential clustering algorithms. These include some
+of the simplest clustering schemes, and they are well suited for a first course to
+introduce students to the basics of clustering and allow them to experiment with
+12 CHAPTER 1 Introduction
+
+         the computer. The sections related to estimation of the number of clusters and
+         neural network implementations are bypassed.
+
+              Chapter 13 deals with hierarchical clustering algorithms. In a first course, only
+         the general agglomerative scheme is considered with an emphasis on single link
+         and complete link algorithms, based on matrix theory. Agglomerative algorithms
+         based on graph theory concepts as well as the divisive schemes are bypassed.
+
+              Chapter 14 deals with clustering algorithms based on cost function optimization,
+         using tools from differential calculus. Hard clustering and fuzzy and possibilistic
+         schemes are considered,based on various types of cluster representatives,including
+         point representatives, hyperplane representatives, and shell-shaped representatives.
+         In a first course, most of these algorithms are bypassed, and emphasis is given to
+         the isodata algorithm.
+
+              Chapter 15 features a high degree of modularity. It deals with clustering algo-
+         rithms based on different ideas,which cannot be grouped under a single philosophy.
+         Spectral clustering, competitive learning, branch and bound, simulated annealing,
+         and genetic algorithms are some of the schemes treated in this chapter. These are
+         bypassed in a first course.
+
+              Chapter 16 deals with the clustering validity stage of a clustering procedure. It
+         contains rather advanced concepts and is omitted in a first course. Emphasis is given
+         to the definitions of internal, external, and relative criteria and the random hypothe-
+         ses used in each case. Indices, adopted in the framework of external and internal
+         criteria, are presented, and examples are provided showing the use of these indices.
+
+              Syntactic pattern recognition methods are not treated in this book. Syntactic
+         pattern recognition methods differ in philosophy from the methods discussed in
+         this book and, in general, are applicable to different types of problems. In syntactic
+         pattern recognition, the structure of the patterns is of paramount importance, and
+         pattern recognition is performed on the basis of a set of pattern primitives, a set
+         of rules in the form of a grammar, and a recognizer called automaton. Thus, we
+         were faced with a dilemma: either to increase the size of the book substantially, or
+         to provide a short overview (which, however, exists in a number of other books),
+         or to omit it. The last option seemed to be the most sensible choice.
+Classifiers Based on   CHAPTER
+Bayes Decision Theory
+                       2
+
+2.1 INTRODUCTION
+
+This is the first chapter, out of three, dealing with the design of the classifier in a
+pattern recognition system. The approach to be followed builds upon probabilistic
+arguments stemming from the statistical nature of the generated features. As has
+already been pointed out in the introductory chapter, this is due to the statistical
+variation of the patterns as well as to the noise in the measuring sensors. Adopting
+this reasoning as our kickoff point,we will design classifiers that classify an unknown
+pattern in the most probable of the classes. Thus, our task now becomes that of
+defining what "most probable" means.
+
+    Given a classification task of M classes,1, 2, . . . , M ,and an unknown pattern,
+which is represented by a feature vector x, we form the M conditional probabilities
+P(i|x), i  1, 2, . . . , M. Sometimes, these are also referred to as a posteriori
+probabilities. In words, each of them represents the probability that the unknown
+pattern belongs to the respective class i, given that the corresponding feature
+vector takes the value x. Who could then argue that these conditional probabilities
+are not sensible choices to quantify the term most probable? Indeed, the classifiers
+to be considered in this chapter compute either the maximum of these M values
+or, equivalently, the maximum of an appropriately defined function of them. The
+unknown pattern is then assigned to the class corresponding to this maximum.
+
+    The first task we are faced with is the computation of the conditional proba-
+bilities. The Bayes rule will once more prove its usefulness! A major effort in this
+chapter will be devoted to techniques for estimating probability density functions
+(pdf ), based on the available experimental evidence, that is, the feature vectors
+corresponding to the patterns of the training set.
+
+2.2 BAYES DECISION THEORY
+
+We will initially focus on the two-class case. Let 1, 2 be the two classes in which
+our patterns belong. In the sequel, we assume that the a priori probabilities 13
+14 CHAPTER 2 Classifiers Based on Bayes Decision Theory
+
+P(1), P(2) are known. This is a very reasonable assumption, because even if
+they are not known, they can easily be estimated from the available training feature
+
+vectors. Indeed, if N is the total number of available training patterns, and N1, N2
+of them belong to 1 and 2, respectively, then P(1)  N1/N and P(2)  N2/N .
+
+    The other statistical quantities assumed to be known are the class-conditional
+probability density functions p(x|i), i  1, 2, describing the distribution of the
+feature vectors in each of the classes. If these are not known, they can also be
+
+estimated from the available training data, as we will discuss later on in this chapter.
+The pdf p(x|i) is sometimes referred to as the likelihood function of i with
+respect to x. Here we should stress the fact that an implicit assumption has been
+
+made. That is, the feature vectors can take any value in the l-dimensional feature
+
+space. In the case that feature vectors can take only discrete values,density functions
+p(x|i) become probabilities and will be denoted by P(x|i).
+
+    We now have all the ingredients to compute our conditional probabilities, as
+
+stated in the introduction. To this end, let us recall from our probability course
+
+basics the Bayes rule (Appendix A)
+
+P(i|x)  p(x|i)P(i)                                             (2.1)
+                    p(x)
+
+where p(x) is the pdf of x and for which we have (Appendix A)
+
+               2                                               (2.2)
+
+p(x)  p(x|i)P(i)
+
+             i1
+
+The Bayes classification rule can now be stated as
+
+If P(1|x)  P(2|x), x is classified to 1                        (2.3)
+If P(1|x)  P(2|x), x is classified to 2
+
+The case of equality is detrimental and the pattern can be assigned to either of the
+two classes. Using (2.1), the decision can equivalently be based on the inequalities
+
+p(x|1)P(1)  p(x|2)P(2)                                         (2.4)
+
+p(x) is not taken into account, because it is the same for all classes and it does
+
+not affect the decision. Furthermore, if the a priori probabilities are equal, that is,
+P(1)  P(2)  1/2, Eq. (2.4) becomes
+
+p(x|1)  p(x|2)                                                 (2.5)
+
+Thus, the search for the maximum now rests on the values of the conditional pdfs
+
+evaluated at x. Figure 2.1 presents an example of two equiprobable classes and
+shows the variations of p(x|i), i  1, 2, as functions of x for the simple case of a
+single feature (l  1). The dotted line at x0 is a threshold partitioning the feature
+
+space into two regions,R1 and R2. According to the Bayes decision rule,for all values
+of x in R1 the classifier decides 1 and for all values in R2 it decides 2. However,
+
+it is obvious from the figure that decision errors are unavoidable. Indeed, there is
+                           2.2 Bayes Decision Theory 15
+
+p(x|)           p(x|1)
+
+                                     p(x|2)
+
+                x0                           x
+
+            R1             R2
+
+FIGURE 2.1
+
+Example of the two regions R1 and R2 formed by the Bayesian classifier for the case of two
+equiprobable classes.
+
+a finite probability for an x to lie in the R2 region and at the same time to belong
+in class 1. Then our decision is in error. The same is true for points originating
+from class 2. It does not take much thought to see that the total probability, Pe, of
+
+committing a decision error for the case of two equiprobable classes, is given by
+
+          x0           
+
+       Pe  1 p(x|2) dx  1 p(x|1) dx             (2.6)
+       2            2
+          
+                       x0
+
+which is equal to the total shaded area under the curves in Figure 2.1. We have now
+touched on a very important issue. Our starting point to arrive at the Bayes classifi-
+cation rule was rather empirical, via our interpretation of the term most probable.
+We will now see that this classification test, though simple in its formulation, has a
+sounder mathematical interpretation.
+
+Minimizing the Classification Error Probability
+
+We will show that the Bayesian classifier is optimal with respect to minimizing the
+classification error probability. Indeed, the reader can easily verify, as an exercise,
+that moving the threshold away from x0, in Figure 2.1, always increases the corre-
+sponding shaded area under the curves. Let us now proceed with a more formal
+proof.
+
+Proof. Let R1 be the region of the feature space in which we decide in favor of
+1 and R2 be the corresponding region for 2. Then an error is made if x  R1,
+although it belongs to 2 or if x  R2, although it belongs to 1. That is,
+
+       Pe  P(x  R2, 1)  P(x  R1, 2)             (2.7)
+16 CHAPTER 2 Classifiers Based on Bayes Decision Theory
+
+where P(·, ·) is the joint probability of two events. Recalling, once more, our
+probability basics (Appendix A), this becomes
+
+                          Pe  P(x  R2|1)P(1)  P(x  R1|2)P(2)
+
+                      P(1) p(x|1) dx  P(2) p(x|2) dx     (2.8)
+
+                             R2              R1
+
+or using the Bayes rule
+
+                     Pe  P(1|x)p(x) dx  P(2|x)p(x) dx    (2.9)
+
+                         R2              R1
+
+It is now easy to see that the error is minimized if the partitioning regions R1 and
+R2 of the feature space are chosen so that
+
+                             R1: P(1|x)  P(2|x)
+
+                             R2: P(2|x)  P(1|x)          (2.10)
+
+Indeed,since the union of the regions R1, R2 covers all the space,from the definition
+of a probability density function we have that
+
+                     P(1|x)p(x) dx  P(1|x)p(x) dx  P(1)  (2.11)
+
+                 R1                  R2
+
+Combining Eqs. (2.9) and (2.11), we get
+
+                     Pe  P(1)  (P(1|x)  P(2|x)) p(x) dx  (2.12)
+
+                                 R1
+
+This suggests that the probability of error is minimized if R1 is the region of space in
+which P(1|x)  P(2|x). Then, R2 becomes the region where the reverse is true.
+
+So far, we have dealt with the simple case of two classes. Generalizations to
+
+the multiclass case are straightforward. In a classification task with M classes,
+
+1, 2, . . . , M ,an unknown pattern,represented by the feature vector x,is assigned
+to class i if
+
+                             P(i|x)  P(j|x) j  i         (2.13)
+
+It turns out that such a choice also minimizes the classification error probability
+
+( Problem 2.1).
+
+Minimizing the Average Risk
+
+The classification error probability is not always the best criterion to be adopted for
+minimization. This is because it assigns the same importance to all errors. However,
+there are cases in which some wrong decisions may have more serious implications
+than others. For example, it is much more serious for a doctor to make a wrong
+decision and a malignant tumor to be diagnosed as a benign one, than the other
+way round. If a benign tumor is diagnosed as a malignant one, the wrong decision
+will be cleared out during subsequent clinical examinations. However, the results
+

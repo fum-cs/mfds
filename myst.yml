@@ -183,7 +183,7 @@ project:
         - file: notebooks/random-graphs/Fundamentals.ipynb
           title: "Fundamentals"
           level: 1
-        - file: notebooks/random-graphs/Erdos-Renyi.md
+        - file: notebooks/random-graphs/Erdos-Renyi.ipynb
           title: "Erdős–Rényi Random Graphs"
           level: 1
         - file: notebooks/random-graphs/Phase-Transition.md
@@ -285,7 +285,7 @@ project:
         - file: notebooks/random-graphs/Graph-Theory-Intro.md
         - file: notebooks/random-graphs/Introduction.ipynb
         - file: notebooks/random-graphs/Fundamentals.ipynb
-        - file: notebooks/random-graphs/Erdos-Renyi.md
+        - file: notebooks/random-graphs/Erdos-Renyi.ipynb
         - file: notebooks/random-graphs/Phase-Transition.md
         - file: notebooks/random-graphs/Light-Random-Walks.md
     - title: Learning Foundations

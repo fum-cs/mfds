@@ -140,6 +140,6 @@ before.
   of the same book and is distributed with it.
 * The remedy the book recommends for the two shortcomings — the dendrogram and the
   nested partitions — is the subject of the
-  [hierarchical clustering page](Image-Clustering-Hierarchical.ipynb).
+  [hierarchical clustering page](Hierarchical-Clustering.ipynb).
 * The high-dimensional setting in which these distances are computed is discussed
   in [High-Dimensional Spaces](High-Dimensional-Spaces.md).

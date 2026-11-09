@@ -1,0 +1,1072 @@
+xvi Contents
+
+6 Kernel Smoothing Methods        191
+
+6.1 One-Dimensional Kernel Smoothers . . . . . . . . . . . . 192
+
+6.1.1 Local Linear Regression . . . . . . . . . . . . . . 194
+
+6.1.2 Local Polynomial Regression . . . . . . . . . . . 197
+
+6.2 Selecting the Width of the Kernel . . . . . . . . . . . . . 198
+6.3 Local Regression in IRp . . . . . . . . . . . . . . . . . . . 200
+6.4 Structured Local Regression Models in IRp . . . . . . . . 201
+
+6.4.1 Structured Kernels . . . . . . . . . . . . . . . . . 203
+
+6.4.2 Structured Regression Functions . . . . . . . . . 203
+
+6.5 Local Likelihood and Other Models . . . . . . . . . . . . 205
+
+6.6 Kernel Density Estimation and Classification . . . . . . . 208
+
+6.6.1 Kernel Density Estimation . . . . . . . . . . . . 208
+
+6.6.2 Kernel Density Classification . . . . . . . . . . . 210
+
+6.6.3 The Naive Bayes Classifier . . . . . . . . . . . . 210
+
+6.7 Radial Basis Functions and Kernels . . . . . . . . . . . . 212
+
+6.8 Mixture Models for Density Estimation and Classification 214
+
+6.9 Computational Considerations . . . . . . . . . . . . . . . 216
+
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 216
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 216
+
+7 Model Assessment and Selection  219
+
+7.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . 219
+
+7.2 Bias, Variance and Model Complexity . . . . . . . . . . . 219
+
+7.3 The Bias-Variance Decomposition . . . . . . . . . . . . . 223
+
+7.3.1 Example: Bias-Variance Tradeoff . . . . . . . . 226
+
+7.4 Optimism of the Training Error Rate . . . . . . . . . . . 228
+
+7.5 Estimates of In-Sample Prediction Error . . . . . . . . . . 230
+
+7.6 The Effective Number of Parameters . . . . . . . . . . . . 232
+
+7.7 The Bayesian Approach and BIC . . . . . . . . . . . . . . 233
+
+7.8 Minimum Description Length . . . . . . . . . . . . . . . . 235
+
+7.9 Vapnik-Chervonenkis Dimension . . . . . . . . . . . . . . 237
+
+7.9.1 Example (Continued) . . . . . . . . . . . . . . . 239
+
+7.10 Cross-Validation . . . . . . . . . . . . . . . . . . . . . . . 241
+
+7.10.1 K-Fold Cross-Validation . . . . . . . . . . . . . 241
+
+7.10.2 The Wrong and Right Way
+
+              to Do Cross-validation . . . . . . . . . . . . . . . 245
+
+7.10.3 Does Cross-Validation Really Work? . . . . . . . 247
+
+7.11 Bootstrap Methods . . . . . . . . . . . . . . . . . . . . . 249
+
+7.11.1 Example (Continued) . . . . . . . . . . . . . . . 252
+
+7.12 Conditional or Expected Test Error? . . . . . . . . . . . . 254
+
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 257
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 257
+
+8 Model Inference and Averaging   261
+
+8.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . 261
+                                               Contents xvii
+
+8.2 The Bootstrap and Maximum Likelihood Methods . . . . 261
+        8.2.1 A Smoothing Example . . . . . . . . . . . . . . 261
+        8.2.2 Maximum Likelihood Inference . . . . . . . . . . 265
+        8.2.3 Bootstrap versus Maximum Likelihood . . . . . 267
+
+8.3 Bayesian Methods . . . . . . . . . . . . . . . . . . . . . . 267
+8.4 Relationship Between the Bootstrap
+
+        and Bayesian Inference . . . . . . . . . . . . . . . . . . . 271
+8.5 The EM Algorithm . . . . . . . . . . . . . . . . . . . . . 272
+
+        8.5.1 Two-Component Mixture Model . . . . . . . . . 272
+        8.5.2 The EM Algorithm in General . . . . . . . . . . 276
+        8.5.3 EM as a Maximization-Maximization Procedure 277
+8.6 MCMC for Sampling from the Posterior . . . . . . . . . . 279
+8.7 Bagging . . . . . . . . . . . . . . . . . . . . . . . . . . . . 282
+        8.7.1 Example: Trees with Simulated Data . . . . . . 283
+8.8 Model Averaging and Stacking . . . . . . . . . . . . . . . 288
+8.9 Stochastic Search: Bumping . . . . . . . . . . . . . . . . . 290
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 292
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 293
+
+9 Additive Models, Trees, and Related Methods  295
+
+9.1 Generalized Additive Models . . . . . . . . . . . . . . . . 295
+
+9.1.1 Fitting Additive Models . . . . . . . . . . . . . . 297
+
+9.1.2 Example: Additive Logistic Regression . . . . . 299
+
+9.1.3 Summary . . . . . . . . . . . . . . . . . . . . . . 304
+
+9.2 Tree-Based Methods . . . . . . . . . . . . . . . . . . . . . 305
+
+9.2.1 Background . . . . . . . . . . . . . . . . . . . . 305
+
+9.2.2 Regression Trees . . . . . . . . . . . . . . . . . . 307
+
+9.2.3 Classification Trees . . . . . . . . . . . . . . . . 308
+
+9.2.4 Other Issues . . . . . . . . . . . . . . . . . . . . 310
+
+9.2.5 Spam Example (Continued) . . . . . . . . . . . 313
+
+9.3 PRIM: Bump Hunting . . . . . . . . . . . . . . . . . . . . 317
+
+9.3.1 Spam Example (Continued) . . . . . . . . . . . 320
+
+9.4 MARS: Multivariate Adaptive Regression Splines . . . . . 321
+
+9.4.1 Spam Example (Continued) . . . . . . . . . . . 326
+
+9.4.2 Example (Simulated Data) . . . . . . . . . . . . 327
+
+9.4.3 Other Issues . . . . . . . . . . . . . . . . . . . . 328
+
+9.5 Hierarchical Mixtures of Experts . . . . . . . . . . . . . . 329
+
+9.6 Missing Data . . . . . . . . . . . . . . . . . . . . . . . . . 332
+
+9.7 Computational Considerations . . . . . . . . . . . . . . . 334
+
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 334
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 335
+
+10 Boosting and Additive Trees                 337
+
+10.1 Boosting Methods . . . . . . . . . . . . . . . . . . . . . . 337
+
+10.1.1 Outline of This Chapter . . . . . . . . . . . . . . 340
+xviii Contents
+
+10.2 Boosting Fits an Additive Model . . . . . . . . . . . . . . 341
+10.3 Forward Stagewise Additive Modeling . . . . . . . . . . . 342
+10.4 Exponential Loss and AdaBoost . . . . . . . . . . . . . . 343
+10.5 Why Exponential Loss? . . . . . . . . . . . . . . . . . . . 345
+10.6 Loss Functions and Robustness . . . . . . . . . . . . . . . 346
+10.7 "Off-the-Shelf" Procedures for Data Mining . . . . . . . . 350
+10.8 Example: Spam Data . . . . . . . . . . . . . . . . . . . . 352
+10.9 Boosting Trees . . . . . . . . . . . . . . . . . . . . . . . . 353
+10.10 Numerical Optimization via Gradient Boosting . . . . . . 358
+
+        10.10.1 Steepest Descent . . . . . . . . . . . . . . . . . . 358
+        10.10.2 Gradient Boosting . . . . . . . . . . . . . . . . . 359
+        10.10.3 Implementations of Gradient Boosting . . . . . . 360
+10.11 Right-Sized Trees for Boosting . . . . . . . . . . . . . . . 361
+10.12 Regularization . . . . . . . . . . . . . . . . . . . . . . . . 364
+        10.12.1 Shrinkage . . . . . . . . . . . . . . . . . . . . . . 364
+        10.12.2 Subsampling . . . . . . . . . . . . . . . . . . . . 365
+10.13 Interpretation . . . . . . . . . . . . . . . . . . . . . . . . 367
+        10.13.1 Relative Importance of Predictor Variables . . . 367
+        10.13.2 Partial Dependence Plots . . . . . . . . . . . . . 369
+10.14 Illustrations . . . . . . . . . . . . . . . . . . . . . . . . . . 371
+        10.14.1 California Housing . . . . . . . . . . . . . . . . . 371
+        10.14.2 New Zealand Fish . . . . . . . . . . . . . . . . . 375
+        10.14.3 Demographics Data . . . . . . . . . . . . . . . . 379
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 380
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 384
+
+11 Neural Networks  389
+
+11.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . 389
+
+11.2 Projection Pursuit Regression . . . . . . . . . . . . . . . 389
+
+11.3 Neural Networks . . . . . . . . . . . . . . . . . . . . . . . 392
+
+11.4 Fitting Neural Networks . . . . . . . . . . . . . . . . . . . 395
+
+11.5 Some Issues in Training Neural Networks . . . . . . . . . 397
+
+11.5.1 Starting Values . . . . . . . . . . . . . . . . . . . 397
+
+11.5.2 Overfitting . . . . . . . . . . . . . . . . . . . . . 398
+
+11.5.3 Scaling of the Inputs . . . . . . . . . . . . . . . 398
+
+11.5.4 Number of Hidden Units and Layers . . . . . . . 400
+
+11.5.5 Multiple Minima . . . . . . . . . . . . . . . . . . 400
+
+11.6 Example: Simulated Data . . . . . . . . . . . . . . . . . . 401
+
+11.7 Example: ZIP Code Data . . . . . . . . . . . . . . . . . . 404
+
+11.8 Discussion . . . . . . . . . . . . . . . . . . . . . . . . . . 408
+
+11.9 Bayesian Neural Nets and the NIPS 2003 Challenge . . . 409
+
+11.9.1 Bayes, Boosting and Bagging . . . . . . . . . . . 410
+
+11.9.2 Performance Comparisons . . . . . . . . . . . . 412
+
+11.10 Computational Considerations . . . . . . . . . . . . . . . 414
+
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 415
+                                            Contents xix
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 415
+
+12 Support Vector Machines and
+
+Flexible Discriminants                      417
+
+12.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . 417
+
+12.2 The Support Vector Classifier . . . . . . . . . . . . . . . . 417
+
+12.2.1 Computing the Support Vector Classifier . . . . 420
+
+12.2.2 Mixture Example (Continued) . . . . . . . . . . 421
+
+12.3 Support Vector Machines and Kernels . . . . . . . . . . . 423
+
+12.3.1 Computing the SVM for Classification . . . . . . 423
+
+12.3.2 The SVM as a Penalization Method . . . . . . . 426
+
+12.3.3 Function Estimation and Reproducing Kernels . 428
+
+12.3.4 SVMs and the Curse of Dimensionality . . . . . 431
+
+12.3.5 A Path Algorithm for the SVM Classifier . . . . 432
+
+12.3.6 Support Vector Machines for Regression . . . . . 434
+
+12.3.7 Regression and Kernels . . . . . . . . . . . . . . 436
+
+12.3.8 Discussion . . . . . . . . . . . . . . . . . . . . . 438
+
+12.4 Generalizing Linear Discriminant Analysis . . . . . . . . 438
+
+12.5 Flexible Discriminant Analysis . . . . . . . . . . . . . . . 440
+
+12.5.1 Computing the FDA Estimates . . . . . . . . . . 444
+
+12.6 Penalized Discriminant Analysis . . . . . . . . . . . . . . 446
+
+12.7 Mixture Discriminant Analysis . . . . . . . . . . . . . . . 449
+
+12.7.1 Example: Waveform Data . . . . . . . . . . . . . 451
+
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 455
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 455
+
+13 Prototype Methods and Nearest-Neighbors  459
+
+13.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . 459
+
+13.2 Prototype Methods . . . . . . . . . . . . . . . . . . . . . 459
+
+13.2.1 K-means Clustering . . . . . . . . . . . . . . . . 460
+
+13.2.2 Learning Vector Quantization . . . . . . . . . . 462
+
+13.2.3 Gaussian Mixtures . . . . . . . . . . . . . . . . . 463
+
+13.3 k-Nearest-Neighbor Classifiers . . . . . . . . . . . . . . . 463
+
+13.3.1 Example: A Comparative Study . . . . . . . . . 468
+
+13.3.2 Example: k-Nearest-Neighbors
+
+and Image Scene Classification . . . . . . . . . . 470
+
+13.3.3 Invariant Metrics and Tangent Distance . . . . . 471
+
+13.4 Adaptive Nearest-Neighbor Methods . . . . . . . . . . . . 475
+
+13.4.1 Example . . . . . . . . . . . . . . . . . . . . . . 478
+
+13.4.2 Global Dimension Reduction
+
+for Nearest-Neighbors . . . . . . . . . . . . . . . 479
+
+13.5 Computational Considerations . . . . . . . . . . . . . . . 480
+
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 481
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 481
+xx Contents
+
+14 Unsupervised Learning             485
+
+14.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . 485
+
+14.2 Association Rules . . . . . . . . . . . . . . . . . . . . . . 487
+
+14.2.1 Market Basket Analysis . . . . . . . . . . . . . . 488
+
+14.2.2 The Apriori Algorithm . . . . . . . . . . . . . . 489
+
+14.2.3 Example: Market Basket Analysis . . . . . . . . 492
+
+14.2.4 Unsupervised as Supervised Learning . . . . . . 495
+
+14.2.5 Generalized Association Rules . . . . . . . . . . 497
+
+14.2.6 Choice of Supervised Learning Method . . . . . 499
+
+14.2.7 Example: Market Basket Analysis (Continued) . 499
+
+14.3 Cluster Analysis . . . . . . . . . . . . . . . . . . . . . . . 501
+
+14.3.1 Proximity Matrices . . . . . . . . . . . . . . . . 503
+
+14.3.2 Dissimilarities Based on Attributes . . . . . . . 503
+
+14.3.3 Object Dissimilarity . . . . . . . . . . . . . . . . 505
+
+14.3.4 Clustering Algorithms . . . . . . . . . . . . . . . 507
+
+14.3.5 Combinatorial Algorithms . . . . . . . . . . . . 507
+
+14.3.6 K-means . . . . . . . . . . . . . . . . . . . . . . 509
+
+14.3.7 Gaussian Mixtures as Soft K-means Clustering . 510
+
+14.3.8 Example: Human Tumor Microarray Data . . . 512
+
+14.3.9 Vector Quantization . . . . . . . . . . . . . . . . 514
+
+14.3.10 K-medoids . . . . . . . . . . . . . . . . . . . . . 515
+
+14.3.11 Practical Issues . . . . . . . . . . . . . . . . . . 518
+
+14.3.12 Hierarchical Clustering . . . . . . . . . . . . . . 520
+
+14.4 Self-Organizing Maps . . . . . . . . . . . . . . . . . . . . 528
+
+14.5 Principal Components, Curves and Surfaces . . . . . . . . 534
+
+14.5.1 Principal Components . . . . . . . . . . . . . . . 534
+
+14.5.2 Principal Curves and Surfaces . . . . . . . . . . 541
+
+14.5.3 Spectral Clustering . . . . . . . . . . . . . . . . 544
+
+14.5.4 Kernel Principal Components . . . . . . . . . . . 547
+
+14.5.5 Sparse Principal Components . . . . . . . . . . . 550
+
+14.6 Non-negative Matrix Factorization . . . . . . . . . . . . . 553
+
+14.6.1 Archetypal Analysis . . . . . . . . . . . . . . . . 554
+
+14.7 Independent Component Analysis
+
+and Exploratory Projection Pursuit . . . . . . . . . . . . 557
+
+14.7.1 Latent Variables and Factor Analysis . . . . . . 558
+
+14.7.2 Independent Component Analysis . . . . . . . . 560
+
+14.7.3 Exploratory Projection Pursuit . . . . . . . . . . 565
+
+14.7.4 A Direct Approach to ICA . . . . . . . . . . . . 565
+
+14.8 Multidimensional Scaling . . . . . . . . . . . . . . . . . . 570
+
+14.9 Nonlinear Dimension Reduction
+
+and Local Multidimensional Scaling . . . . . . . . . . . . 572
+
+14.10 The Google PageRank Algorithm . . . . . . . . . . . . . 576
+
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 578
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 579
+                                     Contents xxi
+
+15 Random Forests                    587
+
+15.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . 587
+
+15.2 Definition of Random Forests . . . . . . . . . . . . . . . . 587
+
+15.3 Details of Random Forests . . . . . . . . . . . . . . . . . 592
+
+15.3.1 Out of Bag Samples . . . . . . . . . . . . . . . . 592
+
+15.3.2 Variable Importance . . . . . . . . . . . . . . . . 593
+
+15.3.3 Proximity Plots . . . . . . . . . . . . . . . . . . 595
+
+15.3.4 Random Forests and Overfitting . . . . . . . . . 596
+
+15.4 Analysis of Random Forests . . . . . . . . . . . . . . . . . 597
+
+15.4.1 Variance and the De-Correlation Effect . . . . . 597
+
+15.4.2 Bias . . . . . . . . . . . . . . . . . . . . . . . . . 600
+
+15.4.3 Adaptive Nearest Neighbors . . . . . . . . . . . 601
+
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 602
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 603
+
+16 Ensemble Learning                 605
+
+16.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . 605
+
+16.2 Boosting and Regularization Paths . . . . . . . . . . . . . 607
+
+16.2.1 Penalized Regression . . . . . . . . . . . . . . . 607
+
+16.2.2 The "Bet on Sparsity" Principle . . . . . . . . . 610
+
+16.2.3 Regularization Paths, Over-fitting and Margins . 613
+
+16.3 Learning Ensembles . . . . . . . . . . . . . . . . . . . . . 616
+
+16.3.1 Learning a Good Ensemble . . . . . . . . . . . . 617
+
+16.3.2 Rule Ensembles . . . . . . . . . . . . . . . . . . 622
+
+Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . . . . . 623
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 624
+
+17 Undirected Graphical Models       625
+
+17.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . 625
+
+17.2 Markov Graphs and Their Properties . . . . . . . . . . . 627
+
+17.3 Undirected Graphical Models for Continuous Variables . 630
+
+17.3.1 Estimation of the Parameters
+
+when the Graph Structure is Known . . . . . . . 631
+
+17.3.2 Estimation of the Graph Structure . . . . . . . . 635
+
+17.4 Undirected Graphical Models for Discrete Variables . . . 638
+
+17.4.1 Estimation of the Parameters
+
+when the Graph Structure is Known . . . . . . . 639
+
+17.4.2 Hidden Nodes . . . . . . . . . . . . . . . . . . . 641
+
+17.4.3 Estimation of the Graph Structure . . . . . . . . 642
+
+17.4.4 Restricted Boltzmann Machines . . . . . . . . . 643
+
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 645
+
+18 High-Dimensional Problems: p  N   649
+
+18.1 When p is Much Bigger than N . . . . . . . . . . . . . . 649
+xxii Contents
+
+18.2 Diagonal Linear Discriminant Analysis
+        and Nearest Shrunken Centroids . . . . . . . . . . . . . . 651
+
+18.3 Linear Classifiers with Quadratic Regularization . . . . . 654
+        18.3.1 Regularized Discriminant Analysis . . . . . . . . 656
+        18.3.2 Logistic Regression
+                    with Quadratic Regularization . . . . . . . . . . 657
+        18.3.3 The Support Vector Classifier . . . . . . . . . . 657
+        18.3.4 Feature Selection . . . . . . . . . . . . . . . . . . 658
+        18.3.5 Computational Shortcuts When p  N . . . . . 659
+
+18.4 Linear Classifiers with L1 Regularization . . . . . . . . . 661
+        18.4.1 Application of Lasso
+                    to Protein Mass Spectroscopy . . . . . . . . . . 664
+        18.4.2 The Fused Lasso for Functional Data . . . . . . 666
+
+18.5 Classification When Features are Unavailable . . . . . . . 668
+        18.5.1 Example: String Kernels
+                    and Protein Classification . . . . . . . . . . . . . 668
+        18.5.2 Classification and Other Models Using
+                    Inner-Product Kernels and Pairwise Distances . 670
+        18.5.3 Example: Abstracts Classification . . . . . . . . 672
+
+18.6 High-Dimensional Regression:
+        Supervised Principal Components . . . . . . . . . . . . . 674
+        18.6.1 Connection to Latent-Variable Modeling . . . . 678
+        18.6.2 Relationship with Partial Least Squares . . . . . 680
+        18.6.3 Pre-Conditioning for Feature Selection . . . . . 681
+
+18.7 Feature Assessment and the Multiple-Testing Problem . . 683
+        18.7.1 The False Discovery Rate . . . . . . . . . . . . . 687
+        18.7.2 Asymmetric Cutpoints and the SAM Procedure 690
+        18.7.3 A Bayesian Interpretation of the FDR . . . . . . 692
+
+18.8 Bibliographic Notes . . . . . . . . . . . . . . . . . . . . . 693
+Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 694
+
+References     699
+
+Author Index   729
+
+Index          737
+                                                                                This is page 1
+                                                                                Printer: Opaque this
+
+1
+
+Introduction
+
+Statistical learning plays a key role in many areas of science, finance and
+industry. Here are some examples of learning problems:
+
+    · Predict whether a patient, hospitalized due to a heart attack, will
+       have a second heart attack. The prediction is to be based on demo-
+       graphic, diet and clinical measurements for that patient.
+
+    · Predict the price of a stock in 6 months from now, on the basis of
+       company performance measures and economic data.
+
+    · Identify the numbers in a handwritten ZIP code, from a digitized
+       image.
+
+    · Estimate the amount of glucose in the blood of a diabetic person,
+       from the infrared absorption spectrum of that person's blood.
+
+    · Identify the risk factors for prostate cancer, based on clinical and
+       demographic variables.
+
+   The science of learning plays a key role in the fields of statistics, data
+mining and artificial intelligence, intersecting with areas of engineering and
+other disciplines.
+
+   This book is about learning from data. In a typical scenario, we have
+an outcome measurement, usually quantitative (such as a stock price) or
+categorical (such as heart attack/no heart attack), that we wish to predict
+based on a set of features (such as diet and clinical measurements). We
+have a training set of data, in which we observe the outcome and feature
+2 1. Introduction
+
+TABLE 1.1. Average percentage of words or characters in an email message
+equal to the indicated word or character. We have chosen the words and characters
+showing the largest difference between spam and email.
+
+            george you your hp free hpl ! our re edu remove
+ spam 0.00 2.26 1.38 0.02 0.52 0.01 0.51 0.51 0.13 0.01 0.28
+ email 1.27 1.27 0.44 0.90 0.07 0.43 0.11 0.18 0.42 0.29 0.01
+
+measurements for a set of objects (such as people). Using this data we build
+a prediction model, or learner, which will enable us to predict the outcome
+for new unseen objects. A good learner is one that accurately predicts such
+an outcome.
+
+   The examples above describe what is called the supervised learning prob-
+lem. It is called "supervised" because of the presence of the outcome vari-
+able to guide the learning process. In the unsupervised learning problem,
+we observe only the features and have no measurements of the outcome.
+Our task is rather to describe how the data are organized or clustered. We
+devote most of this book to supervised learning; the unsupervised problem
+is less developed in the literature, and is the focus of Chapter 14.
+
+   Here are some examples of real learning problems that are discussed in
+this book.
+
+Example 1: Email Spam
+
+The data for this example consists of information from 4601 email mes-
+sages, in a study to try to predict whether the email was junk email, or
+"spam." The objective was to design an automatic spam detector that
+could filter out spam before clogging the users' mailboxes. For all 4601
+email messages, the true outcome (email type) email or spam is available,
+along with the relative frequencies of 57 of the most commonly occurring
+words and punctuation marks in the email message. This is a supervised
+learning problem, with the outcome the class variable email/spam. It is also
+called a classification problem.
+
+   Table 1.1 lists the words and characters showing the largest average
+difference between spam and email.
+
+   Our learning method has to decide which features to use and how: for
+example, we might use a rule such as
+
+if (%george < 0.6) & (%you > 1.5)    then spam
+                                     else email.
+
+Another form of a rule might be:
+
+if (0.2 · %you - 0.3 · %george) > 0  then spam
+                                     else email.
+                                                                                                                                                                                                                                                                                      1. Introduction 3
+
+                                                      -1 1 2 3 4                                                              40 50 60 70 80                                                                  0.0 0.4 0.8                                                                      6.0 7.0 8.0 9.0
+
+                                                                                    oo                    oo                                      o                                     oo                                                   o                                    oo                           o                                o                          o
+                                                                                    o                o                                  o                                 o                                                                  o                                             o                   o                             o
+                                                                                   oo                      oo                    o                                        oo                                                                     oo                            oo                                           oo                            oo                        012345
+                                                                      oooooo oooooo ooo              oo                                    ooooooooooooo oo                                 oo                            o                  oo o                                                    oo        oo                       oo
+                                                                                               o oooooooo                 o                                    o          ooo                                                                oo oo                    ooooooo            o                     oo                       oo                       oo     o
+                                                                                                                      oo                                       oo                 o o oo o oo oo oo                                                                                  o oo                                            o               oo   o   o  o     o
+                     lpsa                             o           ooooooooooooooo   o          o ooooooooooooooooooooooooo o               oooooooooooooooooo  o             ooo        oo     ooooooooooooo         oooo                    ooo oo o o ooo oooo oooo                                   oo          ooo            oo   oooooooooo          o                 oo
+                                                             oo                    ooo                                        o oo                              o            o           o                                              o o oo                                             oo o                     o              o       oo             oo o o oo             o
+                                                      oooooooooooooooo oo                   o ooooooooo oooooooo ooo                    oo oooooooooooooo          ooo o                ooo o oooooooo                       oooo       o             oo         oo        o      ooo          o                          oo    o    o oooooo o                          o
+                                                                                                                                                                   oo                                                                                    oo    oo              oo              oo                         o               oo                           oo
+                                                      o oo oo ooooo oo                         oo oooooooo                    o            ooo oooo o                  ooo                     oooo                       ooo                            o     ooo      o                               ooo oo                            oooo o oo o
+                                                      oo o o                                      oo ooo                            o o o oo                              oo                                          oo                                   oo                                        oo                                 oo
+                                                                 o                                   o                                        o                        o                oo                            o                                  o                                     o                                        o
+
+                                                      oo oo                                    oo oo                                   oo                o oo                                                         oo                                 oo                                    oo o                                       oo o
+
+-1 1 2 3 4                            o                                                                    o                     o                                        o                                                                  o                                          o                             o                                   o
+                              o oooo o                                                            o oo      oo                                 o  o                       ooo o o o o                                                     oooo o                                     o oo o o                         ooo                       o             oo
+                            ooo oooooo oo                                                            oo    o                            o  o      oo                                                                                                                                                                  o                   oo o  o             o oo o o
+                         ooo oooooo                                                                 oooooooooo o o                         o ooooo ooo o ooo       oo             o     o ooo o o oo                                    ooo o                           oo     oooo     oooo                       ooo               o       oo       oo                      oo
+                        oooooooooooooo ooo                                                        oooooooooooooo o                         ooooooooooo oo          o                           oooooo oo                                                          o     oo      o                    oo oo                              oo o o
+                        ooo ooooo                                                                                                                                           oo                                                                   ooo  oo                oo     oooo  oo              oo                                 oo                oo     oo o
+                    ooo ooooooo                       lcavol                                   ooooo ooooooooooooo o          o            ooooooooooooooooo oo           oo            oooo o ooo ooo oooo          ooo                o             ooo       oo    oo   o                            ooo  oo                      o  ooooooooooooo oo o o                  o
+                       oooooo                                                                                                                                             o       o                                   o                 o                      oo                  o                         o                  o
+                 oo ooooo o                                                                    ooo       o                          o      oooooooooo o o          oo                   oo     ooooo                         oo                                   oo o                                         oo                    o oooo oo                           o
+                  oo o o                                                                    o    o   ooooooo     o    o              o  o ooo oo                   o                     o  o     oooo oooo                  o                        ooo      oo o                                  ooooo     o                        ooo                            oo
+                                                                                                  ooo ooo o                                                                                                                                              oo oo
+                                                                                               oo oooo o o                    o o o o ooo o                               oo                   oo                oo                                   ooo o                                          ooo o                              ooo o o
+                                                                                                                                                                          ooo o
+                                                                                                  ooo o                                o oo o                          oo                                             o   ooo                            ooo                                      ooo                                   ooo
+
+                                                                                                                                                                                               o
+
+                           oo                                       oo                                                                           oo                       o                               oo                                 o        oo       o                           o                       oo                     o                      o                  2.5 3.5 4.5
+                           oooo                       o o o oo o ooo oo oo oo o o                                                                 o oo o o                                               ooo oo                                                                                         oo oo                           oo o
+                     ooooooooo o o                                                                                                             ooooooo                                  o      o ooooooo             o                                oo                o                      o                      ooo               oooooo ooo o             o
+                                                                                                                                                                                                                     o                                o                                        o                                             o
+                                                                                                                                                                          o             o ooooooooooo                                     oo                   oo              oo          oo                            o           o                                           o
+                     oooooooooooooooooooo o           o ooo ooooooo ooooo o                                                      oo        oooooooooooo oo oo o                                                  oooo                   oo                     oo     oooo     ooooooo                                    o             ooo     o     o          o     oooo
+                                                                                               lweight                                     oo oo                   o                                                                    o             oo                 o                        oo                      o          o    o           o   oo  o
+                     oooooooooo oooooooooooo o        o oo ooooo ooooooooooooo                                                             oooooooooooooooo o             oo o          oo o oooooooo         ooo                            oo oo oo oo ooooo oo                              ooo                  ooo   o     o       oooooo  o                ooo o o
+                                                                                                                              oo           oo                             o                                                                                                                    o                                     o           oo  o
+                 o oo ooo oooo                        ooo oo oo     ooooo      o    oo                                        o ooo oooooooooo o                   ooo o             o   o           oo          oo                              oo oo o o o o oo oo ooo                                                             o oo oo oo o
+                                                                       o                                                                                                                o                        o                                                                                                                                                            o
+                     oooooooo o                                  oooooooo                                                                  o o o oooo o                   oo            ooo o o                      oo                               oo o ooo                                       oo oo                           o ooo o o                             o
+                           o                          oo o                                                                          oo                   o ooo                                                       ooo                                                o                                             o                 oo o
+                 oo                                                                                                                                                                                                                                        oo                                  o                      o
+
+                        o                                    o                                                                                 o                          o                                           o                               o                                                             o                           o
+
+40 50 60 70 80             o oooo                                   oo ooo                            o o oo o                                                                    o         o oo o oo                                   ooo oo                            oo               o                 ooo                     o o oo                            oo
+                                                                                               o o oo o oo o
+                 o oo oooo                            o o ooo oo o                                                                                                        oo o                 o ooo oooo                    oooo                     oo       oo       o         oo                    oo oo o o oooooo                                         oo
+                     oooooooooooooooooo oo oo         oo     ooo   ooooooo  oo     ooooooo        oooo ooooooooooooooo o                                                  ooo        ooooo ooooooooo                                             oo oooo ooo oo ooooo ooo ooo ooooo                                                     ooooo oooo ooo o o oo oo
+                                                      o                                     o oooooooooooooooooooooo o
+                     oooooooooooooooooo ooooo         o ooooooo ooooooooooooooo o                                                       age                        oooo                 ooo ooooooooooo oooo                                 oooo     oooo     o o ooo         o oooooo           oooo             oooo              o  ooooo   ooo  o    o   o  oooo  oo
+                                                                                                    ooooooooooooooo                                                                                                                                            oo o                                            oooo                                       o
+                     o oo oooooooo ooo                   o oooooooooooo o o                       o ooooo o                                                            oooo o oo ooooo                           oooo                   ooo oooo oo o oo oo                                    o                                     o  oo      ooo   oo  o      o         oo
+                 o o o o oo                           oo oo o o o                                                                                                                       o o oo                       ooo                              o oo                              o o oo o                                        oo
+                                                                                                     oo                                                                oo                                                                                                                                                               ooo                      o
+                        o                             o o o o o                                 oo o                                                               oo                                                o                  oo                                                 ooo                                          oo
+                 oo o                             o                                              oo                                                                       o                                          oo                               oo                                       oo                                       oo
+                                                                                                                                                                                               o
+                     oo                               o oo o                                           oo                                                                 o                                          o                                     o            o                      oo                                       oo
+                           oo                                                                        o                                                                    oo                                         o                    oo                                            o      oo                                       o                 o
+                     o                                o                                                                                                                   o                                          o                                   o                                     o                                        o
+
+                           ooooo                             o oooooo                                                                          oooo ooo o                                                            ooo                 o ooo o o o                                              o                                     oooooo
+                        o  o                                        o                                            lbph oooooooo o                                                                                                                  o                                   o           oo           oo                       o                        oo
+                     o oooooooooooo oo o              o      o                     o                ooooooooooooo                          ooooooooooooo oo                                                             oo              o                         o o ooo o o                                  o                     o oo ooo oo o o o                              -1 0 1 2
+                                                             oooo   ooo     ooo    o                                                                                                                                    oo              o             ooo           oo                            oo           ooo
+                     oooooooooo o                     o o o oooo o oo                          o oooooooo o                         o oooo oooo                                                                           oo            o oo ooo                                     o               oo oo     o                        oo ooo ooo o
+                        o oo                                     oo o                          o oo                                        oo o                                                                              oo                                                      o                                               oo                                oo
+                                                                                                                                                                                                                                        o                         oo                                         o
+                     o oo ooooo o                            oo       ooo                      ooooo                                       o oooooooo                                                                oo                               oo              oo                                o    oo                      o oo oo o o o o
+                         o                                         o  o          o     o       o                 oo                               o                                                                  o                       o        o              o                  oo              o          o
+
+                               o                                                       o          o                                               o                                                                                              o                                       o                   o                                                o
+
+                     oo o                             o oo                                          o   oo                                             oo                                                        o                        oo                              oo                   ooo                                      ooo
+                                                                                                                                           o                                                                              o
+
+                 oo oooooooooooooooooooooooooooo oooooo oooooooooooooooooooooo o o ooooooooooooooooooooo o o ooo o ooo ooooooooooooo oo                                                                              o                  o o ooo ooooo oooooooo o o                                                                   o oooooo o o o o o o o
+
+                        oooooooooooo ooo                            ooooo oooooooooo              oooooooooooo o o o ooooooooo ooo o o o o o ooooo                                                                                                    o               oooo oooooooooooo                                   o        o ooo ooo o o ooo o o
+
+0.0 0.4 0.8                                                                                                                                                                                                                        svi
+
+                 oo oooooooooooooooooooooooooooo      ooooooo ooooooooooooooooooooooooooooo o oooooooooooooooooooooooooooooooooo o oo ooo oooooooooooooooooooo oo o oo ooooo oooooooooooooooooo                                                       o ooooooooo oooooo o o o o o oooooooo o o o o o o
+
+                           o ooooo                 o                             oooooooo         ooooo ooo o                                     o            oo         oo            o              o                                     lcp oo                                                                o                 o          o                      oo           -1 0 1 2 3
+                                                  o                                                                                     o oo      o                                                                                                                                                                o                         o o o oo
+                        o oooo o                                            oo oo o                                              o o oo                                   oo            o                oo                                o                                                                        o
+                                                                                                                                                                                                                                           o                                                                        o                                            o
+                     ooo oooo o o                                     o ooooooo                     ooooooo o                                 ooo ooo oo           o              o         ooo                       oo                   o                                                   o                    o           o    o  oo      o oo               o
+                                                                                                                                                                   o                           o                                           oo                                                                             oo         o       o                   ooo o
+                     oo                                                  o                        o ooo o o                                oo o oo                        o             o o oo                          oo                o                                                                                 o        o                    o      oo
+
+                        oo oooo                                       oo           o           o o oo o                                    oo         o oo                o       o         oo                               o            oo                                                                                o              o oo                  o     o
+                                                                  o     o                                                           o                                     o                              oo                                                                                                              o              o oooo ooo
+                     oo ooo ooo                              o oooo o o                        oo   o   ooo                                o ooooooo                   oo o o o o oooo                                                    o                                                          o oo
+                                                                                                        o                                                                                                                                                                                                    o
+                                                                 o                             o                                                                                                                                                                                                                    o                     o
+                     ooo oooo                         o o ooo o                                o ooo ooo                                   o ooo oooo                  oo                      oo o o oo                                                                                       o oo                                     ooo o o o
+                     ooo oo                                  ooo o                                o oo o o                                    oo oo                o                           o oo o                                                                                          oo                                       oo                             o
+
+                 oo ooooooooooooooooooooooooo         ooooooo oooooooooooooooo o oo o oo oooooooooooooooooooooooo oo ooo o oooooooooooooooo oo o o ooo ooooooooooooo o                                                                  o                                                               oo                           o oooooo o o o
+
+6.0 7.0 8.0 9.0         oooo o                                   o o oo                        oo o oo                                     oo o o o                                     oo o o                                            oo                                   o oo o                                                                                  o o ooo
+
+                        o                                             o                                 o                                              o                          o                                  o                                         o                                             gleason                        o
+                                                                                                                                                                                                                                        o o ooooooooooo oooooooooooo                                                                      ooooooooo o o ooo
+                 o ooooooooooooooooooooooooooo        oo oooooooooooooooooooooooo o ooooooooooooooooooooooooooo oo o o o ooooooooooooooooooo o o ooooo o ooooooooooooo o
+
+                 oo ooooooooooooooooo oo              oooooo ooooooo ooooooooo o               o oooooooooooooooo oooo oo ooo o oo oooooooooo                      o o o o oooooooooo o                                                               o oo o o                                                                          o
+
+                           oo                                               o      oo                 oo                                              oo o                              o              oo                               o                                      o  oo                                               oo                                               0 20 60 100
+                             o                                                                    o                                        o                                                                                            o                                                                                            o
+                     oo o o                                      oo o o                        o oo                                        o oo o o                                     o oo                     o                        oo o o o o                                                                  oo             o
+                     o oo oo                                 o oo                                       ooooo                                  oo oo               o                        o oo                      o                 o                      o o oo o                                             o                o
+                     o ooooooo                                           ooo oo o                    ooo oo o o                            o o ooooo o                    o             o                oo o                           o                               o oo ooo                                   o
+                           o oo                                    o oo                           o oo                                        oo                            oo                                   o                      oo                              o                o                   o                                  pgg45
+                        oooo o o                                   ooo oo o o                  o oooooo                          o         oo ooo                         o             o ooooo                  o                      oo o o o o ooo                                                         oo
+                     oo o oo                          o ooo o                                  o ooo oo                                    ooo o oo o o                                        o oo                   oo                o o o ooo                                                                  oo
+                 o oooooooooo o o                     oo oo oooooo o o o o o ooooooo oo                                                    ooo ooooooo oo oo o oo ooooo o oo                                                            oo oo o o ooo o                                                            oo o
+                     o ooooooooo o                               ooooooo oooo                  oo oooo ooo o o                      o o oooo o oo oo o oo                                   o ooo oo                                    o oo o ooo oo                                      o                          oo
+                 oo ooooooooooooooooo oo              oooooo ooooooo ooooooooo o               o oooooooooooooooo oooo oo ooo o oo oooooooooo                      o o o o oooooooooo o                                                               o oo o o                                 o
+
+                 012345                                                                     2.5 3.5 4.5                                                                           -1 0 1 2                                                                 -1 0 1 2 3                                                                   0 20 60 100
+
+FIGURE 1.1. Scatterplot matrix of the prostate cancer data. The first row shows
+the response against each of the predictors in turn. Two of the predictors, svi and
+gleason, are categorical.
+
+   For this problem not all errors are equal; we want to avoid filtering out
+good email, while letting spam get through is not desirable but less serious
+in its consequences. We discuss a number of different methods for tackling
+this learning problem in the book.
+
+Example 2: Prostate Cancer
+
+The data for this example, displayed in Figure 1.11, come from a study
+by Stamey et al. (1989) that examined the correlation between the level of
+
+    1There was an error in these data in the first edition of this book. Subject 32 had
+a value of 6.1 for lweight, which translates to a 449 gm prostate! The correct value is
+44.9 gm. We are grateful to Prof. Stephen W. Link for alerting us to this error.
+4 1. Introduction
+
+   FIGURE 1.2. Examples of handwritten digits from U.S. postal envelopes.
+
+prostate specific antigen (PSA) and a number of clinical measures, in 97
+men who were about to receive a radical prostatectomy.
+
+   The goal is to predict the log of PSA (lpsa) from a number of measure-
+ments including log cancer volume (lcavol), log prostate weight lweight,
+age, log of benign prostatic hyperplasia amount lbph, seminal vesicle in-
+vasion svi, log of capsular penetration lcp, Gleason score gleason, and
+percent of Gleason scores 4 or 5 pgg45. Figure 1.1 is a scatterplot matrix
+of the variables. Some correlations with lpsa are evident, but a good pre-
+dictive model is difficult to construct by eye.
+
+   This is a supervised learning problem, known as a regression problem,
+because the outcome measurement is quantitative.
+
+Example 3: Handwritten Digit Recognition
+
+The data from this example come from the handwritten ZIP codes on
+envelopes from U.S. postal mail. Each image is a segment from a five digit
+ZIP code, isolating a single digit. The images are 16×16 eight-bit grayscale
+maps, with each pixel ranging in intensity from 0 to 255. Some sample
+images are shown in Figure 1.2.
+
+   The images have been normalized to have approximately the same size
+and orientation. The task is to predict, from the 16 × 16 matrix of pixel
+intensities, the identity of each image (0, 1, . . . , 9) quickly and accurately. If
+it is accurate enough, the resulting algorithm would be used as part of an
+automatic sorting procedure for envelopes. This is a classification problem
+for which the error rate needs to be kept very low to avoid misdirection of
+                                                                               1. Introduction 5
+
+mail. In order to achieve this low error rate, some objects can be assigned
+to a "don't know" category, and sorted instead by hand.
+
+Example 4: DNA Expression Microarrays
+
+DNA stands for deoxyribonucleic acid, and is the basic material that makes
+up human chromosomes. DNA microarrays measure the expression of a
+gene in a cell by measuring the amount of mRNA (messenger ribonucleic
+acid) present for that gene. Microarrays are considered a breakthrough
+technology in biology, facilitating the quantitative study of thousands of
+genes simultaneously from a single sample of cells.
+
+   Here is how a DNA microarray works. The nucleotide sequences for a few
+thousand genes are printed on a glass slide. A target sample and a reference
+sample are labeled with red and green dyes, and each are hybridized with
+the DNA on the slide. Through fluoroscopy, the log (red/green) intensities
+of RNA hybridizing at each site is measured. The result is a few thousand
+numbers, typically ranging from say -6 to 6, measuring the expression level
+of each gene in the target relative to the reference sample. Positive values
+indicate higher expression in the target versus the reference, and vice versa
+for negative values.
+
+   A gene expression dataset collects together the expression values from a
+series of DNA microarray experiments, with each column representing an
+experiment. There are therefore several thousand rows representing individ-
+ual genes, and tens of columns representing samples: in the particular ex-
+ample of Figure 1.3 there are 6830 genes (rows) and 64 samples (columns),
+although for clarity only a random sample of 100 rows are shown. The fig-
+ure displays the data set as a heat map, ranging from green (negative) to
+red (positive). The samples are 64 cancer tumors from different patients.
+
+   The challenge here is to understand how the genes and samples are or-
+ganized. Typical questions include the following:
+
+ (a) which samples are most similar to each other, in terms of their expres-
+       sion profiles across genes?
+
+ (b) which genes are most similar to each other, in terms of their expression
+       profiles across samples?
+
+ (c) do certain genes show very high (or low) expression for certain cancer
+       samples?
+
+   We could view this task as a regression problem, with two categorical
+predictor variables--genes and samples--with the response variable being
+the level of expression. However, it is probably more useful to view it as
+unsupervised learning problem. For example, for question (a) above, we
+think of the samples as points in 6830-dimensional space, which we want
+to cluster together in some way.
+6 1. Introduction
+
+                                                                                                                                                                                                                                             SIDW299104
+                                                                                                                                                                                                                                             SIDW380102
+                                                                                                                                                                                                                                             SID73161
+                                                                                                                                                                                                                                             GNAL
+                                                                                                                                                                                                                                             H.sapiensmRNA
+                                                                                                                                                                                                                                             SID325394
+                                                                                                                                                                                                                                             RASGTPASE
+                                                                                                                                                                                                                                             SID207172
+                                                                                                                                                                                                                                             ESTs
+                                                                                                                                                                                                                                             SIDW377402
+                                                                                                                                                                                                                                             HumanmRNA
+                                                                                                                                                                                                                                             SIDW469884
+                                                                                                                                                                                                                                             ESTs
+                                                                                                                                                                                                                                             SID471915
+                                                                                                                                                                                                                                             MYBPROTO
+                                                                                                                                                                                                                                             ESTsChr.1
+                                                                                                                                                                                                                                             SID377451
+                                                                                                                                                                                                                                             DNAPOLYMER
+                                                                                                                                                                                                                                             SID375812
+                                                                                                                                                                                                                                             SIDW31489
+                                                                                                                                                                                                                                             SID167117
+                                                                                                                                                                                                                                             SIDW470459
+                                                                                                                                                                                                                                             SIDW487261
+                                                                                                                                                                                                                                             Homosapiens
+                                                                                                                                                                                                                                             SIDW376586
+                                                                                                                                                                                                                                             Chr
+                                                                                                                                                                                                                                             MITOCHONDRIAL60
+                                                                                                                                                                                                                                             SID47116
+                                                                                                                                                                                                                                             ESTsChr.6
+                                                                                                                                                                                                                                             SIDW296310
+                                                                                                                                                                                                                                             SID488017
+                                                                                                                                                                                                                                             SID305167
+                                                                                                                                                                                                                                             ESTsChr.3
+                                                                                                                                                                                                                                             SID127504
+                                                                                                                                                                                                                                             SID289414
+                                                                                                                                                                                                                                             PTPRC
+                                                                                                                                                                                                                                             SIDW298203
+                                                                                                                                                                                                                                             SIDW310141
+                                                                                                                                                                                                                                             SIDW376928
+                                                                                                                                                                                                                                             ESTsCh31
+                                                                                                                                                                                                                                             SID114241
+                                                                                                                                                                                                                                             SID377419
+                                                                                                                                                                                                                                             SID297117
+                                                                                                                                                                                                                                             SIDW201620
+                                                                                                                                                                                                                                             SIDW279664
+                                                                                                                                                                                                                                             SIDW510534
+                                                                                                                                                                                                                                             HLACLASSI
+                                                                                                                                                                                                                                             SIDW203464
+                                                                                                                                                                                                                                             SID239012
+                                                                                                                                                                                                                                             SIDW205716
+                                                                                                                                                                                                                                             SIDW376776
+                                                                                                                                                                                                                                             HYPOTHETICAL
+                                                                                                                                                                                                                                             WASWiskott
+                                                                                                                                                                                                                                             SIDW321854
+                                                                                                                                                                                                                                             ESTsChr.15
+                                                                                                                                                                                                                                             SIDW376394
+                                                                                                                                                                                                                                             SID280066
+                                                                                                                                                                                                                                             ESTsChr.5
+                                                                                                                                                                                                                                             SIDW488221
+                                                                                                                                                                                                                                             SID46536
+                                                                                                                                                                                                                                             SIDW257915
+                                                                                                                                                                                                                                             ESTsChr.2
+                                                                                                                                                                                                                                             SIDW322806
+                                                                                                                                                                                                                                             SID200394
+                                                                                                                                                                                                                                             ESTsChr.15
+                                                                                                                                                                                                                                             SID284853
+                                                                                                                                                                                                                                             SID485148
+                                                                                                                                                                                                                                             SID297905
+                                                                                                                                                                                                                                             ESTs
+                                                                                                                                                                                                                                             SIDW486740
+                                                                                                                                                                                                                                             SMALLNUC
+                                                                                                                                                                                                                                             ESTs
+                                                                                                                                                                                                                                             SIDW366311
+                                                                                                                                                                                                                                             SIDW357197
+                                                                                                                                                                                                                                             SID52979
+                                                                                                                                                                                                                                             ESTs
+                                                                                                                                                                                                                                             SID43609
+                                                                                                                                                                                                                                             SIDW416621
+                                                                                                                                                                                                                                             ERLUMEN
+                                                                                                                                                                                                                                             TUPLE1TUP1
+                                                                                                                                                                                                                                             SIDW428642
+                                                                                                                                                                                                                                             SID381079
+                                                                                                                                                                                                                                             SIDW298052
+                                                                                                                                                                                                                                             SIDW417270
+                                                                                                                                                                                                                                             SIDW362471
+                                                                                                                                                                                                                                             ESTsChr.15
+                                                                                                                                                                                                                                             SIDW321925
+                                                                                                                                                                                                                                             SID380265
+                                                                                                                                                                                                                                             SIDW308182
+                                                                                                                                                                                                                                             SID381508
+                                                                                                                                                                                                                                             SID377133
+                                                                                                                                                                                                                                             SIDW365099
+                                                                                                                                                                                                                                             ESTsChr.10
+                                                                                                                                                                                                                                             SIDW325120
+                                                                                                                                                                                                                                             SID360097
+                                                                                                                                                                                                                                             SID375990
+                                                                                                                                                                                                                                             SIDW128368
+                                                                                                                                                                                                                                             SID301902
+                                                                                                                                                                                                                                             SID31984
+                                                                                                                                                                                                                                             SID42354
+
+BREAST
+   RENAL
+
+       MELANOMA
+          MELANOMA
+              MCF7D-repro
+
+                  COLON
+                     COLON
+                         K562B-repro
+                            COLON
+                                NSCLC
+                                    LEUKEMIA
+                                       RENAL
+                                           MELANOMA
+                                               BREAST
+
+                                                  CNS
+                                                      CNS
+                                                          RENAL
+                                                             MCF7A-repro
+                                                                 NSCLC
+                                                                    K562A-repro
+                                                                        COLON
+                                                                            CNS
+                                                                               NSCLC
+                                                                                   NSCLC
+                                                                                       LEUKEMIA
+                                                                                          CNS
+                                                                                              OVARIAN
+                                                                                                 BREAST
+                                                                                                     LEUKEMIA
+                                                                                                         MELANOMA
+                                                                                                            MELANOMA
+                                                                                                                OVARIAN
+                                                                                                                    OVARIAN
+                                                                                                                       NSCLC
+                                                                                                                           RENAL
+                                                                                                                              BREAST
+                                                                                                                                  MELANOMA
+                                                                                                                                      OVARIAN
+                                                                                                                                         OVARIAN
+                                                                                                                                             NSCLC
+                                                                                                                                                 RENAL
+                                                                                                                                                    BREAST
+                                                                                                                                                        MELANOMA
+                                                                                                                                                            LEUKEMIA
+                                                                                                                                                               COLON
+                                                                                                                                                                   BREAST
+                                                                                                                                                                      LEUKEMIA
+                                                                                                                                                                          COLON
+                                                                                                                                                                              CNS
+                                                                                                                                                                                 MELANOMA
+                                                                                                                                                                                     NSCLC
+                                                                                                                                                                                         PROSTATE
+                                                                                                                                                                                            NSCLC
+                                                                                                                                                                                                RENAL
+                                                                                                                                                                                                   RENAL
+                                                                                                                                                                                                       NSCLC
+                                                                                                                                                                                                           RENAL
+                                                                                                                                                                                                              LEUKEMIA
+                                                                                                                                                                                                                  OVARIAN
+                                                                                                                                                                                                                      PROSTATE
+                                                                                                                                                                                                                         COLON
+                                                                                                                                                                                                                             BREAST
+                                                                                                                                                                                                                                RENAL
+                                                                                                                                                                                                                                    UNKNOWN
+
+FIGURE 1.3. DNA microarray data: expression matrix of 6830 genes (rows)
+and 64 samples (columns), for the human tumor data. Only a random sample
+of 100 rows are shown. The display is a heat map, ranging from bright green
+(negative, under expressed) to bright red (positive, over expressed). Missing values
+are gray. The rows and columns are displayed in a randomly chosen order.
+                                                                               1. Introduction 7
+
+Who Should Read this Book
+
+This book is designed for researchers and students in a broad variety of
+fields: statistics, artificial intelligence, engineering, finance and others. We
+expect that the reader will have had at least one elementary course in
+statistics, covering basic topics including linear regression.
+
+   We have not attempted to write a comprehensive catalog of learning
+methods, but rather to describe some of the most important techniques.
+Equally notable, we describe the underlying concepts and considerations
+by which a researcher can judge a learning method. We have tried to write
+this book in an intuitive fashion, emphasizing concepts rather than math-
+ematical details.
+
+   As statisticians, our exposition will naturally reflect our backgrounds and
+areas of expertise. However in the past eight years we have been attending
+conferences in neural networks, data mining and machine learning, and our
+thinking has been heavily influenced by these exciting fields. This influence
+is evident in our current research, and in this book.
+
+How This Book is Organized
+
+Our view is that one must understand simple methods before trying to
+grasp more complex ones. Hence, after giving an overview of the supervis-
+ing learning problem in Chapter 2, we discuss linear methods for regression
+and classification in Chapters 3 and 4. In Chapter 5 we describe splines,
+wavelets and regularization/penalization methods for a single predictor,
+while Chapter 6 covers kernel methods and local regression. Both of these
+sets of methods are important building blocks for high-dimensional learn-
+ing techniques. Model assessment and selection is the topic of Chapter 7,
+covering the concepts of bias and variance, overfitting and methods such as
+cross-validation for choosing models. Chapter 8 discusses model inference
+and averaging, including an overview of maximum likelihood, Bayesian in-
+ference and the bootstrap, the EM algorithm, Gibbs sampling and bagging,
+A related procedure called boosting is the focus of Chapter 10.
+
+   In Chapters 9-13 we describe a series of structured methods for su-
+pervised learning, with Chapters 9 and 11 covering regression and Chap-
+ters 12 and 13 focusing on classification. Chapter 14 describes methods for
+unsupervised learning. Two recently proposed techniques, random forests
+and ensemble learning, are discussed in Chapters 15 and 16. We describe
+undirected graphical models in Chapter 17 and finally we study high-
+dimensional problems in Chapter 18.
+
+   At the end of each chapter we discuss computational considerations im-
+portant for data mining applications, including how the computations scale
+with the number of observations and predictors. Each chapter ends with
+Bibliographic Notes giving background references for the material.
+
