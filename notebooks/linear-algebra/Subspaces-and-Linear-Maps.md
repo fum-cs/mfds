@@ -17,6 +17,13 @@
 4. Data view: each feature map sends points to a new space
 5. Lab pointers: `Linear-Dependence-and-Span`, `Projection`, `Multiplying-Matrices-and-Vectors`
 
+## Exercises
+
+1. Take a $2\times3$ matrix, describe its column space geometrically and give a basis for it.
+2. Give a linear map that is not invertible, describe its kernel, and check that the dimensions satisfy rank plus nullity equals $3$.
+3. Explain why a linear map is determined by the images of a basis, and use that to reconstruct a $2\times2$ matrix from two image vectors.
+
+
 ## Sources
 
 - `linear-algebra-basics.md` and the linear-algebra notebooks

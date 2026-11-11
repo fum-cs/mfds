@@ -31,3 +31,10 @@ The full list of references can be found at the very end of each section (jupyte
 
 I should mention that the original material was from the course "Data Mining and Learning", Master in Informatics program. [Austral University of Chile](http://www.ingenieria.uach.cl/postgrado/min.html), Faculty of Engineering Sciences, Chile.
 I have modified the [contents](https://github.com/bsotomayorg/UACh-MIN-Graph_NLP/) to suit my own needs and preferences. I would like to thank the creators for this material.
+
+## Exercises
+
+1. Compute the degree sequence of a small graph of your choice and plot its degree distribution. Is it concentrated or heavy-tailed?
+2. Prove that the degrees sum to twice the number of edges, and use it to show that no graph has exactly one vertex of odd degree.
+3. Give two non-isomorphic graphs with the same degree sequence, and explain why the degree sequence is not a complete invariant.
+

@@ -91,6 +91,13 @@ reading the theory page before it.
   is the cheap, data-independent alternative to that idea, and the two are
   compared at the end of the last page.
 
+## Exercises
+
+1. Verify the three facts of this page numerically in a few lines of NumPy: the distance concentration, the volume ratio of ball and cube, and the thin-shell fraction.
+2. Using the reading order given here, say which page you need *before* PCA, and why the order matters for a reader who has not seen eigenvalues before.
+3. Write down one claim from each of the three pages of this part that would still hold in two dimensions, and one that is specific to high dimension.
+
+
 ## Sources
 
 - A. Blum, J. Hopcroft, R. Kannan, *Foundations of Data Science*, the chapters on

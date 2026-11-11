@@ -1,7 +1,5 @@
 # Perceptron and Online Learning
 
-**Status:** placeholder — write lecture notes here before teaching.
-
 ## Goals
 
 - Linear separators
@@ -17,6 +15,13 @@
 3. Why it converges on separable data
 4. From batch to online updates
 5. Demo: 2D perceptron vs kNN
+
+## Exercises
+
+1. Run the perceptron on linearly separable two-dimensional data and count the updates. Compare with the bound $(R/\gamma)^2$, computing the margin $\gamma$ and the radius $R$ of your data.
+2. Show that a single perceptron cannot represent XOR and give the smallest change of architecture that can.
+3. Derive the perceptron update rule as stochastic gradient descent on the hinge loss $\max(0,-y\,w^\top x)$, and explain what online means for the optimisation.
+
 
 ## Sources
 

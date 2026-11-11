@@ -133,6 +133,13 @@ before.
    that distance if one gene has a much larger variance than the rest, and what is
    the standard repair?
 
+## Exercises
+
+1. Recompute the correlation-based distance matrix of the $64\times6830$ matrix and redraw the dendrogram. Report the two branches that split first.
+2. Explain why $6830$ features and $64$ samples make every pairwise distance a noisy estimate, and what that implies for the stability of the dendrogram.
+3. The book names two shortcomings of this analysis. State both and say which page of this course addresses each.
+
+
 ## Sources
 
 * The example, its numbers, Table 14.2 and the quotations: §14.3.8 of

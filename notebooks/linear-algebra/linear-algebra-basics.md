@@ -90,6 +90,12 @@ This content is aimed at beginners but it should be easier for people with at le
 
 Please let me know if you find any typos or incorrect information. I am happy to edit it. You can send me emails or open issues and pull request in the notebooks Github.
 
+## Exercises
+
+1. Work through the chapter in the given order and write, for each page, the one definition you would need in order to read PCA.
+2. After the chapter, write down three operations on matrices that you can now do by hand and verify with NumPy.
+
+
 ## References
 
 Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning. MIT press.

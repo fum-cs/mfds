@@ -1,7 +1,5 @@
 # Learning Foundations: Classification and Generalization
 
-**Status:** placeholder — write lecture notes here before teaching.
-
 **Not in this course:** SVM / kernels (other course), Bayesian methods and HMM (SML).
 
 ## Goals
@@ -17,6 +15,14 @@
 2. Overfitting and model complexity
 3. Why more data helps (informal)
 4. Bias–variance link back to the bias–variance notebook
+
+## Exercises
+
+1. For a fixed classifier and a known data distribution, compute the true risk and the empirical risk on samples of size $10,100,1000$. Plot both and describe the gap.
+2. Show that empirical risk minimisation over *all* functions has zero empirical risk and no guarantee of generalisation. Where exactly does a restriction on the hypothesis class enter the argument?
+3. Prove that the VC dimension of intervals on the line is $2$: exhibit two shattered points and show that no three can be shattered.
+4. Why is $K$-fold cross-validation preferable to a single train/test split when choosing a model? Give a case in which it is still optimistic.
+
 
 ## Sources
 
