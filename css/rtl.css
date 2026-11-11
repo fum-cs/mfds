@@ -1,0 +1,43 @@
+/* Only elements carrying .rtl are re-oriented; English pages are untouched. */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Persian font stack. Repeat on children, otherwise the theme's base font wins
+   by load order. Tahoma renders Persian well on Windows. */
+.rtl,
+.rtl p, .rtl li, .rtl td, .rtl th,
+.rtl h2, .rtl h3, .rtl h4,
+.rtl figcaption, .rtl blockquote, .rtl dt, .rtl dd {
+  font-family: "Vazirmatn", "IRANSans", "Sahel", Tahoma, var(--myst-font-body, sans-serif);
+}
+
+.rtl p, .rtl li, .rtl td, .rtl th { line-height: 1.9; }
+
+/* Code and math stay left-to-right; isolate keeps punctuation from jumping. */
+.rtl pre { direction: ltr; text-align: left; unicode-bidi: isolate; }
+.rtl code, .rtl kbd, .rtl samp { direction: ltr; unicode-bidi: isolate; }
+.rtl .math, .rtl mjx-container { direction: ltr; unicode-bidi: isolate; }
+
+/* Tables: keep cell order, read from the right. */
+.rtl table { direction: rtl; }
+.rtl table th, .rtl table td { text-align: right; }
+
+.rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6 { text-align: right; }
+
+/* Blockquote/admonition rule sits on the left in the theme; mirror it. */
+.rtl blockquote,
+.rtl .admonition,
+.rtl div[class*="admonition"] {
+  border-left: none;
+  border-right: 3px solid var(--myst-color-border, #d8d8d8);
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+/* List markers on the right. */
+.rtl ul, .rtl ol { padding-left: 0; padding-right: 1.6rem; }
+
+.rtl figcaption, .rtl caption, .rtl dt, .rtl dd { text-align: right; }
+.rtl a { word-break: break-word; }

@@ -189,8 +189,8 @@ project:
         - file: notebooks/random-graphs/Phase-Transition.md
           title: "Giant Component and Phase Transition"
           level: 1
-        - file: notebooks/random-graphs/Light-Random-Walks.md
-          title: "Light Random Walks on Graphs"
+        - file: notebooks/random-graphs/Markov-Chains-and-PageRank.md
+          title: "Markov Chains, Random Walks, and PageRank"
           level: 1
         - file: notebooks/high-dimensional-spaces/Bias-Variance-Tradeoff.ipynb
           title: "Bias-Variance Tradeoff"
@@ -287,7 +287,7 @@ project:
         - file: notebooks/random-graphs/Fundamentals.ipynb
         - file: notebooks/random-graphs/Erdos-Renyi.ipynb
         - file: notebooks/random-graphs/Phase-Transition.md
-        - file: notebooks/random-graphs/Light-Random-Walks.md
+        - file: notebooks/random-graphs/Markov-Chains-and-PageRank.md
     - title: Learning Foundations
       children:
         - file: notebooks/high-dimensional-spaces/Bias-Variance-Tradeoff.ipynb
@@ -303,6 +303,9 @@ project:
       children:
         - file: notebooks/high-dimensional-spaces/Exhaustive-Clustering.ipynb
         - file: notebooks/other/Course-Synthesis.md
+    - title: Course Plan Fall 2026
+      children:
+        - file: course-plan-fall-2026.md
 
 site:
   template: book-theme
@@ -310,3 +313,4 @@ site:
   options:
     logo: notebooks/img/fum-cs-logo.png
     favicon: notebooks/img/fum-logo.ico
+    style: css/rtl.css
