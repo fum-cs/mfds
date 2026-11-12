@@ -278,7 +278,7 @@ project:
         - file: notebooks/linear-algebra/Identity-and-Inverse-Matrices.ipynb 
         - file: notebooks/linear-algebra/Linear-Dependence-and-Span.ipynb
         - file: notebooks/linear-algebra/Norms.ipynb             
-        # - file: notebooks/linear-algebra/Subspaces-and-Linear-Maps.md
+        - file: notebooks/linear-algebra/Subspaces-and-Linear-Maps.md
         - file: notebooks/linear-algebra/Special-Kinds-of-Matrices-and-Vectors.ipynb
         - file: notebooks/linear-algebra/Projection.ipynb
         - file: notebooks/linear-algebra/Eigendecomposition.ipynb
