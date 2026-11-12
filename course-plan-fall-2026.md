@@ -268,12 +268,12 @@ $K(x,z)=\phi(x)^\top\phi(z)$ بدون ساختن $\phi$، شرط مرسر و گ�
 | 2 | `learning/MLP-and-Backpropagation.ipynb` | **آماده** (از درس یادگیری ماشین، عنوان و تصاویر اصلاح شد) | S4 | ✅ |
 | 3 | `learning/Kernel-Trick.md` | **آماده** (از درس یادگیری ماشین؛ تمرین و منابع افزوده شد) | S16 | ✅ |
 | 4 | `random-graphs/Phase-Transition.ipynb` | **نوشته شد** (فرآیند شاخه‌ای، گذر فاز، آستانهٔ پیوند، جهان کوچک) | S14 | ✅ |
-| 5 | `learning/Learning-Foundations.md` | placeholder ۱۰۳ کلمه (خواندن برای S3) | S3 | ۳ ساعت |
-| 6 | `learning/Boosting-Ranking-Voting.md` | placeholder ۸۸ کلمه (مطالعهٔ آزاد) | مطالعهٔ آزاد | ۲ ساعت |
+| 5 | `learning/Learning-Foundations.md` | **نوشته شد** (ERM، همگرایی یکنواخت، VC، تفکیک داده) | خواندن برای S3 | ✅ |
+| 6 | `learning/Boosting-Ranking-Voting.md` | **نوشته شد** (مرور boosting، رتبه‌بندی، رأی‌گیری) | مطالعهٔ آزاد | ✅ |
 | 7 | `high-dimensional-spaces/Gaussian-Mixtures-and-EM.ipynb` | ندارد (بخشی از `Clustering-Part1`) | اختیاری | ۴ ساعت |
 
 قاعدهٔ زمانی: هر صفحه **دو هفته پیش** از جلسهٔ خودش نوشته شود تا کلاس و کتاب هم‌گام بمانند.
-با این جدول، بار تولید محتوا ۹ تا ۱۳ ساعت است و تا S3 (۳۰ آبان) فقط ۳ ساعت از آن فوری است.
+با این جدول، بار تولید محتوا ۴ ساعت است و آن هم صفحهٔ اختیاری GMM/EM؛ همهٔ صفحات لازم برای S1 تا S16 آماده‌اند.
 
 ---
 
