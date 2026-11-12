@@ -1,5 +1,7 @@
 # Boosting Sketch, Ranking, and Voting
 
+(For other courses)
+
 ## Goals
 
 - Weak vs strong learning (idea)

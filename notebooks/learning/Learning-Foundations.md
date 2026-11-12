@@ -1,6 +1,6 @@
 # Learning Foundations: Classification and Generalization
 
-**Not in this course:** SVM / kernels (other course), Bayesian methods and HMM (SML).
+**Not in this course:** SVM (other course), Bayesian methods and HMM (other courses). The *kernel trick* is not an SVM topic and has its own page: [The Kernel Method](Kernel-Trick.md).
 
 ## Goals
 

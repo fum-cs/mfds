@@ -17,7 +17,7 @@ Past offerings are frozen with git tags — see [semesters.md](semesters.md). Th
 
 Build first-pass fluency in the mathematics that underpins data science: matrices and images, distance-based classification and clustering, high-dimensional geometry and the curse of dimensionality, SVD/PCA and low-rank structure, random graphs, and basic learning foundations. By the end of the course, students should be able to use these tools on real datasets in notebooks, explain why high dimension changes behavior, and read more advanced material (e.g. Blum–Hopcroft–Kannan) with the right background.
 
-**Not covered here** (taught in other courses): Bayesian methods and HMM (Statistical Machine Learning); SVM and kernels; MCMC / graphical models.
+**Not covered here** (taught in other courses): Bayesian methods and HMM (Statistical Machine Learning); SVM; the Markov transition matrix; graphical models. *Kernel methods* appear here only as the kernel trick (a tool, not an algorithm), and MCMC only as a 25-minute sketch.
 
 ## Topics (outline)
 
@@ -27,7 +27,7 @@ Build first-pass fluency in the mathematics that underpins data science: matrice
 4. Linear algebra and SVD (span, special matrices, projection, eigen/SVD, pseudoinverse, trace, determinant)  
 5. Low-rank approximation, PCA, and dimensionality reduction  
 6. Random graphs (Erdős–Rényi, phase transition) and light random walks  
-7. Learning foundations (bias–variance, generalization, perceptron, GD/SGD, boosting/ranking survey)  
+7. Learning foundations (bias–variance, generalization, linear regression, GD/SGD, perceptron and online learning, MLP/backpropagation, kernel trick, boosting/ranking survey)  
 8. Additional topics (random projections, compressed sensing)  
 
 ## Main references

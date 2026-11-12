@@ -20,12 +20,14 @@
 - Curse of dimensionality (why more features can hurt)
 - SVD / PCA (faces, compression, ranking)
 - Random graphs (networks, phase transition)
-- Learning foundations (bias–variance, perceptron)
+- Learning foundations (bias–variance, linear regression, SGD, perceptron, MLP)
+- The kernel trick (one session, no SVM)
 
 ## What is deferred
 
 - Bayesian methods, HMM, MCMC $\rightarrow$ Statistical Machine Learning
-- SVM / kernels $\rightarrow$ other ML course
+- SVM $\rightarrow$ other ML course
+- Markov transition matrices, HMM, graphical models $\rightarrow$ other courses
 
 ## Sources
 
