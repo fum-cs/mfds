@@ -186,7 +186,7 @@ project:
         - file: notebooks/random-graphs/Erdos-Renyi.ipynb
           title: "Erdős–Rényi Random Graphs"
           level: 1
-        - file: notebooks/random-graphs/Phase-Transition.md
+        - file: notebooks/random-graphs/Phase-Transition.ipynb
           title: "Giant Component and Phase Transition"
           level: 1
         - file: notebooks/random-graphs/Markov-Chains-and-PageRank.md
@@ -304,7 +304,7 @@ project:
         - file: notebooks/random-graphs/Introduction.ipynb
         - file: notebooks/random-graphs/Fundamentals.ipynb
         - file: notebooks/random-graphs/Erdos-Renyi.ipynb
-        - file: notebooks/random-graphs/Phase-Transition.md
+        - file: notebooks/random-graphs/Phase-Transition.ipynb
         - file: notebooks/random-graphs/Markov-Chains-and-PageRank.md
     - title: Appendix
       children:
