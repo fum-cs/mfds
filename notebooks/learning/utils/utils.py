@@ -125,6 +125,10 @@ def figure2(x_train, y_train, b, w, color='k'):
 
 def figure3(x_train, y_train, b, w):
     fig, ax = figure2(x_train, y_train, b, w)
+    # b and w may arrive as one-element arrays (e.g. w[0] of a (2, 1) vector);
+    # matplotlib needs plain numbers when they are mixed with scalars in a list.
+    b = float(np.ravel(b)[0])
+    w = float(np.ravel(w)[0])
     if x_train.ndim == 2:
         x_train = np.delete(x_train,0,axis=1)
     # First data point
