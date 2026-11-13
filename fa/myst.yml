@@ -25,48 +25,83 @@ project:
   toc:
     - file: index.md
 
+    - title: افتتاحیه، داده، ماتریس و تصویر
+      children:
+        - file: other/Course-Opening.md
+        - file: python/Python-DSHB-intro.md
+
     - title: دسته‌بندی و خوشه‌بندی
       children:
-        # The first translated page that is not the landing page: same path and
-        # file name as the English notebook it translates.
         - file: high-dimensional-spaces/Clustering-Part2.ipynb
+        - file: high-dimensional-spaces/Image-Clustering-Hierarchical.ipynb
 
-    # The full table of contents of the English edition, kept here as the plan
-    # for the translation. Uncomment an entry once its page exists under fa/;
-    # the group titles are already translated.
+    - title: فضاهای بُعد بالا
+      children:
+        - file: high-dimensional-spaces/High-Dimensional-Data-and-kNN.ipynb
+
+    - title: جمع‌بندی
+      children:
+        - file: other/Course-Synthesis.md
+
+    # The rest of the English table of contents, kept as the translation plan.
+    # Uncomment an entry once its page exists under fa/ (same path, same name).
     #
-    # - title: افتتاحیه، داده، ماتریس و تصویر
-    #   children:
-    #     - file: other/Course-Opening.md
-    #     - file: python/Python-DSHB-intro.md
-    #     - file: python/The-Basics-Of-NumPy-Arrays.ipynb
-    #     - file: high-dimensional-spaces/Images-as-High-Dimensional-Data.ipynb
     # - title: دسته‌بندی و خوشه‌بندی
     #   children:
     #     - file: high-dimensional-spaces/kNN-Classification-Evaluation.ipynb
     #     - file: high-dimensional-spaces/Clustering-Part1.ipynb
+    #     # IRIS-Clustering and Silhouette-clustering are not in the English
+    #     # table of contents, so they are not published in either edition.
     #     - file: high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
-    #     - file: high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
+    #     - file: high-dimensional-spaces/Clustering-Validation.ipynb
+    #     - file: high-dimensional-spaces/Proximity-Matrices-and-Dissimilarity.ipynb
+    #     - file: high-dimensional-spaces/K-Medoids.ipynb
+    #     - file: high-dimensional-spaces/Hierarchical-Clustering.ipynb
+    #     - file: high-dimensional-spaces/Spectral-Clustering.ipynb
+    #     - file: high-dimensional-spaces/Tumor-Microarray-Example.md
     # - title: مدل‌های خطی و شبکه‌های عصبی
     #   children:
     #     - file: learning/Linear-Regression-Perceptron-and-Online-Learning.ipynb
     #     - file: learning/MLP-and-Backpropagation.ipynb
     #     - file: learning/Kernel-Trick.md
+    #     - file: learning/Kernel-Regression.ipynb
+    #     - file: learning/Learning-Foundations.md
+    #     - file: learning/Boosting-Ranking-Voting.md
     # - title: فضاهای بُعد بالا
     #   children:
+    #     - file: high-dimensional-spaces/High-Dimensional-Spaces.md
     #     - file: high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb
     #     - file: high-dimensional-spaces/High-Dimensional-Sampling.ipynb
+    #     - file: high-dimensional-spaces/High-Dimensional-Data-and-K-Means.ipynb
+    #     - file: high-dimensional-spaces/Random-Projection.ipynb
     # - title: جبرخطی و SVD
     #   children:
     #     - file: linear-algebra/linear-algebra-basics.md
+    #     - file: linear-algebra/Scalars-Vectors-Matrices-and-Tensors.ipynb
+    #     - file: linear-algebra/Multiplying-Matrices-and-Vectors.ipynb
+    #     - file: linear-algebra/Identity-and-Inverse-Matrices.ipynb
+    #     - file: linear-algebra/Linear-Dependence-and-Span.ipynb
+    #     - file: linear-algebra/Norms.ipynb
+    #     - file: linear-algebra/Subspaces-and-Linear-Maps.md
+    #     - file: linear-algebra/Special-Kinds-of-Matrices-and-Vectors.ipynb
+    #     - file: linear-algebra/Projection.ipynb
     #     - file: linear-algebra/Eigendecomposition.ipynb
     #     - file: linear-algebra/Singular-Value-Decomposition.ipynb
+    #     - file: linear-algebra/The-Moore-Penrose-Pseudoinverse.ipynb
+    #     - file: linear-algebra/The-Trace-Operator.ipynb
+    #     - file: linear-algebra/The-Determinant.ipynb
     # - title: تقریب کم‌مرتبه، PCA و کاهش بُعد
     #   children:
+    #     - file: linear-algebra/Low-Rank-Matrix-Approximation.ipynb
     #     - file: linear-algebra/PCA-Part1.ipynb
     #     - file: linear-algebra/PCA-Part2.ipynb
+    #     - file: high-dimensional-spaces/SVD-Image-Compression.ipynb
+    #     - file: high-dimensional-spaces/Vector-Quantization.ipynb
     # - title: گراف‌های تصادفی و قدم زدن تصادفی
     #   children:
+    #     - file: random-graphs/Graph-Theory-Intro.md
+    #     - file: random-graphs/Introduction.ipynb
+    #     - file: random-graphs/Fundamentals.ipynb
     #     - file: random-graphs/Erdos-Renyi.ipynb
     #     - file: random-graphs/Phase-Transition.ipynb
     #     - file: random-graphs/Markov-Chains-and-PageRank.md

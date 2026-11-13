@@ -1,3 +1,7 @@
+<div class="langswitch langswitch-ltr">
+  <strong>English</strong> · <a href="#lang-fa">فارسی</a>
+</div>
+
 # Course Opening: Students, Goals, and Applications
 
 **Status:** outline — expand with your first-session slides and demos.

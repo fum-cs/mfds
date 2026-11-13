@@ -1,3 +1,7 @@
+<div class="langswitch langswitch-ltr">
+  <strong>English</strong> · <a href="#lang-fa">فارسی</a>
+</div>
+
 # Foundation from the Python Data Science Handbook
 
 This initial part of the course covers the fundamental tools required for data science in Python. The content directly corresponds to the first four chapters of Jake VanderPlas's excellent book, the **Python Data Science Handbook (PDSH)**.

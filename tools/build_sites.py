@@ -56,7 +56,9 @@ def fix_switch(pages: list[pathlib.Path], language: str) -> None:
         # drops the leading "fa", an English page gains it. (Pointing every
         # switch at the landing page would be wrong for the non-landing ones.)
         if language == "fa":
-            target = up + "/".join(here[1:])
+            # The landing page (/fa/) is the translation of the English root
+            # page, which is not inside a sub-directory: point it one level up.
+            target = up + "/".join(here[1:]) if here[1:] else ".." 
         else:
             target = up + "fa" + (("/" + "/".join(here)) if here else "")
         target = target or "."

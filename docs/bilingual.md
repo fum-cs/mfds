@@ -192,3 +192,16 @@ MSYS_NO_PATHCONV=1 JB='C:/programs/anaconda3/envs/pth/Scripts/jupyter-book.exe' 
 است: ترجمهٔ همهٔ سلول‌های markdown، کد و خروجی‌های دست‌نخورده، تصویر کپی‌شده در
 `fa/high-dimensional-spaces/img/`، سوییچ دوطرفه، و مدخل فهرست در `fa/myst.yml`.
 برای صفحهٔ بعدی همین را الگو بگیرید.
+
+## ۹. وضعیت ترجمه
+
+ترجمه‌شده (زیر `fa/`، هر کدام با سوییچ دوطرفه و مدخل در `fa/myst.yml`):
+
+- `index.md` — صفحهٔ آغاز فارسی
+- `other/Course-Opening.md`، `other/Course-Synthesis.md`، `python/Python-DSHB-intro.md`
+- `high-dimensional-spaces/Clustering-Part2.ipynb`، `.../High-Dimensional-Data-and-kNN.ipynb`،
+  `.../Image-Clustering-Hierarchical.ipynb`
+
+باقی مانده: بقیهٔ مدخل‌های فهرست انگلیسی (`myst.yml`). `IRIS-Clustering` و
+`Silhouette-clustering` در فهرست انگلیسی هم نیستند و ترجمه نمی‌شوند تا سوییچ به صفحهٔ ناموجود
+اشاره نکند؛ قاعده: **صفحه‌ای که در نسخهٔ انگلیسی منتشر نشده، فارسی هم نمی‌شود.**
