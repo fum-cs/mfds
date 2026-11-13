@@ -51,8 +51,8 @@ project:
         - file: high-dimensional-spaces/Proximity-Matrices-and-Dissimilarity.ipynb
         - file: high-dimensional-spaces/Three-Families-of-Clustering-Algorithms.ipynb
         - file: high-dimensional-spaces/K-Medoids.ipynb
-        # - file: high-dimensional-spaces/Practical-Issues-Cluster-Number.ipynb
-        # - file: high-dimensional-spaces/Hierarchical-Clustering.ipynb
+        - file: high-dimensional-spaces/Practical-Issues-Cluster-Number.ipynb
+        - file: high-dimensional-spaces/Hierarchical-Clustering.ipynb
         # - file: high-dimensional-spaces/Spectral-Clustering.ipynb
         # - file: high-dimensional-spaces/Tumor-Microarray-Example.md
         # - file: high-dimensional-spaces/Self-Organizing-Maps.ipynb

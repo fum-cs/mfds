@@ -117,6 +117,11 @@ for i, c in enumerate(nb.cells):
 | degree | درجه |
 | phase transition | گذار فازی |
 | exercise | تمرین |
+| hypersphere / hyper-sphere | اَبَرکره (نه «فراکره») |
+| high-dimensional | با ابعاد بالا (نه «بُعد بالا») |
+| curse of dimensionality | نفرین ابعاد (نه «نفرین بُعد») |
+| low-rank | رتبه پایین (نه «کم‌مرتبه») |
+| derivation | استنتاج (نه «اشتقاق») |
 
 اصطلاح تازه را همین جدول اضافه کنید تا نسخه‌های بعدی یکدست بمانند.
 
