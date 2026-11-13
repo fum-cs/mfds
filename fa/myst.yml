@@ -56,7 +56,7 @@ project:
         # - file: high-dimensional-spaces/Spectral-Clustering.ipynb
         # - file: high-dimensional-spaces/Tumor-Microarray-Example.md
         # - file: high-dimensional-spaces/Self-Organizing-Maps.ipynb
-    - title: فضاهای بُعد بالا
+    - title: فضاهای با ابعاد بالا
       children:
         - file: high-dimensional-spaces/High-Dimensional-Spaces.md
         - file: high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb
@@ -89,7 +89,7 @@ project:
         # - file: learning/Boosting-Ranking-Voting.md
         # - file: learning/Kernel-Trick.md
         # - file: learning/Kernel-Regression.ipynb
-    - title: تقریب کم‌مرتبه، PCA و کاهش بُعد
+    - title: تقریب رتبه پایین، PCA و کاهش بُعد
       children:
         # - file: linear-algebra/Low-Rank-Matrix-Approximation.ipynb
         # - file: linear-algebra/PCA-Part1.ipynb

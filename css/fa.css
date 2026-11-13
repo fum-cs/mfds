@@ -64,6 +64,21 @@ mjx-container[display="true"] {
   direction: ltr;
 }
 
+/* Numbered display equations. MyST lays the formula and its number out in a
+   flex row (`<div class="flex"><div><span class="katex-display">…`, then the
+   number); in an RTL page the row is reversed and the number ends up glued to
+   the formula on the left. Keeping that row LTR puts the number back at the
+   right margin, and the gap keeps them apart where `:has` is unsupported. */
+div.flex:has(> .katex-display),
+div.flex:has(> div > .katex-display) {
+  direction: ltr;
+  gap: 0.85rem;
+}
+
+div.flex.my-5.group {
+  gap: 0.85rem;
+}
+
 /* Numbers inside Persian text should not jump around: keep digits isolated but
    in left-to-right order (`۱۲۳` in the source is already correct). */
 pre,
