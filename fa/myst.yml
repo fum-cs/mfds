@@ -25,6 +25,12 @@ project:
   toc:
     - file: index.md
 
+    - title: دسته‌بندی و خوشه‌بندی
+      children:
+        # The first translated page that is not the landing page: same path and
+        # file name as the English notebook it translates.
+        - file: high-dimensional-spaces/Clustering-Part2.ipynb
+
     # The full table of contents of the English edition, kept here as the plan
     # for the translation. Uncomment an entry once its page exists under fa/;
     # the group titles are already translated.

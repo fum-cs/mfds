@@ -40,10 +40,28 @@ mjx-container,
   text-align: left;
 }
 
+/* MyST renders maths with KaTeX (server-side), so `.katex` is the container
+   that actually exists in the HTML; the mjx/MathJax selectors are kept for
+   the case where the theme switches renderer. */
+.katex,
+.katex-html,
+.katex-mathml,
+.math,
+.math-display,
+.math-inline,
+mjx-container,
+.MathJax {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: left;
+}
+
 /* A display equation keeps its own centring, not the paragraph's alignment. */
+.katex-display,
 .math-display,
 mjx-container[display="true"] {
   text-align: center;
+  direction: ltr;
 }
 
 /* Numbers inside Persian text should not jump around: keep digits isolated but

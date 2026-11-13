@@ -48,11 +48,8 @@ jobs:
       - name: Install Jupyter Book (via myst)
         run: npm install -g jupyter-book
 
-      # ۳. نصب nbconvert برای ساخت اسلایدهای reveal.js
-      - name: Install nbconvert
-        run: pip install nbconvert
-
-      # ۴. ساخت کتاب (هر دو نسخه: انگلیسی در ریشه، فارسی در /fa/)
+      # ۳. ساخت کتاب (هر دو نسخه: انگلیسی در ریشه، فارسی در /fa/)
+      #    فقط خروجی HTML منتشر می‌شود؛ PDF و اسلایدها ساخته نمی‌شوند.
       #    اسکریپت BASE_URL را از محیط می‌خواند (اینجا /<نام مخزن>) و فارسی را
       #    در <BASE_URL>/fa می‌سازد، سپس کلید زبان را وصل می‌کند.
       - name: Build HTML Assets

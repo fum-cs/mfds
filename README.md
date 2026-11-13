@@ -99,8 +99,12 @@ the right depth, and sets `lang="fa" dir="rtl"` on the Persian pages. Do not set
 
 Known limits: code and maths stay left-to-right (see `css/fa.css`), the theme's
 own labels (Contents, Search, Exercise) are still English because MyST has no UI
-translations yet, and the PDF export is English-only — a Persian PDF needs
-XeLaTeX with a Persian font and the bidi package.
+translations yet, and the site is HTML only — the PDF/TeX exports were removed.
+
+How to translate the next page (a `.md` page or a notebook), what must stay
+untranslated, the glossary and the pitfalls are all in
+[docs/bilingual.md](docs/bilingual.md). The bilingual reference page is
+`fa/high-dimensional-spaces/Clustering-Part2.ipynb`.
 
 The GitHub Actions workflow calls the same script, so the published site gets
 both editions; it sets `BASE_URL=/<repository>` (as it must for Pages) and the

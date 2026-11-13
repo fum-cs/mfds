@@ -47,11 +47,21 @@ def fix_switch(pages: list[pathlib.Path], language: str) -> None:
     """Point the placeholder link at the other edition, relative to the page."""
     for page in pages:
         rel = page.relative_to(OUT)                      # e.g. fa/x/y/index.html
-        depth = len(rel.parts) - 1                       # directory levels in the URL
-        up = "../" * depth
-        # From any page, "up" reaches the site root, where the English edition
-        # lives; the Persian edition lives one level down, at /fa/.
-        target = up + "fa/" if language == "en" else (up or "./")
+        # Directory levels of the page's URL: () for the root page, ("fa",) for
+        # /fa/, ("fa", "clustering-part2") for /fa/clustering-part2/, and so on.
+        here = rel.parent.parts
+        up = "../" * len(here)
+        # Both editions keep the same paths and file names, so the counterpart
+        # of a page is the same path on the other side of /fa/: a Persian page
+        # drops the leading "fa", an English page gains it. (Pointing every
+        # switch at the landing page would be wrong for the non-landing ones.)
+        if language == "fa":
+            target = up + "/".join(here[1:])
+        else:
+            target = up + "fa" + (("/" + "/".join(here)) if here else "")
+        target = target or "."
+        if not target.endswith("/"):
+            target += "/"
         text = page.read_text(encoding="utf-8")
         # MyST resolves a bare fragment against the current page, so the marker
         # arrives as href="/fa/#lang-en" or href="/#lang-fa"; rewrite whatever
