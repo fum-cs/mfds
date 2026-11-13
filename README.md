@@ -102,6 +102,16 @@ own labels (Contents, Search, Exercise) are still English because MyST has no UI
 translations yet, and the PDF export is English-only — a Persian PDF needs
 XeLaTeX with a Persian font and the bidi package.
 
+The GitHub Actions workflow calls the same script, so the published site gets
+both editions; it sets `BASE_URL=/<repository>` (as it must for Pages) and the
+script derives `/…/fa` from it. On Windows/git-bash, pass the executable in
+Windows form and keep MSYS from rewriting the URL:
+
+```
+MSYS_NO_PATHCONV=1 BASE_URL=/mfds JB='C:/programs/anaconda3/envs/pth/Scripts/jupyter-book.exe' \
+  python tools/build_sites.py
+```
+
 ## Semester snapshots
 
 At the end of each offering, tag the final state (do not rename this repo):

@@ -35,7 +35,8 @@ JB = os.environ.get("JB", "jupyter-book")
 
 
 def build(where: pathlib.Path, base_url: str | None) -> None:
-    env = {k: v for k, v in os.environ.items() if k not in {"PORT", "BASE_URL"}}
+    env = {k: v for k, v in os.environ.items() if k != "PORT"}
+    env.pop("BASE_URL", None)
     if base_url:
         env["BASE_URL"] = base_url
     print(f"[build] {where.relative_to(ROOT)}  BASE_URL={base_url or '(none)'}")
@@ -70,10 +71,16 @@ def pages_under(directory: pathlib.Path) -> list[pathlib.Path]:
 def main(argv: list[str]) -> int:
     which = argv[1] if len(argv) > 1 else "both"
 
+    # On GitHub Pages the site lives under /<repository>, and the workflow sets
+    # BASE_URL for that; locally it is unset and the site is served from /. The
+    # Persian edition always sits one level down, at <base>/fa.
+    en_base = os.environ.get("BASE_URL", "").rstrip("/")
+    fa_base = f"{en_base}/fa"
+
     if which in {"both", "en"}:
-        build(ROOT, None)
+        build(ROOT, en_base or None)
     if which in {"both", "fa"}:
-        build(ROOT / "fa", "/fa")
+        build(ROOT / "fa", fa_base)
         if FA_OUT.is_dir():
             shutil.rmtree(OUT / "fa", ignore_errors=True)
             shutil.copytree(FA_OUT, OUT / "fa")
