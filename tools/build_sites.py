@@ -74,6 +74,19 @@ def fix_switch(pages: list[pathlib.Path], language: str) -> None:
             page.write_text(new, encoding="utf-8")
 
 
+def merge_persian() -> bool:
+    """Copy the Persian build into the English output, under /fa/.
+
+    Returns False when there is no Persian build to copy, which is the caller's
+    cue to warn: the English build has just wiped whatever was in _build/html.
+    """
+    if not FA_OUT.is_dir():
+        return False
+    shutil.rmtree(OUT / "fa", ignore_errors=True)
+    shutil.copytree(FA_OUT, OUT / "fa")
+    return True
+
+
 def pages_under(directory: pathlib.Path) -> list[pathlib.Path]:
     return sorted(p for p in directory.rglob("*.html") if "_assets" not in p.parts)
 
@@ -91,14 +104,22 @@ def main(argv: list[str]) -> int:
         build(ROOT, en_base or None)
     if which in {"both", "fa"}:
         build(ROOT / "fa", fa_base)
-        if FA_OUT.is_dir():
-            shutil.rmtree(OUT / "fa", ignore_errors=True)
-            shutil.copytree(FA_OUT, OUT / "fa")
 
-    if which in {"both", "fa"}:
+    # The English build owns _build/html and wipes it, so a Persian build that
+    # was already there disappears; put it back from its own output. This keeps
+    # `build_sites.py en` (and any bare `jupyter-book build --html`) from
+    # silently publishing a site without the Persian edition.
+    if merge_persian():
+        print(f"[merge] Persian edition copied from {FA_OUT.relative_to(ROOT)}")
         fa_pages = [p for p in pages_under(OUT / "fa")]
         fix_switch(fa_pages, "fa")
         print(f"[switch] {len(fa_pages)} Persian pages point back to the English root")
+    else:
+        print(
+            f"[warn] {FA_OUT.relative_to(ROOT)} is missing: the site has no "
+            "Persian edition. Run `python tools/build_sites.py fa` (or with no "
+            "argument for both) before serving or deploying."
+        )
 
     if which in {"both", "en"}:
         en_pages = [p for p in pages_under(OUT) if p.relative_to(OUT).parts[0] != "fa"]
