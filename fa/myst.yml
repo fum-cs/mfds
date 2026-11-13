@@ -39,7 +39,7 @@ project:
         - file: high-dimensional-spaces/Clustering-Part1.ipynb
         - file: high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
         - file: high-dimensional-spaces/Clustering-Part2.ipynb
-        # - file: HWs/otsu-thresholding-exercise.md
+        - file: HWs/otsu-thresholding-exercise.md
         # - file: high-dimensional-spaces/Clustering-Validation.ipynb
     - title: مدل‌های خطی و شبکه‌های عصبی
       children:

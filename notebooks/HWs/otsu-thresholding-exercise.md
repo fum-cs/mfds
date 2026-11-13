@@ -1,3 +1,7 @@
+<div class="langswitch langswitch-ltr">
+  <strong>English</strong> · <a href="#lang-fa">فارسی</a>
+</div>
+
 # Exercise: Implementing Otsu's Thresholding from Scratch
 
 ## Introduction
@@ -250,3 +254,4 @@ def verify_total_variance_decomposition(x, t):
 # (input image, histogram with threshold, output mask)
 
 # TODO: plot sigma_B2(t) versus t
+```
