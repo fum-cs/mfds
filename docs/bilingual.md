@@ -202,16 +202,24 @@ MSYS_NO_PATHCONV=1 JB='C:/programs/anaconda3/envs/pth/Scripts/jupyter-book.exe' 
 - `fa/python/Python-DSHB-intro.md`
 - `fa/high-dimensional-spaces/Images-as-High-Dimensional-Data.ipynb`
 - `fa/high-dimensional-spaces/Clustering-Part2.ipynb`
+- `fa/high-dimensional-spaces/High-Dimensional-Spaces.md`
 - `fa/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb`
 - `fa/high-dimensional-spaces/High-Dimensional-Data-and-kNN.ipynb`
 - `fa/high-dimensional-spaces/High-Dimensional-Data-and-K-Means.ipynb`
 - `fa/high-dimensional-spaces/Image-Clustering.ipynb`
 - `fa/high-dimensional-spaces/Image-Clustering-Hierarchical.ipynb`
+- `fa/linear-algebra/linear-algebra-basics.md`
+- `fa/linear-algebra/Subspaces-and-Linear-Maps.md`
 - `fa/linear-algebra/Projection.ipynb`
 - `fa/random-graphs/Graph-Theory-Intro.md`
 - `fa/other/Course-Synthesis.md`
 
 قاعده: **صفحه‌ای که در نسخهٔ انگلیسی منتشر نشده، فارسی هم نمی‌شود** (مثلاً `IRIS-Clustering` و
 `Silhouette-clustering` که در `myst.yml` انگلیسی کامنت‌اند) تا سوییچ به صفحهٔ ناموجود اشاره نکند.
-بقیهٔ فهرست انگلیسی در `fa/myst.yml` به‌صورت کامنت مانده است و با ترجمهٔ هر صفحه، مدخلش فعال
-می‌شود. ساخت فهرست فارسی را می‌توان با همان اسکریپت یک‌باره از `myst.yml` انگلیسی بازتولید کرد.
+
+پس از افزودن هر صفحهٔ تازه این را اجرا کنید تا فهرست فارسی از فهرست انگلیسی بازتولید شود؛ مدخل
+هر صفحه‌ای که وجود دارد فعال و بقیه کامنت می‌شود:
+
+```bash
+python tools/sync_fa_toc.py
+```
