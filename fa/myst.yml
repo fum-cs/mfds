@@ -35,9 +35,9 @@ project:
         - file: high-dimensional-spaces/Images-as-High-Dimensional-Data.ipynb
     - title: دسته‌بندی و خوشه‌بندی
       children:
-        # - file: high-dimensional-spaces/kNN-Classification-Evaluation.ipynb
-        # - file: high-dimensional-spaces/Clustering-Part1.ipynb
-        # - file: high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
+        - file: high-dimensional-spaces/kNN-Classification-Evaluation.ipynb
+        - file: high-dimensional-spaces/Clustering-Part1.ipynb
+        - file: high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
         - file: high-dimensional-spaces/Clustering-Part2.ipynb
         # - file: HWs/otsu-thresholding-exercise.md
         # - file: high-dimensional-spaces/Clustering-Validation.ipynb
