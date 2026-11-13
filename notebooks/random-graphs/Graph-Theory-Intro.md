@@ -1,3 +1,7 @@
+<div class="langswitch langswitch-ltr">
+  <strong>English</strong> · <a href="#lang-fa">فارسی</a>
+</div>
+
 # Introduction to Graph Theory and Complex Networks Analysis
 
 Multiple problems can be modeled based on entities and their relationships. Graph theory (GT) allows us to define nodes and connections between them to represent and analyze complex processes found in various areas of science and technology. Today, there is a large amount of data that can be used to understand our world from things and their relationship between them and its ecosystem.

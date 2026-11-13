@@ -195,13 +195,23 @@ MSYS_NO_PATHCONV=1 JB='C:/programs/anaconda3/envs/pth/Scripts/jupyter-book.exe' 
 
 ## ۹. وضعیت ترجمه
 
-ترجمه‌شده (زیر `fa/`، هر کدام با سوییچ دوطرفه و مدخل در `fa/myst.yml`):
+این فهرست با `fa/myst.yml` جلو می‌رود؛ هر صفحه‌ای که مدخل فعال دارد، ترجمه شده است:
 
-- `index.md` — صفحهٔ آغاز فارسی
-- `other/Course-Opening.md`، `other/Course-Synthesis.md`، `python/Python-DSHB-intro.md`
-- `high-dimensional-spaces/Clustering-Part2.ipynb`، `.../High-Dimensional-Data-and-kNN.ipynb`،
-  `.../Image-Clustering-Hierarchical.ipynb`
+- `fa/index.md`
+- `fa/other/Course-Opening.md`
+- `fa/python/Python-DSHB-intro.md`
+- `fa/high-dimensional-spaces/Images-as-High-Dimensional-Data.ipynb`
+- `fa/high-dimensional-spaces/Clustering-Part2.ipynb`
+- `fa/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb`
+- `fa/high-dimensional-spaces/High-Dimensional-Data-and-kNN.ipynb`
+- `fa/high-dimensional-spaces/High-Dimensional-Data-and-K-Means.ipynb`
+- `fa/high-dimensional-spaces/Image-Clustering.ipynb`
+- `fa/high-dimensional-spaces/Image-Clustering-Hierarchical.ipynb`
+- `fa/linear-algebra/Projection.ipynb`
+- `fa/random-graphs/Graph-Theory-Intro.md`
+- `fa/other/Course-Synthesis.md`
 
-باقی مانده: بقیهٔ مدخل‌های فهرست انگلیسی (`myst.yml`). `IRIS-Clustering` و
-`Silhouette-clustering` در فهرست انگلیسی هم نیستند و ترجمه نمی‌شوند تا سوییچ به صفحهٔ ناموجود
-اشاره نکند؛ قاعده: **صفحه‌ای که در نسخهٔ انگلیسی منتشر نشده، فارسی هم نمی‌شود.**
+قاعده: **صفحه‌ای که در نسخهٔ انگلیسی منتشر نشده، فارسی هم نمی‌شود** (مثلاً `IRIS-Clustering` و
+`Silhouette-clustering` که در `myst.yml` انگلیسی کامنت‌اند) تا سوییچ به صفحهٔ ناموجود اشاره نکند.
+بقیهٔ فهرست انگلیسی در `fa/myst.yml` به‌صورت کامنت مانده است و با ترجمهٔ هر صفحه، مدخلش فعال
+می‌شود. ساخت فهرست فارسی را می‌توان با همان اسکریپت یک‌باره از `myst.yml` انگلیسی بازتولید کرد.
