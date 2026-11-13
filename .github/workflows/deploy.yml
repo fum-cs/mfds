@@ -38,32 +38,57 @@ jobs:
         with:
           node-version: 24.x
 
-      # ۱. راه‌اندازی پایتون برای اجرای nbconvert
+      # ۱. راه‌اندازی پایتون برای nbconvert و اسکریپت کوچک‌کردن آرتیفکت
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12' # توصیه می‌شود از نسخه پایدار استفاده کنید
+          python-version: '3.12'
 
-      # ۲. نصب Jupyter Book (بدون تغییر)
+      # ۲. نصب Jupyter Book 2 (موتور MyST)
       - name: Install Jupyter Book (via myst)
         run: npm install -g jupyter-book
 
-      # ۳. نصب nbconvert برای ساخت اسلایدها
+      # ۳. نصب nbconvert برای ساخت اسلایدهای reveal.js
       - name: Install nbconvert
         run: pip install nbconvert
 
-      # ۴. ساخت کتاب (بدون تغییر)
+      # ۴. ساخت کتاب
       - name: Build HTML Assets
         run: jupyter-book build --html
 
-      # ۵. ساخت اسلایدها و قرار دادن آن‌ها در زیرپوشه خروجی سایت
-      - name: Build Slides
-        run: |
-          mkdir -p _build/html/slides
-          jupyter nbconvert --to slides notebooks/**/*.ipynb --output-dir _build/html/slides/ --reveal-prefix "https://cdn.jsdelivr.net/npm/reveal.js@4"
-          # دستور بالا همه فایل‌های .ipynb موجود در پوشه notebooks و زیرپوشه‌های آن را تبدیل می‌کند.
+      # ۵. ساخت اسلایدها در زیرپوشه‌ای از خروجی سایت
+      #    فهرست نوتبوک‌ها با find ساخته می‌شود: با glob پیش‌فرض bash، الگوی
+      #    `notebooks/**/*.ipynb` عملاً به `notebooks/*/*.ipynb` تبدیل می‌شود و
+      #    اگر روزی نوتبوکی یک سطح پایین‌تر برود، بی‌صدا از قلم می‌افتد.
+      #    خروجی‌های ساخت قبلی (`notebooks/_build`) و پوشه‌های checkpoints هم
+      #    کنار گذاشته می‌شوند تا نسخه‌های تکراری ساخته نشوند.
+      # - name: Build Slides
+      #   run: |
+      #     mkdir -p _build/html/slides
+      #     mapfile -t notebooks < <(
+      #       find notebooks -name '*.ipynb' \
+      #         -not -path '*/.ipynb_checkpoints/*' \
+      #         -not -path 'notebooks/_build/*' | sort
+      #     )
+      #     echo "Converting ${#notebooks[@]} notebooks to slides."
+      #     jupyter nbconvert --to slides "${notebooks[@]}" \
+      #       --output-dir _build/html/slides/ \
+      #       --reveal-prefix "https://cdn.jsdelivr.net/npm/reveal.js@4"
+      #     # تصاویر نوتبوک‌ها با مسیر نسبی img/... ارجاع داده می‌شوند (بنر و
+      #     # شکل‌های ذخیره‌شده)، بنابراین کنار فایل‌های .slides.html کپی می‌شوند.
+      #     if [ -d notebooks/img ]; then cp -r notebooks/img _build/html/slides/img; fi
 
-      # ۶. آپلود کل خروجی (کتاب + اسلایدها)
+      # ۶. کوچک‌کردن آرتیفکت
+      #    myst برای هر صفحه یک کپی از نوتبوک در build/ می‌گذارد تا دکمهٔ
+      #    «Download as ipynb» کار کند. این کپی‌ها بایت‌به‌بایت همان فایل‌های
+      #    مخزن‌اند؛ اسکریپت، لینک‌ها را به همان فایل در GitHub وصل می‌کند و بعد
+      #    کپی را حذف می‌کند — نه زودتر، پس لینکی ۴۰۴ نمی‌شود.
+      - name: Prune artifact
+        run: |
+          python tools/prune_site.py
+          du -sh _build/html
+
+      # ۷. آپلود کل خروجی (کتاب + اسلایدها)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
