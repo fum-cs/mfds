@@ -122,6 +122,14 @@ for i, c in enumerate(nb.cells):
 | curse of dimensionality | نفرین ابعاد (نه «نفرین بُعد») |
 | low-rank | رتبه پایین (نه «کم‌مرتبه») |
 | derivation | استنتاج (نه «اشتقاق») |
+| prototype | پیش‌نمونه |
+| quantization | چنده‌گذاری |
+| contingency table | جدول توافقی |
+| purity | خلوص |
+| ground truth | حقیقت‌مبنا |
+| silhouette | سیلوئت |
+| dendrogram | دندروگرام |
+| linkage | پیوند |
 
 اصطلاح تازه را همین جدول اضافه کنید تا نسخه‌های بعدی یکدست بمانند.
 
@@ -202,11 +210,26 @@ MSYS_NO_PATHCONV=1 JB='C:/programs/anaconda3/envs/pth/Scripts/jupyter-book.exe' 
 
 این فهرست با `fa/myst.yml` جلو می‌رود؛ هر صفحه‌ای که مدخل فعال دارد، ترجمه شده است:
 
+29 صفحه ترجمه شده است:
+
 - `fa/index.md`
 - `fa/other/Course-Opening.md`
 - `fa/python/Python-DSHB-intro.md`
 - `fa/high-dimensional-spaces/Images-as-High-Dimensional-Data.ipynb`
+- `fa/high-dimensional-spaces/kNN-Classification-Evaluation.ipynb`
+- `fa/high-dimensional-spaces/Clustering-Part1.ipynb`
+- `fa/high-dimensional-spaces/Image-Segmentation-K-Means.ipynb`
 - `fa/high-dimensional-spaces/Clustering-Part2.ipynb`
+- `fa/HWs/otsu-thresholding-exercise.md`
+- `fa/high-dimensional-spaces/Clustering-Validation.ipynb`
+- `fa/high-dimensional-spaces/Learning-Vector-Quantization.ipynb`
+- `fa/high-dimensional-spaces/Proximity-Matrices-and-Dissimilarity.ipynb`
+- `fa/high-dimensional-spaces/Three-Families-of-Clustering-Algorithms.ipynb`
+- `fa/high-dimensional-spaces/K-Medoids.ipynb`
+- `fa/high-dimensional-spaces/Practical-Issues-Cluster-Number.ipynb`
+- `fa/high-dimensional-spaces/Hierarchical-Clustering.ipynb`
+- `fa/high-dimensional-spaces/Tumor-Microarray-Example.md`
+- `fa/high-dimensional-spaces/Self-Organizing-Maps.ipynb`
 - `fa/high-dimensional-spaces/High-Dimensional-Spaces.md`
 - `fa/high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb`
 - `fa/high-dimensional-spaces/High-Dimensional-Data-and-kNN.ipynb`
@@ -218,6 +241,8 @@ MSYS_NO_PATHCONV=1 JB='C:/programs/anaconda3/envs/pth/Scripts/jupyter-book.exe' 
 - `fa/linear-algebra/Projection.ipynb`
 - `fa/random-graphs/Graph-Theory-Intro.md`
 - `fa/other/Course-Synthesis.md`
+
+**39 صفحهٔ دیگر** از فهرست انگلیسی هنوز ترجمه نشده است؛ به ترتیب درس ادامه دهید.
 
 قاعده: **صفحه‌ای که در نسخهٔ انگلیسی منتشر نشده، فارسی هم نمی‌شود** (مثلاً `IRIS-Clustering` و
 `Silhouette-clustering` که در `myst.yml` انگلیسی کامنت‌اند) تا سوییچ به صفحهٔ ناموجود اشاره نکند.

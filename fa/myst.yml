@@ -40,22 +40,22 @@ project:
         - file: high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
         - file: high-dimensional-spaces/Clustering-Part2.ipynb
         - file: HWs/otsu-thresholding-exercise.md
-        # - file: high-dimensional-spaces/Clustering-Validation.ipynb
+        - file: high-dimensional-spaces/Clustering-Validation.ipynb
     - title: مدل‌های خطی و شبکه‌های عصبی
       children:
         # - file: learning/Linear-Regression-Perceptron-and-Online-Learning.ipynb
         # - file: learning/MLP-and-Backpropagation.ipynb
     - title: خوشه‌بندی و موضوع‌های دیگر
       children:
-        # - file: high-dimensional-spaces/Learning-Vector-Quantization.ipynb
+        - file: high-dimensional-spaces/Learning-Vector-Quantization.ipynb
         - file: high-dimensional-spaces/Proximity-Matrices-and-Dissimilarity.ipynb
         - file: high-dimensional-spaces/Three-Families-of-Clustering-Algorithms.ipynb
         - file: high-dimensional-spaces/K-Medoids.ipynb
         - file: high-dimensional-spaces/Practical-Issues-Cluster-Number.ipynb
         - file: high-dimensional-spaces/Hierarchical-Clustering.ipynb
         # - file: high-dimensional-spaces/Spectral-Clustering.ipynb
-        # - file: high-dimensional-spaces/Tumor-Microarray-Example.md
-        # - file: high-dimensional-spaces/Self-Organizing-Maps.ipynb
+        - file: high-dimensional-spaces/Tumor-Microarray-Example.md
+        - file: high-dimensional-spaces/Self-Organizing-Maps.ipynb
     - title: فضاهای با ابعاد بالا
       children:
         - file: high-dimensional-spaces/High-Dimensional-Spaces.md
