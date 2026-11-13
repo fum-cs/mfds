@@ -1,0 +1,78 @@
+version: 1
+
+# Persian edition of the course book.
+#
+# This is a second MyST project inside the same repository: it has its own
+# table of contents and its own site options, and it is built separately, with
+# the book rooted at /fa/ of the published site:
+#
+#     cd fa && BASE_URL=/fa jupyter-book build --html
+#
+# The English pages stay canonical; a Persian page is a translation of one of
+# them and keeps the same file name, so `notebooks/x/y.md` is translated as
+# `fa/x/y.md`. Pages that are not translated yet are simply not listed below.
+
+project:
+  title: مبانی ریاضی علوم داده
+  description: >-
+    مطالب درس مبانی ریاضی علوم داده (گرایش علوم داده)، گروه علوم کامپیوتر،
+    دانشکدهٔ علوم ریاضی، دانشگاه فردوسی مشهد.
+  authors:
+    - name: محمود امین‌طوسی
+  copyright: "۱۴۰۵. پروانهٔ CC0 — گروه علوم کامپیوتر، دانشگاه فردوسی مشهد"
+  settings:
+    output_matplotlib_strings: remove
+  toc:
+    - file: index.md
+
+    # The full table of contents of the English edition, kept here as the plan
+    # for the translation. Uncomment an entry once its page exists under fa/;
+    # the group titles are already translated.
+    #
+    # - title: افتتاحیه، داده، ماتریس و تصویر
+    #   children:
+    #     - file: other/Course-Opening.md
+    #     - file: python/Python-DSHB-intro.md
+    #     - file: python/The-Basics-Of-NumPy-Arrays.ipynb
+    #     - file: high-dimensional-spaces/Images-as-High-Dimensional-Data.ipynb
+    # - title: دسته‌بندی و خوشه‌بندی
+    #   children:
+    #     - file: high-dimensional-spaces/kNN-Classification-Evaluation.ipynb
+    #     - file: high-dimensional-spaces/Clustering-Part1.ipynb
+    #     - file: high-dimensional-spaces/Image-Segmentation-K-Means.ipynb
+    #     - file: high-dimensional-spaces/Clustering-Validation-Metrics.ipynb
+    # - title: مدل‌های خطی و شبکه‌های عصبی
+    #   children:
+    #     - file: learning/Linear-Regression-Perceptron-and-Online-Learning.ipynb
+    #     - file: learning/MLP-and-Backpropagation.ipynb
+    #     - file: learning/Kernel-Trick.md
+    # - title: فضاهای بُعد بالا
+    #   children:
+    #     - file: high-dimensional-spaces/High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb
+    #     - file: high-dimensional-spaces/High-Dimensional-Sampling.ipynb
+    # - title: جبرخطی و SVD
+    #   children:
+    #     - file: linear-algebra/linear-algebra-basics.md
+    #     - file: linear-algebra/Eigendecomposition.ipynb
+    #     - file: linear-algebra/Singular-Value-Decomposition.ipynb
+    # - title: تقریب کم‌مرتبه، PCA و کاهش بُعد
+    #   children:
+    #     - file: linear-algebra/PCA-Part1.ipynb
+    #     - file: linear-algebra/PCA-Part2.ipynb
+    # - title: گراف‌های تصادفی و قدم زدن تصادفی
+    #   children:
+    #     - file: random-graphs/Erdos-Renyi.ipynb
+    #     - file: random-graphs/Phase-Transition.ipynb
+    #     - file: random-graphs/Markov-Chains-and-PageRank.md
+    # - title: برنامهٔ درس
+    #   children:
+    #     - file: course-plan-fall-2026.md
+
+site:
+  template: book-theme
+  options:
+    logo: img/fum-cs-logo.png
+    favicon: img/fum-logo.ico
+    # The RTL stylesheet lives at the repository root so that the English and
+    # the Persian edition can share one copy; this path is relative to fa/.
+    style: ../css/fa.css

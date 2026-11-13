@@ -76,6 +76,32 @@ env -u PORT jupyter book build --html   # site in _build/html/
 See [production.md](production.md) for details, local serving, and a manual
 github-pages fallback.
 
+## Persian edition (نسخهٔ فارسی)
+
+The repository holds **two MyST projects**: the English book at the root, and the
+Persian one under `fa/` with its own `myst.yml`, its own table of contents and the
+RTL stylesheet `css/fa.css`. The Persian edition is published under `/fa/` of the
+same site. A page is translated only when a file with the same name exists under
+`fa/`; the commented block in `fa/myst.yml` is the translation plan, and an entry
+is uncommented only when its page exists.
+
+Build both editions and wire the language switch with:
+
+```
+python tools/build_sites.py        # both; or: python tools/build_sites.py en|fa
+```
+
+It runs `jupyter-book build --html` twice (the Persian build with
+`BASE_URL=/fa`), copies the Persian output to `_build/html/fa/`, rewrites the
+`#lang-…` placeholders in both landing pages into links to the other edition at
+the right depth, and sets `lang="fa" dir="rtl"` on the Persian pages. Do not set
+`BASE_URL` for the English build; the script keeps it out of that environment.
+
+Known limits: code and maths stay left-to-right (see `css/fa.css`), the theme's
+own labels (Contents, Search, Exercise) are still English because MyST has no UI
+translations yet, and the PDF export is English-only — a Persian PDF needs
+XeLaTeX with a Persian font and the bidi package.
+
 ## Semester snapshots
 
 At the end of each offering, tag the final state (do not rename this repo):

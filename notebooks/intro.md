@@ -1,3 +1,10 @@
+<div class="langswitch langswitch-ltr">
+  <strong>English</strong> · <a href="#lang-fa">فارسی</a>
+</div>
+
+<!-- The href is a placeholder: tools/build_sites.py rewrites it to ../../fa/
+     (and the like) so the switch works from any page depth. -->
+
 # Mathematical Foundations of Data Science
 
 ![](img/banner.png)
