@@ -2,62 +2,91 @@
   <strong>English</strong> · <a href="#lang-fa">فارسی</a>
 </div>
 
-# Example: Human Tumor Microarray Data
+# Clustering Tumors by Gene Expression
 
 ![](img/banner.png)
 
-
 Computer Science Dept, Ferdowsi University of Mashhad
 
-## Where this example sits
+## The question
 
-Section 14.3.8 of {cite}`hastie2009esl` (pp. 512–514) is a worked case of
-**high-dimensional clustering**: what happens when a clustering algorithm is
-applied to data where the number of measurements per object is far larger than
-the number of objects. It is worth reading as a case study rather than as an
-algorithm, because the algorithm is plain K-means and everything interesting is
-in how the result is *interpreted* — and in what the book says is wrong with it.
+A pathologist names a tumor by looking at tissue under a microscope. A
+microarray asks a different question of the same sample: which of several
+thousand genes are being transcribed, and how strongly. If the tissue of origin
+is written into that expression profile, then a **clustering algorithm — which
+never sees the diagnosis — should be able to recover it**. That is the claim
+this example tests, and it is a stronger claim than "the samples form groups":
+it says the diagnosis is *contained in the measurements*.
+
+The experiment is small enough to follow by hand, and it is a good first case
+study because the algorithm is ordinary k-means; all the judgement is in how the
+output is read.
 
 ## The data
 
-* A **6830 × 64** matrix of real numbers: one row per **gene**, one column per
-  **tissue sample**, each entry an expression measurement.
-* The objects to be clustered are the **samples**: sample *j* is the vector of
-  its 6830 expression values, i.e. a point in `R^6830`.
-* Every sample carries a label from the pathology report: *breast, CNS, colon,
-  K562, leukemia, MCF7, melanoma, NSCLC, ovarian, prostate, renal*, and a few
-  *unknown*.
-* The labels are **not used** by the clustering. They are looked at afterwards,
-  to see what the clusters turned out to contain.
+* A matrix of **6830 rows (genes) × 64 columns (samples)** of expression values.
+* The objects to cluster are the **samples**. Sample $j$ is the vector of its
+  6830 measurements, i.e. a point in $\mathbb{R}^{6830}$. Two samples are close
+  when their whole profiles agree, not when one particular gene agrees.
+* Each sample also carries a **pathology label**: breast, CNS, colon, K562,
+  leukemia, MCF7, melanoma, NSCLC, ovarian, prostate, renal, or *unknown*. (K562
+  and MCF7 are cell lines rather than primary tumors, which matters later.)
+* The labels are **withheld during clustering**. They are used afterwards, to
+  ask what each cluster turned out to contain.
 
-The setting is `p = 6830` and `n = 64`: the distances between samples are computed
-in a space where there are far more directions than points, which is exactly the
-regime discussed on the
+With $p = 6830$ and $n = 64$ there are far more directions than points: the
+distances live in the regime described on the
 [curse-of-dimensionality page](High-Dimensional-Data-and-The-Curse-of-Dimensionality.ipynb).
+Every distance is estimated from 64 points only, so no cluster boundary here is
+sharp in a statistical sense.
 
-## The question the example asks
+## Deciding what "similar" means
 
-If two tumors arose in the same tissue, their gene-expression profiles should be
-more similar to each other than to tumors of another tissue. If that is true, an
-**unsupervised** method — one that never sees the pathology labels — should
-recover the tissue of origin by itself. A successful clustering would then be a
-diagnostic aid: a new sample joins the group it resembles, and the group has a
-name.
+K-means needs a distance before it needs anything else, and on expression data
+the choice does more work than the algorithm:
 
-That is a stronger claim than "the samples cluster": it says the *labels are
-recoverable from the measurements*, and it can be tested because the labels
-exist.
+* **Euclidean distance on raw values** is dominated by the genes with the largest
+  variance and by the overall brightness of the array.
+* **Correlation distance** ($1 - \rho$ between two profiles) compares *shape*
+  instead of level, and is the usual default for expression data, because a
+  sample can be brighter overall without being a different tissue.
+* **Standardizing each gene** (subtracting its mean, dividing by its standard
+  deviation across samples) puts all 6830 genes on the same footing and is what
+  makes "many small agreements" count as much as "one large one".
 
-## The experiment
+Whatever is chosen must be reported: two analyses of the same matrix with
+different distances are two different experiments, and they can disagree
+completely about which samples are neighbours.
 
-K-means is run on the 64 sample vectors, with `K` from 1 to 10, and the total
-within-cluster sum of squares is recorded for each — the book's Figure 14.8. The
-curve has **no clear kink**, which is the honest outcome more often than the
-textbook habit suggests; the choice of `K` is therefore made *for illustration*,
-and the book takes `K = 3`.
+## Running k-means
 
-The result is reported as a contingency table of clusters against the pathology
-labels (Table 14.2), reproduced below.
+For a fixed $K$, k-means alternates two steps until the assignment stops
+changing:
+
+1. assign each sample to its nearest centroid;
+2. move each centroid to the mean of the samples assigned to it.
+
+The quantity it decreases is the **within-cluster sum of squares**
+
+$$
+\mathrm{WSS}(K) = \sum_{k=1}^{K} \sum_{x \in C_k} \lVert x - \mu_k \rVert^2 .
+$$
+
+Two practical points that this example makes concrete:
+
+* **$K$ is not estimated by the algorithm.** One plots $\mathrm{WSS}(K)$ against
+  $K$ and looks for an elbow; on data like this the curve falls smoothly enough
+  that no value stands out, so $K$ has to be *chosen for the purpose at hand*.
+  Here $K = 3$ was fixed, which is a deliberate coarsening: eleven tissue types
+  are being squeezed into three groups.
+* **K-means stops at a local minimum.** Different random starts give different
+  answers; a single run is not a result. The standard guard is to restart many
+  times and keep the solution with the smallest WSS.
+
+## The result
+
+Running k-means with $K = 3$ and then opening the envelope — counting which
+pathology labels landed in which cluster — gives:
 
 | Cluster | Breast | CNS | Colon | K562 | Leukemia | MCF7 | Melanoma | NSCLC | Ovarian | Prostate | Renal | Unknown | total |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -65,92 +94,118 @@ labels (Table 14.2), reproduced below.
 | **2** | 2 | 0 | 0 | 2 | 6 | 2 | 7 | 2 | 0 | 0 | 0 | 0 | 21 |
 | **3** | 2 | 0 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 9 |
 
-Three things stand out in that table.
+Read it by rows, not by eye-catching cells:
 
-* **Cluster 3 is the colon cancers.** All seven colon samples land there, plus
-  two breast samples. A cluster that is 78% one tissue type was found without
-  ever being told what the tissues were.
-* **Cluster 2 is a family of blood and skin tumors** — the leukemias, K562, MCF7,
-  melanoma, plus part of the NSCLC group.
-* **Cluster 1 collects everything else** — CNS, ovarian, renal, prostate, most of
-  the NSCLC — the largest and least pure group, which is what one expects from
-  `K = 3` on twelve types.
+* **Cluster 3 is essentially the colon cancers**: all seven colon samples, plus
+  two breast samples. A group that is 78% one tissue was found without the
+  algorithm ever being told what the tissues were.
+* **Cluster 2 gathers the blood and skin tumors**: the six leukemias with the
+  K562 and MCF7 lines, the melanomas, and two NSCLC samples.
+* **Cluster 1 is the remainder**: CNS, ovarian, renal, prostate, most NSCLC, a
+  few breast and one melanoma sample. It is the largest and least pure group,
+  which is what one should expect when eleven types are forced into three boxes.
 
-## The finding the book highlights
+A table like this — clusters against known labels — is the right way to report a
+clustering when labels exist, because it shows both the purity of a cluster and
+its mistakes. A summary that only says "the clusters correspond to tissue types"
+hides exactly the information a reader needs.
 
-> We see that the procedure is successful at grouping together samples of the
-> same cancer. In fact, the two breast cancers in the second cluster were later
-> found to be misdiagnosed and were melanomas that had metastasized.
+## A label that turned out to be wrong
 
-This is the most quoted sentence of the section, and it should be quoted with its
-qualifications. What the clustering did was place two samples labelled *breast*
-next to the melanoma group; the subsequent re-examination is what established that
-the labels were wrong. The algorithm proposed a suspicion; the pathologist
-confirmed it. An unsupervised method can be *right against its labels* — but only
-a follow-up investigation turns that into knowledge.
+The two *breast* samples sitting inside the melanoma-dominated cluster were
+re-examined after the clustering. They were not breast cancers: they were
+melanomas that had metastasized to the breast.
 
-## The two shortcomings the book names
+This is the most valuable outcome in the whole example, and it is worth being
+precise about what happened. The clustering did not "discover the truth"; it
+produced a *suspicion* — these two profiles look like that group, not like the
+group their labels claim. A pathologist then checked, and the suspicion was
+confirmed. Unsupervised learning can be right *against* its labels, but only a
+follow-up investigation turns that into knowledge. Without the re-examination,
+the honest conclusion would have been "two samples are inconsistent with their
+labels, for reasons unknown".
 
-Section 14.3.8 is not only a success story. The book lists two defects of K-means
-in this application:
+## What k-means cannot give here
 
-1. **No ordering inside a cluster.** K-means returns sets, not sequences; the
-   samples of a cluster have to be listed alphabetically, which says nothing
-   about how similar they are to each other.
-2. **Memberships are not nested.** The solution for `K = 4` need not refine the
-   solution for `K = 3`: a cluster can be split and recombined in arbitrary ways
-   when `K` changes. A table built for one `K` therefore cannot be extended when
-   `K` is revised.
+Two limits of the method show up sharply in this application:
 
-Both defects point to the same repair, which is why the book says *hierarchical
-clustering is probably preferable for this application*: a dendrogram gives a
-linear ordering of the samples and a **nested family** of partitions, so the
-analyst can choose the number of groups *after* seeing the structure instead of
-before.
+1. **No order inside a cluster.** K-means returns sets. The members of cluster 1
+   can only be listed alphabetically, which says nothing about which of them are
+   most alike; a reader who wants "these nine samples form a subgroup" gets no
+   help.
+2. **No nesting across $K$.** The solution for $K = 4$ need not refine the
+   solution for $K = 3$: clusters can be split, merged and reshuffled when $K$
+   changes. A table built for one $K$ cannot be extended when the number of
+   groups is revised, so every change of $K$ costs a new interpretation.
 
-## What this example teaches
+Both are cured by the same change of report: **hierarchical clustering** returns
+a dendrogram, which orders the samples along a line and gives a nested family of
+partitions — one picture from which any number of clusters can be read off after
+seeing the structure. For a study like this one, where the number of groups is
+unknown and the ordering within a group is meaningful, the dendrogram is the more
+informative object; k-means is the cheaper summary. See
+[hierarchical clustering](Hierarchical-Clustering.ipynb).
 
-* **Clusters are not classes.** The label of a cluster is assigned afterwards, by
-  looking at what fell into it; the algorithm itself never had a name for it.
-* **A contingency table is the right way to report a clustering when labels
-  exist** — it shows both the purity and the mistakes, and it would hide nothing
-  if a cluster were a mixture of three tissues.
-* **The elbow can be absent.** A flat inertia curve is information: it says the
-  data has no natural number of groups at this scale.
-* **`n = 64` is small.** With 6830 genes and 64 samples, a handful of samples can
-  dominate a cluster; the apparent success is strong but not a statistical proof.
-* **Selection matters.** The clustering above uses all 6830 genes; restricting to
-  the genes that vary most, or that correlate with survival, changes the
-  distances, and the choice of genes is a modelling decision made by the analyst.
+## Limits of the conclusion
+
+* **$n = 64$.** A single atypical sample can pull a centroid, and one sample
+  moving between clusters changes the table visibly. The agreement is strong but
+  it is not a significance test.
+* **Gene selection is a modelling decision.** Clustering all 6830 genes gives one
+  answer; restricting to genes that vary most across samples, or that correlate
+  with survival, changes every distance and can change the clusters.
+* **Missing values and preprocessing.** Expression matrices are noisy and often
+  incomplete; how the gaps are filled (row means, $k$-nearest neighbours, a
+  low-rank fit) moves samples as much as a different distance would.
+* **One run proves nothing.** With random initialization, report the best of many
+  restarts, and check how often the same partition is recovered.
+
+## Summary
+
+* Clustering on expression profiles recovers tissue of origin well enough to be
+  useful, using no labels at all.
+* The interesting part of the result is the contingency table, not the clusters
+  themselves: it exposes both the clean groups and the mixed ones.
+* A cluster that disagrees with a label is a hypothesis about the label, to be
+  checked outside the algorithm.
+* When the number of groups is unknown and the ordering inside a group matters,
+  a dendrogram answers more questions than a set of centroids.
+* $p \gg n$ makes every distance noisy; report the preprocessing and the number
+  of restarts, or the result is not reproducible.
 
 ## Questions for class
 
-1. Why is the *samples* dimension clustered, and not the genes? What would
-   clustering the 6830 genes mean, and what would a cluster of genes represent?
-2. Table 14.2 has 12 tissue types and `K = 3`. What is lost by forcing twelve
-   into three? Which types would you expect to be conflated first?
-3. If the two breast samples had *not* been re-examined, what would the honest
+1. Why are the **samples** clustered and not the 6830 genes? What would a cluster
+   of genes mean, and what would you learn from one?
+2. The table has eleven tissue types and $K = 3$. Which types would you expect to
+   be merged first, and does the table agree with your expectation?
+3. If the two "breast" samples had never been re-examined, what would the correct
    conclusion of the experiment have been?
-4. The inertia curve has no kink. What else could be used to choose `K`, and what
-   would each criterion cost in interpretation?
-5. K-means used Euclidean distance on 6830-dimensional vectors. What happens to
-   that distance if one gene has a much larger variance than the rest, and what is
-   the standard repair?
+4. Cluster 2 mixes leukemia, K562, MCF7 and melanoma. Is that a failure of
+   k-means, of the distance, or of forcing eleven types into three clusters?
+5. How would you check that a cluster is stable rather than an accident of the
+   random initialization?
 
 ## Exercises
 
-1. Recompute the correlation-based distance matrix of the $64\times6830$ matrix and redraw the dendrogram. Report the two branches that split first.
-2. Explain why $6830$ features and $64$ samples make every pairwise distance a noisy estimate, and what that implies for the stability of the dendrogram.
-3. The book names two shortcomings of this analysis. State both and say which page of this course addresses each.
+1. Compute the correlation-distance matrix of the $64 \times 6830$ matrix, run
+   average-linkage hierarchical clustering, and compare the top two splits with
+   clusters 3 and 2 above.
+2. Rerun k-means with 50 random starts and record how often the $K = 3$ table
+   above is reproduced exactly. What does the answer say about the reported
+   result?
+3. Standardize the genes before clustering and compare the resulting table with
+   the one shown. Which clusters survive the change?
+4. Plot $\mathrm{WSS}(K)$ for $K = 1,\ldots,10$. Is there an elbow? If not, state
+   a criterion other than the elbow for choosing $K$, and its cost.
 
+## Source and further reading
 
-## Sources
-
-* The example, its numbers, Table 14.2 and the quotations: §14.3.8 of
-  {cite}`hastie2009esl`, pp. 512–514; the data set itself is described in Chapter 1
-  of the same book and is distributed with it.
-* The remedy the book recommends for the two shortcomings — the dendrogram and the
-  nested partitions — is the subject of the
-  [hierarchical clustering page](Hierarchical-Clustering.ipynb).
-* The high-dimensional setting in which these distances are computed is discussed
-  in [High-Dimensional Spaces](High-Dimensional-Spaces.md).
+The data set (NCI60 tumor cell lines) and the analysis summarized above are from
+**§14.3.8, "Example: Human Tumor Microarray Data", pp. 512–514** of
+{cite}`hastie2009esl`; the table is that section's cross-tabulation of three
+k-means clusters against the pathology labels, and the two mislabelled samples
+are reported there. The high-dimensional setting is discussed in
+[High-Dimensional Spaces](High-Dimensional-Spaces.md), and the alternative
+report — the dendrogram — in
+[hierarchical clustering](Hierarchical-Clustering.ipynb).
