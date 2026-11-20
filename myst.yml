@@ -35,7 +35,7 @@ project:
         - file: notebooks/high-dimensional-spaces/Clustering-Validation.ipynb
     - title: Linear Models and Neural Networks
       children:
-        - file: notebooks/learning/Linear-Regression-Perceptron-and-Online-Learning.ipynb
+        - file: notebooks/learning/Linear-Regression-Part2.ipynb
         - file: notebooks/learning/MLP-and-Backpropagation.ipynb
     - title: Clustering,  Other topics
       children:
