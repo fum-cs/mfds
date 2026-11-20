@@ -1,10 +1,8 @@
+# High Dimensional Spaces
+
 <div class="langswitch langswitch-ltr">
   <strong>English</strong> · <a href="#lang-fa">فارسی</a>
 </div>
-
-# High Dimensional Spaces
-
-![](img/banner.png)
 
 A data set is an $n \times d$ matrix — $n$ points, $d$ coordinates — and in modern
 work $d$ is often large: a $200\times300$ grayscale image is *one* point in

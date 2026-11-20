@@ -1,3 +1,5 @@
+# مبانی ریاضی علوم داده
+
 <div class="langswitch">
   <a href="#lang-en">English</a> · <strong>فارسی</strong>
 </div>
@@ -5,8 +7,6 @@
 <!-- The href above is a placeholder: tools/build_sites.py rewrites it to the
      right number of `../` for this page, so the switch works both at the site
      root and under /fa/ on GitHub Pages. -->
-
-# مبانی ریاضی علوم داده
 
 ![](img/banner.png)
 

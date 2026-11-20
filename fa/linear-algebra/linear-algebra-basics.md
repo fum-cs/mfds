@@ -1,10 +1,8 @@
+# جبرخطی
+
 <div class="langswitch">
   <a href="#lang-en">English</a> · <strong>فارسی</strong>
 </div>
-
-# جبرخطی
-
-![](img/banner.png)
 
 یادآوری می‌کنم که مطالب اصلی از [مخزن جبرخطی آخیل واسوانی در گیت‌هاب](https://github.com/akhilvasvani/Linear-Algebra-Basics/) گرفته شده است.
 

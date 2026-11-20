@@ -1,6 +1,4 @@
 
-![](img/banner.png)
-
 # The Kernel Method (Kernel Trick)
 
 Computer Science Dept, Ferdowsi University of Mashhad

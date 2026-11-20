@@ -1,8 +1,8 @@
+# Exercise: Implementing Otsu's Thresholding from Scratch
+
 <div class="langswitch langswitch-ltr">
   <strong>English</strong> · <a href="#lang-fa">فارسی</a>
 </div>
-
-# Exercise: Implementing Otsu's Thresholding from Scratch
 
 ## Introduction
 

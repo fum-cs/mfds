@@ -1,8 +1,8 @@
+# Subspaces and Maps to Other Spaces
+
 <div class="langswitch langswitch-ltr">
   <strong>English</strong> · <a href="#lang-fa">فارسی</a>
 </div>
-
-# Subspaces and Maps to Other Spaces
 
 **Status:** bridge page between the span/dependence notebooks and the eigen/SVD chapters.
 

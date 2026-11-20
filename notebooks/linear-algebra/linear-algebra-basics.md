@@ -1,10 +1,8 @@
+# Linear Algebra
+
 <div class="langswitch langswitch-ltr">
   <strong>English</strong> · <a href="#lang-fa">فارسی</a>
 </div>
-
-# Linear Algebra
-
-![](img/banner.png)
 
 I should mention that the original material was from [Akhil Vasvani's github repo about linear algebra](https://github.com/akhilvasvani/Linear-Algebra-Basics/).
 

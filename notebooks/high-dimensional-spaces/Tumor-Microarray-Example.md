@@ -1,10 +1,8 @@
+# Clustering Tumors by Gene Expression
+
 <div class="langswitch langswitch-ltr">
   <strong>English</strong> · <a href="#lang-fa">فارسی</a>
 </div>
-
-# Clustering Tumors by Gene Expression
-
-![](img/banner.png)
 
 Computer Science Dept, Ferdowsi University of Mashhad
 

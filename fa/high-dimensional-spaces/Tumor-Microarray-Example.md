@@ -1,10 +1,8 @@
+# خوشه‌بندی تومور از روی بیان ژن
+
 <div class="langswitch">
   <a href="#lang-en">English</a> · <strong>فارسی</strong>
 </div>
-
-# خوشه‌بندی تومور از روی بیان ژن
-
-![](img/banner.png)
 
 گروه علوم کامپیوتر، دانشگاه فردوسی مشهد
 

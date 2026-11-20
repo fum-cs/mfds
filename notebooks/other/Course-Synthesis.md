@@ -1,8 +1,8 @@
+# Course Synthesis and Bridge to SML
+
 <div class="langswitch langswitch-ltr">
   <strong>English</strong> · <a href="#lang-fa">فارسی</a>
 </div>
-
-# Course Synthesis and Bridge to SML
 
 ## One map of the course
 
