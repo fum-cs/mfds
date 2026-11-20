@@ -101,7 +101,7 @@ project:
         - file: notebooks/python/Computation-on-arrays-broadcasting.ipynb
         - file: "notebooks/Appendix-Clustering-Measures-and-Variants.ipynb"
           title: "Appendix: Further Clustering Measures and k-Means Variants"        
-        - file: notebooks/Appendix-Why-k-Means-Cannot-Be-Solved-by-Differentiation-Alone.md
+        - file: notebooks/Appendix-k-Means-Differentiation.md
         - file: notebooks/random-graphs/Introduction-to-NetworkX.ipynb
         - file: notebooks/linear-algebra/Example-Principal-Components-Analysis.ipynb
     - title: Other Topics
