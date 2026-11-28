@@ -46,6 +46,8 @@ project:
         - file: notebooks/high-dimensional-spaces/Practical-Issues-Cluster-Number.ipynb
         - file: notebooks/high-dimensional-spaces/Hierarchical-Clustering.ipynb
         - file: notebooks/high-dimensional-spaces/Spectral-Clustering.ipynb
+        - file: notebooks/high-dimensional-spaces/DBSCAN.ipynb
+        - file: notebooks/high-dimensional-spaces/Fuzzy-C-Means.ipynb
         - file: notebooks/high-dimensional-spaces/Tumor-Microarray-Example.md
         - file: notebooks/high-dimensional-spaces/Self-Organizing-Maps.ipynb
     - title: High-Dimensional Spaces
